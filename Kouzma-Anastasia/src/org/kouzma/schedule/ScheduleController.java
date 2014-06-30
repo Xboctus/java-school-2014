@@ -9,13 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,8 +57,6 @@ public class ScheduleController {
 	private final String SUCCESS = "Command complete";
 	
 	private HashMap<String, User> lstUsers = new HashMap<String, User>();
-	
-	private TreeMap<Date, List<String>> treeEvent = new TreeMap<Date, List<String>>();
 	
 	public void main() {
 		BufferedReader br = new BufferedReader(
@@ -308,42 +300,12 @@ public class ScheduleController {
 			answer.append("\n" + dateFormat.format(fromGTM(event.getDate(), offset)) + " \"" + event.getText() + "\"");
 		}	
 		return answer.toString();
-		//return user.toString();
 	}
 
 	private String StartScheduling() {
 		editShowMode = true;
 
-		Calendar cal = new GregorianCalendar();
-		int offset = cal.get(Calendar.ZONE_OFFSET);
-		
-		for (User user : lstUsers.values())
-			for (Event event : user.getEvents()) {
-				Date eventDate = fromGTM(event.getDate(), offset);
-				List<String> lstMessages;
-				if (treeEvent.containsKey(eventDate))
-					lstMessages = treeEvent.get(eventDate);
-				else {
-					lstMessages = new LinkedList<String>();
-					treeEvent.put(eventDate, lstMessages);
-				}
-				lstMessages.add(user.getName() + " \"" + event.getText() + "\"");
-			}
-		
-		for (final Date eventDate : treeEvent.keySet()) {
-			Timer eventTimer = new Timer();
-			TimerTask eventTask = new TimerTask() {
-
-				@Override
-				public void run() {
-					List<String> lstMessages = treeEvent.get(eventDate);
-					for (String msg : lstMessages)
-						System.out.println(dateFormat.format(eventDate) + " : " + msg);
-				}
-				
-			};
-			eventTimer.schedule(eventTask, eventDate);
-		}
+		(new ShowMode()).show(lstUsers);
 		
 		return SUCCESS;
 	}
