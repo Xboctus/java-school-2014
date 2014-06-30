@@ -6,9 +6,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Coordinator extends TimerTask {
+public class Coordinator extends TimerTask implements Constants {
 
-    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
+    DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
     public TreeMap<String, User> users = new TreeMap<String, User>();
 
     public  Coordinator () {
@@ -18,7 +18,7 @@ public class Coordinator extends TimerTask {
     public boolean createUser(String name, String timeZone, boolean status) {
 
         if (users.containsKey(name)) {
-            System.out.println("Such user already exists");
+            System.out.println(USER_EXISTS);
             return false;
         }
 
@@ -36,7 +36,7 @@ public class Coordinator extends TimerTask {
     public boolean modifyUser(String name, String timeZone, boolean status) {
 
         if (!users.containsKey(name)) {
-            System.out.println("No " + name + " in existence");
+            System.out.println(name + WRONG_NAME);
             return false;
         }
 
@@ -54,7 +54,7 @@ public class Coordinator extends TimerTask {
     public boolean addUserEvent(String  name, String text, String dateTime) {
 
         if (!users.containsKey(name)) {
-            System.out.println("No " + name + " in existence");
+            System.out.println(name + WRONG_NAME);
             return false;
         }
 
@@ -64,7 +64,7 @@ public class Coordinator extends TimerTask {
         try {
             eventDate = dateFormat.parse(dateTime + user.getTimeZone().getID());
         } catch (ParseException e) {
-            System.out.println("Incorrect date/time");
+            System.out.println(WRONG_DATE);
             return false;
         }
 
@@ -75,7 +75,7 @@ public class Coordinator extends TimerTask {
     public boolean removeUserEvent(String name, String text) {
 
         if (!users.containsKey(name)) {
-            System.out.println("No " + name + " in existence");
+            System.out.println(name + WRONG_NAME);
             return false;
         }
 
@@ -92,19 +92,19 @@ public class Coordinator extends TimerTask {
     public boolean cloneUserEvent(String name, String text, String nameTo) {
 
         if (!users.containsKey(name)) {
-            System.out.println("No " + name + " in existence");
+            System.out.println(name + WRONG_NAME);
             return false;
         }
 
         if (!users.containsKey(nameTo)) {
-            System.out.println("No " + nameTo + " in existence");
+            System.out.println(nameTo + WRONG_NAME);
             return false;
         }
 
         Event event = users.get(name).getEvent(text);
 
         if (event==null) {
-            System.out.println("No such event in existence");
+            System.out.println(EVENT_MISSING);
             return false;
         }
 
@@ -115,7 +115,7 @@ public class Coordinator extends TimerTask {
     public boolean showUserInfo(String name) {
 
         if (!users.containsKey(name)) {
-            System.out.println("No " + name + " in existence");
+            System.out.println(name + WRONG_NAME);
             return false;
         }
 
@@ -136,7 +136,7 @@ public class Coordinator extends TimerTask {
             e.printStackTrace();
         }
 
-        System.out.println("Scheduling stopped");
+        System.out.println(SCHEDULING_STOPPED);
         timer.cancel();
 
     }
@@ -153,7 +153,7 @@ public class Coordinator extends TimerTask {
 
             for (Event event : eventList) {
 
-                if (event.getDate().toString().equals(currentDate.toString()) && user.getValue().getStstus()) {
+                if (event.getDate().toString().equals(currentDate.toString()) && user.getValue().getStatus()) {
                     System.out.println(currentDate + "\n" + username + "\n" + event.getText() + "\n");
                 }
 

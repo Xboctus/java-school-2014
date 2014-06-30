@@ -2,7 +2,7 @@ package com.javaschool2014.task1;
 
 import java.util.*;
 
-public class User {
+public class User implements Constants {
 
     private final String name;
     private TimeZone timeZone = TimeZone.getDefault();
@@ -24,7 +24,7 @@ public class User {
         return timeZone;
     }
 
-    public boolean getStstus(){
+    public boolean getStatus(){
         return status;
     }
 
@@ -55,7 +55,7 @@ public class User {
     public boolean addEvent(String text, Date datetime) {
 
         if (events.containsKey(text)) {
-            System.out.println("Such event already exists");
+            System.out.println(EVENT_EXISTS);
             return false;
         }
 
@@ -68,7 +68,7 @@ public class User {
     public boolean removeEvent(String text) {
 
         if (!events.containsKey(text)){
-            System.out.println("No such event in existence");
+            System.out.println(EVENT_MISSING);
             return false;
         }
 
