@@ -5,8 +5,8 @@ public class Main implements Constants {
     public static void main(String[] args) {
 
         System.out.println("Available command list:");
-        System.out.println("Create <name><timezone><active>, Create <name><timezone><active>, AddEvent <name><text><datetime>, RemoveEvent <name><text>,");
-        System.out.println("AddRandomTimeEvent <name><text><dateFrom><dateTo>, CloneEvent <name><text><nameTo>, ShowInfo <name>, StartScheduling");
+        System.out.println("Create(<name>,<timezone>,<active>), Create(<name>,<timezone>,<active>), AddEvent(<name>,<text>,<datetime>), RemoveEvent(<name>,<text>),");
+        System.out.println("AddRandomTimeEvent(<name>,<text>,<dateFrom>,<dateTo>), CloneEvent(<name>,<text>,<nameTo>), ShowInfo(<name>), StartScheduling, Leave");
         System.out.println("---------------------------------------------------------------------");
 
         Coordinator coordinator = new Coordinator();
@@ -32,13 +32,11 @@ public class Main implements Constants {
 
         coordinator.removeUserEvent("Zvan", "Task 1");
 
-
-
         coordinator.showUserInfo("Zvan");
 
         System.out.println(coordinator.users.get("Zvan").getTimeZone().toString());
 
-        coordinator.startScheduling();
+        coordinator.start();
 
     }
 

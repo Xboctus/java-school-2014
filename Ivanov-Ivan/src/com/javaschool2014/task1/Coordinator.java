@@ -1,10 +1,14 @@
 package com.javaschool2014.task1;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Coordinator extends TimerTask implements Constants {
 
@@ -12,6 +16,150 @@ public class Coordinator extends TimerTask implements Constants {
     public TreeMap<String, User> users = new TreeMap<String, User>();
 
     public  Coordinator () {
+
+    }
+
+    public void start(){
+
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true) {
+
+            try {
+
+                String command = input.readLine();
+
+                Pattern pattern = Pattern.compile(createUserPattern);
+                Matcher matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+
+                    System.out.println("regexp ok");
+                    /*
+                    if (createUser()) {
+                        System.out.println("User created!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(modifyUserPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+
+                    System.out.println("regexp ok");
+                    /*
+                    if (modifyUser()) {
+                        System.out.println("User modified!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(addUserEventPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    System.out.println("regexp ok");
+                    /*
+                    if (addUserEvent()) {
+                        System.out.println("Event added!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(addRandomTimeUserEventPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    System.out.println("regexp ok");
+                    /*
+                    if (addRandomTimeUserEvent()) {
+                        System.out.println("Random time event added!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(removeUserEventPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    System.out.println("regexp ok");
+                    /*
+                    if (removeUserEvent()) {
+                        System.out.println("Event removed!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(cloneUserEventPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    System.out.println("regexp ok");
+                    /*
+                    if (cloneUserEvent()) {
+                        System.out.println("Event cloned!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(showUserInfoPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    System.out.println("regexp ok");
+                    /*
+                    if (!showUserInfo()) {
+                        System.out.println("Nothing found!");
+                    } else {
+                        System.out.println(ERROR);
+                    }
+                    */
+                    continue;
+                }
+
+                pattern = Pattern.compile(startSchedulingPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    startScheduling();
+                    continue;
+                }
+
+                pattern = Pattern.compile(leavePattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    System.exit(0);
+                }
+
+                System.out.println(WRONG_COMMAND);
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            }
+
+        }
 
     }
 
@@ -62,10 +210,14 @@ public class Coordinator extends TimerTask implements Constants {
         Date eventDate = new Date();
 
         try {
+
             eventDate = dateFormat.parse(dateTime + user.getTimeZone().getID());
+
         } catch (ParseException e) {
+
             System.out.println(WRONG_DATE);
             return false;
+
         }
 
         return (user.addEvent(text, eventDate));
@@ -127,17 +279,25 @@ public class Coordinator extends TimerTask implements Constants {
 
     public void startScheduling() {
 
+        System.out.println(SCHEDULING_STARTED);
+
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(this, 0, 1000);
 
         try {
+
             System.in.read();
+
         } catch (IOException e) {
+
             e.printStackTrace();
+
         }
 
         System.out.println(SCHEDULING_STOPPED);
         timer.cancel();
+
+        start();
 
     }
 
