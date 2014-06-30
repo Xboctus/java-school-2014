@@ -1,15 +1,14 @@
 package com.javaschool2014.task1;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-import java.util.TreeMap;
+import java.util.*;
 
-public class Coordinator {
+public class Coordinator extends TimerTask {
 
-    private TreeMap<String, User> users = new TreeMap<String, User>();
+    public TreeMap<String, User> users = new TreeMap<String, User>();
 
     public  Coordinator () {
 
@@ -63,7 +62,8 @@ public class Coordinator {
         Date eventDate = new Date();
 
         try {
-            eventDate = dateFormat.parse(dateTime+user.getTimeZone().getID());
+            eventDate = dateFormat.parse(dateTime + user.getTimeZone().getID());
+            System.out.println(eventDate);
         } catch (ParseException e) {
             System.out.println("Incorrect date/time");
             return false;
@@ -126,8 +126,26 @@ public class Coordinator {
 
     }
 
-    public boolean startScheduling() {
-        return true;
+    public void startScheduling() {
+
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(this, 0, 1000);
+
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        timer.cancel();
+
+    }
+
+    @Override
+    public void run() {
+
+        System.out.println("sec");
+
     }
 
 }
