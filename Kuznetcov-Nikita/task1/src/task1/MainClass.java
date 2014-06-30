@@ -15,9 +15,9 @@ public class MainClass {
     String command;
     InputStreamReader inputStream = new InputStreamReader(System.in);
     BufferedReader reader = new BufferedReader(inputStream);
+    System.out.println("Scheduler started at editor mode!");
 
     do {
-
       command = reader.readLine();
 
       if (command.matches("Create\\((.+), (.+), (.+)\\)")) {
@@ -148,12 +148,15 @@ public class MainClass {
       if (command.matches("StartScheduling")) {
         System.out.println("Start planning...");
         taskCoordinator.StartScheduling();
+        reader.close();
+        inputStream.close();
+        break;
       }
 
       System.out.println("Users list:");
       System.out.println(taskCoordinator.getUsersMap());
 
-    } while (!command.equals("END"));
+    } while (true);
 
   }
 

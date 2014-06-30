@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Coordinator {
 
-  private SortedMap<String, User> usersMap = new TreeMap<String, User>(); // список пользователей
+  private SortedMap<String, User> usersMap = new TreeMap<String, User>(); // list of users
 
   public int addNewUser(String userName, String timeZoneID, boolean status) {
     if (usersMap.containsKey(userName)) {
@@ -98,8 +98,8 @@ public class Coordinator {
 
   public int cloneEvent(String userName, String taskText, String targetUserName) {
     try {
-      User targetUser = usersMap.get(targetUserName);
       User srcUser = usersMap.get(userName);
+      User targetUser = usersMap.get(targetUserName);
       if (srcUser == null) {
         // source user doesn't exists
         return 1;
@@ -108,12 +108,12 @@ public class Coordinator {
         // target user doesn't exists
         return 2;
       }
-      Event srcEvent = (Event) usersMap.get(userName).getEventByText(taskText).clone();
+      Event srcEvent = srcUser.getEventByText(taskText);
       if (srcEvent == null) {
         // srcEvent not found
         return 3;
       }
-      if (!usersMap.get(targetUserName).getUserTaskSet().add(srcEvent)) {
+      if (!usersMap.get(targetUserName).getUserTaskSet().add((Event)srcEvent.clone())) {
         // if Event with specified text already present is user's event list
         return 4;
       }
@@ -125,29 +125,25 @@ public class Coordinator {
   }
 
   public void StartScheduling() {
-    // throw new UnsupportedOperationException("Not supported yet");
     TimerTask timerTask = new TimerTask() {
       @Override
       public void run() {
 
-        Date currentDate = new Date();
-        System.out.println(currentDate.getTime());
+        long currentTime = new Date().getTime() / 1000;
 
-        for (Map.Entry<String, User> entry : usersMap.entrySet()) {
-          if (entry.getValue().isActive()) {
-            for (Event event : entry.getValue().getUserTaskSet()) {
-              System.out.println("Entry time: " + event.getEventDate().getTime());
-              if (event.getEventDate().getTime() == currentDate.getTime()) {
+        for (Map.Entry<String, User> userEntry : usersMap.entrySet()) {
+          if (userEntry.getValue().isActive()) {
+            for (Event event : userEntry.getValue().getUserTaskSet()) {
+              if (event.getEventDate().getTime() / 1000 == currentTime) {
                 System.out.println(event);
               }
             }
           }
         }
-
       }
     };
 
-    Timer scheduler = new Timer("scheduler", true);
+    Timer scheduler = new Timer("scheduler", false);
     scheduler.scheduleAtFixedRate(timerTask, 0, 1000);
   }
 

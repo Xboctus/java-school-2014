@@ -16,6 +16,8 @@ public class Event implements Comparable, Cloneable {
   @Override
   public int compareTo(Object o) {
     Event target = (Event)o;
+    if (this.getEventText().equals(target.getEventText())) return 0;
+
     if (!this.eventDate.equals(target.eventDate)) {
       return this.eventDate.compareTo(target.eventDate);
     } else {
@@ -35,8 +37,7 @@ public class Event implements Comparable, Cloneable {
   @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof Event)) return false;
-    if (((Event) obj).getEventText().equals(this.eventText)) return true;
-    return false;
+    return ((Event) obj).getEventText().equals(this.eventText);
   }
 
   public Object clone() throws CloneNotSupportedException {
