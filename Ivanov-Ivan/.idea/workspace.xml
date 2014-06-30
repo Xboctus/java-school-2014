@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="temp commit&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -69,7 +73,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="162" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+            <state line="13" column="45" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
@@ -78,7 +82,7 @@
       <file leaf-file-name="Coordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="62" selection-start="439" selection-end="439" vertical-scroll-proportion="0.50530785" vertical-offset="0" max-vertical-offset="5627">
+            <state line="231" column="0" selection-start="6518" selection-end="6518" vertical-scroll-proportion="0.46921444" vertical-offset="3706" max-vertical-offset="6086">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +93,21 @@
       <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="39" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
-              <folding />
+            <state line="23" column="23" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1666">
+              <folding>
+                <element signature="e#268#283#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
+                <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#482#483#0" expanded="true" />
+                <element signature="e#515#516#0" expanded="true" />
+                <element signature="e#544#545#0" expanded="true" />
+                <element signature="e#702#709#0" expanded="true" />
+                <element signature="e#918#919#0" expanded="true" />
+                <element signature="e#958#959#0" expanded="true" />
+                <element signature="e#1002#1003#0" expanded="true" />
+                <element signature="e#1038#1039#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,8 +115,13 @@
       <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-              <folding />
+            <state line="13" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+              <folding>
+                <element signature="e#298#299#0" expanded="true" />
+                <element signature="e#329#330#0" expanded="true" />
+                <element signature="e#360#361#0" expanded="true" />
+                <element signature="e#387#388#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,7 +129,7 @@
       <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="66" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="73" max-vertical-offset="544">
+            <state line="13" column="65" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="544">
               <folding />
             </state>
           </provider>
@@ -131,9 +153,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" />
       </list>
     </option>
@@ -172,8 +194,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -212,6 +232,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -504,7 +526,8 @@
       <workItem from="1403965869628" duration="1186000" />
       <workItem from="1404028472782" duration="21858000" />
       <workItem from="1404105339984" duration="18420000" />
-      <workItem from="1404127890016" duration="259000" />
+      <workItem from="1404127890016" duration="1588000" />
+      <workItem from="1404129660701" duration="6959000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -538,7 +561,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48839000" />
+    <option name="totallyTimeSpent" value="57127000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -584,7 +607,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13617463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4254902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39215687" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -621,6 +644,61 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="33" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="262" column="78" selection-start="7423" selection-end="7423" vertical-scroll-proportion="0.0" vertical-offset="4454" max-vertical-offset="5627">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1666">
+          <folding>
+            <element signature="e#268#283#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#702#709#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510">
+          <folding>
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="66" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="162" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="816">
           <folding />
         </state>
@@ -638,14 +716,32 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="39" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1666">
-          <folding />
+          <folding>
+            <element signature="e#268#283#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#702#709#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510">
-          <folding />
+          <folding>
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -675,14 +771,32 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="27" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1462">
-          <folding />
+          <folding>
+            <element signature="e#268#283#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#702#709#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="22" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="510">
-          <folding />
+          <folding>
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -705,14 +819,32 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="27" selection-start="406" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="510">
-          <folding />
+          <folding>
+            <element signature="e#268#283#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#702#709#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="28" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="459">
-          <folding />
+          <folding>
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -735,14 +867,32 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="27" selection-start="406" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="510">
-          <folding />
+          <folding>
+            <element signature="e#268#283#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#702#709#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="28" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="459">
-          <folding />
+          <folding>
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -760,35 +910,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <folding />
+        <state line="13" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding>
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="39" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
+        <state line="23" column="23" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1666">
+          <folding>
+            <element signature="e#268#283#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#702#709#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="65" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="162" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="66" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="73" max-vertical-offset="544">
+        <state line="13" column="45" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="62" selection-start="439" selection-end="439" vertical-scroll-proportion="0.50530785" vertical-offset="0" max-vertical-offset="5627">
+        <state line="231" column="0" selection-start="6518" selection-end="6518" vertical-scroll-proportion="0.46921444" vertical-offset="3706" max-vertical-offset="6086">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

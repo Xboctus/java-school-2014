@@ -28,20 +28,21 @@ public class Coordinator extends TimerTask implements Constants {
             try {
 
                 String command = input.readLine();
+                String[] arguments = null;
 
                 Pattern pattern = Pattern.compile(createUserPattern);
                 Matcher matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
 
-                    System.out.println("regexp ok");
-                    /*
-                    if (createUser()) {
+                    arguments = parseString(command);
+
+                    if (createUser(arguments[0], arguments[1], arguments[2])) {
                         System.out.println("User created!");
                     } else {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -50,14 +51,14 @@ public class Coordinator extends TimerTask implements Constants {
 
                 if (matcher.matches()) {
 
-                    System.out.println("regexp ok");
-                    /*
-                    if (modifyUser()) {
+                    arguments = parseString(command);
+
+                    if (modifyUser(arguments[0], arguments[1], arguments[2])) {
                         System.out.println("User modified!");
                     } else {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -65,14 +66,15 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
-                    System.out.println("regexp ok");
-                    /*
-                    if (addUserEvent()) {
+
+                    arguments = parseString(command);
+
+                    if (addUserEvent(arguments[0], arguments[1], arguments[2])) {
                         System.out.println("Event added!");
                     } else {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -80,14 +82,15 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
-                    System.out.println("regexp ok");
-                    /*
-                    if (addRandomTimeUserEvent()) {
+
+                    arguments = parseString(command);
+
+                    if (addRandomTimeUserEvent(arguments[0], arguments[1], arguments[2], arguments[3])) {
                         System.out.println("Random time event added!");
                     } else {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -95,14 +98,15 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
-                    System.out.println("regexp ok");
-                    /*
-                    if (removeUserEvent()) {
+
+                    arguments = parseString(command);
+
+                    if (removeUserEvent(arguments[0], arguments[1])) {
                         System.out.println("Event removed!");
                     } else {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -110,14 +114,15 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
-                    System.out.println("regexp ok");
-                    /*
-                    if (cloneUserEvent()) {
+
+                    arguments = parseString(command);
+
+                    if (cloneUserEvent(arguments[0], arguments[1], arguments[2])) {
                         System.out.println("Event cloned!");
                     } else {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -125,14 +130,13 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
-                    System.out.println("regexp ok");
-                    /*
-                    if (!showUserInfo()) {
-                        System.out.println("Nothing found!");
-                    } else {
+
+                    arguments = parseString(command);
+
+                    if (!showUserInfo(arguments[0])) {
                         System.out.println(ERROR);
                     }
-                    */
+
                     continue;
                 }
 
@@ -163,7 +167,7 @@ public class Coordinator extends TimerTask implements Constants {
 
     }
 
-    public boolean createUser(String name, String timeZone, boolean status) {
+    public boolean createUser(String name, String timeZone, String status) {
 
         if (users.containsKey(name)) {
             System.out.println(USER_EXISTS);
@@ -174,14 +178,19 @@ public class Coordinator extends TimerTask implements Constants {
         TimeZone userTimeZone = TimeZone.getTimeZone(timeZone);
 
         user.setTimeZone(userTimeZone);
-        user.setStatus(status);
         users.put(name, user);
+
+        if (status.equals("active")) {
+            user.setStatus(true);
+        } else if (status.equals("idle")) {
+            user.setStatus(false);
+        }
 
         return true;
 
     }
 
-    public boolean modifyUser(String name, String timeZone, boolean status) {
+    public boolean modifyUser(String name, String timeZone, String status) {
 
         if (!users.containsKey(name)) {
             System.out.println(name + WRONG_NAME);
@@ -192,8 +201,13 @@ public class Coordinator extends TimerTask implements Constants {
         TimeZone userTimeZone = TimeZone.getTimeZone(timeZone);
 
         user.setTimeZone(userTimeZone);
-        user.setStatus(status);
         users.put(name, user);
+
+        if (status.equals("active")) {
+            user.setStatus(true);
+        } else if (status.equals("idle")) {
+            user.setStatus(false);
+        }
 
         return true;
 
@@ -211,7 +225,8 @@ public class Coordinator extends TimerTask implements Constants {
 
         try {
 
-            eventDate = dateFormat.parse(dateTime + user.getTimeZone().getID());
+            System.out.println(user.getUserTimeZone().getRawOffset()/(1000*60*60));
+            eventDate = dateFormat.parse(dateTime);
 
         } catch (ParseException e) {
 
@@ -237,7 +252,7 @@ public class Coordinator extends TimerTask implements Constants {
 
     }
 
-    public boolean addRandomTimeUserEvent(String name, String text, Date dateFrom, Date dateTo) {
+    public boolean addRandomTimeUserEvent(String name, String text, String dateFrom, String dateTo) {
         return false;
     }
 
@@ -299,6 +314,18 @@ public class Coordinator extends TimerTask implements Constants {
 
         start();
 
+    }
+
+    public String[] parseString (String command) {
+
+        String tempString = command.substring(command.indexOf("(") + 1, command.lastIndexOf(")"));
+        String[] arguments = tempString.split(",");
+
+        for (int i = 0; i < arguments.length; i++){
+            arguments[i] = arguments[i].trim();
+        }
+
+        return arguments;
     }
 
     @Override

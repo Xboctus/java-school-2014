@@ -20,7 +20,7 @@ public class User implements Constants {
         return name;
     }
 
-    public TimeZone getTimeZone() {
+    public TimeZone getUserTimeZone() {
         return timeZone;
     }
 

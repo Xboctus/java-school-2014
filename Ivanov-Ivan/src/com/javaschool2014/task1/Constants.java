@@ -13,8 +13,8 @@ public interface Constants {
     public static final String ERROR = "Error occurred!";
     public static final String DATE_FORMAT = "dd.MM.yyyy-HH:mm:ss";
 
-    public static final String createUserPattern = "Create\\s*\\(.+\\,.+\\,.+\\)\\s*";
-    public static final String modifyUserPattern = "Modify\\s*\\(.+\\,.+\\,.+\\)\\s*";
+    public static final String createUserPattern = "Create\\s*\\(.+\\,\\s*GMT(\\+|\\-)\\d*\\,.+\\)\\s*";
+    public static final String modifyUserPattern = "Modify\\s*\\(.+\\,\\s*GMT(\\+|\\-)\\d*\\,.+\\)\\s*";
     public static final String addUserEventPattern = "AddEvent\\s*\\(.+\\,.+\\,.+\\)\\s*";
     public static final String addRandomTimeUserEventPattern = "AddRandomTimeEvent\\s*\\(.+\\,.+\\,.+\\,.+\\)\\s*";
     public static final String removeUserEventPattern = "RemoveEvent\\s*\\(.+\\,.+\\)\\s*";
