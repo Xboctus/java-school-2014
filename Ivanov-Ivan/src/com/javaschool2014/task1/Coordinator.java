@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Coordinator extends TimerTask {
 
+    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
     public TreeMap<String, User> users = new TreeMap<String, User>();
 
     public  Coordinator () {
@@ -58,12 +59,10 @@ public class Coordinator extends TimerTask {
         }
 
         User user = users.get(name);
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
         Date eventDate = new Date();
 
         try {
             eventDate = dateFormat.parse(dateTime + user.getTimeZone().getID());
-            System.out.println(eventDate);
         } catch (ParseException e) {
             System.out.println("Incorrect date/time");
             return false;
@@ -137,6 +136,7 @@ public class Coordinator extends TimerTask {
             e.printStackTrace();
         }
 
+        System.out.println("Scheduling stopped");
         timer.cancel();
 
     }
@@ -144,7 +144,22 @@ public class Coordinator extends TimerTask {
     @Override
     public void run() {
 
-        System.out.println("sec");
+        Date currentDate = new Date();
+
+        for (Map.Entry<String, User> user : users.entrySet()) {
+
+            String username = user.getValue().getName();
+            List<Event> eventList = user.getValue().getEvents();
+
+            for (Event event : eventList) {
+
+                if (event.getDate().toString().equals(currentDate.toString()) && user.getValue().getStstus()) {
+                    System.out.println(currentDate + "\n" + username + "\n" + event.getText() + "\n");
+                }
+
+            }
+
+        }
 
     }
 

@@ -13,15 +13,27 @@ public class Main {
 
         Coordinator coordinator = new Coordinator();
 
-        coordinator.startScheduling();
+        coordinator.createUser("Zvan", "America/Chihuahua", true);
+        coordinator.createUser("Alex", "America/Chihuahua", false);
+        coordinator.createUser("Ilya", "America/Chihuahua", true);
 
-        coordinator.createUser("Ivan", "America/Chihuahua", true);
-        coordinator.addUserEvent("Ivan", "Task 1", "11.11.1111-11:11:11");
-        coordinator.addUserEvent("Ivan", "Task 2", "11.11.1111-11:11:11");
-        coordinator.addUserEvent("Ivan", "Task 3", "11.11.1111-11:11:11");
-        coordinator.addUserEvent("Ivan", "Task 4", "11.11.1111-11:11:11");
-        coordinator.showUserInfo("Ivan");
-        System.out.println(coordinator.users.get("Ivan").getTimeZone().toString());
+        coordinator.addUserEvent("Zvan", "Task 1", "11.11.1111-11:11:11");
+        coordinator.addUserEvent("Zvan", "Task 2", "30.06.2014-11:47:40");
+        coordinator.addUserEvent("Zvan", "Task 3", "11.11.1111-12:11:11");
+
+        coordinator.addUserEvent("Alex", "Task 3", "30.06.2014-11:47:40");
+        coordinator.addUserEvent("Alex", "Task 2", "11.11.1111-11:11:11");
+        coordinator.addUserEvent("Alex", "Task 1", "11.11.1111-12:11:11");
+
+        coordinator.addUserEvent("Ilya", "Task 1", "30.06.2014-11:47:40");
+        coordinator.addUserEvent("Ilya", "Task 2", "11.11.1111-13:11:11");
+        coordinator.addUserEvent("Ilya", "Task 3", "11.11.1111-11:11:11");
+
+        coordinator.showUserInfo("Zvan");
+
+        System.out.println(coordinator.users.get("Zvan").getTimeZone().toString());
+
+        coordinator.startScheduling();
 
     }
 

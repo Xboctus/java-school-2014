@@ -32,6 +32,18 @@ public class User {
         return events.get(text);
     }
 
+    public List getEvents(){
+
+        List<Event> eventList = new ArrayList<Event>();
+
+        for (Map.Entry<String, Event> entry : events.entrySet()) {
+            eventList.add(entry.getValue());
+        }
+
+        return eventList;
+
+    }
+
     public void setTimeZone(TimeZone timeZone) {
         this.timeZone = timeZone;
     }
