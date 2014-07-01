@@ -1,13 +1,31 @@
 package org.kouzma.schedule;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule {
 
 	public static void main(String args[]) {
-		ScheduleController controller = new ScheduleController();
-		controller.main();
+		CommandAnalizer analizer = new CommandAnalizer();
+		BufferedReader br = new BufferedReader(
+				new InputStreamReader(System.in)); 
+		
+		try {
+			while (true) {
+				String command = br.readLine();
+	
+				String answer = analizer.analizeCommand(command);
+				if (answer == null)
+					break;
+				else
+					System.out.println(answer);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 //		String dt = "30.06.2014-11:34:";
 //		
@@ -31,7 +49,7 @@ public class Schedule {
 //		
 //		for (String command : lstCommands) {
 //			System.out.println("> " + command);
-//			System.out.println(controller.parseCommand(command));
+//			System.out.println(analizer.analizeCommand(command));
 //		}
 	}
 }

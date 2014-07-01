@@ -28,8 +28,11 @@ public class ScheduleCreator {
 	private final String ERROR_WRONG_STATUS = "Wrong status";
 	private final String ERROR_WRONG_DATE = "Wrong date format";
 	private final String ERROR_WRONG_DATE_RANGE = "Wrong date range";
-	
-	private final String SUCCESS = "Command complete";
+
+	private final String USER_ADDED = "User \"?\" added";
+	private final String USER_MODIFIED = "User \"?\" modified";
+	private final String EVENT_ADDED = "Event \"?\" added";
+	private final String EVENT_REMOVED = "Event \"?\" removed";
 	
 	private HashMap<String, User> lstUsers = new HashMap<String, User>();
 
@@ -49,7 +52,7 @@ public class ScheduleCreator {
 		
 		User newUser = new User(name, timeZone, isActive);
 		lstUsers.put(name, newUser);
-		return SUCCESS;
+		return USER_ADDED.replace("?", name);
 	}
 
 
@@ -67,7 +70,7 @@ public class ScheduleCreator {
 			return ERROR_WRONG_STATUS;
 		
 		user.modify(timeZone, isActive);
-		return SUCCESS;
+		return USER_MODIFIED.replace("?", name);
 	}
 
 	/**
@@ -89,7 +92,7 @@ public class ScheduleCreator {
 			return ERROR_WRONG_DATE;
 		
 		user.AddEvent(eventText, date);
-		return SUCCESS;
+		return EVENT_ADDED.replace("?", eventText);
 	} 
 
 	public String RemoveEvent(String name, String eventText) {
@@ -98,7 +101,7 @@ public class ScheduleCreator {
 		User user = lstUsers.get(name);
 		
 		if (user.RemoveEvent(eventText))
-			return SUCCESS;
+			return EVENT_REMOVED.replace("?", eventText);
 		else
 			return ERROR_EVENT_NOT_FOUND;
 	}
@@ -125,7 +128,7 @@ public class ScheduleCreator {
 			return ERROR_WRONG_DATE_RANGE;
 		
 		user.AddEvent(eventText, randomDate);
-		return SUCCESS;
+		return EVENT_ADDED.replace("?", eventText);
 	}
 
 	public String CloneEvent(String name, String eventText, String nameTo) {
@@ -148,7 +151,7 @@ public class ScheduleCreator {
 			return ERROR_EVENT_EXISTS;
 		
 		userTo.AddEvent(event.clone());
-		return SUCCESS;
+		return EVENT_ADDED.replace("?", eventText);
 	}
 
 	public String ShowInfo(String name) {
@@ -175,7 +178,7 @@ public class ScheduleCreator {
 	}
 
 	public String StartScheduling() {
-		(new ShowMode()).show(lstUsers);
+		(new ScheduleViewer()).show(lstUsers);
 		
 		return null;
 	}

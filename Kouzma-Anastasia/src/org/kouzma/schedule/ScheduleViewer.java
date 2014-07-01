@@ -12,7 +12,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.TreeMap;
 
-public class ShowMode {
+public class ScheduleViewer {
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
 	private TreeMap<Date, List<String>> treeEvent = new TreeMap<Date, List<String>>();
 	
