@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="Task1 1.1 commit&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" />
+    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -79,10 +75,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coordinator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Coordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="391" column="35" selection-start="11027" selection-end="11027" vertical-scroll-proportion="0.0" vertical-offset="6304" max-vertical-offset="7599">
+            <state line="391" column="35" selection-start="11027" selection-end="11027" vertical-scroll-proportion="3.6677778" vertical-offset="3346" max-vertical-offset="7599">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#770#784#0" expanded="true" />
@@ -109,10 +105,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="70" selection-start="743" selection-end="743" vertical-scroll-proportion="0.22666667" vertical-offset="0" max-vertical-offset="900">
+            <state line="12" column="70" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
               <folding />
             </state>
           </provider>
@@ -268,6 +264,16 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Danilova Katya/events/src/ScheduleCoordinator.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Danilova Katya/events/src/model/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Danilova Katya/events/src/model/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/Coordinator.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/MessagesAndRegularExpressions.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/User$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/src/schedule/Coordinator.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/src/schedule/MessagesAndRegularExpressions.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/src/schedule/User.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -275,24 +281,28 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Danilova Katya/events/src/ScheduleCoordinator.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Danilova Katya/events/src/model/Event.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Danilova Katya/events/src/model/User.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/.classpath</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/.project</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/CommandAnalizer.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Event.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Schedule.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleCreator.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleViewer$1.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleViewer.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/User.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/CommandAnalizer.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/Event.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/Schedule.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/ScheduleCreator.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/ScheduleViewer.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/CListener.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/Coordinator$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/GListener.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$10.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$11.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$12.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$13.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$14.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$15.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$4.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$5.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$6.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$7.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$8.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame$9.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/bin/schedule/ScheduleFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/src/schedule/CListener.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/src/schedule/GListener.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Ignatev-Pavel/Task1/src/schedule/ScheduleFrame.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -300,20 +310,6 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="true" />
             <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/.classpath</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/.project</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/bin/org/kouzma/schedule/Event.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/bin/org/kouzma/schedule/Schedule.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/bin/org/kouzma/schedule/ScheduleController.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/bin/org/kouzma/schedule/ShowMode$1.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/bin/org/kouzma/schedule/ShowMode.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/bin/org/kouzma/schedule/User.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/src/org/kouzma/schedule/Event.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/src/org/kouzma/schedule/Schedule.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/src/org/kouzma/schedule/ScheduleController.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/src/org/kouzma/schedule/ShowMode.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/src/org/kouzma/schedule/User.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../Kouzma-Anastasia/test.txt</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -675,7 +671,7 @@
       <workItem from="1404193496174" duration="2344000" />
       <workItem from="1404195971746" duration="54000" />
       <workItem from="1404196183981" duration="11242000" />
-      <workItem from="1404232351556" duration="5857000" />
+      <workItem from="1404232351556" duration="5919000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -721,11 +717,15 @@
       <created>1404213604054</created>
       <updated>1404213604054</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Task1 1.1 commit&#10;">
+      <created>1404248147615</created>
+      <updated>1404248147615</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78548000" />
+    <option name="totallyTimeSpent" value="78610000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -749,7 +749,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13525027" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -771,7 +771,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08466454" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08466454" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31857452" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -798,7 +798,8 @@
     <MESSAGE value="temp commit" />
     <MESSAGE value="temp commit&#10;" />
     <MESSAGE value="Task1 1.0 commit&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task1 1.0 commit&#10;" />
+    <MESSAGE value="Task1 1.1 commit&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task1 1.1 commit&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1113,20 +1114,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="70" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="391" column="35" selection-start="11027" selection-end="11027" vertical-scroll-proportion="0.0" vertical-offset="6304" max-vertical-offset="7599">
+        <state line="391" column="35" selection-start="11027" selection-end="11027" vertical-scroll-proportion="3.6677778" vertical-offset="3346" max-vertical-offset="7599">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#770#784#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="70" selection-start="743" selection-end="743" vertical-scroll-proportion="0.22666667" vertical-offset="0" max-vertical-offset="900">
-          <folding />
         </state>
       </provider>
     </entry>
