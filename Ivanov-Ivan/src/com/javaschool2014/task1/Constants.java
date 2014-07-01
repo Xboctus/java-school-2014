@@ -21,7 +21,7 @@ public interface Constants {
     public static final String cloneUserEventPattern         = "CloneEvent\\s*\\(.+\\,.+\\,.+\\)\\s*";
     public static final String showUserInfoPattern           = "ShowInfo\\s*\\(.+\\)\\s*";
     public static final String startSchedulingPattern        = "StartScheduling";
-    public static final String stopSchedulingPattern        = "StopScheduling";
+    public static final String stopSchedulingPattern         = "StopScheduling";
     public static final String leavePattern                  = "Leave";
 
 }
