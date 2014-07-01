@@ -1,21 +1,21 @@
 package com.javaschool2014.task1;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Event implements Cloneable {
 
     private String text;
-    private Date dateTime;
+    private Calendar calendar;
 
-    public Event (String text, Date dateTime) {
+    public Event (String text, Calendar calendar) {
 
         this.text = text;
-        this.dateTime = dateTime;
+        this.calendar = calendar;
 
     }
 
-    public Date getDate() {
-        return dateTime;
+    public Calendar getDate() {
+        return calendar;
     }
 
     public String getText() {

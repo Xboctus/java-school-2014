@@ -11,9 +11,9 @@ public class Main implements Constants {
 
         Coordinator coordinator = new Coordinator();
 
-        coordinator.createUser("Ivan", "GMT+1", "active");
-        coordinator.createUser("Alex", "GMT+1", "active");
-        coordinator.createUser("Ilya", "GMT+1", "active");
+        coordinator.createUser("Ivan", "GMT", "active");
+        coordinator.createUser("Alex", "GMT-10", "active");
+        coordinator.createUser("Ilya", "GMT-1", "active");
 
         coordinator.modifyUser("Alex", "GMT+9", "idle");
 

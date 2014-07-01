@@ -221,12 +221,13 @@ public class Coordinator extends TimerTask implements Constants {
         }
 
         User user = users.get(name);
-        Date eventDate = new Date();
+        Calendar calendar = new GregorianCalendar(user.getUserTimeZone());
+        Date date = new Date();
 
         try {
 
-            System.out.println(user.getUserTimeZone().getRawOffset()/(1000*60*60));
-            eventDate = dateFormat.parse(dateTime);
+            date = dateFormat.parse(dateTime);
+            calendar.setTime(date);
 
         } catch (ParseException e) {
 
@@ -235,7 +236,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         }
 
-        return (user.addEvent(text, eventDate));
+        return (user.addEvent(text, calendar));
 
     }
 
@@ -335,12 +336,14 @@ public class Coordinator extends TimerTask implements Constants {
 
         for (Map.Entry<String, User> user : users.entrySet()) {
 
+            dateFormat.setTimeZone(TimeZone.getDefault());
+
             String username = user.getValue().getName();
             List<Event> eventList = user.getValue().getEvents();
 
             for (Event event : eventList) {
 
-                if (event.getDate().toString().equals(currentDate.toString()) && user.getValue().getStatus()) {
+                if (dateFormat.format(event.getDate().getTime()).equals(currentDate.toString()) && user.getValue().getStatus()) {
                     System.out.println(currentDate + "\n" + username + "\n" + event.getText() + "\n");
                 }
 

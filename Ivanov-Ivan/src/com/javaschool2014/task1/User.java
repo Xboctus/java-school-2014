@@ -1,5 +1,7 @@
 package com.javaschool2014.task1;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class User implements Constants {
@@ -8,6 +10,7 @@ public class User implements Constants {
     private TimeZone timeZone = TimeZone.getDefault();
     private boolean status;
 
+    DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
     private TreeMap<String, Event> events = new TreeMap<String, Event>();
 
     public User (String name) {
@@ -52,14 +55,14 @@ public class User implements Constants {
         this.status = status;
     }
 
-    public boolean addEvent(String text, Date datetime) {
+    public boolean addEvent(String text, Calendar calendar) {
 
         if (events.containsKey(text)) {
             System.out.println(EVENT_EXISTS);
             return false;
         }
 
-        Event event = new Event(text, datetime);
+        Event event = new Event(text, calendar);
         events.put(text, event);
         return true;
 
@@ -81,9 +84,10 @@ public class User implements Constants {
     public String toString(){
 
         String userData =  name + " " + timeZone.getID() + " " + ((status) ? "active" : "idle") + "\n";
+        dateFormat.setTimeZone(this.timeZone);
 
         for (Map.Entry<String, Event> entry : events.entrySet()) {
-            userData += "Task: " + entry.getKey() + ". Date: " + entry.getValue().getDate() + "\n";
+            userData += "Task: " + entry.getKey() + ". Date: " + dateFormat.format(entry.getValue().getDate().getTime()) + "\n";
         }
 
         return userData;
