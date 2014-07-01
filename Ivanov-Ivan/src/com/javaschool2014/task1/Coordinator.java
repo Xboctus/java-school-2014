@@ -333,17 +333,16 @@ public class Coordinator extends TimerTask implements Constants {
     public void run() {
 
         Date currentDate = new Date();
+        dateFormat.setTimeZone(TimeZone.getDefault());
 
         for (Map.Entry<String, User> user : users.entrySet()) {
-
-            dateFormat.setTimeZone(TimeZone.getDefault());
 
             String username = user.getValue().getName();
             List<Event> eventList = user.getValue().getEvents();
 
             for (Event event : eventList) {
 
-                if (dateFormat.format(event.getDate().getTime()).equals(currentDate.toString()) && user.getValue().getStatus()) {
+                if (dateFormat.format(event.getDate().getTime()).equals(dateFormat.format(currentDate)) && user.getValue().getStatus()) {
                     System.out.println(currentDate + "\n" + username + "\n" + event.getText() + "\n");
                 }
 
