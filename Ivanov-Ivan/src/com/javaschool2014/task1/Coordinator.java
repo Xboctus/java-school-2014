@@ -1,5 +1,7 @@
 package com.javaschool2014.task1;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,15 +9,69 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
+import java.util.Timer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Coordinator extends TimerTask implements Constants {
 
-    DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    private String appName             = "Planfx v0.1";
+    private JFrame newFrame            = new JFrame(appName);
+
+    DateFormat dateFormat              = new SimpleDateFormat(DATE_FORMAT);
+    Timer timer                        = new Timer(true);
     public TreeMap<String, User> users = new TreeMap<String, User>();
 
     public  Coordinator () {
+
+    }
+
+    public void display() {
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BorderLayout());
+
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(new BorderLayout());
+
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+        textArea.setFont(new Font("Serif", Font.PLAIN, 14));
+
+        JButton Create             = new JButton("Create");
+        JButton Modify             = new JButton("Modify");
+        JButton AddEvent           = new JButton("AddEvent");
+        JButton RemoveEvent        = new JButton("RemoveEvent");
+        JButton AddRandomTimeEvent = new JButton("AddRandomTimeEvent");
+        JButton CloneEvent         = new JButton("CloneEvent");
+        JButton ShowInfo           = new JButton("ShowInfo");
+        JButton StartScheduling    = new JButton("StartScheduling");
+        JButton StopScheduling    = new JButton("StopScheduling");
+
+        leftPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
+
+        rightPanel.add(Create);
+        rightPanel.add(Modify);
+        rightPanel.add(AddEvent);
+        rightPanel.add(RemoveEvent);
+        rightPanel.add(AddRandomTimeEvent);
+        rightPanel.add(CloneEvent);
+        rightPanel.add(ShowInfo);
+        rightPanel.add(StartScheduling);
+        rightPanel.add(StopScheduling);
+
+        mainPanel.add(BorderLayout.WEST, leftPanel);
+        mainPanel.add(BorderLayout.EAST, rightPanel);
+
+        newFrame.add(mainPanel);
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        newFrame.setSize(470, 300);
+        newFrame.setVisible(true);
 
     }
 
@@ -145,6 +201,14 @@ public class Coordinator extends TimerTask implements Constants {
 
                 if (matcher.matches()) {
                     startScheduling();
+                    continue;
+                }
+
+                pattern = Pattern.compile(stopSchedulingPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+                    stopScheduling();
                     continue;
                 }
 
@@ -328,24 +392,15 @@ public class Coordinator extends TimerTask implements Constants {
     public void startScheduling() {
 
         System.out.println(SCHEDULING_STARTED);
-
-        Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(this, 0, 1000);
+        start();
 
-        try {
+    }
 
-            System.in.read();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
+    public void stopScheduling() {
 
         System.out.println(SCHEDULING_STOPPED);
         timer.cancel();
-
-        start();
 
     }
 

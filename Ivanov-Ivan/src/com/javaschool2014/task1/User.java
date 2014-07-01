@@ -7,10 +7,10 @@ import java.util.*;
 public class User implements Constants {
 
     private final String name;
-    private TimeZone timeZone = TimeZone.getDefault();
+    private TimeZone timeZone             = TimeZone.getDefault();
     private boolean status;
 
-    DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    DateFormat dateFormat                 = new SimpleDateFormat(DATE_FORMAT);
     private TreeMap<String, Event> events = new TreeMap<String, Event>();
 
     public User (String name) {
