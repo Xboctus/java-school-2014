@@ -26,6 +26,14 @@ public class User {
         text2event.remove(text);
     }
 
+    public Collection<Event> getAllEvent() {
+        return text2event.values();
+    }
+
+    public Event getEvent(String text) {
+        return text2event.get(text);
+    }
+
     public void addRandomTimeEvent(String text, Date from, Date to) {
         long t1 = from.getTime();
         long t2 = to.getTime();
@@ -37,6 +45,13 @@ public class User {
     public void modify(TimeZone timeZone, Status status) {
         userInfo.setTimeZone(timeZone);
         userInfo.setStatus(status);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userInfo=" + userInfo +
+                '}';
     }
 
     public static class UserInfo {
