@@ -286,7 +286,6 @@ public class Coordinator extends TimerTask implements Constants {
 
         User user = users.get(name);
         Calendar calendar = new GregorianCalendar(user.getUserTimeZone());
-
         Date date = new Date();
 
         try {
