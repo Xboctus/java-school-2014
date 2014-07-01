@@ -51,7 +51,7 @@ public class Coordinator extends TimerTask implements Constants {
         JButton CloneEvent         = new JButton("CloneEvent");
         JButton ShowInfo           = new JButton("ShowInfo");
         JButton StartScheduling    = new JButton("StartScheduling");
-        JButton StopScheduling    = new JButton("StopScheduling");
+        JButton StopScheduling     = new JButton("StopScheduling");
 
         leftPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 
