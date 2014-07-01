@@ -11,13 +11,9 @@ public class Main implements Constants {
 
         Coordinator coordinator = new Coordinator();
 
-        coordinator.start();
-
-        coordinator.createUser("Ivan", "GMT", "active");
+        coordinator.createUser("Ivan", "GMT+0", "active");
         coordinator.createUser("Alex", "GMT-10", "active");
         coordinator.createUser("Ilya", "GMT-1", "active");
-
-        coordinator.modifyUser("Alex", "GMT+9", "idle");
 
         coordinator.addUserEvent("Ivan", "Task 1", "30.06.2014-11:10:10");
         coordinator.addUserEvent("Ivan", "Task 2", "01.07.2014-12:55:10");
@@ -35,6 +31,8 @@ public class Main implements Constants {
         coordinator.removeUserEvent("Ivan", "Task 1");
 
         coordinator.showUserInfo("Ivan");
+
+        coordinator.start();
 
     }
 

@@ -222,6 +222,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         User user = users.get(name);
         Calendar calendar = new GregorianCalendar(user.getUserTimeZone());
+
         Date date = new Date();
 
         try {
@@ -253,8 +254,39 @@ public class Coordinator extends TimerTask implements Constants {
 
     }
 
-    public boolean addRandomTimeUserEvent(String name, String text, String dateFrom, String dateTo) {
-        return false;
+    public boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
+
+        if (!users.containsKey(name)) {
+            System.out.println(name + WRONG_NAME);
+            return false;
+        }
+
+        User user = users.get(name);
+
+        Date dateFrom = new Date();
+        Date dateTo = new Date();
+
+        try {
+
+            dateFrom = dateFormat.parse(from);
+            dateTo = dateFormat.parse(to);
+
+        } catch (ParseException e) {
+
+            System.out.println(WRONG_DATE);
+            return false;
+
+        }
+
+        long fromMillis = dateFrom.getTime();
+        long toMillis = dateTo.getTime();
+        long rand = fromMillis + (long) ((toMillis - fromMillis) * Math.random());
+
+        Calendar calendar = new GregorianCalendar(user.getUserTimeZone());
+        calendar.setTimeInMillis(rand);
+
+        return (user.addEvent(text, calendar));
+
     }
 
     public boolean cloneUserEvent(String name, String text, String nameTo) {
