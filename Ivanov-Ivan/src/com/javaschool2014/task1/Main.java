@@ -1,33 +1,39 @@
 package com.javaschool2014.task1;
 
-import java.util.TimerTask;
-
-public class Main extends TimerTask {
+public class Main implements Constants {
 
     public static void main(String[] args) {
 
         System.out.println("Available command list:");
-        System.out.print("Create <name><timezone><active>, Create <name><timezone><active>, AddEvent <name><text><datetime>, RemoveEvent <name><text>,");
-        System.out.println("AddRandomTimeEvent <name><text><dateFrom><dateTo>, CloneEvent <name><text><nameTo>, ShowInfo <name>, StartScheduling");
+        System.out.println("Create(<name>,<timezone>,<status>), Create(<name>,<timezone>,<status>), (status = active/idle) AddEvent(<name>,<text>,<datetime>), RemoveEvent(<name>,<text>),");
+        System.out.println("AddRandomTimeEvent(<name>,<text>,<dateFrom>,<dateTo>), CloneEvent(<name>,<text>,<nameTo>), ShowInfo(<name>), StartScheduling, Leave");
         System.out.println("---------------------------------------------------------------------");
 
         Coordinator coordinator = new Coordinator();
 
-        coordinator.createUser("Ivan", "America/Chihuahua", true);
-        coordinator.addUserEvent("Ivan", "Task 1", "11.11.1111-11:11:11");
-        coordinator.addUserEvent("Ivan", "Task 2", "11.11.1111-11:11:11");
-        coordinator.addUserEvent("Ivan", "Task 3", "11.11.1111-11:11:11");
-        coordinator.addUserEvent("Ivan", "Task 4", "11.11.1111-11:11:11");
+        coordinator.createUser("Ivan", "GMT+0", "active");
+        coordinator.createUser("Alex", "GMT-10", "active");
+        coordinator.createUser("Ilya", "GMT-1", "active");
+
+        coordinator.addUserEvent("Ivan", "Task 1", "30.06.2014-11:10:10");
+        coordinator.addUserEvent("Ivan", "Task 2", "01.07.2014-12:55:10");
+        coordinator.addUserEvent("Ivan", "Task 3", "30.06.2014-11:10:10");
+
+        coordinator.addUserEvent("Alex", "Task 3", "01.07.2014-12:55:10");
+        coordinator.addUserEvent("Alex", "Task 2", "30.06.2014-11:10:10");
+        coordinator.addUserEvent("Alex", "Task 4", "30.06.2014-11:10:10");
+        coordinator.cloneUserEvent("Alex", "Task 4", "Ivan");
+
+        coordinator.addUserEvent("Ilya", "Task 1", "30.06.2014-11:10:10");
+        coordinator.addUserEvent("Ilya", "Task 2", "30.06.2014-11:10:10");
+        coordinator.addUserEvent("Ilya", "Task 3", "01.07.2014-12:55:10");
+
+        coordinator.removeUserEvent("Ivan", "Task 1");
+
         coordinator.showUserInfo("Ivan");
 
-    }
-
-    @Override
-    public void run() {
-
-
+        coordinator.start();
 
     }
-
 
 }
