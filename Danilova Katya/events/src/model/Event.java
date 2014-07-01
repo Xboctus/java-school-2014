@@ -20,4 +20,11 @@ public class Event {
         return text;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "date=" + date +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

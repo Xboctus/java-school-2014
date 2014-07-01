@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.concurrent.ConcurrentHashMap;
 
 final class User implements Iterable<Event> {
 	private final HashMap<String,Event> events = new HashMap();
@@ -99,16 +100,15 @@ final class User implements Iterable<Event> {
 	
 	@Override
 	public String toString(){
+		Iterator<Event> it = this.iterator();
 		String out =  name + " "
 				+ timeZone.getID() + " "
-				+ ((actFlag) ? MessagesAndRegularExpressions.activeName : MessagesAndRegularExpressions.passiveName) + "\n";
+				+ ((actFlag) ? MessagesAndRegularExpressions.activeName : MessagesAndRegularExpressions.passiveName) + (it.hasNext() ? "\n":"");
 		
-		//Iterator it = events.entrySet().iterator();
-		Iterator<Event> it = this.iterator();
 		while (it.hasNext()) {
-			//Map.Entry pairs = (Map.Entry)it.next();
+			
 			Event event = it.next();
-			out = out + event.getElement().getText() + " " + event.getElement().getDate().toString() + "\n";
+			out = out + event.getElement().getText() + " " + event.getElement().getDate().toString() + (it.hasNext() ? "\n":"");
 		}
 		
 		return out;
