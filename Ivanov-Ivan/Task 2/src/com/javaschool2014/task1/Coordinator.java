@@ -2,6 +2,8 @@ package com.javaschool2014.task1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,13 +32,13 @@ public class Coordinator extends TimerTask implements Constants {
     public void display() {
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
 
         JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new BorderLayout());
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
 
         JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BorderLayout());
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
 
         JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
@@ -53,7 +55,14 @@ public class Coordinator extends TimerTask implements Constants {
         JButton StartScheduling    = new JButton("StartScheduling");
         JButton StopScheduling     = new JButton("StopScheduling");
 
-        leftPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
+        final ActionListener createListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleInputEvent();
+            }
+        };
+
+        leftPanel.add(new JScrollPane(textArea));
 
         rightPanel.add(Create);
         rightPanel.add(Modify);
@@ -66,11 +75,11 @@ public class Coordinator extends TimerTask implements Constants {
         rightPanel.add(StopScheduling);
 
         mainPanel.add(BorderLayout.WEST, leftPanel);
-        mainPanel.add(BorderLayout.EAST, rightPanel);
+        mainPanel.add(rightPanel);
 
         newFrame.add(mainPanel);
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        newFrame.setSize(470, 300);
+        newFrame.setSize(460, 460);
         newFrame.setVisible(true);
 
     }
