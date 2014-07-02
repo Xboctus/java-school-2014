@@ -12,7 +12,10 @@ public class MainClass {
 
   public static void main(String[] args) throws IOException {
 
-    JFrame schedulerFrame = new SchedulerFrame("Scheduler");
+    if (args.length > 0 && args[0].equals("-g")) {
+      JFrame SchedulerFrame = new task1.GUI.SchedulerFrame("Scheduler");
+      return;
+    }
 
     Coordinator taskCoordinator = new Coordinator();
     String command;

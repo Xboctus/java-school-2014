@@ -1,4 +1,8 @@
-package task1;
+package task1.GUI;
+
+import com.sun.javafx.tk.*;
+import com.sun.javafx.tk.Toolkit;
+import task1.Coordinator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,16 +23,15 @@ public class SchedulerFrame extends JFrame {
   private JPanel mainPanel;
   private JPanel buttonsPanel;
   private JTextArea logArea;
+
+  private static final Coordinator taskCoordinator = new Coordinator();
   private static final SimpleDateFormat formatter = new SimpleDateFormat("hh:MM:ss");
 
   public SchedulerFrame(String frameName) {
     super(frameName);
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setResizable(false);
-    setLocation(300, 200);
 
     mainPanel = new JPanel(new BorderLayout());
-    buttonsPanel = new JPanel(new GridLayout(8, 1, 5, 10));
+    buttonsPanel = new JPanel(new GridLayout(8, 1, 5, 0));
 
     logArea = new JTextArea("Log will be here", 40, 15);
     logArea.setLineWrap(true);
@@ -36,6 +39,12 @@ public class SchedulerFrame extends JFrame {
     mainPanel.add(new JScrollPane(logArea), BorderLayout.CENTER);
 
     JButton addUserButton = new JButton("Add new user");
+    addUserButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+
+      }
+    });
     JButton modifyUserButton = new JButton("Modify exists user");
     JButton addEventButton = new JButton("Add event");
     JButton removeEventButton = new JButton("Remove event");
@@ -67,7 +76,10 @@ public class SchedulerFrame extends JFrame {
     this.add(mainPanel);
 
     pack();
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    setResizable(false);
     setVisible(true);
+    setLocation(300, 200);
   }
 
 }
