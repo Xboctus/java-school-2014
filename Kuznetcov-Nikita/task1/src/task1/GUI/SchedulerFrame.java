@@ -17,7 +17,6 @@ import java.util.ArrayList;
  */
 public class SchedulerFrame extends JFrame {
 
-  private ArrayList<JButton> buttons = new ArrayList<JButton>();
   private JPanel mainPanel;
   private JPanel buttonsPanel;
   private JTextArea logArea;
@@ -57,8 +56,14 @@ public class SchedulerFrame extends JFrame {
         new AddEventFrame(taskCoordinator);
       }
     });
+    JButton removeEventButton = new JButton("Remove event");
+    removeEventButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new RemoveEventFrame(taskCoordinator);
+      }
+    });
 
-    // TODO JButton removeEventButton = new JButton("Remove event");
     // TODO JButton addRandomTimeEventButton = new JButton("Add random time event");
     // TODO JButton cloneEventButton = new JButton("Clone event");
 
@@ -82,10 +87,11 @@ public class SchedulerFrame extends JFrame {
       }
     });
 
+    ArrayList<JButton> buttons = new ArrayList<JButton>();
     buttons.add(addUserButton);
     buttons.add(modifyUserButton);
     buttons.add(addEventButton);
-//    buttons.add(removeEventButton);
+    buttons.add(removeEventButton);
 //    buttons.add(addRandomTimeEventButton);
 //    buttons.add(cloneEventButton);
     buttons.add(showUserInfoButton);
