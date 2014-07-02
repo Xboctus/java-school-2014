@@ -7,8 +7,6 @@ public interface Constants {
     public static final String WRONG_NAME         = " user not exists";
     public static final String WRONG_DATE         = "Incorrect date/time";
     public static final String EVENT_MISSING      = "No such event in existence";
-    public static final String SCHEDULING_STARTED = "Scheduling started";
-    public static final String SCHEDULING_STOPPED = "Scheduling stopped";
     public static final String WRONG_COMMAND      = "Wrong command!";
     public static final String ERROR              = "Error occurred!";
     public static final String DATE_FORMAT        = "dd.MM.yyyy-HH:mm:ss";
@@ -21,7 +19,6 @@ public interface Constants {
     public static final String cloneUserEventPattern         = "CloneEvent\\s*\\(.+\\,.+\\,.+\\)\\s*";
     public static final String showUserInfoPattern           = "ShowInfo\\s*\\(.+\\)\\s*";
     public static final String startSchedulingPattern        = "StartScheduling";
-    public static final String stopSchedulingPattern         = "StopScheduling";
     public static final String leavePattern                  = "Leave";
 
 }

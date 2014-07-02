@@ -20,9 +20,10 @@ public class Coordinator extends TimerTask implements Constants {
 
     private String appName             = "Planfx v0.1";
     private JFrame newFrame            = new JFrame(appName);
+    private final JTextArea textArea   = new JTextArea();
 
-    DateFormat dateFormat              = new SimpleDateFormat(DATE_FORMAT);
-    Timer timer                        = new Timer(true);
+    private DateFormat dateFormat      = new SimpleDateFormat(DATE_FORMAT);
+    private Timer timer                = new Timer(true);
     public TreeMap<String, User> users = new TreeMap<String, User>();
 
     public  Coordinator () {
@@ -40,45 +41,42 @@ public class Coordinator extends TimerTask implements Constants {
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
 
-        JTextArea textArea = new JTextArea();
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setFont(new Font("Serif", Font.PLAIN, 14));
 
-        JButton Create             = new JButton("Create");
-        JButton Modify             = new JButton("Modify");
-        JButton AddEvent           = new JButton("AddEvent");
-        JButton RemoveEvent        = new JButton("RemoveEvent");
-        JButton AddRandomTimeEvent = new JButton("AddRandomTimeEvent");
-        JButton CloneEvent         = new JButton("CloneEvent");
-        JButton ShowInfo           = new JButton("ShowInfo");
-        JButton StartScheduling    = new JButton("StartScheduling");
-        JButton StopScheduling     = new JButton("StopScheduling");
+        JButton create             = new JButton("Create");
+        JButton modify             = new JButton("Modify");
+        JButton addEvent           = new JButton("AddEvent");
+        JButton removeEvent        = new JButton("RemoveEvent");
+        JButton addRandomTimeEvent = new JButton("AddRandomTimeEvent");
+        JButton cloneEvent         = new JButton("CloneEvent");
+        JButton showInfo           = new JButton("ShowInfo");
 
         final ActionListener createListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                handleInputEvent();
+                textArea.append("asd! \n");
             }
         };
 
+        create.addActionListener(createListener);
+
         leftPanel.add(new JScrollPane(textArea));
 
-        rightPanel.add(Create);
-        rightPanel.add(Modify);
-        rightPanel.add(AddEvent);
-        rightPanel.add(RemoveEvent);
-        rightPanel.add(AddRandomTimeEvent);
-        rightPanel.add(CloneEvent);
-        rightPanel.add(ShowInfo);
-        rightPanel.add(StartScheduling);
-        rightPanel.add(StopScheduling);
+        rightPanel.add(create);
+        rightPanel.add(modify);
+        rightPanel.add(addEvent);
+        rightPanel.add(removeEvent);
+        rightPanel.add(addRandomTimeEvent);
+        rightPanel.add(cloneEvent);
+        rightPanel.add(showInfo);
 
         mainPanel.add(BorderLayout.WEST, leftPanel);
         mainPanel.add(rightPanel);
 
         newFrame.add(mainPanel);
-        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         newFrame.setSize(460, 460);
         newFrame.setVisible(true);
 
@@ -87,6 +85,7 @@ public class Coordinator extends TimerTask implements Constants {
     public void start(){
 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        startScheduling();
 
         while (true) {
 
@@ -103,9 +102,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (createUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User created!");
+                        textArea.append("User created! \n");
                     } else {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
                     continue;
@@ -119,9 +118,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (modifyUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User modified!");
+                        textArea.append("User modified! \n");
                     } else {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
                     continue;
@@ -135,9 +134,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (addUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event added!");
+                        textArea.append("Event added! \n");
                     } else {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
                     continue;
@@ -151,9 +150,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (addRandomTimeUserEvent(arguments[0], arguments[1], arguments[2], arguments[3])) {
-                        System.out.println("Random time event added!");
+                        textArea.append("Random time event added! \n");
                     } else {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
                     continue;
@@ -167,9 +166,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (removeUserEvent(arguments[0], arguments[1])) {
-                        System.out.println("Event removed!");
+                        textArea.append("Event removed! \n");
                     } else {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
                     continue;
@@ -183,9 +182,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (cloneUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event cloned!");
+                        textArea.append("Event cloned! \n");
                     } else {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
                     continue;
@@ -199,25 +198,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (!showUserInfo(arguments[0])) {
-                        System.out.println(ERROR);
+                        textArea.append(ERROR + "\n");
                     }
 
-                    continue;
-                }
-
-                pattern = Pattern.compile(startSchedulingPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-                    startScheduling();
-                    continue;
-                }
-
-                pattern = Pattern.compile(stopSchedulingPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-                    stopScheduling();
                     continue;
                 }
 
@@ -225,10 +208,10 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
-                    System.exit(0);
+                    break;
                 }
 
-                System.out.println(WRONG_COMMAND);
+                textArea.append(WRONG_COMMAND + "\n");
 
             } catch (IOException e) {
 
@@ -238,12 +221,14 @@ public class Coordinator extends TimerTask implements Constants {
 
         }
 
+        stopScheduling();
+
     }
 
     public boolean createUser(String name, String timeZone, String status) {
 
         if (users.containsKey(name)) {
-            System.out.println(USER_EXISTS);
+            textArea.append(USER_EXISTS + "\n");
             return false;
         }
 
@@ -266,7 +251,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean modifyUser(String name, String timeZone, String status) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            textArea.append(name + WRONG_NAME + "\n");
             return false;
         }
 
@@ -289,7 +274,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean addUserEvent(String  name, String text, String dateTime) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            textArea.append(name + WRONG_NAME + "\n");
             return false;
         }
 
@@ -304,7 +289,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         } catch (ParseException e) {
 
-            System.out.println(WRONG_DATE);
+            textArea.append(WRONG_DATE + "\n");
             return false;
 
         }
@@ -316,7 +301,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean removeUserEvent(String name, String text) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            textArea.append(name + WRONG_NAME + "\n");
             return false;
         }
 
@@ -329,7 +314,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            textArea.append(name + WRONG_NAME + "\n");
             return false;
         }
 
@@ -345,7 +330,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         } catch (ParseException e) {
 
-            System.out.println(WRONG_DATE);
+            textArea.append(WRONG_DATE + "\n");
             return false;
 
         }
@@ -364,19 +349,19 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean cloneUserEvent(String name, String text, String nameTo) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            textArea.append(name + WRONG_NAME + "\n");
             return false;
         }
 
         if (!users.containsKey(nameTo)) {
-            System.out.println(nameTo + WRONG_NAME);
+            textArea.append(nameTo + WRONG_NAME + "\n");
             return false;
         }
 
         Event event = users.get(name).getEvent(text);
 
         if (event==null) {
-            System.out.println(EVENT_MISSING);
+            textArea.append(EVENT_MISSING + "\n");
             return false;
         }
 
@@ -387,29 +372,22 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean showUserInfo(String name) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            textArea.append(name + WRONG_NAME + "\n");
             return false;
         }
 
-        System.out.println(users.get(name).toString());
+        textArea.append(users.get(name).toString() + "\n");
 
         return true;
 
     }
 
     public void startScheduling() {
-
-        System.out.println(SCHEDULING_STARTED);
         timer.scheduleAtFixedRate(this, 0, 1000);
-        start();
-
     }
 
     public void stopScheduling() {
-
-        System.out.println(SCHEDULING_STOPPED);
         timer.cancel();
-
     }
 
     public String[] parseString (String command) {
@@ -438,7 +416,7 @@ public class Coordinator extends TimerTask implements Constants {
             for (Event event : eventList) {
 
                 if (dateFormat.format(event.getDate().getTime()).equals(dateFormat.format(currentDate)) && user.getValue().getStatus()) {
-                    System.out.println(currentDate + "\n" + username + "\n" + event.getText() + "\n");
+                    textArea.append(currentDate + "\n" + username + "\n" + event.getText() + "\n\n");
                 }
 
             }

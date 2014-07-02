@@ -347,6 +347,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         System.out.println(SCHEDULING_STOPPED);
         timer.cancel();
+        System.exit(0);
 
     }
 
