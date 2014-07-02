@@ -1,6 +1,6 @@
 package schedule;
 
-interface MessagesAndRegularExpressions {
+public interface MessagesAndRegularExpressions {
 
 	public static final String activeName = "active";
 	public static final String passiveName = "passive";
@@ -79,7 +79,7 @@ interface MessagesAndRegularExpressions {
 	public static final String msgNoFunction = "No such function or syntax error";
 	public static final String msgGmtError = "Can't parse GMT, type like 'GMT+1'";
 	public static final String msgNoGmt = "No such GMT, must be between 'GMT-12' and 'GMT+14'";
-	public static final String msgActiveStatusError = "Wrong active stat, must have value 'active' or 'passive'";
+	public static final String msgActiveStatusError = "Wrong active stat, must have value '"+activeName+"' or '"+passiveName+"'";
 	public static final String msgNameExists = "Such name already exists";
 	public static final String msgNameNotExists = "No user for specified name";
 	public static final String msgDateError = "Incorrect date format, must be " + dateTimeFormat;

@@ -15,10 +15,14 @@ import java.util.Scanner;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Coordinator extends TimerTask implements MessagesAndRegularExpressions{
+import javax.swing.JOptionPane;
+
+public class Coordinator extends TimerTask implements MessagesAndRegularExpressions, GListener{
+	
 	
 	//Some Commands For Testing->
 	//Create(sad,GMT+4,active)
@@ -34,48 +38,89 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	
 	//Press Any key to stop Scheduling
 	
-	private final HashMap<String,User> users = new HashMap();
+	private final ConcurrentHashMap<String,User> users = new ConcurrentHashMap();
+	private final CListener listener;
+	private String incomeMessage;
+	private boolean isScheduling = false;
+	private boolean isDead = false;
+	
+	Coordinator(){
+		listener = null;
+		
+	}
+	
+	Coordinator(CListener listener){
+		this.listener=listener;
+	}
 	
 	
-	public void start(){
+	public void start() throws InterruptedException{
+		if(listener==null) startConsole();
+		else startGraphics();
+		
+	}
+	
+	private synchronized void startGraphics() throws InterruptedException{
+		while (true){
+			while (!isDead && incomeMessage==null){
+				wait();
+			}
+			if (isDead) break;
+			String str = incomeMessage;
+			incomeMessage = null;
+			if (!patternSwitch(str)) break;
+			notify();
+		}
+	}
+	private void println(String str,boolean isScheduling){
+		System.out.println(str);
+		if (listener!=null) listener.addText(str + "\n",isScheduling);
+	}
+	
+	private boolean patternSwitch(String str){
+		str = str.replaceAll("\\s","");
+		Pattern pattern = Pattern.compile(pCreate);
+		Matcher matcher = pattern.matcher(str);
+		if (matcher.matches()) {createAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pModify);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {modifyAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pAddEvent);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {addEventAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pAddRandomTimeEvent);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {addRandomTimeEventAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pRemoveEvent);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {removeEventAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pCloneEvent);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {cloneEventAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pShowInfo);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {showInfoAction(matcher); return true;}
+		
+		pattern = Pattern.compile(pStartScheduling);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {startSchedulingAction(matcher); return true;}
+		
+		println(msgNoFunction,false);
+		return true;
+	}
+	
+	private void startConsole(){
 		
 		Scanner in = new Scanner(System.in);
 		while(true){
 			String str = in.next();
-			Pattern pattern = Pattern.compile(pCreate);
-			Matcher matcher = pattern.matcher(str);
-			if (matcher.matches()) {createAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pModify);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {modifyAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pAddEvent);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {addEventAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pAddRandomTimeEvent);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {addRandomTimeEventAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pRemoveEvent);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {removeEventAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pCloneEvent);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {cloneEventAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pShowInfo);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {showInfoAction(matcher); continue;}
-			
-			pattern = Pattern.compile(pStartScheduling);
-			matcher = pattern.matcher(str);
-			if (matcher.matches()) {startSchedulingAction(matcher); break;}
-			
-			System.out.println(msgNoFunction);
-			
+			if (!patternSwitch(str)) break;
 		}
 	}
 	
@@ -89,33 +134,33 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		//Matching ->
 		Pattern pattern = Pattern.compile(pGMT);
 		matcher = pattern.matcher(gmt);
-		if (!matcher.matches()) {System.out.println(msgGmtError);  return;}
+		if (!matcher.matches()) {println(msgGmtError,false);  return;}
 		String parseGmt = matcher.group(gGMT[0]);
 		pattern = Pattern.compile(pActivness);
 		matcher = pattern.matcher(activness);
-		if (!matcher.matches()) {System.out.println(msgActiveStatusError);  return;}
+		if (!matcher.matches()) {println(msgActiveStatusError,false);  return;}
 		
 		
 		try{
 			int gtmInt;
 			if (parseGmt!=null) {
 				gtmInt = Integer.parseInt(parseGmt);
-				if (!(gtmInt>=-12 && gtmInt<=14)){ System.out.println(msgNoGmt); return;}
+				if (!(gtmInt>=-12 && gtmInt<=14)){ println(msgNoGmt,false); return;}
 			}
 		}catch(NumberFormatException e){
-			System.out.println(msgGmtError);
+			println(msgGmtError,false);
 			return;
 		}
 				
 		
-		if (users.containsKey(name)) {System.out.println(msgNameExists); return;}
+		if (users.containsKey(name)) {println(msgNameExists,false); return;}
 		TimeZone timeZone = TimeZone.getTimeZone(gmt);
 	
 		User user = new User(name);
 		user.setTimeZone(timeZone);
 		if (activness.equals(activeName)) user.activate();
 		users.put(name, user);
-		System.out.print(msgDone);
+		println(msgDone,false);
 	}
 	
 	private void modifyAction(Matcher matcher){
@@ -126,11 +171,11 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		//Matching ->
 		Pattern pattern = Pattern.compile(pGMT);
 		matcher = pattern.matcher(gmt);
-		if (!matcher.matches()) {System.out.println(msgGmtError);  return;}
+		if (!matcher.matches()) {println(msgGmtError,false);  return;}
 		String parseGmt = matcher.group(gGMT[0]);
 		pattern = Pattern.compile(pActivness);
 		matcher = pattern.matcher(activness);
-		if (!matcher.matches()) {System.out.println(msgActiveStatusError);  return;}
+		if (!matcher.matches()) {println(msgActiveStatusError,false);  return;}
 		
 		
 		
@@ -138,40 +183,40 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 			int gtmInt;
 			if (parseGmt!=null) {
 				gtmInt = Integer.parseInt(parseGmt);
-				if (!(gtmInt>=-12 && gtmInt<=14)){ System.out.println(msgNoGmt); return;}
+				if (!(gtmInt>=-12 && gtmInt<=14)){ println(msgNoGmt,false); return;}
 			}
 		}catch(NumberFormatException e){
-			System.out.println(msgGmtError);
+			println(msgGmtError,false);
 			return;
 		}
 				
-		
-		if (!users.containsKey(name)) {System.out.println(msgNameNotExists); return;}
+		// TODO Auto-generated method stub
+		if (!users.containsKey(name)) {println(msgNameNotExists,false); return;}
 		TimeZone timeZone = TimeZone.getTimeZone(gmt);
 		
 		User user = users.get(name);
 		user.setTimeZone(timeZone);
 		if (activness.equals(activeName)) user.activate();
-		System.out.print(msgDone);
+		println(msgDone,false);
 	}
 
 	private void addEventAction(Matcher matcher){
 		String name = matcher.group(gAddEvent[0]);
 		String text = matcher.group(gAddEvent[1]);
 		String dateTime = matcher.group(gAddEvent[2]);
-		if (!users.containsKey(name)) {System.out.println(msgNameNotExists); return;}
+		if (!users.containsKey(name)) {println(msgNameNotExists,false); return;}
 		User user = users.get(name);
 		DateFormat df = new SimpleDateFormat(dateTimeFormat+"z");
 		Date date = null;
 		try {
 			date = df.parse(dateTime+user.getTimeZone().getID());
 		} catch (ParseException e) {
-			System.out.println(msgDateError);
+			println(msgDateError,false);
 			return;
 		}
 		
-		if (!user.addEvent(date, text)) System.out.println(msgEventAlreadyExists);
-		System.out.print(msgDone);
+		if (!user.addEvent(date, text)) println(msgEventAlreadyExists,false);
+		println(msgDone,false);
 	}
 
 	private void addRandomTimeEventAction(Matcher matcher){
@@ -179,85 +224,96 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		String text = matcher.group(gAddRandomTimeEvent[1]);
 		String dateTime = matcher.group(gAddRandomTimeEvent[2]);
 		String dateTime2 = matcher.group(gAddRandomTimeEvent[3]);
-		if (!users.containsKey(name)) {System.out.println(msgNameNotExists); return;}
+		if (!users.containsKey(name)) {println(msgNameNotExists,false); return;}
 		User user = users.get(name);
 		DateFormat df = new SimpleDateFormat(dateTimeFormat+"z");
 		Date date = null;
 		try {
 			date = df.parse(dateTime+user.getTimeZone().getID());
 		} catch (ParseException e) {
-			System.out.println(dateTime+":"+msgDateError);
+			println(dateTime+":"+msgDateError,false);
 			return;
 		}
 		Date date2 = null;
 		try {
 			date2 = df.parse(dateTime2+user.getTimeZone().getID());
 		} catch (ParseException e) {
-			System.out.println(dateTime2+":"+msgDateError);
+			println(dateTime2+":"+msgDateError,false);
 			return;
 		}
 		
 		Random rnd = new Random();
 		long n = date2.getTime() - date.getTime() + 1;
 		long i = rnd.nextLong() % n;
-		if (!user.addEvent(new Date(date.getTime()+i), text)) System.out.println(msgEventAlreadyExists);
-		System.out.print(msgDone);
+		if (!user.addEvent(new Date(date.getTime()+i), text)) println(msgEventAlreadyExists,false);
+		println(msgDone,false);
 	}
 	
 	private void removeEventAction(Matcher matcher){
 		String name = matcher.group(gRemoveEvent[0]);
 		String text = matcher.group(gRemoveEvent[1]);
-		if (!users.containsKey(name)) {System.out.println(msgNameNotExists); return;}
+		if (!users.containsKey(name)) {println(msgNameNotExists,false); return;}
 		User user = users.get(name);
 		
-		if (!user.removeEvent(text)) System.out.println(msgNoEvent);
-		System.out.print(msgDone);
+		if (!user.removeEvent(text)) println(msgNoEvent,false);
+		println(msgDone,false);
 	}
 	
 	private void cloneEventAction(Matcher matcher){
 		String name = matcher.group(gCloneEvent[0]);
 		String text = matcher.group(gCloneEvent[1]);
 		String name2 = matcher.group(gCloneEvent[2]);
-		if (!users.containsKey(name)) {System.out.println(name+":"+msgNameNotExists); return;}
-		if (!users.containsKey(name2)) {System.out.println(name2+":"+msgNameNotExists); return;}
+		if (!users.containsKey(name)) {println(name+":"+msgNameNotExists,false); return;}
+		if (!users.containsKey(name2)) {println(name2+":"+msgNameNotExists,false); return;}
 		Event event = users.get(name).getEvent(text);
-		if (event==null) {System.out.println(msgNoEvent); return;}
-		if (!users.get(name2).addEvent(event)) System.out.println(msgEventAlreadyExists);
-		System.out.print(msgDone);
+		if (event==null) {println(msgNoEvent,false); return;}
+		if (!users.get(name2).addEvent(event)) println(msgEventAlreadyExists,false);
+		println(msgDone,false);
 		
 	}
 	
 	private void showInfoAction(Matcher matcher){
-		String name = matcher.group(gCloneEvent[0]);
-		if (!users.containsKey(name)) {System.out.println(name+":"+msgNameNotExists); return;}
-		System.out.print(users.get(name).toString());
+		final String name = matcher.group(gCloneEvent[0]);
+		if (!users.containsKey(name)) {println(name+":"+msgNameNotExists,false); return;}
+		println(users.get(name).toString(),false);
+		new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				listener.showInfo(users.get(name));
+			}
+			
+		}).start();
 	}
 	
 	private void startSchedulingAction(Matcher matcher){
-		/*
+		 
 		 User user = new User("asdasd");
+		 //user.activate();
+		 user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"232423")));
 		 users.put("asdasd", user);
-		 System.out.println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"a232423"))));
-		 System.out.println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"b232423"))));
+		 //println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"a232423"))));
+		 //println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"b232423"))));
 		 user = new User("basdasd");
+		 user.activate();
 		 users.put("basdasd", user);
 		 user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"232423")));
-		 */
-		
 		 
-		 Timer timer = new Timer(true);
-	     timer.scheduleAtFixedRate(this, 0, 1000);
-		try {
-			System.in.read();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	     timer.cancel();
+		
+		//isScheduling = true;
+		Timer timer = new Timer(true);
+	    timer.scheduleAtFixedRate(this, 0, 1000);
+	    
+		
 	}
 	
 	
-	public static void main(String[] args){
-		new Coordinator().start();
+	public static void main(String[] args) throws InterruptedException{
+		ScheduleFrame frame =  new ScheduleFrame();
+		frame.setVisible(true);
+		Coordinator coordinator = new Coordinator(frame);
+		frame.setGListener(coordinator);
+		coordinator.start();
 	}
 
 
@@ -302,9 +358,11 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 			while (it.hasNext()) {
 				Map.Entry pairs = (Map.Entry)it.next();
 				User user = (User)pairs.getKey();
+				if (!user.isActive()) continue;
 				next = (next==null) ? user :
 					((user.getName().compareTo(next.getName())>0) ? user : next);
 			}
+			if (next==null) continue;
 			Iterator<Event> lIt = result.get(next).iterator();
 			Event nextEvent = null;
 			while (lIt.hasNext()) {
@@ -314,8 +372,26 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 			}
 			result.get(next).remove(nextEvent);
 			if (result.get(next).isEmpty()) result.remove(next);
-			System.out.println(new Date().toString() + " " + next.getName() + " " + nextEvent.getElement().getText());
+			println(new Date().toString() + " " + next.getName() + " " + nextEvent.getElement().getText(),true);
 		}
 		
+	}
+
+	@Override
+	public synchronized void sendMessage(String msg) throws InterruptedException {
+		//if (isScheduling) return;
+		
+		while (incomeMessage!=null){
+			wait();
+		}
+		
+		incomeMessage=msg;
+		notify();
+	}
+
+	@Override
+	public synchronized void alertDeath() {
+		isDead = true;
+		notify();
 	}
 }
