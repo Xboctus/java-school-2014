@@ -124,6 +124,11 @@ public class Coordinator {
     return 0;
   }
 
+  public String getUserInfo(String userName) {
+    User user = usersMap.get(userName);
+    return user == null ? user.toString() : null;
+  }
+
   public void StartScheduling() {
     TimerTask timerTask = new TimerTask() {
       @Override
