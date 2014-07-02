@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -8,6 +9,12 @@ public class User {
     ArrayList<Event> events = new ArrayList<Event>();
 
     User(){
+    }
+
+    User(String p_name, String p_tz, String p_status){
+        name = p_name;
+        tz = TimeZone.getTimeZone(p_tz);
+        status = new Boolean(p_status);
     }
 
     User(String params) throws InputFormatException{
@@ -72,6 +79,21 @@ public class User {
         }
     }
 
+    public boolean addEvent(String p_description, String p_date){
+        Event event = getUserEvent(p_description, this);
+        if (event != null){
+            return false;
+        }
+        try {
+            event = new Event(p_description, p_date);
+            events.add(event);
+            Sheduler.getSortingEvents().add(this, event.date, event.description);
+            return true;
+        }
+        catch (ParseException pe){
+            return false;
+        }
+    }
     public void removeEvent(String params, Coordinator p_coordinator){
         try{
             String nameValue = params.substring(params.indexOf('(') + 1, params.indexOf(','));
