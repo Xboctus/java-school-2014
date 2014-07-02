@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="" />
+    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Ivanov-Ivan.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,7 +79,7 @@
       <file leaf-file-name="Coordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="423" column="63" selection-start="11813" selection-end="11813" vertical-scroll-proportion="1.1443737" vertical-offset="6448" max-vertical-offset="7378">
+            <state line="23" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="0.3970276" vertical-offset="0" max-vertical-offset="6511">
               <folding />
             </state>
           </provider>
@@ -170,7 +173,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -209,7 +212,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -532,7 +535,8 @@
       <workItem from="1404278534229" duration="94000" />
       <workItem from="1404278794881" duration="79000" />
       <workItem from="1404278956268" duration="124000" />
-      <workItem from="1404279357433" duration="81000" />
+      <workItem from="1404279357433" duration="396000" />
+      <workItem from="1404279912285" duration="45000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -598,7 +602,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79836000" />
+    <option name="totallyTimeSpent" value="80196000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -622,7 +626,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="978" height="616" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -682,6 +686,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="54" selection-start="1781" selection-end="1781" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1734">
@@ -1025,7 +1036,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="423" column="63" selection-start="11813" selection-end="11813" vertical-scroll-proportion="1.1443737" vertical-offset="6448" max-vertical-offset="7378">
+        <state line="23" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="0.3970276" vertical-offset="0" max-vertical-offset="6511">
           <folding />
         </state>
       </provider>
