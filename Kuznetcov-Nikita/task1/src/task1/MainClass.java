@@ -1,5 +1,6 @@
 package task1;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +11,8 @@ import java.io.InputStreamReader;
 public class MainClass {
 
   public static void main(String[] args) throws IOException {
+
+    JFrame schedulerFrame = new SchedulerFrame("Scheduler");
 
     Coordinator taskCoordinator = new Coordinator();
     String command;
