@@ -33,7 +33,7 @@ public class SchedulerFrame extends JFrame {
     mainPanel = new JPanel(new BorderLayout());
     buttonsPanel = new JPanel(new GridLayout(8, 1, 5, 0));
 
-    logArea = new JTextArea("Log will be here", 40, 15);
+    logArea = new JTextArea("Log will be here\r\n", 40, 15);
     logArea.setLineWrap(true);
     logArea.setWrapStyleWord(true);
     mainPanel.add(new JScrollPane(logArea), BorderLayout.CENTER);
@@ -42,7 +42,7 @@ public class SchedulerFrame extends JFrame {
     addUserButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-
+        new AddUserFrame(taskCoordinator);
       }
     });
     JButton modifyUserButton = new JButton("Modify exists user");
@@ -66,7 +66,7 @@ public class SchedulerFrame extends JFrame {
       controlButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-          logArea.append("\r\n" + ((JButton) e.getSource()).getText());
+          logArea.append(((JButton) e.getSource()).getText() + "\r\n");
         }
       });
       buttonsPanel.add(controlButton);
@@ -77,9 +77,9 @@ public class SchedulerFrame extends JFrame {
 
     pack();
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    setLocation(300, 200);
     setResizable(false);
     setVisible(true);
-    setLocation(300, 200);
   }
 
 }
