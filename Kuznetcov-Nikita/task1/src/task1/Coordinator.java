@@ -45,7 +45,7 @@ public class Coordinator {
       // bad date format
       return 2;
     }
-    if (!targetUser.getUserTaskSet().add(new Event(DateFormatter.parseDate(taskDateInput, targetUser.getTimeZone()), taskText))) {
+    if (!targetUser.addEvent(new Event(DateFormatter.parseDate(taskDateInput, targetUser.getTimeZone()), taskText))) {
       // event with specified text already exists
       return 3;
     }
@@ -63,7 +63,7 @@ public class Coordinator {
       // event with specified text doesn't exists
       return 2;
     }
-    targetUser.getUserTaskSet().remove(targetUser.getEventByText(targetText));
+    targetUser.removeEvent(targetUser.getEventByText(targetText));
     return 0;
   }
 
@@ -89,7 +89,7 @@ public class Coordinator {
       addition = generator.nextInt((int) diff);
     }
 
-    if (targetUser.getUserTaskSet().add(new Event(new Date(dateFrom.getTime() + addition), taskText))) {
+    if (targetUser.addEvent(new Event(new Date(dateFrom.getTime() + addition), taskText))) {
       return 0;  // if all going well
     } else {
       return 3; // if Event with specified text already present is user's event list
@@ -113,8 +113,8 @@ public class Coordinator {
         // srcEvent not found
         return 3;
       }
-      if (!usersMap.get(targetUserName).getUserTaskSet().add((Event)srcEvent.clone())) {
-        // if Event with specified text already present is user's event list
+      if (!usersMap.get(targetUserName).addEvent((Event)srcEvent.clone())) {
+        // if Event with specified text already present is user's event list8
         return 4;
       }
     } catch (CloneNotSupportedException ex) {

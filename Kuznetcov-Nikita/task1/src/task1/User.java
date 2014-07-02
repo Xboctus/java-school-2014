@@ -49,6 +49,10 @@ public class User implements Comparable {
     return null;
   }
 
+  public boolean addEvent(Event event) { return this.userTaskSet.add(event); }
+
+  public boolean removeEvent(Event event) { return this.userTaskSet.remove(event); }
+
   public String getUserName() {
     return userName;
   }
