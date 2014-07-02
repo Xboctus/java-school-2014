@@ -25,7 +25,7 @@ public class AddUserFrame extends JFrame {
     JLabel userNameLabel = new JLabel("UserName");
     JLabel timeZoneLabel = new JLabel("Timezone");
     JLabel statusLabel = new JLabel("User status");
-    nameInput = ComponentsFactory.getUserNameInputFieldInstance();
+    nameInput = ComponentsFactory.getTextInputFieldInstance();
     timeZoneInput = ComponentsFactory.getTimeZoneInputFieldInstance();
     isUserActiveCheckBox = new JCheckBox();
 
@@ -43,12 +43,23 @@ public class AddUserFrame extends JFrame {
         String userName = nameInput.getText();
         String timeZoneID = timeZoneInput.getText();
         boolean userStatus = isUserActiveCheckBox.isSelected();
+
         if (userName.isEmpty() || timeZoneID.isEmpty()) {
-          JOptionPane.showMessageDialog(contentPanel, "Empty fields tard", "Error", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
           return;
         }
-        taskCoordinator.addNewUser(userName, timeZoneID, userStatus);
-        System.out.println(taskCoordinator.getUsersMap());
+
+        int result = taskCoordinator.addNewUser(userName, timeZoneID, userStatus);
+        switch (result) {
+          case 0: {
+            JOptionPane.showMessageDialog(contentPanel, "User successfully added!", "Information", JOptionPane.INFORMATION_MESSAGE);
+            break;
+          }
+          case 1: {
+            JOptionPane.showMessageDialog(contentPanel, "User with such username already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            break;
+          }
+        }
       }
     });
     contentPanel.add(okButton);

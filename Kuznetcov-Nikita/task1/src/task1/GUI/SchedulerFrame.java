@@ -1,7 +1,5 @@
 package task1.GUI;
 
-import com.sun.javafx.tk.*;
-import com.sun.javafx.tk.Toolkit;
 import task1.Coordinator;
 
 import javax.swing.*;
@@ -46,19 +44,50 @@ public class SchedulerFrame extends JFrame {
       }
     });
     JButton modifyUserButton = new JButton("Modify exists user");
+    modifyUserButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new ModifyUserFrame(taskCoordinator);
+      }
+    });
     JButton addEventButton = new JButton("Add event");
-    JButton removeEventButton = new JButton("Remove event");
-    JButton addRandomTimeEventButton = new JButton("Add random time event");
-    JButton cloneEventButton = new JButton("Clone event");
+    addEventButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new AddEventFrame(taskCoordinator);
+      }
+    });
+
+    // TODO JButton removeEventButton = new JButton("Remove event");
+    // TODO JButton addRandomTimeEventButton = new JButton("Add random time event");
+    // TODO JButton cloneEventButton = new JButton("Clone event");
+
     JButton showUserInfoButton = new JButton("Show user info");
+    showUserInfoButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        String userInfo = taskCoordinator.getUserInfo(JOptionPane.showInputDialog("Enter user name"));
+        if (userInfo != null) {
+          logArea.append(userInfo);
+        } else {
+          JOptionPane.showMessageDialog(mainPanel, "User with such username not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+      }
+    });
     JButton startSchedulingButton = new JButton("Start scheduling");
+    startSchedulingButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        taskCoordinator.startScheduling();
+      }
+    });
 
     buttons.add(addUserButton);
     buttons.add(modifyUserButton);
     buttons.add(addEventButton);
-    buttons.add(removeEventButton);
-    buttons.add(addRandomTimeEventButton);
-    buttons.add(cloneEventButton);
+//    buttons.add(removeEventButton);
+//    buttons.add(addRandomTimeEventButton);
+//    buttons.add(cloneEventButton);
     buttons.add(showUserInfoButton);
     buttons.add(startSchedulingButton);
 

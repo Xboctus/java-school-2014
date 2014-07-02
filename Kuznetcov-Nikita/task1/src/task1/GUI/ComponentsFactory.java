@@ -11,16 +11,23 @@ import java.util.regex.Pattern;
  */
 public class ComponentsFactory {
 
-  public static JFormattedTextField getUserNameInputFieldInstance() {
-    JFormattedTextField userNameTextField = new JFormattedTextField(new RegExFormatter("^[^0-9][a-z|A-Z|А-Я|а-я|[0-9]]+"));
-    userNameTextField.setToolTipText("User name, maximum 255 characters");
-    return userNameTextField;
+  public static JFormattedTextField getTextInputFieldInstance() {
+    JFormattedTextField textField = new JFormattedTextField(new RegExFormatter("^[^0-9][a-z|A-Z|А-Я|а-я|[0-9]| ]+"));
+    textField.setToolTipText("Write text here, maximum 255 characters");
+    return textField;
   }
 
   public static JFormattedTextField getTimeZoneInputFieldInstance() {
     JFormattedTextField timeZoneTextField = new JFormattedTextField(new RegExFormatter("GMT[+-][0-2]?[0-9](:[0-5]?[0-9])?"));
     timeZoneTextField.setToolTipText("TimeZone, format \"GMT Sign 5:30\" or \"GMT Sign 5\"");
     return timeZoneTextField;
+  }
+
+  public static JFormattedTextField getDateInputFieldInstance() {
+    // dd.MM.yyyy-HH:mm:ss - date format
+    JFormattedTextField dateField = new JFormattedTextField(new RegExFormatter("[0-9]?[0-9].[0-9]?[0-9].[0-9]{4}-[0-9]?[0-9]:[0-9]?[0-9]:[0-9]?[0-9]"));
+    dateField.setToolTipText("Date, format \"dd.MM.yyyy-HH:mm:ss\"");
+    return dateField;
   }
 
 }

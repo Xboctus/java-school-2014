@@ -153,7 +153,7 @@ public class MainClass {
 
       if (command.matches("StartScheduling")) {
         System.out.println("Start planning...");
-        taskCoordinator.StartScheduling();
+        taskCoordinator.startScheduling();
         reader.close();
         inputStream.close();
         break;
