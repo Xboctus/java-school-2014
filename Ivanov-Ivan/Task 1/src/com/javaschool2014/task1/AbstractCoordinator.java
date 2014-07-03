@@ -12,19 +12,19 @@ import java.util.Timer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Coordinator extends TimerTask implements Constants {
+public abstract class AbstractCoordinator extends TimerTask implements Constants {
 
-    DateFormat dateFormat              = new SimpleDateFormat(DATE_FORMAT);
-    Timer timer                        = new Timer(true);
-    public TreeMap<String, User> users = new TreeMap<String, User>();
+    private Timer timer                 = new Timer(true);
+    private DateFormat dateFormat       = new SimpleDateFormat(DATE_FORMAT);
 
-    public  Coordinator () {
+    private TreeMap<String, User> users = new TreeMap<String, User>();
 
-    }
+    protected void printOutput(String output) {}
 
     public void start(){
 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        timer.scheduleAtFixedRate(this, 0, 1000);
 
         while (true) {
 
@@ -41,9 +41,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (createUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User created!");
+                        printOutput("User created!");
                     } else {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
                     continue;
@@ -57,9 +57,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (modifyUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User modified!");
+                        printOutput("User modified!");
                     } else {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
                     continue;
@@ -73,9 +73,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (addUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event added!");
+                        printOutput("Event added!");
                     } else {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
                     continue;
@@ -89,9 +89,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (addRandomTimeUserEvent(arguments[0], arguments[1], arguments[2], arguments[3])) {
-                        System.out.println("Random time event added!");
+                        printOutput("Random time event added!");
                     } else {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
                     continue;
@@ -105,9 +105,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (removeUserEvent(arguments[0], arguments[1])) {
-                        System.out.println("Event removed!");
+                        printOutput("Event removed!");
                     } else {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
                     continue;
@@ -121,9 +121,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (cloneUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event cloned!");
+                        printOutput("Event cloned!");
                     } else {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
                     continue;
@@ -137,25 +137,9 @@ public class Coordinator extends TimerTask implements Constants {
                     arguments = parseString(command);
 
                     if (!showUserInfo(arguments[0])) {
-                        System.out.println(ERROR);
+                        printOutput(ERROR);
                     }
 
-                    continue;
-                }
-
-                pattern = Pattern.compile(startSchedulingPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-                    startScheduling();
-                    continue;
-                }
-
-                pattern = Pattern.compile(stopSchedulingPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-                    stopScheduling();
                     continue;
                 }
 
@@ -163,10 +147,11 @@ public class Coordinator extends TimerTask implements Constants {
                 matcher = pattern.matcher(command);
 
                 if (matcher.matches()) {
+                    timer.cancel();
                     System.exit(0);
                 }
 
-                System.out.println(WRONG_COMMAND);
+                printOutput(WRONG_COMMAND);
 
             } catch (IOException e) {
 
@@ -181,21 +166,29 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean createUser(String name, String timeZone, String status) {
 
         if (users.containsKey(name)) {
-            System.out.println(USER_EXISTS);
+            printOutput(USER_EXISTS);
+            return false;
+        }
+
+        if (timeZone == null) {
+            printOutput(NO_TIMEZONE);
             return false;
         }
 
         User user = new User(name);
         TimeZone userTimeZone = TimeZone.getTimeZone(timeZone);
-
         user.setTimeZone(userTimeZone);
-        users.put(name, user);
 
         if (status.equals("active")) {
             user.setStatus(true);
         } else if (status.equals("idle")) {
             user.setStatus(false);
+        } else {
+            printOutput(WRONG_STATUS);
+            return false;
         }
+
+        users.put(name, user);
 
         return true;
 
@@ -204,21 +197,29 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean modifyUser(String name, String timeZone, String status) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            printOutput(name + WRONG_NAME);
+            return false;
+        }
+
+        if (timeZone == null) {
+            printOutput(NO_TIMEZONE);
             return false;
         }
 
         User user = users.get(name);
         TimeZone userTimeZone = TimeZone.getTimeZone(timeZone);
-
         user.setTimeZone(userTimeZone);
-        users.put(name, user);
 
         if (status.equals("active")) {
             user.setStatus(true);
         } else if (status.equals("idle")) {
             user.setStatus(false);
+        } else {
+            printOutput(WRONG_STATUS);
+            return false;
         }
+
+        users.put(name, user);
 
         return true;
 
@@ -227,7 +228,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean addUserEvent(String  name, String text, String dateTime) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
@@ -242,7 +243,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         } catch (ParseException e) {
 
-            System.out.println(WRONG_DATE);
+            printOutput(WRONG_DATE);
             return false;
 
         }
@@ -254,7 +255,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean removeUserEvent(String name, String text) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
@@ -267,7 +268,7 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
@@ -283,7 +284,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         } catch (ParseException e) {
 
-            System.out.println(WRONG_DATE);
+            printOutput(WRONG_DATE);
             return false;
 
         }
@@ -302,19 +303,19 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean cloneUserEvent(String name, String text, String nameTo) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
         if (!users.containsKey(nameTo)) {
-            System.out.println(nameTo + WRONG_NAME);
+            printOutput(nameTo + WRONG_NAME);
             return false;
         }
 
         Event event = users.get(name).getEvent(text);
 
         if (event==null) {
-            System.out.println(EVENT_MISSING);
+            printOutput(EVENT_MISSING);
             return false;
         }
 
@@ -325,29 +326,13 @@ public class Coordinator extends TimerTask implements Constants {
     public boolean showUserInfo(String name) {
 
         if (!users.containsKey(name)) {
-            System.out.println(name + WRONG_NAME);
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
-        System.out.println(users.get(name).toString());
+        printOutput(users.get(name).toString());
 
         return true;
-
-    }
-
-    public void startScheduling() {
-
-        System.out.println(SCHEDULING_STARTED);
-        timer.scheduleAtFixedRate(this, 0, 1000);
-        start();
-
-    }
-
-    public void stopScheduling() {
-
-        System.out.println(SCHEDULING_STOPPED);
-        timer.cancel();
-        System.exit(0);
 
     }
 
@@ -377,7 +362,7 @@ public class Coordinator extends TimerTask implements Constants {
             for (Event event : eventList) {
 
                 if (dateFormat.format(event.getDate().getTime()).equals(dateFormat.format(currentDate)) && user.getValue().getStatus()) {
-                    System.out.println(currentDate + "\n" + username + "\n" + event.getText() + "\n");
+                    printOutput(currentDate + "\n" + username + "\n" + event.getText() + "\n");
                 }
 
             }

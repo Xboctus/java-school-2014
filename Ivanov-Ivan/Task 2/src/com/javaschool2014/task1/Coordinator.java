@@ -360,7 +360,7 @@ public class Coordinator extends TimerTask implements Constants {
 
         Event event = users.get(name).getEvent(text);
 
-        if (event==null) {
+        if (event == null) {
             textArea.append(EVENT_MISSING + "\n");
             return false;
         }

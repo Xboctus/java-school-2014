@@ -7,10 +7,10 @@ import java.util.*;
 public class User implements Constants {
 
     private final String name;
-    private TimeZone timeZone             = TimeZone.getDefault();
     private boolean status;
-
+    private TimeZone timeZone             = TimeZone.getDefault();
     DateFormat dateFormat                 = new SimpleDateFormat(DATE_FORMAT);
+
     private TreeMap<String, Event> events = new TreeMap<String, Event>();
 
     public User (String name) {
@@ -59,6 +59,10 @@ public class User implements Constants {
 
         if (events.containsKey(text)) {
             System.out.println(EVENT_EXISTS);
+            return false;
+        }
+
+        if (calendar == null) {
             return false;
         }
 
