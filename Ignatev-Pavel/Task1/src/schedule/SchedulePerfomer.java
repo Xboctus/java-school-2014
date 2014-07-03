@@ -45,6 +45,11 @@ public class SchedulePerfomer {
 	private String loadPath;
 	private ServerSocket server;
 	
+	//Client
+	private Socket client;
+	private ObjectOutput output;
+	private ObjectInput input;
+	
 	SchedulePerfomer(){}
 	
 	SchedulePerfomer(Map<String,User> users){
@@ -114,9 +119,12 @@ public class SchedulePerfomer {
 	
 		
 	public Map<String,User> synchWithServerAndWait(String name, int port){
-		Socket client = null;
 		try {
-			client = new Socket(name, port);
+			if (client==null || client.getPort()!=port){
+				input = null;
+				output = null;
+				client = new Socket(name, port);
+			}
 		} catch (UnknownHostException e1) {
 			addToLog(errUnknownHost);
 			return null;
@@ -129,11 +137,13 @@ public class SchedulePerfomer {
 		
 		try {
 			OutputStream buffer = new BufferedOutputStream(client.getOutputStream());
-			ObjectOutput output = new ObjectOutputStream(buffer);
+			if (output==null)
+			output = new ObjectOutputStream(buffer);
 			output.writeObject(new Integer(1));
 			output.flush();
 			InputStream iBuffer = new BufferedInputStream(client.getInputStream());
-			ObjectInput input = new ObjectInputStream (iBuffer);
+			if (input==null)
+			input = new ObjectInputStream (iBuffer);
 			Map<String,User> fromServer = null;
 			try {
 				fromServer = (Map<String,User>)input.readObject();
@@ -184,7 +194,8 @@ public class SchedulePerfomer {
 						ObjectOutput output = new ObjectOutputStream(buffer);
 						InputStream iBuffer = new BufferedInputStream(client.getInputStream());
 						ObjectInput input = new ObjectInputStream (client.getInputStream());
-						while(input.readObject()!=null){
+						while(true){
+							input.readObject();
 							output.writeObject(users);
 							output.flush();
 						}

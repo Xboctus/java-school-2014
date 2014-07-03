@@ -453,7 +453,13 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	}
 	
 	private void synchWithServer(Matcher matcher){
-		int port = Integer.parseInt(matcher.group(gSynchWithServer[0]));
+		int port;
+		try{
+			port = Integer.parseInt(matcher.group(gSynchWithServer[0]));
+		}catch(NumberFormatException e){
+			println(msgNoFunction,false);
+			return;
+		}
 		
 		try {
 			users = (ConcurrentHashMap<String, User>) perfomer.synchWithServerAndWait(InetAddress.getByName( null ).getHostAddress(), port);
@@ -467,7 +473,13 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	}
 	
 	private void synchWithServer_adress(Matcher matcher){
-		String adress = matcher.group(gSynchWithServer_adress[0]);
+		String adress = null;
+		try{
+			adress = matcher.group(gSynchWithServer_adress[0]);
+		}catch(NumberFormatException e){
+			println(msgNoFunction,false);
+			return;
+		}
 		int port = Integer.parseInt(matcher.group(gSynchWithServer_adress[1]));
 		users = (ConcurrentHashMap<String, User>) perfomer.synchWithServerAndWait(adress, port);
 		String msg =   perfomer.flushLog();
