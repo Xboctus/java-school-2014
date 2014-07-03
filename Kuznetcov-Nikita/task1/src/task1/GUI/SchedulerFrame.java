@@ -63,7 +63,6 @@ public class SchedulerFrame extends JFrame {
         new RemoveEventFrame(taskCoordinator);
       }
     });
-
     JButton addRandomTimeEventButton = new JButton("Add random time event");
     addRandomTimeEventButton.addActionListener(new ActionListener() {
       @Override
@@ -71,8 +70,13 @@ public class SchedulerFrame extends JFrame {
         new AddRandomTimeEventFrame(taskCoordinator);
       }
     });
-    // TODO JButton cloneEventButton = new JButton("Clone event");
-
+    JButton cloneEventButton = new JButton("Clone event");
+    cloneEventButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new CloneEventFrame(taskCoordinator);
+      }
+    });
     JButton showUserInfoButton = new JButton("Show user info");
     showUserInfoButton.addActionListener(new ActionListener() {
       @Override
@@ -99,7 +103,7 @@ public class SchedulerFrame extends JFrame {
     buttons.add(addEventButton);
     buttons.add(removeEventButton);
     buttons.add(addRandomTimeEventButton);
-//    buttons.add(cloneEventButton);
+    buttons.add(cloneEventButton);
     buttons.add(showUserInfoButton);
     buttons.add(startSchedulingButton);
 

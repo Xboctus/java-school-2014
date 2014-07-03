@@ -50,6 +50,9 @@ public class AddRandomTimeEventFrame extends JFrame {
           return;
         }
         int result = taskCoordinator.addRandomTimeEvent(userName, taskText, dateFrom, dateTo);
+        if (result == 0) {
+          JOptionPane.showMessageDialog(contentPanel, "OK", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
       }
     });
     contentPanel.add(okButton);
