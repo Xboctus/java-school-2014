@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class User implements Constants {
+public class User implements Constants, java.io.Serializable {
 
     private final String name;
     private boolean status;

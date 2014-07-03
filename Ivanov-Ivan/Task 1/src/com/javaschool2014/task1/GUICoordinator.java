@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class GUICoordinator extends AbstractCoordinator {
 
@@ -14,6 +17,11 @@ public class GUICoordinator extends AbstractCoordinator {
     @Override
     protected void printOutput(String string) {
         textArea.append(string + "\n");
+    }
+
+    @Override
+    protected void connectDefaultDataFile() {
+
     }
 
     public void display() {
@@ -30,6 +38,7 @@ public class GUICoordinator extends AbstractCoordinator {
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setFont(new Font("Serif", Font.PLAIN, 14));
+
 
         JButton create             = new JButton("Create");
         JButton modify             = new JButton("Modify");

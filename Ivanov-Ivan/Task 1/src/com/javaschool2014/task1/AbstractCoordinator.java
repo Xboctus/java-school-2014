@@ -1,8 +1,6 @@
 package com.javaschool2014.task1;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,10 +19,13 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     protected void printOutput(String output) {}
 
+    protected void connectDefaultDataFile() {}
+
     public void start(){
 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         timer.scheduleAtFixedRate(this, 0, 1000);
+        connectDefaultDataFile();
 
         while (true) {
 
@@ -41,9 +42,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (createUser(arguments[0], arguments[1], arguments[2])) {
-                        printOutput("User created!");
+                        System.out.println("User created!");
                     } else {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -57,9 +58,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (modifyUser(arguments[0], arguments[1], arguments[2])) {
-                        printOutput("User modified!");
+                        System.out.println("User modified!");
                     } else {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -73,9 +74,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (addUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        printOutput("Event added!");
+                        System.out.println("Event added!");
                     } else {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -89,9 +90,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (addRandomTimeUserEvent(arguments[0], arguments[1], arguments[2], arguments[3])) {
-                        printOutput("Random time event added!");
+                        System.out.println("Random time event added!");
                     } else {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -105,9 +106,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (removeUserEvent(arguments[0], arguments[1])) {
-                        printOutput("Event removed!");
+                        System.out.println("Event removed!");
                     } else {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -121,9 +122,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (cloneUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        printOutput("Event cloned!");
+                        System.out.println("Event cloned!");
                     } else {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -137,7 +138,35 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (!showUserInfo(arguments[0])) {
-                        printOutput(ERROR);
+                        System.out.println(ERROR);
+                    }
+
+                    continue;
+                }
+
+                pattern = Pattern.compile(saveUserDataPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+
+                    arguments = parseString(command);
+
+                    if (!showUserInfo(arguments[0])) {
+                        System.out.println(ERROR);
+                    }
+
+                    continue;
+                }
+
+                pattern = Pattern.compile(loadUserDataPattern);
+                matcher = pattern.matcher(command);
+
+                if (matcher.matches()) {
+
+                    arguments = parseString(command);
+
+                    if (!showUserInfo(arguments[0])) {
+                        System.out.println(ERROR);
                     }
 
                     continue;
@@ -155,7 +184,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
             } catch (IOException e) {
 
-                e.printStackTrace();
+                System.out.println(e.getMessage());
 
             }
 
@@ -346,6 +375,55 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
         }
 
         return arguments;
+    }
+
+    public boolean saveUserData(String filename) {
+
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filename);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(this.users);
+            out.close();
+            fileOut.close();
+            printOutput(DATA_SAVED);
+
+            return true;
+
+        } catch(IOException e) {
+
+            printOutput(ERROR + e.getMessage());
+            return false;
+
+        }
+
+    }
+
+    public boolean loadUserData(String filename) {
+
+            try  {
+
+                FileInputStream fileIn = new FileInputStream(filename);
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                this.users = (TreeMap<String, User>) in.readObject();
+                in.close();
+                fileIn.close();
+                printOutput(DATA_LOADED);
+
+                return true;
+
+            } catch(IOException e)  {
+
+                printOutput(ERROR + e.getMessage());
+                return false;
+
+            } catch(ClassNotFoundException e) {
+
+                printOutput(ERROR + e.getMessage());
+                return false;
+
+            }
+
     }
 
     @Override
