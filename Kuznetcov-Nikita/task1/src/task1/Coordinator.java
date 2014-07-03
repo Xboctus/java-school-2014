@@ -1,6 +1,7 @@
 package task1;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Coordinator {
 
@@ -125,8 +126,9 @@ public class Coordinator {
   }
 
   public String getUserInfo(String userName) {
+    if (userName == null) return null;
     User user = usersMap.get(userName);
-    return user != null ? user.toString() : null;
+    return user != null ? user.toString() : "";
   }
 
   public void startScheduling() {
@@ -138,7 +140,7 @@ public class Coordinator {
 
         for (Map.Entry<String, User> userEntry : usersMap.entrySet()) {
           if (userEntry.getValue().isActive()) {
-            for (Event event : userEntry.getValue().getUserTaskSet()) {
+            for (Event event : userEntry.getValue().getUserTaskArray()) {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
                 System.out.println(event);
               }

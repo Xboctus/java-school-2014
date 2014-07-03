@@ -1,5 +1,6 @@
 package task1;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.TreeSet;
@@ -53,10 +54,6 @@ public class User implements Comparable {
 
   public boolean removeEvent(Event event) { return this.userTaskSet.remove(event); }
 
-  public String getUserName() {
-    return userName;
-  }
-
   public TimeZone getTimeZone() {
     return timeZone;
   }
@@ -73,8 +70,9 @@ public class User implements Comparable {
     this.isActive = isActive;
   }
 
-  public Set<Event> getUserTaskSet() {
-    return userTaskSet;
+  public Event[] getUserTaskArray() {
+    Event[] result = new Event[this.userTaskSet.size()];
+    return userTaskSet.toArray(result);
   }
 
 }

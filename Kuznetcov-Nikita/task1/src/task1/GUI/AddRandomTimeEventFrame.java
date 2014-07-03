@@ -60,7 +60,7 @@ public class AddRandomTimeEventFrame extends JFrame {
     this.add(contentPanel);
 
     pack();
-    setLocation(400, 200);
+    this.setBounds(400, 200, 400, 300);
     setDefaultCloseOperation(HIDE_ON_CLOSE);
     setVisible(true);
   }

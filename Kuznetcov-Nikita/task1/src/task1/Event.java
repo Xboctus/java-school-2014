@@ -30,14 +30,12 @@ public class Event implements Comparable, Cloneable {
     final StringBuilder sb = new StringBuilder("Дата: ");
     sb.append(DateFormatter.formatDate(eventDate, TimeZone.getDefault()));
     sb.append(", пояснение: '").append(eventText).append('\'');
-    sb.append('\r').append('\n');
     return sb.toString();
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Event)) return false;
-    return ((Event) obj).getEventText().equals(this.eventText);
+    return obj instanceof Event && ((Event) obj).getEventText().equals(this.eventText);
   }
 
   public Object clone() throws CloneNotSupportedException {

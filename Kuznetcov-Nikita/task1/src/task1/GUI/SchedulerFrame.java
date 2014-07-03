@@ -1,13 +1,16 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.SchedulerLogRecordFormatter;
+import task1.Util.TextAreaStreamHandler;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,17 +25,19 @@ public class SchedulerFrame extends JFrame {
   private JTextArea logArea;
 
   private static final Coordinator taskCoordinator = new Coordinator();
-  private static final SimpleDateFormat formatter = new SimpleDateFormat("hh:MM:ss");
+  public static final Logger logger = Logger.getLogger(SchedulerFrame.class.getName());
 
   public SchedulerFrame(String frameName) {
     super(frameName);
+    logger.setUseParentHandlers(false);
 
     mainPanel = new JPanel(new BorderLayout());
     buttonsPanel = new JPanel(new GridLayout(8, 1, 5, 0));
 
-    logArea = new JTextArea("Log will be here\r\n", 40, 15);
+    logArea = new JTextArea("Log will be here\r\n", 30, 15);
     logArea.setLineWrap(true);
     logArea.setWrapStyleWord(true);
+    logger.addHandler(new TextAreaStreamHandler(logArea, new SchedulerLogRecordFormatter()));
     mainPanel.add(new JScrollPane(logArea), BorderLayout.CENTER);
 
     JButton addUserButton = new JButton("Add new user");
@@ -40,6 +45,9 @@ public class SchedulerFrame extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         new AddUserFrame(taskCoordinator);
+        logger.info("INFO");
+        logger.warning("WARNING");
+        logger.severe("SEVERE");
       }
     });
     JButton modifyUserButton = new JButton("Modify exists user");
@@ -83,9 +91,11 @@ public class SchedulerFrame extends JFrame {
       public void actionPerformed(ActionEvent e) {
         String userInfo = taskCoordinator.getUserInfo(JOptionPane.showInputDialog("Enter user name"));
         if (userInfo != null) {
-          logArea.append(userInfo);
-        } else {
-          JOptionPane.showMessageDialog(mainPanel, "User with such username not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
+          if (!userInfo.isEmpty()) {
+            logArea.append(userInfo);
+          } else {
+            JOptionPane.showMessageDialog(mainPanel, "User with such username not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
+          }
         }
       }
     });
@@ -122,7 +132,7 @@ public class SchedulerFrame extends JFrame {
 
     pack();
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setLocation(300, 200);
+    setBounds(300, 300, 400, 600);
     setResizable(false);
     setVisible(true);
   }

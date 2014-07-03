@@ -3,6 +3,7 @@ package task1.GUI;
 import task1.Coordinator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,6 +19,7 @@ public class CloneEventFrame extends JFrame {
 
   public CloneEventFrame(final Coordinator taskCoordinator) {
     super("Clone event");
+    contentPanel = new JPanel(new GridLayout(4, 2));
 
     srcUserNameInput = ComponentsFactory.getTextInputFieldInstance();
     srcTaskTextInput = ComponentsFactory.getTextInputFieldInstance();
@@ -46,9 +48,12 @@ public class CloneEventFrame extends JFrame {
         }
       }
     });
+    contentPanel.add(okButton);
+
+    this.add(contentPanel);
 
     pack();
-    setLocation(400, 200);
+    this.setBounds(400, 200, 400, 300);
     setDefaultCloseOperation(HIDE_ON_CLOSE);
     setVisible(true);
   }
