@@ -24,7 +24,7 @@ public class AddEventFrame extends JFrame {
 
     JLabel userNameLabel = new JLabel("UserName");
     JLabel eventDateLabel = new JLabel("Event date");
-    final JLabel eventTextLabel = new JLabel("Event text");
+    JLabel eventTextLabel = new JLabel("Event text");
 
     nameInput = ComponentsFactory.getTextInputFieldInstance();
     eventDateInput = ComponentsFactory.getDateInputFieldInstance();
