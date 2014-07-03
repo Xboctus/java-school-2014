@@ -1,8 +1,11 @@
 //import javax.management.Descriptor;
+import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Sheduler {
+
+    private static SortingEvents sortingEvents = new SortingEvents();
 
     public static void main(String[] args){
         Coordinator coordinator = new Coordinator();
@@ -11,8 +14,12 @@ public class Sheduler {
         do{
             System.out.println("Enter the command");
             command = in.nextLine();
+            if (command.equals("GraphicScheduler")){
+                GraphicScheduler gs = new GraphicScheduler();
+                return;
+            }
             int index = command.indexOf('(');
-            if (index == -1){
+            if (!command.equals("StartScheduling") && index == -1){
                 System.out.println("incorrect command");
                 continue;
             }
@@ -79,60 +86,11 @@ public class Sheduler {
                 }
             }
         }while(!command.equals("StartScheduling"));
-        Comparator<Sheduling> comp = new Comparator<Sheduling>() {
-            @Override
-            public int compare(Sheduling o1, Sheduling o2) {
-                int result = o1.date.compareTo(o2.date);
-                if (result != 0) return result;
-                result = o2.user.name.compareTo(o1.user.name);
-                if (result !=0) return result;
-                result = o2.description.compareTo(o1.description);
-                return result;
-            }
-        };
-        TreeSet<Sheduling> ts = new TreeSet<Sheduling>(comp);
-        for (User u : coordinator.users){
-            if(u.status == true){
-                for (Event e : u.events){
-                    ts.add(new Sheduling(u, e.date, e.description));
-                }
-            }
-        }
+    }
 
-        Timer timer;
-        for(Sheduling s : ts){
-            timer = new Timer();
-            timer.schedule(new TimerShedule(s.user, s.description), s.date);
-        }
+    public static SortingEvents getSortingEvents(){
+        return sortingEvents;
     }
 }
 
-class TimerShedule extends TimerTask{
-    User user;
-    String description;
 
-    TimerShedule(User p_user, String p_description){
-        user = p_user;
-        description = p_description;
-    }
-    @Override
-    public void run(){
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
-        sdf.setTimeZone(TimeZone.getDefault());
-        System.out.println(sdf.format(new Date()));
-        System.out.println(user.name);
-        System.out.println(description);
-    }
-}
-
-class Sheduling {
-    User user;
-    Date date;
-    String description;
-    Sheduling(User p_user, Date p_date, String p_description){
-        user = p_user;
-        date = p_date;
-        description = p_description;
-    }
-}

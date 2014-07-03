@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.TimeZone;
 
 public class Coordinator {
-    ArrayList<User> users = new ArrayList<User>();
+    static ArrayList<User> users = new ArrayList<User>();
 
     public void Create(String params){
         try{
@@ -35,7 +35,7 @@ public class Coordinator {
         }
     }
 
-    public User getUser(String p_name){
+    public static User getUser(String p_name){
         Comparator<User> comp = new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
