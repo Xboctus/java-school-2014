@@ -1,6 +1,8 @@
 package schedule;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,14 +37,19 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	//RemoveEvent(sad,qwe)
 	//AddRandomTimeEvent(sad,qwe,29.06.2014-08:54:11,29.06.2014-08:55:11)
 	//StartScheduling
+	//AddEvent(sad,qwe,02.07.2014-18:14:25)
 	
+	
+	//input output file
+	//get data from another schedule socket
 	//Press Any key to stop Scheduling
 	
-	private final ConcurrentHashMap<String,User> users = new ConcurrentHashMap();
+	private ConcurrentHashMap<String,User> users = new ConcurrentHashMap();
 	private final CListener listener;
 	private String incomeMessage;
 	private boolean isScheduling = false;
 	private boolean isDead = false;
+	private final SchedulePerfomer perfomer = new SchedulePerfomer(users) ;
 	
 	Coordinator(){
 		listener = null;
@@ -57,7 +64,7 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	public void start() throws InterruptedException{
 		if(listener==null) startConsole();
 		else startGraphics();
-		
+				
 	}
 	
 	private synchronized void startGraphics() throws InterruptedException{
@@ -110,6 +117,27 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		pattern = Pattern.compile(pStartScheduling);
 		matcher = pattern.matcher(str);
 		if (matcher.matches()) {startSchedulingAction(matcher); return true;}
+		
+		
+		pattern = Pattern.compile(pSave);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {save(matcher); return true;}
+		
+		pattern = Pattern.compile(pLoad);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {load(matcher); return true;}
+		
+		pattern = Pattern.compile(pRunLikeServer);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {runLikeServer(matcher); return true;}
+		
+		pattern = Pattern.compile(pSynchWithServer_adress);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {synchWithServer_adress(matcher); return true;}
+		
+		pattern = Pattern.compile(pSynchWithServer);
+		matcher = pattern.matcher(str);
+		if (matcher.matches()) {synchWithServer(matcher); return true;}
 		
 		println(msgNoFunction,false);
 		return true;
@@ -276,6 +304,7 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		final String name = matcher.group(gCloneEvent[0]);
 		if (!users.containsKey(name)) {println(name+":"+msgNameNotExists,false); return;}
 		println(users.get(name).toString(),false);
+		if (listener==null) return;
 		new Thread(new Runnable(){
 
 			@Override
@@ -287,18 +316,18 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	}
 	
 	private void startSchedulingAction(Matcher matcher){
-		 
+		 /*
 		 User user = new User("asdasd");
-		 //user.activate();
+		 user.activate();
 		 user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"232423")));
 		 users.put("asdasd", user);
-		 //println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"a232423"))));
-		 //println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"b232423"))));
+		// println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"a232423"))));
+		// println(user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"b232423"))));
 		 user = new User("basdasd");
 		 user.activate();
 		 users.put("basdasd", user);
 		 user.addEvent(new Event(new EventElement(new Date(new Date().getTime()+3000),"232423")));
-		 
+		 */
 		
 		//isScheduling = true;
 		Timer timer = new Timer(true);
@@ -393,5 +422,56 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	public synchronized void alertDeath() {
 		isDead = true;
 		notify();
+	}
+	
+	private void save(Matcher matcher){
+		String path = matcher.group(gSave[0]);
+		
+		perfomer.setSavePath(path);
+		perfomer.save();
+		String msg = perfomer.flushLog();
+		if (msg!=null) println(msg,true); else
+			println(msgDone,false);
+	}
+	private void load(Matcher matcher){
+		String path = matcher.group(gLoad[0]);
+		
+		perfomer.setLoadPath(path);
+		ConcurrentHashMap<String,User> in = (ConcurrentHashMap) perfomer.load();
+		users = (in!=null) ? in : users;
+		String msg =  perfomer.flushLog();
+		if (msg!=null) println(msg,true); else
+			println(msgDone,false);
+	}
+	private void runLikeServer(Matcher matcher){
+		int port = Integer.parseInt(matcher.group(gLoad[0]));
+		
+		perfomer.runLikeServer(port);
+		String msg =  perfomer.flushLog();
+		if (msg!=null) println(msg,true); else
+			println(msgDone,false);
+	}
+	
+	private void synchWithServer(Matcher matcher){
+		int port = Integer.parseInt(matcher.group(gSynchWithServer[0]));
+		
+		try {
+			users = (ConcurrentHashMap<String, User>) perfomer.synchWithServerAndWait(InetAddress.getByName( null ).getHostAddress(), port);
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String msg =   perfomer.flushLog();
+		if (msg!=null) println(msg,true); else
+			println(msgDone,false);
+	}
+	
+	private void synchWithServer_adress(Matcher matcher){
+		String adress = matcher.group(gSynchWithServer_adress[0]);
+		int port = Integer.parseInt(matcher.group(gSynchWithServer_adress[1]));
+		users = (ConcurrentHashMap<String, User>) perfomer.synchWithServerAndWait(adress, port);
+		String msg =   perfomer.flushLog();
+		if (msg!=null) println(msg,true); else
+			println(msgDone,false);
 	}
 }

@@ -11,6 +11,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.TextField;
 import java.awt.Toolkit;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
@@ -19,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -94,6 +96,12 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jTextArea1.setSize(100, 30);;
@@ -154,6 +162,34 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
                 jButton8ActionPerformed(evt);
             }
         });
+        
+        jButton9.setText("SaveSchedule");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        
+        jButton10.setText("LoadSchedule");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        
+        jButton11.setText("RunLikeServer");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        
+        jButton12.setText("SynchWithServer");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,8 +214,16 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10)))
+                   .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton12))
+                   .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +240,13 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton7)
-                    .addComponent(jButton8))
+                    .addComponent(jButton8)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton11)
+                    .addComponent(jButton12))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
@@ -305,6 +355,77 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
 		
 	}  
     
+    
+    
+    
+    
+    
+    //SaveSchedule
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	if (gl==null) return;
+    	JFileChooser chooser = new JFileChooser ("Choose a schedule");
+		int result = chooser.showSaveDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+        	sendToListener("Save("+chooser.getSelectedFile().getPath()+")");
+ 	   }
+    	
+	}  
+    //LoadSchedule
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	if (gl==null) return;
+    	JFileChooser chooser = new JFileChooser ("Choose a schedule");
+		int result = chooser.showOpenDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION){
+			sendToListener("Load("+chooser.getSelectedFile().getPath()+")");
+		}
+    }  
+    
+    //RunLikeServer
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	if (gl==null) return;
+    	final JTextField arg0;
+    	final JComponent[] inputs = new JComponent[] {
+				new JLabel("Port run on"),
+    			arg0 = new JFormattedTextField(getMf("****","1234567890")),
+		};
+    	JOptionPane.showMessageDialog(null, inputs, "RunLikeServer", JOptionPane.PLAIN_MESSAGE);
+		final String out = "RunLikeServer("
+				+ arg0.getText().toString()
+				+ ")";
+		sendToListener(out);
+    	
+	}  
+    
+    //SynchWithServer
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	if (gl==null) return;
+    	final JTextField arg0;
+    	final JTextField arg1;
+    	final JComponent[] inputs = new JComponent[] {
+    			new JLabel("adress (keep empty for localhost)"),
+    			arg0 = new JTextField(),
+				new JLabel("Port connect on"),
+    			arg1 = new JFormattedTextField(getMf("****","1234567890")),
+		};
+    	JOptionPane.showMessageDialog(null, inputs, "SynchWithServer", JOptionPane.PLAIN_MESSAGE);
+    	final String out;
+    	if (arg0.getText().replaceAll("\\s","").isEmpty())
+		out = "SynchWithServer("
+			+ arg1.getText().toString()
+			+ ")";
+    	else
+    	out = "SynchWithServer("
+    		+ arg0.getText().toString().replaceAll("\\s","")
+    		+ ","
+    		+ arg1.getText().toString()
+    		+ ")";
+    	sendToListener(out);
+	}  
+    
+    
+    
+    
+    
     @Override
     public void showInfo(User user){
     	
@@ -318,7 +439,11 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
 	                "Eventname", "Date"
 	            }
 	        ) {
-	            boolean[] canEdit = new boolean [] {
+	            /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+				boolean[] canEdit = new boolean [] {
 	                false, true
 	            };
 
@@ -340,6 +465,17 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
     	
     	
     	TableColumn tc = table.getColumnModel().getColumn(1);
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
         tc.setCellRenderer(new TableCellRenderer() {
         	@Override
 			public Component getTableCellRendererComponent(JTable arg0,
@@ -352,6 +488,17 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
 			}
         });
     	
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     	
     	Iterator<Event> it = user.iterator();
 		String title =  user.getName() + " "
@@ -490,6 +637,7 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
 				+ ","
 				+ str
 				+ ")";
+		//System.out.println(out);
 		sendToListener(out);
     }                                        
 	//AddEvent
@@ -515,6 +663,7 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
 				+ ","
 				+ arg2.getText().toString()
 				+ ")";
+		
 		sendToListener(out);
     }                                        
     //AddEventToTable
@@ -610,6 +759,10 @@ public class ScheduleFrame extends javax.swing.JFrame implements CListener{
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JEditorPane jTextArea1;
     // End of variables declaration                void alertDeath();   
