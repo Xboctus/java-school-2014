@@ -43,7 +43,7 @@ public class ConsoleCoordinator extends AbstractCoordinator {
 
             }
 
-        } catch( IOException e) {
+        } catch ( IOException e) {
 
             printOutput(e.getMessage());
 

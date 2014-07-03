@@ -151,7 +151,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
                     arguments = parseString(command);
 
-                    if (!showUserInfo(arguments[0])) {
+                    if (!saveUserData(arguments[0])) {
                         System.out.println(ERROR);
                     }
 
@@ -165,7 +165,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
                     arguments = parseString(command);
 
-                    if (!showUserInfo(arguments[0])) {
+                    if (!loadUserData(arguments[0])) {
                         System.out.println(ERROR);
                     }
 
@@ -423,6 +423,18 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                 return false;
 
             }
+
+    }
+
+    public boolean server() {
+
+        return true;
+
+    }
+
+    public boolean client() {
+
+        return true;
 
     }
 

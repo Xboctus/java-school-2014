@@ -5,9 +5,10 @@ public class Main implements Constants {
     public static void main(String[] args) {
 
         System.out.println("Available command list:");
-        System.out.println("Create(<name>,<timezone>,<status>), Create(<name>,<timezone>,<status>), (status = active/idle) AddEvent(<name>,<text>,<datetime>), RemoveEvent(<name>,<text>),");
-        System.out.println("AddRandomTimeEvent(<name>,<text>,<dateFrom>,<dateTo>), CloneEvent(<name>,<text>,<nameTo>), ShowInfo(<name>), SaveData(<path>), LoadData(<path>), Leave");
-        System.out.println("---------------------------------------------------------------------");
+        System.out.println("Create(<name>,<timezone>,<status>), Create(<name>,<timezone>,<status>), (status = active/idle) ");
+        System.out.println("AddRandomTimeEvent(<name>,<text>,<dateFrom>,<dateTo>), CloneEvent(<name>,<text>,<nameTo>)");
+        System.out.println("ShowInfo(<name>), SaveData(<path>), LoadData(<path>), Leave");
+        System.out.println("-----------------------------------------------------------------------------------------------");
 
         if (args.length > 0) {
 
