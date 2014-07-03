@@ -1,5 +1,6 @@
+import java.text.ParseException;
 import java.util.Date;
-
+import java.text.SimpleDateFormat;
 
 public class Event implements Cloneable{
     Date date;
@@ -11,6 +12,12 @@ public class Event implements Cloneable{
     }
 
     Event(String p_description){
+        description = p_description;
+    }
+
+    Event(String p_date, String p_description) throws ParseException{
+        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yy:HH:mm:ss");
+        date = ft.parse(p_date);
         description = p_description;
     }
 
