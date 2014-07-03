@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -82,7 +78,7 @@
       <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="40" selection-start="4660" selection-end="4660" vertical-scroll-proportion="2.8144445" vertical-offset="0" max-vertical-offset="7973">
+            <state line="16" column="0" selection-start="502" selection-end="502" vertical-scroll-proportion="0.30222222" vertical-offset="0" max-vertical-offset="7973">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -575,7 +571,7 @@
       <workItem from="1404285904204" duration="196000" />
       <workItem from="1404289398481" duration="796000" />
       <workItem from="1404301596187" duration="24651000" />
-      <workItem from="1404420832902" duration="545000" />
+      <workItem from="1404420832902" duration="1206000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -657,11 +653,15 @@
       <created>1404389013139</created>
       <updated>1404389013139</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Task 1 1.3 commit&#10;">
+      <created>1404421388701</created>
+      <updated>1404421388701</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106508000" />
+    <option name="totallyTimeSpent" value="107169000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1116,7 +1116,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="40" selection-start="4660" selection-end="4660" vertical-scroll-proportion="2.8144445" vertical-offset="0" max-vertical-offset="7973">
+        <state line="16" column="0" selection-start="502" selection-end="502" vertical-scroll-proportion="0.30222222" vertical-offset="0" max-vertical-offset="7973">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
