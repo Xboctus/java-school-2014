@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUIAbstractCoordinator extends AbstractCoordinator {
+public class GUICoordinator extends AbstractCoordinator {
 
     private String appName             = "Planfx v0.1";
     private JFrame newFrame            = new JFrame(appName);

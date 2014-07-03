@@ -12,14 +12,14 @@ public class Main implements Constants {
         if (args.length > 0) {
 
             if (args[0].equals("-g")) {
-                GUIAbstractCoordinator coordinator = new GUIAbstractCoordinator();
+                GUICoordinator coordinator = new GUICoordinator();
                 coordinator.start();
                 coordinator.display();
             }
 
         } else {
 
-            GUIAbstractCoordinator coordinator = new GUIAbstractCoordinator();
+            GUICoordinator coordinator = new GUICoordinator();
 
             coordinator.createUser("Ivan", "GMT+0", "active");
             coordinator.createUser("Alex", "GMT-10", "active");

@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleAbstractCoordinator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUIAbstractCoordinator.java" />
-      <change type="MOVED" beforePath="C:\Users\TARGETrus\Dropbox\GIT REPO\java-school-2014\Ivanov-Ivan\Task 1\src\com\javaschool2014\task1\Coordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Task 2/src/com/javaschool2014/task1/Constants.java" afterPath="$PROJECT_DIR$/../Task 2/src/com/javaschool2014/task1/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Task 2/src/com/javaschool2014/task1/Coordinator.java" afterPath="$PROJECT_DIR$/../Task 2/src/com/javaschool2014/task1/Coordinator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
+      <change type="DELETED" beforePath="C:\Users\TARGETrus\Dropbox\GIT REPO\java-school-2014\Ivanov-Ivan\Task 1\src\com\javaschool2014\task1\ConsoleAbstractCoordinator.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\TARGETrus\Dropbox\GIT REPO\java-school-2014\Ivanov-Ivan\Task 1\src\com\javaschool2014\task1\GUIAbstractCoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Task 2/src/com/javaschool2014/task1/User.java" afterPath="$PROJECT_DIR$/../Task 2/src/com/javaschool2014/task1/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Task 2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Task 2/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,16 +73,16 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="49" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0" vertical-offset="332" max-vertical-offset="884">
+            <state line="14" column="52" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="884">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="23" selection-start="291" selection-end="291" vertical-scroll-proportion="0.29333332" vertical-offset="38" max-vertical-offset="6443">
+            <state line="5" column="28" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6443">
               <folding>
                 <element signature="e#631#645#0" expanded="true" />
               </folding>
@@ -96,23 +90,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConsoleAbstractCoordinator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleAbstractCoordinator.java">
+      <file leaf-file-name="ConsoleCoordinator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+            <state line="7" column="5" selection-start="201" selection-end="201" vertical-scroll-proportion="0.25701943" vertical-offset="0" max-vertical-offset="463">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUIAbstractCoordinator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUIAbstractCoordinator.java">
+      <file leaf-file-name="GUICoordinator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="60" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1309">
+            <state line="5" column="12" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1513#1682#0" expanded="true" />
-                <element signature="e#1671#1672#0" expanded="true" />
+                <element signature="e#1505#1674#0" expanded="true" />
+                <element signature="e#1663#1664#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,13 +158,15 @@
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/PlanForm.form" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/PlanForm.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/User.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Coordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleAbstractCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/GUIAbstractCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
       </list>
     </option>
   </component>
@@ -580,7 +575,7 @@
       <workItem from="1404279912285" duration="169000" />
       <workItem from="1404285904204" duration="196000" />
       <workItem from="1404289398481" duration="796000" />
-      <workItem from="1404301596187" duration="7088000" />
+      <workItem from="1404301596187" duration="7777000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -654,11 +649,15 @@
       <created>1404289514635</created>
       <updated>1404289514635</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Task 1 1.2 commit&#10;">
+      <created>1404369742322</created>
+      <updated>1404369742322</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88400000" />
+    <option name="totallyTimeSpent" value="89089000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -703,7 +702,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21933472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32224533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31764707" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13525027" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1091,37 +1090,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleAbstractCoordinator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="49" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0" vertical-offset="332" max-vertical-offset="884">
+        <state line="14" column="52" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="884">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUIAbstractCoordinator.java">
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="60" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1309">
+        <state line="5" column="12" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1513#1682#0" expanded="true" />
-            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1505#1674#0" expanded="true" />
+            <element signature="e#1663#1664#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="23" selection-start="291" selection-end="291" vertical-scroll-proportion="0.29333332" vertical-offset="38" max-vertical-offset="6443">
+        <state line="5" column="28" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="6443">
           <folding>
             <element signature="e#631#645#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="5" selection-start="201" selection-end="201" vertical-scroll-proportion="0.25701943" vertical-offset="0" max-vertical-offset="463">
+          <folding />
         </state>
       </provider>
     </entry>
