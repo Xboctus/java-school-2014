@@ -42,7 +42,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (createUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User created!");
+                        System.out.println(USER_CREATED);
                     } else {
                         System.out.println(ERROR);
                     }
@@ -58,7 +58,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (modifyUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User modified!");
+                        System.out.println(USER_MODIFIED);
                     } else {
                         System.out.println(ERROR);
                     }
@@ -74,7 +74,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (addUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event added!");
+                        System.out.println(EVENT_ADDED);
                     } else {
                         System.out.println(ERROR);
                     }
@@ -90,7 +90,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (addRandomTimeUserEvent(arguments[0], arguments[1], arguments[2], arguments[3])) {
-                        System.out.println("Random time event added!");
+                        System.out.println(RANDOM_EVENT_ADDED);
                     } else {
                         System.out.println(ERROR);
                     }
@@ -106,7 +106,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (removeUserEvent(arguments[0], arguments[1])) {
-                        System.out.println("Event removed!");
+                        System.out.println(EVENT_REMOVED);
                     } else {
                         System.out.println(ERROR);
                     }
@@ -122,7 +122,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
                     arguments = parseString(command);
 
                     if (cloneUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event cloned!");
+                        System.out.println(EVENT_CLONED);
                     } else {
                         System.out.println(ERROR);
                     }
@@ -194,13 +194,18 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     public boolean createUser(String name, String timeZone, String status) {
 
-        if (users.containsKey(name)) {
-            printOutput(USER_EXISTS);
+        if (name.trim().isEmpty()) {
+            printOutput(NO_NAME);
             return false;
         }
 
-        if (timeZone == null) {
+        if (timeZone.trim().isEmpty()) {
             printOutput(NO_TIMEZONE);
+            return false;
+        }
+
+        if (users.containsKey(name)) {
+            printOutput(USER_EXISTS);
             return false;
         }
 
@@ -225,13 +230,18 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     public boolean modifyUser(String name, String timeZone, String status) {
 
-        if (!users.containsKey(name)) {
-            printOutput(name + WRONG_NAME);
+        if (name.trim().isEmpty()) {
+            printOutput(NO_NAME);
             return false;
         }
 
-        if (timeZone == null) {
+        if (timeZone.trim().isEmpty()) {
             printOutput(NO_TIMEZONE);
+            return false;
+        }
+
+        if (!users.containsKey(name)) {
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
@@ -255,6 +265,16 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
     }
 
     public boolean addUserEvent(String  name, String text, String dateTime) {
+
+        if (name.trim().isEmpty()) {
+            printOutput(NO_NAME);
+            return false;
+        }
+
+        if (text.trim().isEmpty()) {
+            printOutput(NO_TEXT);
+            return false;
+        }
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -281,20 +301,27 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
-    public boolean removeUserEvent(String name, String text) {
+    public boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
 
-        if (!users.containsKey(name)) {
-            printOutput(name + WRONG_NAME);
+        if (name.trim().isEmpty()) {
+            printOutput(NO_NAME);
             return false;
         }
 
-        User user = users.get(name);
+        if (text.trim().isEmpty()) {
+            printOutput(NO_TEXT);
+            return false;
+        }
 
-        return (user.removeEvent(text));
+        if (from.trim().isEmpty()) {
+            printOutput(NO_FROM_DATE);
+            return false;
+        }
 
-    }
-
-    public boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
+        if (to.trim().isEmpty()) {
+            printOutput(NO_TO_DATE);
+            return false;
+        }
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -329,7 +356,45 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
+    public boolean removeUserEvent(String name, String text) {
+
+        if (name.trim().isEmpty()) {
+            printOutput(NO_NAME);
+            return false;
+        }
+
+        if (text.trim().isEmpty()) {
+            printOutput(NO_TEXT);
+            return false;
+        }
+
+        if (!users.containsKey(name)) {
+            printOutput(name + WRONG_NAME);
+            return false;
+        }
+
+        User user = users.get(name);
+
+        return (user.removeEvent(text));
+
+    }
+
     public boolean cloneUserEvent(String name, String text, String nameTo) {
+
+        if (name.trim().isEmpty()) {
+            printOutput(NO_NAME);
+            return false;
+        }
+
+        if (text.trim().isEmpty()) {
+            printOutput(NO_TEXT);
+            return false;
+        }
+
+        if (nameTo.trim().isEmpty()) {
+            printOutput(NO_NAME_TO);
+            return false;
+        }
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -353,6 +418,11 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
     }
 
     public boolean showUserInfo(String name) {
+
+        if (name.trim().isEmpty()) {
+            printOutput(NO_TEXT);
+            return false;
+        }
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -379,6 +449,11 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     public boolean saveUserData(String filename) {
 
+        if (filename.trim().isEmpty()) {
+            printOutput(NO_FILENAME);
+            return false;
+        }
+
         try {
 
             FileOutputStream fileOut = new FileOutputStream(filename);
@@ -392,7 +467,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
         } catch(IOException e) {
 
-            printOutput(ERROR + e.getMessage());
+            printOutput(e.getMessage());
             return false;
 
         }
@@ -401,28 +476,33 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     public boolean loadUserData(String filename) {
 
-            try  {
+        if (filename.trim().isEmpty()) {
+            printOutput(NO_FILENAME);
+            return false;
+        }
 
-                FileInputStream fileIn = new FileInputStream(filename);
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                this.users = (TreeMap<String, User>) in.readObject();
-                in.close();
-                fileIn.close();
-                printOutput(DATA_LOADED);
+        try  {
 
-                return true;
+            FileInputStream fileIn = new FileInputStream(filename);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            this.users = (TreeMap<String, User>) in.readObject();
+            in.close();
+            fileIn.close();
+            printOutput(DATA_LOADED);
 
-            } catch(IOException e)  {
+            return true;
 
-                printOutput(ERROR + e.getMessage());
-                return false;
+        } catch(IOException e)  {
 
-            } catch(ClassNotFoundException e) {
+            printOutput(e.getMessage());
+            return false;
 
-                printOutput(ERROR + e.getMessage());
-                return false;
+        } catch(ClassNotFoundException e) {
 
-            }
+            printOutput(e.getMessage());
+            return false;
+
+        }
 
     }
 
