@@ -6,35 +6,86 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
+import org.kouzma.schedule.gui.SheduleWindow.ScheduleCallBack;
+
 
 public class ScheduleCreator {
-
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
 
-	private final String ACTIVE = "active";
-	private final String PASSIVE = "passive";
+	private int offset = (new GregorianCalendar()).get(Calendar.ZONE_OFFSET);
 	
+	private static final String ACTIVE = "active";
+	private static final String PASSIVE = "passive";
 		
-	private final String ERROR_WRONG_USER_NAME = "Wrong user name";
-	private final String ERROR_NAME_EXISTS = "Such user name already exists";
-	private final String ERROR_USER_NOT_FOUND = "User is not found";
+	private static final String ERROR_WRONG_USER_NAME = "Wrong user name";
+	private static final String ERROR_NAME_EXISTS = "Such user name already exists";
+	private static final String ERROR_USER_NOT_FOUND = "User is not found";
 	
-	private final String ERROR_WRONG_EVENT = "Wrong event description";
-	private final String ERROR_EVENT_EXISTS = "Such user event already exists";
-	private final String ERROR_EVENT_NOT_FOUND = "Event is not found";
+	private static final String ERROR_WRONG_EVENT = "Wrong event description";
+	private static final String ERROR_EVENT_EXISTS = "Such user event already exists";
+	private static final String ERROR_EVENT_NOT_FOUND = "Event is not found";
 	
-	private final String ERROR_WRONG_TIMEZONE = "Wrong timezone";
-	private final String ERROR_WRONG_STATUS = "Wrong status";
-	private final String ERROR_WRONG_DATE = "Wrong date format";
-	private final String ERROR_WRONG_DATE_RANGE = "Wrong date range";
+	private static final String ERROR_WRONG_TIMEZONE = "Wrong timezone";
+	private static final String ERROR_WRONG_STATUS = "Wrong status";
+	private static final String ERROR_WRONG_DATE = "Wrong date format";
+	private static final String ERROR_WRONG_DATE_RANGE = "Wrong date range";
+	private static final String ERROR_SHOWING = "Events showing is already running";
 
-	private final String USER_ADDED = "User \"?\" added";
-	private final String USER_MODIFIED = "User \"?\" modified";
-	private final String EVENT_ADDED = "Event \"?\" added";
-	private final String EVENT_REMOVED = "Event \"?\" removed";
+	private static final String USER_ADDED = "User \"?\" added";
+	private static final String USER_MODIFIED = "User \"?\" modified";
+	private static final String EVENT_ADDED = "Event \"?\" added";
+	private static final String EVENT_REMOVED = "Event \"?\" removed";
 	
 	private HashMap<String, User> lstUsers = new HashMap<String, User>();
+	private TreeSet<Event> treeEvent = new TreeSet<Event>();
+
+	private ScheduleCallBack callBack;
+
+	private Timer scheduleTimer;
+	private Event nextEvent;
+	private class ScheduleTimerTask extends TimerTask {
+
+		@Override
+		public void run() {
+			StringBuffer message = new StringBuffer();
+			
+			Iterator<Event> eventIterator = treeEvent.tailSet(nextEvent, true).iterator();
+			while (eventIterator.hasNext()) {
+				Date eventDate = nextEvent.getDate();
+				nextEvent = eventIterator.next();
+				if (eventDate.equals(nextEvent.getDate())) {
+					User user = nextEvent.getUser();
+					if (user.getStatus()) {
+						message.append(dateFormat.format(eventDate) + " : " + 
+								user.getName() + " \"" + nextEvent.getText() + "\"\n");
+					} 
+				}
+				else {
+					scheduleTimer.schedule(new ScheduleTimerTask(), fromGTM(nextEvent.getDate()));
+					break;
+				}
+			}
+								
+			if (callBack != null)
+				callBack.sendMessage(message.toString());
+			else
+				System.out.print(message);
+		}
+	};
+	
+	
+	public ScheduleCreator(ScheduleCallBack scheduleCallBack) {
+		callBack = scheduleCallBack;
+	}
+
+	public ScheduleCreator() {}
 
 	public String createUser(String name, String zone, String status) {		
 		if (name.length() == 0)
@@ -73,10 +124,6 @@ public class ScheduleCreator {
 		return USER_MODIFIED.replace("?", name);
 	}
 
-	/**
-	 *  добавление события для пользователя. Текст должен быть 
-	 *  уникальным, формат даты – DD.MM.YYYY-HH24:Mi:SS
-	 */
 	public String AddEvent(String name, String eventText, String eventDate) {
 		if (!lstUsers.containsKey(name))
 			return ERROR_USER_NOT_FOUND;
@@ -91,7 +138,13 @@ public class ScheduleCreator {
 		if (eventDate == null)
 			return ERROR_WRONG_DATE;
 		
-		user.AddEvent(eventText, date);
+		Event newEvent = user.AddEvent(eventText, date);
+		treeEvent.add(newEvent);
+		if (nextEvent == null || newEvent.compareTo(nextEvent) < 0) {
+			nextEvent = newEvent;
+			scheduleTimer.schedule(new ScheduleTimerTask(), fromGTM(nextEvent.getDate()));
+		}
+		
 		return EVENT_ADDED.replace("?", eventText);
 	} 
 
@@ -100,10 +153,14 @@ public class ScheduleCreator {
 			return ERROR_USER_NOT_FOUND;
 		User user = lstUsers.get(name);
 		
-		if (user.RemoveEvent(eventText))
-			return EVENT_REMOVED.replace("?", eventText);
-		else
+		Event event = user.findEvent(eventText);
+		if (event == null)
 			return ERROR_EVENT_NOT_FOUND;
+		
+		user.RemoveEvent(event);
+		treeEvent.remove(event);
+		
+		return EVENT_REMOVED.replace("?", eventText);
 	}
 
 	public String AddRandomTimeEvent(String name, String eventText, String eventDateFrom, String eventDateTo) {
@@ -126,8 +183,15 @@ public class ScheduleCreator {
 		Date randomDate = computeRandomDate(fromDate, toDate);
 		if (randomDate == null)
 			return ERROR_WRONG_DATE_RANGE;
+
+		Event newEvent = user.AddEvent(eventText, randomDate);
+		treeEvent.add(newEvent);
+
+		if (nextEvent == null || newEvent.compareTo(nextEvent) < 0) {
+			nextEvent = newEvent;
+			scheduleTimer.schedule(new ScheduleTimerTask(), fromGTM(nextEvent.getDate()));
+		}
 		
-		user.AddEvent(eventText, randomDate);
 		return EVENT_ADDED.replace("?", eventText);
 	}
 
@@ -150,7 +214,9 @@ public class ScheduleCreator {
 		if (userTo.findEvent(eventText) != null)
 			return ERROR_EVENT_EXISTS;
 		
-		userTo.AddEvent(event.clone());
+		Event cloneEvent = event.clone(userTo);
+		userTo.AddEvent(cloneEvent);
+		
 		return EVENT_ADDED.replace("?", eventText);
 	}
 
@@ -167,22 +233,28 @@ public class ScheduleCreator {
 		answer.append(user.getTimeZone());
 		answer.append(") - ");
 		answer.append(user.getStatus() ? ACTIVE : PASSIVE);
-
-		Calendar cal = new GregorianCalendar();
-		int offset = cal.get(Calendar.ZONE_OFFSET);
 		
 		for (Event event : user.getEvents()) {
-			answer.append("\n" + dateFormat.format(fromGTM(event.getDate(), offset)) + " \"" + event.getText() + "\"");
+			answer.append("\n" + dateFormat.format(fromGTM(event.getDate())) + " \"" + event.getText() + "\"");
 		}	
 		return answer.toString();
 	}
 
 	public String StartScheduling() {
-		(new ScheduleViewer()).show(lstUsers);
+		if (scheduleTimer != null)
+			return ERROR_SHOWING;
+		
+		scheduleTimer = new Timer();
+		if (treeEvent.isEmpty())
+			nextEvent = null;
+		else {
+			nextEvent = treeEvent.first();
+			scheduleTimer.schedule(new ScheduleTimerTask(), fromGTM(nextEvent.getDate()));
+		}
 		
 		return null;
 	}
-
+	
 	private Integer parseTimeZone(String string) {
 		try {
 			if (!string.startsWith("GMT+") && !string.startsWith("GMT-"))
@@ -218,7 +290,7 @@ public class ScheduleCreator {
 	}
 
 	private Date computeRandomDate(Date fromDate, Date toDate) {
-		long diff = (toDate.getTime() - fromDate.getTime()) / 1000; // в секундах
+		long diff = (toDate.getTime() - fromDate.getTime()) / 1000; // РІ СЃРµРєСѓРЅРґР°С…
 		if (diff <= 0)
 			return null;
 				
@@ -228,7 +300,34 @@ public class ScheduleCreator {
 		return new Date(randomTime);
 	}
 	
-	private Date fromGTM(Date date, int offset) {
+	private Date fromGTM(Date date) {
 		return new Date(date.getTime() + offset);
+	}
+
+	public String [] getUser(String name) {
+		if (!lstUsers.containsKey(name))
+			return null;
+
+		User user = lstUsers.get(name);
+		String[] res = new String[2*user.getEvents().size() + 3];
+		
+		res[0] = user.getName();
+		
+		StringBuffer strGmt = new StringBuffer();
+		strGmt.append("GMT");
+		if (user.getTimeZone() >=0)
+			strGmt.append("+");
+		strGmt.append(user.getTimeZone());
+		
+		res[1] = strGmt.toString();
+		res[2] = user.getStatus() ? ACTIVE : PASSIVE;
+		
+		int i = 0;
+		for (Event event : user.getEvents()) {
+			res[3 + 2 * i] = dateFormat.format(fromGTM(event.getDate()));
+			res[4 + 2 * i] = event.getText();
+			i++;
+		}
+		return res;
 	}
 }
