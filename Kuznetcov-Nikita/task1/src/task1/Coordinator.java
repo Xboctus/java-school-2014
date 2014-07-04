@@ -140,6 +140,7 @@ public class Coordinator {
             for (Event event : userEntry.getValue().getUserTaskArray()) {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
                 System.out.println("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
+                logger.info("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
               }
             }
           }
