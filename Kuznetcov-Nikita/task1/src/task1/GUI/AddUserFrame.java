@@ -45,6 +45,7 @@ public class AddUserFrame extends JFrame {
         boolean userStatus = isUserActiveCheckBox.isSelected();
 
         if (userName.isEmpty() || timeZoneID.isEmpty()) {
+          Coordinator.logger.warning("Fields cannot be empty!");
           JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
           return;
         }
@@ -52,10 +53,12 @@ public class AddUserFrame extends JFrame {
         int result = taskCoordinator.addNewUser(userName, timeZoneID, userStatus);
         switch (result) {
           case 0: {
+            Coordinator.logger.info("User successfully added!");
             JOptionPane.showMessageDialog(contentPanel, "User successfully added!", "Information", JOptionPane.INFORMATION_MESSAGE);
             break;
           }
           case 1: {
+            Coordinator.logger.warning("User with such username already exists!");
             JOptionPane.showMessageDialog(contentPanel, "User with such username already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             break;
           }

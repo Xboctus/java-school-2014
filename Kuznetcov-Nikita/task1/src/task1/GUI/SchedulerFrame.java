@@ -25,10 +25,10 @@ public class SchedulerFrame extends JFrame {
   private JTextArea logArea;
 
   private static final Coordinator taskCoordinator = new Coordinator();
-  public static final Logger logger = Logger.getLogger(SchedulerFrame.class.getName());
 
   public SchedulerFrame(String frameName) {
     super(frameName);
+    Logger logger = Coordinator.logger;
     logger.setUseParentHandlers(false);
 
     mainPanel = new JPanel(new BorderLayout());
@@ -45,9 +45,6 @@ public class SchedulerFrame extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         new AddUserFrame(taskCoordinator);
-        logger.info("INFO");
-        logger.warning("WARNING");
-        logger.severe("SEVERE");
       }
     });
     JButton modifyUserButton = new JButton("Modify exists user");

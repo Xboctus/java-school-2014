@@ -27,9 +27,9 @@ public class Event implements Comparable, Cloneable {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder("Дата: ");
+    final StringBuilder sb = new StringBuilder("Date: ");
     sb.append(DateFormatter.formatDate(eventDate, TimeZone.getDefault()));
-    sb.append(", пояснение: '").append(eventText).append('\'');
+    sb.append(", event text: '").append(eventText).append('\'');
     return sb.toString();
   }
 

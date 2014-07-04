@@ -18,17 +18,16 @@ public class SchedulerLogRecordFormatter extends Formatter {
   public String format(LogRecord record) {
     StringBuffer sb = new StringBuffer();
     if (record.getLevel().intValue() == Level.INFO.intValue()) {
-      sb.append("<span style=\"color:blue;\">");
+      sb.append("Information message. ");
     }
     if (record.getLevel().intValue() == Level.WARNING.intValue()) {
-      sb.append("<span style=\"color:orange;\">");
+      sb.append("Warning message. ");
     }
     if (record.getLevel().intValue() == Level.SEVERE.intValue()) {
-      sb.append("<span style=\"color:red;\">");
+      sb.append("Error message. ");
     }
     sb.append(formatter.format(new Date(record.getMillis()))).append(": ");
-    sb.append(record.getMessage());
-    sb.append("</span>").append(LINE_SEPARATOR);
+    sb.append(record.getMessage()).append(LINE_SEPARATOR);
     return sb.toString();
   }
 }
