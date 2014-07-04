@@ -1,6 +1,7 @@
 package business;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  * @author Gavrilash
  * 
  */
-public class User {
+public class User implements Serializable {
 	private String name;
 	private boolean activeStatus;
 	private int timeZoneOffset;
@@ -109,7 +110,17 @@ public class User {
 			throw new IOException("This event is already exist");
 		}
 		events.put(e.getText(), e);
+		addEventToSchedulerInner(e);
+	}
+
+	/**
+	 * Adds events to scheduler inner event map, where all events stored
+	 * 
+	 * @param e
+	 */
+	public void addEventToSchedulerInner(Event e) {
 		e.setId(Event.getCommonId());
+		e.setViewed(false);
 		Event.increaseCommonId();
 		Scheduler.events.put(e.getId(), e);
 		Scheduler.getMainScheduler().parseEventList();

@@ -1,8 +1,9 @@
 package business;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Event implements Cloneable, Comparable<Event> {
+public class Event implements Cloneable, Serializable, Comparable<Event> {
 	private GregorianCalendar date;
 	private String text;
 	private GregorianCalendar innerSisdate;
@@ -35,8 +36,7 @@ public class Event implements Cloneable, Comparable<Event> {
 	}
 
 	/**
-	 * This method compares two events as their dates in system time zone. TODO
-	 * this method is never used, when "show info" add sorted output
+	 * This method compares two events as their dates in system time zone.
 	 */
 	@Override
 	public int compareTo(Event o) {
@@ -135,7 +135,7 @@ public class Event implements Cloneable, Comparable<Event> {
 	 * increase common id
 	 */
 	public static void increaseCommonId() {
-		commonId = commonId++;
+		commonId++;
 	}
 
 	/**

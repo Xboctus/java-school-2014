@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * This class handle all queries for User, Event and Scheduler independently of
@@ -127,8 +130,7 @@ public class CommandHandler {
 	}
 
 	/**
-	 * Returns all info about user in List<Strings> TODO here must be Set
-	 * somewhere
+	 * Returns all info about user in List<Strings>
 	 * 
 	 * @param name
 	 * @return
@@ -142,16 +144,88 @@ public class CommandHandler {
 		User user = Scheduler.users.get(name);
 		output.add(formattedUserInfo(user));
 		SimpleDateFormat fm = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
-		for (String k : user.getEvents().keySet()) {
-			output.add("Event: "
-					+ fm.format(user.getEvents().get(k).getDate().getTime())
-					+ " " + user.getEvents().get(k).getText());
+		Set<Event> sortedEvents = sortedEventSet(user);
+		for (Event e : sortedEvents) {
+			output.add("Event: " + fm.format(e.getDate().getTime()) + " "
+					+ e.getText());
 		}
 		return output;
 	}
 
+	/**
+	 * returns all events for this user as sorted collection
+	 * 
+	 * @param user
+	 * @return
+	 */
+	private static Set<Event> sortedEventSet(User user) {
+		Set<Event> output = new TreeSet<Event>();
+		for (String k : user.getEvents().keySet()) {
+			output.add(user.getEvents().get(k));
+		}
+		return output;
+	}
+
+	/**
+	 * This method invokes method of FileLoader, witch saves current state to
+	 * file
+	 * 
+	 * @param fileName
+	 * @throws IOException
+	 */
 	public static void printInfoToFile(String fileName) throws IOException {
-		FileLoader.writeToFile(fileName);
+		printInfoToSource(new FileLoader(), fileName);
+	}
+
+	private static void printInfoToSource(Loader l, String fileName)
+			throws IOException {
+		l.writeToSource(fileName);
+	}
+
+	/**
+	 * This method downloads some state of users map and set it as current for
+	 * FILE
+	 * 
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public static void downloadFromFile(String fileName) throws IOException {
+		downloadFromSource(new FileLoader(), fileName);
+	}
+
+	/**
+	 * This method downloads some state of users map and set it as current for
+	 * some source (it can be file or socket)
+	 * 
+	 * @param l
+	 * @param fileName
+	 * @throws IOException
+	 */
+	private static void downloadFromSource(Loader l, String fileName)
+			throws IOException {
+		Map<String, User> newUsers = l.readFromSource(fileName);
+		resetSchedulerMaps();
+		for (String userName : newUsers.keySet()) {
+			User user = newUsers.get(userName);
+			Scheduler.users.put(user.getName(), user);
+			for (String eventText : user.getEvents().keySet()) {
+				user.addEventToSchedulerInner(user.getEvents().get(eventText));
+			}
+		}
+	}
+
+	/**
+	 * This method removes everything from scheduler inner memory
+	 */
+	private static void resetSchedulerMaps() {
+		for (int id : Scheduler.events.keySet()) {
+			Event e = Scheduler.events.get(id);
+			e.setActive(false);
+			Scheduler.events.remove(id);
+		}
+		for (String s : Scheduler.users.keySet()) {
+			Scheduler.users.remove(s);
+		}
 	}
 
 	/**
