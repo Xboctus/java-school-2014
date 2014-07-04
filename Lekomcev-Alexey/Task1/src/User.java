@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class User {
+public class User implements Serializable{
     String name;
     Boolean status;
     TimeZone tz;
@@ -185,6 +186,19 @@ public class User {
         catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    public boolean equals(Object otherObject){
+        if (this == otherObject) return true;
+
+        if (otherObject == null) return false;
+
+        if (getClass() != otherObject.getClass())
+            return false;
+
+        User other = (User) otherObject;
+
+        return name.equals(other.name);
     }
 }
 
