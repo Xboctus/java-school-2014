@@ -4,13 +4,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class User implements Constants {
+public class User implements Constants, java.io.Serializable {
 
     private final String name;
-    private TimeZone timeZone             = TimeZone.getDefault();
     private boolean status;
+    private TimeZone timeZone             = TimeZone.getDefault();
 
-    DateFormat dateFormat                 = new SimpleDateFormat(DATE_FORMAT);
+    private DateFormat dateFormat         = new SimpleDateFormat(DATE_FORMAT);
     private TreeMap<String, Event> events = new TreeMap<String, Event>();
 
     public User (String name) {
@@ -58,7 +58,6 @@ public class User implements Constants {
     public boolean addEvent(String text, Calendar calendar) {
 
         if (events.containsKey(text)) {
-            System.out.println(EVENT_EXISTS);
             return false;
         }
 
@@ -71,7 +70,6 @@ public class User implements Constants {
     public boolean removeEvent(String text) {
 
         if (!events.containsKey(text)){
-            System.out.println(EVENT_MISSING);
             return false;
         }
 

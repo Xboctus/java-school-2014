@@ -50,7 +50,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userInfo=" + userInfo +
+                "text2event=" + text2event +
+                ", userInfo=" + userInfo +
                 '}';
     }
 

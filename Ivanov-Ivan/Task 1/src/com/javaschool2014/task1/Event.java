@@ -2,7 +2,7 @@ package com.javaschool2014.task1;
 
 import java.util.Calendar;
 
-public class Event implements Cloneable {
+public class Event implements Cloneable, java.io.Serializable {
 
     private String text;
     private Calendar calendar;

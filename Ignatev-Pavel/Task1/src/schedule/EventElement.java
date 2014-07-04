@@ -1,8 +1,13 @@
 package schedule;
 
+import java.io.Serializable;
 import java.util.Date;
 
-final class EventElement implements Cloneable {
+final class EventElement implements Cloneable,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Date date;
 	private String text;
 	

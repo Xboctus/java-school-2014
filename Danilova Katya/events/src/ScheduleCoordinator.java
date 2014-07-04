@@ -25,7 +25,7 @@ public class ScheduleCoordinator {
     private static final String ADD_RANDOM_TIME_EVENT = "AddRandomTimeEvent";
     private static final String CLONE_EVENT = "CloneEvent";
     private static final String SHOW_INFO = "ShowInfo";
-    private static final String START_SHEDULING = "startScheduling";
+    private static final String START_SHEDULING = "StartScheduling";
 
 
     private static void create(String name, TimeZone timeZone, Status status) {
@@ -44,19 +44,25 @@ public class ScheduleCoordinator {
         name2user.get(name).removeEvent(text);
     }
 
-    private static String showInfo(String name) {
+    /*private static String showInfo(String name) {
         return name2user.get(name).toString();
-    }
+    }*/
 
     private static void addRandomTimeEvent(String name, String text, Date from, Date to) {
         name2user.get(name).addRandomTimeEvent(text, from, to);
     }
 
-    private static void cloneEvent(String name, String text, String nameTo) {
-        name2user.get(nameTo).addEvent(name2user.get(name).getEvent(text));
+    private static void cloneEvent(String nameFrom, String text, String nameTo) {
+        Event eventClone;
+        try{
+            eventClone = (name2user.get(nameFrom).getEvent(text)).clone();
+            name2user.get(nameTo).addEvent(eventClone);
+        } catch (CloneNotSupportedException e) {
+            System.out.println(" Событие не может быть клонировано ");
+        }
     }
 
-    private static String ShowInfo(String name) {
+    private static String showInfo(String name) {
         String res = name2user.get(name).getUserInfo().toString();
         List<Event> events = new ArrayList<>(name2user.get(name).getAllEvent());
         int i = 0;
@@ -64,19 +70,44 @@ public class ScheduleCoordinator {
             res += events.get(i) + "\n";
             i++;
         }
+       // res += name2user.get(name).getAllEvent().toString();
         return res;
     }
 
-    /*private static void startScheduling() {
+    private static void startScheduling() {
         mode = Mode.OUTPUT;
-        int i = 0;
-        while(!name2user.values().isEmpty()) {
-            if () {
 
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println(System.currentTimeMillis());
+                //вывести имя пользователя и текст события
+            }
+        };
+
+        while(true) {
+            for(User user : name2user.values()) {
+                if(user.getUserInfo().getStatus().equals("ACTIVE")) {
+                    for(Event event : user.getAllEvent()) {
+                        if(event.getDate().getTime() == System.currentTimeMillis()) {
+                            event.getTimer().schedule(task, System.currentTimeMillis());
+                        }
+                    }
+                }
             }
         }
 
-    }*/
+        /*int i = 0;
+        //while(!name2user.values().isEmpty()) {
+        for(User user : name2user.values()) {
+            if (user.getUserInfo().getStatus().equals("ACTIVE") && ) {
+
+            }
+        }
+        for (Event event : ) {
+
+        }*/
+    }
 
     public static void main(String arguments[]) throws ParseException {
 
