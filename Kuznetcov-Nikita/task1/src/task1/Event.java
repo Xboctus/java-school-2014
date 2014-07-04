@@ -39,25 +39,14 @@ public class Event implements Comparable, Cloneable {
   }
 
   public Object clone() throws CloneNotSupportedException {
-    Event clone = (Event)super.clone();
-    clone.setEventDate(eventDate);
-    clone.setEventText(eventText);
-    return clone;
+    return new Event(this.eventDate, this.eventText);
   }
 
   public Date getEventDate() {
     return eventDate;
   }
 
-  public void setEventDate(Date eventDate) {
-    this.eventDate = eventDate;
-  }
-
   public String getEventText() {
     return eventText;
-  }
-
-  public void setEventText(String eventText) {
-    this.eventText = eventText;
   }
 }
