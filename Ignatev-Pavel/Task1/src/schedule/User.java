@@ -1,5 +1,6 @@
 package schedule;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +8,11 @@ import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 
-final class User implements Iterable<Event> {
+final class User implements Iterable<Event>,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final HashMap<String,Event> events = new HashMap();
 	private final String name;
 	private TimeZone timeZone = TimeZone.getDefault();	
