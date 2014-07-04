@@ -27,10 +27,7 @@ public class Event implements Comparable, Cloneable {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder("Date: ");
-    sb.append(DateFormatter.formatDate(eventDate, TimeZone.getDefault()));
-    sb.append(", event text: '").append(eventText).append('\'');
-    return sb.toString();
+    return "Date: " + DateFormatter.formatDate(eventDate, TimeZone.getDefault()) + ", event text: '" + eventText + '\'' + "\r\n";
   }
 
   @Override
@@ -48,5 +45,9 @@ public class Event implements Comparable, Cloneable {
 
   public String getEventText() {
     return eventText;
+  }
+
+  public String toJSONString() {
+    return "{" + "\"eventDate\": " + '"' + eventDate.getTime() + '"' + ',' + "\"eventText\": " + '"' + eventText + '"' + '}';
   }
 }

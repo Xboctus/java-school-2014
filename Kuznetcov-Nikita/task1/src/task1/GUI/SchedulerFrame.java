@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -96,11 +97,27 @@ public class SchedulerFrame extends JFrame {
         }
       }
     });
-    JButton startSchedulingButton = new JButton("Start scheduling");
-    startSchedulingButton.addActionListener(new ActionListener() {
+    JButton saveStateButton = new JButton("Save current state");
+    saveStateButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        taskCoordinator.startScheduling();
+        String path = JOptionPane.showInputDialog("Enter path to file");
+        if (path.isEmpty()) {
+          JOptionPane.showMessageDialog(mainPanel, "Path cannot be null!", "Warning", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        try {
+          File output = new File(path);
+            if (output.createNewFile()) {
+              BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(output));
+              bos.write(taskCoordinator.getCurrentState().getBytes());
+              bos.flush();
+            }
+        } catch (IOException ioex) {
+          JOptionPane.showMessageDialog(mainPanel, "TERRIBLE ERROR", "ERROR", JOptionPane.ERROR_MESSAGE);
+          ioex.printStackTrace();
+        }
+
       }
     });
 
@@ -112,7 +129,7 @@ public class SchedulerFrame extends JFrame {
     buttons.add(addRandomTimeEventButton);
     buttons.add(cloneEventButton);
     buttons.add(showUserInfoButton);
-    //buttons.add(startSchedulingButton);
+    buttons.add(saveStateButton);
 
     for (JButton controlButton : buttons) {
       controlButton.addActionListener(new ActionListener() {

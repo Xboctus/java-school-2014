@@ -141,6 +141,7 @@ public class Coordinator {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
                 System.out.println("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
                 logger.info("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
+                System.out.println(userEntry.getValue().toJSONString());
               }
             }
           }
@@ -154,6 +155,17 @@ public class Coordinator {
 
   public SortedMap<String, User> getUsersMap() {
     return this.usersMap;
+  }
+
+  public String getCurrentState() {
+    StringBuilder sb = new StringBuilder();
+    sb.append('[');
+    for (User user : usersMap.values()) {
+      sb.append(user.toJSONString()).append(',');
+    }
+    sb.deleteCharAt(sb.lastIndexOf(","));
+    sb.append(']');
+    return sb.toString();
   }
 
 }

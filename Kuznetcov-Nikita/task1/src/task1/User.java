@@ -28,18 +28,34 @@ public class User implements Comparable {
 
   @Override
   public String toString() {
-    final StringBuilder sb = new StringBuilder("Пользователь: ");
+    StringBuilder sb = new StringBuilder("User: ");
     sb.append(userName);
-    sb.append(", тайм-зона: ").append(timeZone.getID());
-    sb.append(", статус=").append(isActive ? "активен" : "неактивен").append("\r\n");
-    sb.append("Список задач:\r\n");
+    sb.append(", Time-ZoneID: ").append(timeZone.getID());
+    sb.append(", status=").append(isActive ? "active" : "inactive").append("\r\n");
+    sb.append("Event list:\r\n");
     if (!userTaskSet.isEmpty()) {
       for (Event event : userTaskSet) {
         sb.append(event.toString());
       }
     } else {
-      sb.append("Список задач пуст!\r\n");
+      sb.append("Event list is empty!\r\n");
     }
+    return sb.toString();
+  }
+
+  public String toJSONString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append('{');
+      sb.append("\"userName\": ").append('"').append(userName).append('"').append(',');
+      sb.append("\"timeZomeID\": ").append('"').append(timeZone.getID()).append('"').append(',');
+      sb.append("\"isActive\": ").append('"').append(isActive ? "true" : "false").append('"').append(',');
+      sb.append("\"userTaskSet\": ").append('[');
+        for (Event event : userTaskSet) {
+         sb.append(event.toJSONString()).append(',');
+        }
+      sb.deleteCharAt(sb.lastIndexOf(","));
+      sb.append(']');
+    sb.append('}');
     return sb.toString();
   }
 
