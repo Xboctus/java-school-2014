@@ -22,12 +22,12 @@ public class Main implements Constants {
 
             GUICoordinator coordinator = new GUICoordinator();
 
-            coordinator.createUser("Ivan", "GMT+0", "active");
-            coordinator.addUserEvent("Ivan", "Task 3", "30.06.2014-11:10:10");
-            coordinator.addUserEvent("Ivan", "Task 2", "02.07.2014-0:50:20");
-            coordinator.addUserEvent("Ivan", "Task 1", "30.06.2014-11:10:10");
+            coordinator.createUser("Name", "GMT+0", "active");
+            coordinator.addUserEvent("Name", "Task 3", "30.06.2014-11:10:10");
+            coordinator.addUserEvent("Name", "Task 2", "02.07.2014-0:50:20");
+            coordinator.addUserEvent("Name", "Task 1", "30.06.2014-11:10:10");
 
-            coordinator.showUserInfo("Ivan");
+            //coordinator.showUserInfo("Name");
 
             coordinator.display();
             coordinator.start();

@@ -21,7 +21,7 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     protected void connectDefaultDataFile() {}
 
-    public void start(){
+    public void start() {
 
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         timer.scheduleAtFixedRate(this, 0, 1000);

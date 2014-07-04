@@ -177,6 +177,7 @@ public class GUICoordinator extends AbstractCoordinator {
         newFrame.add(mainPanel);
         newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         newFrame.setSize(540, 460);
+        newFrame.setResizable(false);
         newFrame.setVisible(true);
 
     }
