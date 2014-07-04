@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.ResponseStatus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Sunrise on 03.07.2014.
  */
-public class AddRandomTimeEventFrame extends JFrame {
+public class AddRandomTimeEventFrame extends TemplateFrame {
 
-  private JPanel contentPanel;
   private JFormattedTextField userNameInput;
   private JFormattedTextField taskTextInput;
   private JFormattedTextField dateFromTextInput;
@@ -37,7 +37,7 @@ public class AddRandomTimeEventFrame extends JFrame {
     contentPanel.add(new JLabel("Event date to"));
     contentPanel.add(dateToTextInput);
 
-    JButton okButton = new JButton("OK");
+    okButton = new JButton("OK");
     okButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -46,22 +46,18 @@ public class AddRandomTimeEventFrame extends JFrame {
         String dateFrom = dateFromTextInput.getText();
         String dateTo = dateToTextInput.getText();
         if (userName.isEmpty() || taskText.isEmpty() || dateFrom.isEmpty() || dateTo.isEmpty()) {
-          JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+          showDialogByResponseStatus(ResponseStatus.EMPTY_FIELDS);
           return;
         }
-        int result = taskCoordinator.addRandomTimeEvent(userName, taskText, dateFrom, dateTo);
-        if (result == 0) {
-          JOptionPane.showMessageDialog(contentPanel, "OK", "Information", JOptionPane.INFORMATION_MESSAGE);
-        }
+        ResponseStatus status = taskCoordinator.addRandomTimeEvent(userName, taskText, dateFrom, dateTo);
+        showDialogByResponseStatus(status);
       }
     });
     contentPanel.add(okButton);
 
     this.add(contentPanel);
 
-    pack();
     this.setBounds(400, 200, 400, 300);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
-    setVisible(true);
+    showFrame();
   }
 }

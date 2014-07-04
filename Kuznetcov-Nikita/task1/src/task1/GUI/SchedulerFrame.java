@@ -112,7 +112,7 @@ public class SchedulerFrame extends JFrame {
     buttons.add(addRandomTimeEventButton);
     buttons.add(cloneEventButton);
     buttons.add(showUserInfoButton);
-    buttons.add(startSchedulingButton);
+    //buttons.add(startSchedulingButton);
 
     for (JButton controlButton : buttons) {
       controlButton.addActionListener(new ActionListener() {
@@ -132,6 +132,7 @@ public class SchedulerFrame extends JFrame {
     setBounds(300, 300, 400, 600);
     setResizable(false);
     setVisible(true);
+    taskCoordinator.startScheduling();
   }
 
 }

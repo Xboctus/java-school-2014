@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.ResponseStatus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Sunrise on 03.07.2014.
  */
-public class CloneEventFrame extends JFrame {
+public class CloneEventFrame extends TemplateFrame {
 
-  private JPanel contentPanel;
   private JFormattedTextField srcUserNameInput;
   private JFormattedTextField srcTaskTextInput;
   private JFormattedTextField targetUserNameInput;
@@ -32,7 +32,7 @@ public class CloneEventFrame extends JFrame {
     contentPanel.add(new JLabel("Target user name"));
     contentPanel.add(targetUserNameInput);
 
-    JButton okButton = new JButton("OK");
+    okButton = new JButton("OK");
     okButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -40,21 +40,17 @@ public class CloneEventFrame extends JFrame {
         String srcTaskText = srcTaskTextInput.getText();
         String targetUserName = targetUserNameInput.getText();
         if (srcUserName.isEmpty() || srcTaskText.isEmpty() || targetUserName.isEmpty()) {
-          JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
+          showDialogByResponseStatus(ResponseStatus.EMPTY_FIELDS);
         }
-        int result = taskCoordinator.cloneEvent(srcUserName, srcTaskText, targetUserName);
-        if (result == 0) {
-          JOptionPane.showMessageDialog(contentPanel, "OK", "Information", JOptionPane.INFORMATION_MESSAGE);
-        }
+        ResponseStatus status = taskCoordinator.cloneEvent(srcUserName, srcTaskText, targetUserName);
+        showDialogByResponseStatus(status);
       }
     });
     contentPanel.add(okButton);
 
     this.add(contentPanel);
 
-    pack();
     this.setBounds(400, 200, 400, 300);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
-    setVisible(true);
+    showFrame();
   }
 }

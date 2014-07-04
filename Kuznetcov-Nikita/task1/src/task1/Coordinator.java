@@ -139,7 +139,7 @@ public class Coordinator {
           if (userEntry.getValue().isActive()) {
             for (Event event : userEntry.getValue().getUserTaskArray()) {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
-                System.out.println("EVENT: User: " + userEntry.getKey() + "\r\nEvent info: " + event);
+                System.out.println("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
               }
             }
           }

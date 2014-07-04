@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.ResponseStatus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Sunrise on 02.07.2014.
  */
-public class AddEventFrame extends JFrame {
+public class AddEventFrame extends TemplateFrame {
 
-  private JPanel contentPanel;
   private JFormattedTextField nameInput;
   private JFormattedTextField eventDateInput;
   private JFormattedTextField eventTextInput;
@@ -37,7 +37,7 @@ public class AddEventFrame extends JFrame {
     contentPanel.add(eventTextLabel);
     contentPanel.add(eventTextInput);
 
-    final JButton okButton = new JButton("OK");
+    okButton = new JButton("OK");
     okButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -50,30 +50,15 @@ public class AddEventFrame extends JFrame {
           return;
         }
 
-        int result = taskCoordinator.addEvent(userName, eventText, eventDate);
-        switch (result) {
-          case 0 : {
-            JOptionPane.showMessageDialog(contentPanel, "Event successfully added to user " + userName + "'s event list!", "Information", JOptionPane.INFORMATION_MESSAGE); break;
-          }
-          case 1 : {
-            JOptionPane.showMessageDialog(contentPanel, "User with such username doesn't exists!", "Warning", JOptionPane.WARNING_MESSAGE); break;
-          }
-          case 2 : {
-            JOptionPane.showMessageDialog(contentPanel, "Bad date format! Acceptable format: \"dd.MM.yyyy-HH:mm:ss\"", "Warning", JOptionPane.WARNING_MESSAGE); break;
-          }
-          case 3 : {
-            JOptionPane.showMessageDialog(contentPanel, "Event with specified text already exists!", "Warning", JOptionPane.WARNING_MESSAGE); break;
-          }
-        }
+        ResponseStatus status = taskCoordinator.addEvent(userName, eventText, eventDate);
+        showDialogByResponseStatus(status);
       }
     });
     contentPanel.add(okButton);
 
     this.add(contentPanel);
 
-    pack();
     this.setBounds(400, 200, 400, 250);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
-    setVisible(true);
+    showFrame();
   }
 }

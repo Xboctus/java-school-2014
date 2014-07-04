@@ -26,4 +26,7 @@ public enum ResponseStatus {
   EVENT_REMOVED,
   EVENT_CLONED,
 
+  // gui status
+  EMPTY_FIELDS
+
 }

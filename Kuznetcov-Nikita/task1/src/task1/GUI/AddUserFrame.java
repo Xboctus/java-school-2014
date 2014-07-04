@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.ResponseStatus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Sunrise on 02.07.2014.
  */
-public class AddUserFrame extends JFrame {
+public class AddUserFrame extends TemplateFrame {
 
-  private JPanel contentPanel;
   private JFormattedTextField nameInput;
   private JFormattedTextField timeZoneInput;
   private JCheckBox isUserActiveCheckBox;
@@ -36,7 +36,7 @@ public class AddUserFrame extends JFrame {
     contentPanel.add(statusLabel);
     contentPanel.add(isUserActiveCheckBox);
 
-    final JButton okButton = new JButton("OK");
+    okButton = new JButton("OK");
     okButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -46,33 +46,20 @@ public class AddUserFrame extends JFrame {
 
         if (userName.isEmpty() || timeZoneID.isEmpty()) {
           Coordinator.logger.warning("Fields cannot be empty!");
-          JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
+          showDialogByResponseStatus(ResponseStatus.EMPTY_FIELDS);
           return;
         }
 
-        int result = taskCoordinator.addNewUser(userName, timeZoneID, userStatus);
-        switch (result) {
-          case 0: {
-            Coordinator.logger.info("User successfully added!");
-            JOptionPane.showMessageDialog(contentPanel, "User successfully added!", "Information", JOptionPane.INFORMATION_MESSAGE);
-            break;
-          }
-          case 1: {
-            Coordinator.logger.warning("User with such username already exists!");
-            JOptionPane.showMessageDialog(contentPanel, "User with such username already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
-            break;
-          }
-        }
+        ResponseStatus status = taskCoordinator.addNewUser(userName, timeZoneID, userStatus);
+        showDialogByResponseStatus(status);
       }
     });
     contentPanel.add(okButton);
 
     this.add(contentPanel);
 
-    pack();
     this.setBounds(400, 200, 400, 200);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
-    setVisible(true);
+    showFrame();
   }
 
 }

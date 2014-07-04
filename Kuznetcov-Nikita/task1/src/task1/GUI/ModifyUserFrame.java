@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.ResponseStatus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Sunrise on 02.07.2014.
  */
-public class ModifyUserFrame extends JFrame {
+public class ModifyUserFrame extends TemplateFrame {
 
-  private JPanel contentPanel;
   private JFormattedTextField nameInput;
   private JFormattedTextField timeZoneInput;
   private JCheckBox isUserActiveCheckBox;
@@ -36,7 +36,7 @@ public class ModifyUserFrame extends JFrame {
     contentPanel.add(statusLabel);
     contentPanel.add(isUserActiveCheckBox);
 
-    final JButton okButton = new JButton("OK");
+    okButton = new JButton("OK");
     okButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -45,32 +45,20 @@ public class ModifyUserFrame extends JFrame {
         boolean userStatus = isUserActiveCheckBox.isSelected();
 
         if (userName.isEmpty() || timeZoneID.isEmpty()) {
-          JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
+          showDialogByResponseStatus(ResponseStatus.EMPTY_FIELDS);
           return;
         }
 
-        int result = taskCoordinator.modifyUser(userName, timeZoneID, userStatus);
-        switch (result) {
-          case 0: {
-            JOptionPane.showMessageDialog(contentPanel, "User info successfully updated", "Information", JOptionPane.INFORMATION_MESSAGE);
-            break;
-          }
-          case 1: {
-            JOptionPane.showMessageDialog(contentPanel, "User not found!", "Information", JOptionPane.WARNING_MESSAGE);
-            break;
-          }
-        }
-        System.out.println(taskCoordinator.getUsersMap());
+        ResponseStatus status = taskCoordinator.modifyUser(userName, timeZoneID, userStatus);
+        showDialogByResponseStatus(status);
       }
     });
     contentPanel.add(okButton);
 
     this.add(contentPanel);
 
-    pack();
     this.setBounds(400, 200, 400, 200);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
-    setVisible(true);
+    showFrame();
   }
 
 }

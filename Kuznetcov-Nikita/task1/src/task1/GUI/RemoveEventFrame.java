@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.ResponseStatus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +11,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Sunrise on 02.07.2014.
  */
-public class RemoveEventFrame extends JFrame {
+public class RemoveEventFrame extends TemplateFrame {
 
-  private JPanel contentPanel;
   private JFormattedTextField nameInput;
   private JFormattedTextField taskTextInput;
 
@@ -31,7 +31,7 @@ public class RemoveEventFrame extends JFrame {
     contentPanel.add(taskTextLabel);
     contentPanel.add(taskTextInput);
 
-    JButton okButton = new JButton("OK");
+    okButton = new JButton("OK");
     okButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -40,31 +40,16 @@ public class RemoveEventFrame extends JFrame {
         if (userName.isEmpty() || taskText.isEmpty()) {
           JOptionPane.showMessageDialog(contentPanel, "Fields cannot be empty", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        int result = taskCoordinator.removeEvent(userName, taskText);
-        switch (result) {
-          case 0: {
-            JOptionPane.showMessageDialog(contentPanel, "Event successfully removed!", "Information", JOptionPane.INFORMATION_MESSAGE);
-            break;
-          }
-          case 1: {
-            JOptionPane.showMessageDialog(contentPanel, "User with such username not found!", "Warning", JOptionPane.WARNING_MESSAGE);
-            break;
-          }
-          case 2: {
-            JOptionPane.showMessageDialog(contentPanel, "Event with such text not found!", "Warning", JOptionPane.WARNING_MESSAGE);
-            break;
-          }
-        }
+        ResponseStatus status = taskCoordinator.removeEvent(userName, taskText);
+        showDialogByResponseStatus(status);
       }
     });
     contentPanel.add(okButton);
 
     this.add(contentPanel);
 
-    pack();
     this.setBounds(400, 200, 400, 200);
-    setDefaultCloseOperation(HIDE_ON_CLOSE);
-    setVisible(true);
+    showFrame();
   }
 
 }
