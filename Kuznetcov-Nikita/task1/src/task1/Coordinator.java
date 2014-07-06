@@ -1,6 +1,11 @@
 package task1;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import task1.Util.ResponseStatus;
+
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -26,7 +31,6 @@ public class Coordinator {
       return ResponseStatus.USER_NOT_FOUND;
     }
     if (!timeZoneID.matches("GMT[+-][0-2]?[0-9](:[0-5]?[0-9])?")) {
-      // if timezoneID has bad format
       return ResponseStatus.BAD_TIMEZONE_FORMAT;
     }
     targetUser.setTimeZone(TimeZone.getTimeZone(timeZoneID));
@@ -41,11 +45,9 @@ public class Coordinator {
     }
     Date date = DateFormatter.parseDate(taskDateInput, targetUser.getTimeZone());
     if (date == null) {
-      // bad date format
       return ResponseStatus.BAD_DATE_FORMAT;
     }
     if (!targetUser.addEvent(new Event(DateFormatter.parseDate(taskDateInput, targetUser.getTimeZone()), taskText))) {
-      // event with specified text already exists
       return ResponseStatus.EVENT_ALREADY_EXISTS;
     }
     return ResponseStatus.EVENT_ADDED;
@@ -54,12 +56,10 @@ public class Coordinator {
   public ResponseStatus removeEvent(String userName, String targetText) {
     User targetUser = usersMap.get(userName);
     if (targetUser == null) {
-      // if user with such username doesn't exists
       return ResponseStatus.USER_NOT_FOUND;
     }
     Event targetEvent = targetUser.getEventByText(targetText);
     if (targetEvent == null) {
-      // event with specified text doesn't exists
       return ResponseStatus.EVENT_NOT_FOUND;
     }
     targetUser.removeEvent(targetUser.getEventByText(targetText));
@@ -99,26 +99,19 @@ public class Coordinator {
       User srcUser = usersMap.get(userName);
       User targetUser = usersMap.get(targetUserName);
       if (srcUser == null) {
-        // source user doesn't exists
         return ResponseStatus.USER_NOT_FOUND;
       }
       if (targetUser == null) {
-        // target user doesn't exists
         return ResponseStatus.TARGET_USER_NOT_FOUND;
       }
       Event srcEvent = srcUser.getEventByText(taskText);
       if (srcEvent == null) {
-        // srcEvent not found
         return ResponseStatus.EVENT_NOT_FOUND;
       }
-      if (!usersMap.get(targetUserName).addEvent((Event)srcEvent.clone())) {
-        // if Event with specified text already present is user's event list
+      if (!usersMap.get(targetUserName).addEvent((Event) srcEvent.clone())) {
         return ResponseStatus.EVENT_ALREADY_EXISTS;
       }
-    } catch (CloneNotSupportedException ex) {
-      // won't happen
-    }
-    // if all going well
+    } catch (CloneNotSupportedException ex) { /* won't happen */ }
     return ResponseStatus.EVENT_CLONED;
   }
 
@@ -132,16 +125,14 @@ public class Coordinator {
     TimerTask timerTask = new TimerTask() {
       @Override
       public void run() {
-
         long currentTime = new Date().getTime() / 1000;
 
-        for (Map.Entry<String, User> userEntry : usersMap.entrySet()) {
-          if (userEntry.getValue().isActive()) {
-            for (Event event : userEntry.getValue().getUserTaskArray()) {
+        for (User user : usersMap.values()) {
+          if (user.isActive()) {
+            for (Event event : user.getUserTaskArray()) {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
-                System.out.println("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
-                logger.info("---EVENT---\r\nUser: " + userEntry.getKey() + "\r\nEvent info: " + event);
-                System.out.println(userEntry.getValue().toJSONString());
+                System.out.println("---EVENT---\r\nUser: " + user.getUserName() + "\r\nEvent info: " + event);
+                logger.info("---EVENT---\r\nUser: " + user.getUserName() + "\r\nEvent info: " + event);
               }
             }
           }
@@ -153,19 +144,57 @@ public class Coordinator {
     scheduler.scheduleAtFixedRate(timerTask, 0, 1000);
   }
 
-  public SortedMap<String, User> getUsersMap() {
-    return this.usersMap;
+  public User getUserByName(String userName) {
+    return usersMap.get(userName);
   }
 
-  public String getCurrentState() {
-    StringBuilder sb = new StringBuilder();
-    sb.append('[');
+  public JSONObject getCurrentState() {
+    JSONObject result = new JSONObject();
+    JSONArray usersArray = new JSONArray();
     for (User user : usersMap.values()) {
-      sb.append(user.toJSONString()).append(',');
+      usersArray.add(user.getUserInfoAsJSON());
     }
-    sb.deleteCharAt(sb.lastIndexOf(","));
-    sb.append(']');
-    return sb.toString();
+    result.put("usersList", usersArray);
+    return result;
+  }
+
+  public void parseStateFile(String input) {
+    JSONParser parser = new JSONParser();
+    SortedMap<String, User> usersMap = new TreeMap<String, User>();
+
+    try {
+//      Date start = new Date();
+//      System.out.println("Start parsing at " + start);
+      JSONObject parsedObject = (JSONObject) parser.parse(input);
+      JSONArray usersArray = (JSONArray) parsedObject.get("usersList");
+
+      Iterator<JSONObject> usersIterator = usersArray.iterator();
+      while (usersIterator.hasNext()) {
+        JSONObject JSONUser = usersIterator.next();
+        String userName = (String) JSONUser.get("userName");
+        String timeZoneID = (String) JSONUser.get("timeZoneID");
+        boolean isActive = (Boolean) JSONUser.get("isActive");
+        User user = new User(userName, TimeZone.getTimeZone(timeZoneID), isActive);
+
+        JSONArray userEventSet = (JSONArray) JSONUser.get("userTaskSet");
+        Iterator<JSONObject> eventIterator = userEventSet.iterator();
+        while (eventIterator.hasNext()) {
+          JSONObject JSONDate = eventIterator.next();
+          Date eventDate = new Date((Long) JSONDate.get("eventDate"));
+          String eventText = (String) JSONDate.get("eventText");
+          Event event = new Event(eventDate, eventText);
+          user.addEvent(event);
+        }
+        usersMap.put(userName, user);
+      }
+//      Date end = new Date();
+//      System.out.println("End parsing at " + end);
+//      System.out.println("Time difference between start and end is: " + (end.getTime() - start.getTime()));
+    } catch (ParseException ex) {
+      logger.warning("Bad input file format");
+    }
+    logger.info("State recovered successfully!");
+    this.usersMap = usersMap;
   }
 
 }

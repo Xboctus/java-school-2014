@@ -1,5 +1,7 @@
 package task1;
 
+import org.json.simple.JSONObject;
+
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -35,6 +37,13 @@ public class Event implements Comparable, Cloneable {
     return obj instanceof Event && ((Event) obj).getEventText().equals(this.eventText);
   }
 
+  public JSONObject getEventAsJSON() {
+    JSONObject object = new JSONObject();
+    object.put("eventDate", eventDate.getTime());
+    object.put("eventText", eventText);
+    return object;
+  }
+
   public Object clone() throws CloneNotSupportedException {
     return new Event(this.eventDate, this.eventText);
   }
@@ -47,7 +56,4 @@ public class Event implements Comparable, Cloneable {
     return eventText;
   }
 
-  public String toJSONString() {
-    return "{" + "\"eventDate\": " + '"' + eventDate.getTime() + '"' + ',' + "\"eventText\": " + '"' + eventText + '"' + '}';
-  }
 }

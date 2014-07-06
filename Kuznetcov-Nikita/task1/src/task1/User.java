@@ -1,6 +1,8 @@
 package task1;
 
-import java.util.Collections;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.TreeSet;
@@ -43,20 +45,22 @@ public class User implements Comparable {
     return sb.toString();
   }
 
-  public String toJSONString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append('{');
-      sb.append("\"userName\": ").append('"').append(userName).append('"').append(',');
-      sb.append("\"timeZomeID\": ").append('"').append(timeZone.getID()).append('"').append(',');
-      sb.append("\"isActive\": ").append('"').append(isActive ? "true" : "false").append('"').append(',');
-      sb.append("\"userTaskSet\": ").append('[');
-        for (Event event : userTaskSet) {
-         sb.append(event.toJSONString()).append(',');
-        }
-      sb.deleteCharAt(sb.lastIndexOf(","));
-      sb.append(']');
-    sb.append('}');
-    return sb.toString();
+  public JSONObject getUserInfoAsJSON() {
+    JSONObject result = new JSONObject();
+    result.put("userName", userName);
+    result.put("timeZoneID", timeZone.getID());
+    result.put("isActive", isActive);
+
+    JSONArray eventArray = new JSONArray();
+    for (Event event : userTaskSet) {
+      eventArray.add(event.getEventAsJSON());
+    }
+    result.put("userTaskSet", eventArray);
+    return result;
+  }
+
+  public String getUserName() {
+    return userName;
   }
 
   public Event getEventByText(String targetText) {
@@ -66,9 +70,13 @@ public class User implements Comparable {
     return null;
   }
 
-  public boolean addEvent(Event event) { return this.userTaskSet.add(event); }
+  public boolean addEvent(Event event) {
+    return this.userTaskSet.add(event);
+  }
 
-  public boolean removeEvent(Event event) { return this.userTaskSet.remove(event); }
+  public boolean removeEvent(Event event) {
+    return this.userTaskSet.remove(event);
+  }
 
   public TimeZone getTimeZone() {
     return timeZone;

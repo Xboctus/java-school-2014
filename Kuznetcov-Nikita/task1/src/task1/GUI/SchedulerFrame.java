@@ -33,7 +33,7 @@ public class SchedulerFrame extends JFrame {
     logger.setUseParentHandlers(false);
 
     mainPanel = new JPanel(new BorderLayout());
-    buttonsPanel = new JPanel(new GridLayout(8, 1, 5, 0));
+    buttonsPanel = new JPanel(new GridLayout(9, 1, 5, 0));
 
     logArea = new JTextArea("Log will be here\r\n", 30, 15);
     logArea.setLineWrap(true);
@@ -108,16 +108,41 @@ public class SchedulerFrame extends JFrame {
         }
         try {
           File output = new File(path);
-            if (output.createNewFile()) {
-              BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(output));
-              bos.write(taskCoordinator.getCurrentState().getBytes());
-              bos.flush();
-            }
+          if (output.createNewFile()) {
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(output));
+            bos.write(taskCoordinator.getCurrentState().toJSONString().getBytes());
+            bos.flush();
+          }
         } catch (IOException ioex) {
           JOptionPane.showMessageDialog(mainPanel, "TERRIBLE ERROR", "ERROR", JOptionPane.ERROR_MESSAGE);
           ioex.printStackTrace();
         }
-
+      }
+    });
+    JButton loadStateButton = new JButton("load new state from file");
+    loadStateButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JFileChooser chooser = new JFileChooser();
+        int status = chooser.showDialog(null, "Open file!");
+        if (status == JFileChooser.APPROVE_OPTION) {
+          File inputFile = chooser.getSelectedFile();
+          try {
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            StringBuilder sb = new StringBuilder();
+            while (reader.ready()) {
+              sb.append(reader.readLine());
+            }
+            reader.close();
+            taskCoordinator.parseStateFile(sb.toString());
+          } catch (FileNotFoundException fnfex) {
+            System.out.println("File not found!");
+          } catch (IOException ioex) {
+            System.out.println("Input exception!");
+          }
+        } else {
+          JOptionPane.showMessageDialog(null, "File not selected", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
       }
     });
 
@@ -130,6 +155,7 @@ public class SchedulerFrame extends JFrame {
     buttons.add(cloneEventButton);
     buttons.add(showUserInfoButton);
     buttons.add(saveStateButton);
+    buttons.add(loadStateButton);
 
     for (JButton controlButton : buttons) {
       controlButton.addActionListener(new ActionListener() {
@@ -142,11 +168,11 @@ public class SchedulerFrame extends JFrame {
     }
     mainPanel.add(buttonsPanel, BorderLayout.EAST);
 
-    this.add(mainPanel);
+    this.add(mainPanel, BorderLayout.CENTER);
 
     pack();
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setBounds(300, 300, 400, 600);
+    setBounds(300, 300, 500, 600);
     setResizable(false);
     setVisible(true);
     taskCoordinator.startScheduling();

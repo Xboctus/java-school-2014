@@ -21,8 +21,7 @@ public class MainClass {
 
     Coordinator taskCoordinator = new Coordinator();
     String command;
-    InputStreamReader inputStream = new InputStreamReader(System.in);
-    BufferedReader reader = new BufferedReader(inputStream);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     System.out.println("Scheduler started at editor mode!");
 
     do {
@@ -73,7 +72,7 @@ public class MainClass {
       if (command.matches("ShowInfo\\((.+)\\)")) {
         // ShowInfo(name)
         String[] params = command.substring(command.indexOf('(') + 1, command.lastIndexOf(')')).replaceAll(" ", "").trim().split(",");
-        User targetUser = taskCoordinator.getUsersMap().get(params[0]);
+        User targetUser = taskCoordinator.getUserByName(params[0]);
         if (targetUser != null) {
           System.out.println(targetUser.toString());
         } else {
@@ -85,13 +84,8 @@ public class MainClass {
         System.out.println("Start planning...");
         taskCoordinator.startScheduling();
         reader.close();
-        inputStream.close();
         break;
       }
-
-      System.out.println("Users list:");
-      System.out.println(taskCoordinator.getUsersMap());
-
     } while (true);
 
   }
