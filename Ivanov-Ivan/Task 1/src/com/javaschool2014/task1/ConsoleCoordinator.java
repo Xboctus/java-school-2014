@@ -36,9 +36,7 @@ public class ConsoleCoordinator extends AbstractCoordinator {
                 }
 
                 if (filename.equals("N")) {
-
                     return;
-
                 }
 
             }

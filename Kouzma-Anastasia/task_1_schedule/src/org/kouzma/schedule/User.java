@@ -3,6 +3,7 @@ package org.kouzma.schedule;
 import java.util.Date;
 import java.util.TreeSet;
 
+
 /**
  * 
  * @author Anastasya Kouzma
@@ -45,18 +46,14 @@ public class User {
 		lstEvents.add(event);
 	}	
 	
-	public void AddEvent(String text, Date eventDate) {
-		lstEvents.add(new Event(text, toGMT(eventDate)));
+	public Event AddEvent(String text, Date eventDate) {
+		Event newEvent = new Event(text, toGMT(eventDate), this);
+		lstEvents.add(newEvent);
+		return newEvent;
 	} 	
 
-	public boolean RemoveEvent(String text) {
-		for (Event event : lstEvents) {
-			if (event.getText().equals(text)) {
-				lstEvents.remove(event);
-				return true;
-			}
-		}
-		return false;
+	public void RemoveEvent(Event event) {
+		lstEvents.remove(event);
 	}
 	
 	public Event findEvent(String text) {

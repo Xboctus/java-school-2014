@@ -1,6 +1,6 @@
-import java.util.Comparator;
-import java.util.Date;
-import java.util.TreeSet;
+import javax.jws.soap.SOAPBinding;
+import java.awt.*;
+import java.util.*;
 
 
 public class SortingEvents {
@@ -14,8 +14,32 @@ public class SortingEvents {
         treeSet.add(new Output(p_user, p_date, p_description));
     }
 
+    public synchronized void add(User p_user){
+        for(Event e : p_user.events){
+            treeSet.add(new Output(p_user, e.date, e.description));
+        }
+    }
+
+    public synchronized void delete(User p_user){
+        for(Iterator<Output> it = treeSet.iterator(); it.hasNext();){
+            Output output = it.next();
+            if (output.equals(new Output(p_user))){
+                it.remove();
+            }
+        }
+    }
+
     public static synchronized Output getOutput() {
         return treeSet.pollFirst();
+    }
+
+    public static synchronized void setTreeSet(ArrayList<User> users){
+        treeSet.clear();
+        for(User u : users){
+            for(Event e : u.events){
+                treeSet.add(new Output(u, e.date, e.description));
+            }
+        }
     }
 
     Comparator<Output> comp = new Comparator<Output>() {

@@ -25,7 +25,7 @@ class TimerSchedule extends TimerTask {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy:hh:mm:ss");
         sdf.setTimeZone(TimeZone.getDefault());
         if (component!=null){
-            component.append("\n" + user.name +"\n" + " " + description + " " + new Date());
+            component.append("\n" + user.name +"\n" + " " + description + " " + new Date() + '\n');
             return;
         }
         System.out.println(sdf.format(new Date()));
