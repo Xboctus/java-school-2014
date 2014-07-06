@@ -1,8 +1,5 @@
 package com.leomze.DialogViewers;
 
-
-import com.leomze.TaskerView;
-
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -13,17 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 
-public class RemoveEvent {
 
-
-
+public class WebSync {
 
     private void createAndShowGUI() throws ParseException {
         dialog = new JDialog();
         dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        dialog.setTitle("Remove Event");
+        dialog.setTitle("Sync");
         createUser(dialog.getContentPane());
         dialog.setResizable(false);
         dialog.pack();
@@ -37,9 +34,11 @@ public class RemoveEvent {
         paneDialog = new JPanel();
         panelContetnt = new JPanel();
         userNameLb = new JLabel();
-        eventTextBox = new JTextField();
+        nameTextField = new JTextField();
         statusLb = new JLabel();
-        nameTextBox = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
+        eventTextField = new JTextField();
+        timeZoneLb = new JLabel();
+        dateTextField = new JFormattedTextField(new MaskFormatter("##.##.## ##:##:##"));
         barButton = new JPanel();
         btnOk = new JButton();
 
@@ -67,22 +66,14 @@ public class RemoveEvent {
                 ((GridBagLayout)panelContetnt.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
 
 
-                userNameLb.setText("User name");
+                userNameLb.setText("Write IP");
                 panelContetnt.add(userNameLb, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(nameTextBox, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
+                panelContetnt.add(nameTextField, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
-
-                statusLb.setText("Event message");
-                panelContetnt.add(statusLb, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(eventTextBox, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 0), 0, 0));
 
             }
             paneDialog.add(panelContetnt, BorderLayout.CENTER);
@@ -95,17 +86,15 @@ public class RemoveEvent {
                 ((GridBagLayout) barButton.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
 
-                btnOk.setText("OK");
+                btnOk.setText("Sync");
                 barButton.add(btnOk, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        String[] data = new String[2];
-                        data[0] = nameTextBox.getSelectedItem().toString();
-                        data[1] = eventTextBox.getText();
-                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.removeEvent(data[0], data[1]));
+
+
                         dialog.dispose();
                     }
                 });
@@ -119,8 +108,6 @@ public class RemoveEvent {
 
     }
 
-
-
     public void start() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -133,14 +120,18 @@ public class RemoveEvent {
         });
     }
 
-
     private JDialog dialog;
     private JPanel paneDialog;
     private JPanel panelContetnt;
     private JLabel userNameLb;
-    private JTextField eventTextBox;
+    private JFormattedTextField dateTextField;
+    private JLabel timeZoneLb;
+    private JTextField eventTextField;
     private JLabel statusLb;
-    private JComboBox nameTextBox;
+    private JTextField nameTextField;
     private JPanel barButton;
     private JButton btnOk;
+
+
+
 }

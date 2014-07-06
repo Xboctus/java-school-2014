@@ -3,57 +3,35 @@ package com.leomze;
 
 
 
-import com.leomze.DialogViewers.DialogView;
+import com.leomze.DialogViewers.*;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 
-public class TaskerView {
+
+public class TaskerView extends JFrame {
 
 
-    final static boolean RIGHT_TO_LEFT = false;
-    private static final int CREATE_USER = 1;
-    private static final int MODIFY_USER = 2;
-    private static final int ADD_EVENT = 3;
-    private static final int ADD_RANDOM_EVENT = 4;
-    private static final int REMOVE_EVENT = 5;
-    private static final int CLONE_EVENT = 6;
-    private static final int SYNC = 7;
-    private static final int SAVE = 8;
+    public static TaskHandler taskHandler = new TaskHandler();
+    public static JButton createBtn;
+    public static JButton startSchedulingBtn;
+    public static JButton modifyBtn;
+    public static JButton addEventBtn;
+    public static JButton addRandEventBtn;
+    public static JButton cloneBtn;
+    public static JButton removeBtn;
+    public static JButton syncBtn;
+    public static JButton saveBtn;
+    public static JLabel IPLb;
+    public static JTextArea textArea = new JTextArea();
 
-    TaskHandler taskHandler = new TaskHandler();
-
-    public ArrayList<String> getUser(){
-       ArrayList<String> names =  new ArrayList<String>();
-        for(String name: taskHandler.users.keySet()){
-            names.add(name);
-        }
-        return names;
-
-    }
-
-
-    public static void addComponentsToPane(Container pane) {
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
-
-
-        JButton createBtn;
-        JButton startSchedulingBtn;
-        JButton modifyBtn;
-        JButton addEventBtn;
-        JButton addRandEventBtn;
-        JButton cloneBtn;
-        JButton removeBtn;
-        JButton syncBtn;
-        JButton saveBtn;
-        JTextArea textArea = new JTextArea();
-        final DialogView dv = new DialogView();
+    public void addComponentsToPane(Container pane) {
 
         pane.setLayout(new GridBagLayout());
         GridBagConstraints bc = new GridBagConstraints();
@@ -65,12 +43,20 @@ public class TaskerView {
         bc.gridx = 2; //изменение по X с левого верхнего угла
         bc.gridy = 1; //изменение по Y с левого верхнего угла
         pane.add(createBtn, bc);
+        textArea.setText("Welcome!!");
+
         createBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(CREATE_USER);
+                btnCreateUser(e);
+
             }
         });
+
+
+
+
+
 
         modifyBtn = new JButton("Modify user");
         bc.fill = GridBagConstraints.HORIZONTAL;
@@ -81,10 +67,11 @@ public class TaskerView {
         modifyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new ModifyUser().start();
 
-                dv.dialogChooser(MODIFY_USER);
             }
         });
+
 
         addEventBtn = new JButton("Add event");
         bc.fill = GridBagConstraints.HORIZONTAL;
@@ -95,9 +82,11 @@ public class TaskerView {
         addEventBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(ADD_EVENT);
+                btnAddEvent(e);
             }
         });
+
+
 
         addRandEventBtn = new JButton("Add Random Event");
         bc.fill = GridBagConstraints.HORIZONTAL;
@@ -108,7 +97,7 @@ public class TaskerView {
         addRandEventBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(ADD_RANDOM_EVENT);
+                btnAddRandomEvent(e);
             }
         });
 
@@ -121,7 +110,7 @@ public class TaskerView {
         removeBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(REMOVE_EVENT);
+                new RemoveEvent().start();
             }
         });
 
@@ -134,9 +123,17 @@ public class TaskerView {
         cloneBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(CLONE_EVENT);
+                new CloneEvent().start();
             }
         });
+
+        IPLb = new JLabel(IP());
+        bc.fill = GridBagConstraints.HORIZONTAL;
+        bc.anchor = GridBagConstraints.CENTER;
+        bc.insets = new Insets(10, 10, 10, 10);  // поставить заглушку
+        bc.gridx = 3;       // выравнять компонент по Button 2
+        bc.gridy = 6;       // и 3 столбец
+        pane.add(IPLb, bc);
 
         syncBtn = new JButton("Sync");
         bc.fill = GridBagConstraints.HORIZONTAL;
@@ -148,7 +145,7 @@ public class TaskerView {
         syncBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(SYNC);
+                new WebSync().start();
             }
         });
 
@@ -162,9 +159,11 @@ public class TaskerView {
         saveBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dv.dialogChooser(SAVE);
+                new SerData().start();
             }
         });
+
+
 
         startSchedulingBtn = new JButton("Start Scheduling");
         bc.fill = GridBagConstraints.HORIZONTAL;
@@ -177,6 +176,9 @@ public class TaskerView {
         startSchedulingBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for(String name : taskHandler.users.keySet()){
+                textArea.append(taskHandler.showInfo(name));
+                }
 
             }
         });
@@ -189,7 +191,7 @@ public class TaskerView {
         bc.insets = new Insets(10,10, 10, 10);
         bc.weightx = 0.0;
         bc.gridwidth = 1;
-        bc.gridheight = 6;
+        bc.gridheight = 7;
         bc.gridx = 0; //изменение по X с левого верхнего угла
         bc.gridy = 0; //изменение по Y с левого верхнего угла
         pane.add(scrollPane, bc);
@@ -197,23 +199,49 @@ public class TaskerView {
 
 
     }
+    private void btnAddEvent(java.awt.event.ActionEvent evt) {
+        AddEvent addEvent = new AddEvent(this, true);
+        addEvent.setVisible(true);
+    }
+    private void btnCreateUser(java.awt.event.ActionEvent evt) {
+        CreateUser createUser = new CreateUser(this, true);
+        createUser.setVisible(true);
+    }
+    private void btnAddRandomEvent(java.awt.event.ActionEvent evt) {
+        AddRandomEvent addRandomEvent = new AddRandomEvent(this, true);
+        addRandomEvent.setVisible(true);
+    }
 
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("TaskTraker");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        addComponentsToPane(frame.getContentPane());
-        frame.setResizable(false);
-        frame.pack();
-        frame.setVisible(true);
+    public TaskerView() {
+        setTitle("TaskTraker");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addComponentsToPane(getContentPane());
+        setResizable(false);
+        pack();
+
     }
 
     public void start() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGUI();
+                new TaskerView().setVisible(true);
             }
         });
     }
+
+    public static String IP(){
+        try {
+            InetAddress local = InetAddress.getLocalHost();
+            String IP = "Your IP " + local.getHostAddress();
+            return IP;
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+
 }
 
 

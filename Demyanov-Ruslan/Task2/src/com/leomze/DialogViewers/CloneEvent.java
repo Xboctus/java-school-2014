@@ -1,5 +1,7 @@
 package com.leomze.DialogViewers;
 
+import com.leomze.TaskerView;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -23,6 +25,7 @@ public class CloneEvent {
     private void createAndShowGUI() throws ParseException {
         dialog = new JDialog();
         dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        dialog.setTitle("Clone Event");
         createUser(dialog.getContentPane());
         dialog.setResizable(false);
         dialog.pack();
@@ -36,11 +39,11 @@ public class CloneEvent {
         paneDialog = new JPanel();
         panelContent = new JPanel();
         userNameFromLb = new JLabel();
-        userNameFromBox = new JComboBox();
+        userNameFromBox = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
         statusLb = new JLabel();
         eventTextField = new JTextField();
         userNameToLb= new JLabel();
-        userNameToBox= new JComboBox();
+        userNameToBox= new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
         barButton = new JPanel();
         btnOk = new JButton();
 
@@ -111,6 +114,11 @@ public class CloneEvent {
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String[] data = new String[3];
+                        data[0] = userNameFromBox.getSelectedItem().toString();
+                        data[1] = eventTextField.getText();
+                        data[2] = userNameToBox.getSelectedItem().toString();
+                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.cloneEvent(data[0], data[1], data[2]));
                         dialog.dispose();
                     }
                 });
@@ -143,9 +151,9 @@ public class CloneEvent {
     private JPanel paneDialog;
     private JPanel panelContent;
     private JLabel userNameFromLb;
-    private JComboBox userNameFromBox;
+    private JComboBox<String> userNameFromBox;
     private JLabel userNameToLb;
-    private JComboBox userNameToBox;
+    private JComboBox<String> userNameToBox;
     private JLabel statusLb;
     private JTextField eventTextField;
     private JPanel barButton;

@@ -1,6 +1,7 @@
 package com.leomze.DialogViewers;
 
 
+import com.leomze.TaskHandler;
 import com.leomze.TaskerView;
 
 import javax.swing.*;
@@ -15,15 +16,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 
-public class RemoveEvent {
-
-
-
+public class SerData {
 
     private void createAndShowGUI() throws ParseException {
         dialog = new JDialog();
+        dialog.setTitle("Data save");
         dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        dialog.setTitle("Remove Event");
         createUser(dialog.getContentPane());
         dialog.setResizable(false);
         dialog.pack();
@@ -36,12 +34,11 @@ public class RemoveEvent {
 
         paneDialog = new JPanel();
         panelContetnt = new JPanel();
-        userNameLb = new JLabel();
-        eventTextBox = new JTextField();
-        statusLb = new JLabel();
-        nameTextBox = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
+        timeZoneLb = new JLabel();
+        fileChooser = new JFileChooser();
         barButton = new JPanel();
-        btnOk = new JButton();
+        btnSave = new JButton();
+        btnLoad = new JButton();
 
         Container contentPane = pane;
         contentPane.setLayout(new BorderLayout());
@@ -67,23 +64,14 @@ public class RemoveEvent {
                 ((GridBagLayout)panelContetnt.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
 
 
-                userNameLb.setText("User name");
-                panelContetnt.add(userNameLb, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                timeZoneLb.setText("Choose File for save/load state: ");
+                panelContetnt.add(timeZoneLb, new GridBagConstraints(0, 0, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(nameTextBox, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 0), 0, 0));
-
-
-                statusLb.setText("Event message");
-                panelContetnt.add(statusLb, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(eventTextBox, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                        new Insets(0, 0, 0, 10), 0, 0));
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                panelContetnt.add(fileChooser, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
-
             }
             paneDialog.add(panelContetnt, BorderLayout.CENTER);
 
@@ -95,18 +83,26 @@ public class RemoveEvent {
                 ((GridBagLayout) barButton.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
 
-                btnOk.setText("OK");
-                barButton.add(btnOk, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                        new Insets(0, 0, 0, 0), 0, 0));
-                btnOk.addActionListener(new ActionListener() {
+                btnSave.setText("Save");
+                barButton.add(btnSave, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.CENTER,
+                        new Insets(10, 10, 10, 10), 0, 0));
+                btnSave.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        String[] data = new String[2];
-                        data[0] = nameTextBox.getSelectedItem().toString();
-                        data[1] = eventTextBox.getText();
-                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.removeEvent(data[0], data[1]));
                         dialog.dispose();
+                    }
+                });
+
+                btnLoad.setText("Load");
+                barButton.add(btnLoad, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.CENTER,
+                        new Insets(10, 10, 10, 10), 0, 0));
+                btnLoad.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                         dialog.dispose();
                     }
                 });
 
@@ -133,14 +129,14 @@ public class RemoveEvent {
         });
     }
 
-
+    private TaskHandler th;
     private JDialog dialog;
     private JPanel paneDialog;
-    private JPanel panelContetnt;
-    private JLabel userNameLb;
-    private JTextField eventTextBox;
-    private JLabel statusLb;
-    private JComboBox nameTextBox;
+    private JPanel panelContetnt;;
+    private JFileChooser fileChooser;
+    private JLabel timeZoneLb;
     private JPanel barButton;
-    private JButton btnOk;
+    private JButton btnSave;
+    private JButton btnLoad;
+
 }

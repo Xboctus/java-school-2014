@@ -1,5 +1,7 @@
 package com.leomze.DialogViewers;
 
+import com.leomze.TaskerView;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -11,37 +13,46 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
-
-/**
- * Created by lion__000 on 03.07.14.
- */
-public class AddRandomEvent {
+import java.util.ArrayList;
 
 
+public class AddRandomEvent extends JDialog {
 
-    private void createAndShowGUI() throws ParseException {
-        dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        createUser(dialog.getContentPane());
-        dialog.setResizable(false);
-        dialog.pack();
-        dialog.setVisible(true);
+
+
+    public AddRandomEvent(JFrame tv, boolean modal){
+        super(tv,modal);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setTitle("Add Random Dialog");
+        Container pane = getContentPane();
+        createUser(pane);
+        setResizable(false);
+        pack();
+
     }
 
-    private void createUser(Container pane) throws ParseException {
-
+    private void createUser(Container pane){
 
 
         paneDialog = new JPanel();
         panelContetnt = new JPanel();
         userNameLb = new JLabel();
-        nameTextField = new JTextField();
+
+        nameTextField = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
         statusLb = new JLabel();
         eventTextField = new JTextField();
         dateToLb = new JLabel();
-        dateToTextField = new JFormattedTextField(new MaskFormatter("##.##.## ##:##:##"));
+        try {
+            dateToTextField = new JFormattedTextField(new MaskFormatter("##.##.#### ##:##:##"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         dateFromLb = new JLabel();
-        dateFromTextField= new JFormattedTextField(new MaskFormatter("##.##.## ##:##:##"));
+        try {
+            dateFromTextField= new JFormattedTextField(new MaskFormatter("##.##.#### ##:##:##"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         barButton = new JPanel();
         btnOk = new JButton();
 
@@ -86,7 +97,7 @@ public class AddRandomEvent {
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
-                dateFromLb.setText("Date to");
+                dateFromLb.setText("Date from");
                 panelContetnt.add(dateFromLb, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 10), 0, 0));
@@ -95,7 +106,7 @@ public class AddRandomEvent {
                         new Insets(0, 0, 10, 0), 0, 0));
 
 
-                dateToLb.setText("Date from");
+                dateToLb.setText("Date to");
                 panelContetnt.add(dateToLb, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 10), 0, 0));
@@ -122,7 +133,13 @@ public class AddRandomEvent {
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        dialog.dispose();
+                           String[] data = new String[4];
+                           data[0] = nameTextField.getSelectedItem().toString();
+                           data[1] = eventTextField.getText();
+                           data[2] = dateFromTextField.getText();
+                           data[3] = dateToTextField.getText();
+                           TaskerView.textArea.append("\n" + TaskerView.taskHandler.addRandomEvent(data[0], data[1], data[2], data[3]));
+                           dispose();
                     }
                 });
 
@@ -136,21 +153,6 @@ public class AddRandomEvent {
     }
 
 
-
-    public void start() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    createAndShowGUI();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-
-    private JDialog dialog;
     private JPanel paneDialog;
     private JPanel panelContetnt;
     private JLabel userNameLb;
@@ -160,7 +162,7 @@ public class AddRandomEvent {
     private JLabel dateToLb;
     private JTextField eventTextField;
     private JLabel statusLb;
-    private JTextField nameTextField;
+    private JComboBox<String> nameTextField;
     private JPanel barButton;
     private JButton btnOk;
 }

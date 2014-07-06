@@ -1,13 +1,16 @@
 package com.leomze;
 
 
+import java.awt.*;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
-public class TaskHandler {
+public class TaskHandler implements Serializable{
 
 
     private static final String WRONG_NAME = "Wrong name";
@@ -28,7 +31,7 @@ public class TaskHandler {
     private static final String WRONG_DATE_RANGE = "Wrong date range :(";
     private static final String USERS_LIST = "Users list: \n";
 
-    HashMap<String, User> users = new HashMap<String, User>();
+    HashMap<String, User> users = new HashMap<>();
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
@@ -91,11 +94,16 @@ public class TaskHandler {
         }
     }
 
+    public String[] showUserNamesArray(){
+       return users.keySet().toArray(new String[0]);
+
+    }
+
     public String showUsers(){
         String str = new String();
-       for(String userName : users.keySet()){
-           str = str + userName + "\n";
-       }
+        for(String name: users.keySet()){
+            str = "\n" + str + name;
+        }
         return USERS_LIST + str;
     }
 
@@ -136,7 +144,7 @@ public class TaskHandler {
             return WRONG_DATE;
 
         long diff = (UserDateFrom.getTime() - UserDateTo.getTime()) / 1000;
-        if(diff > 0){
+        if(diff <= 0){
             long randomLong = Math.abs((new Random()).nextLong());
             randomLong = Math.abs(randomLong);
             double coef = (double)diff/Long.MAX_VALUE;
@@ -219,7 +227,6 @@ public class TaskHandler {
 
         return null;
     }
-
 
 
 
