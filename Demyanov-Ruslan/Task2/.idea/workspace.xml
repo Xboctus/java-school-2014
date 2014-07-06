@@ -108,22 +108,13 @@
       <file leaf-file-name="AddEvent.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/leomze/DialogViewers/AddEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="81" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.66323906" vertical-offset="320" max-vertical-offset="2465">
+            <state line="33" column="43" selection-start="823" selection-end="823" vertical-scroll-proportion="0.18251929" vertical-offset="320" max-vertical-offset="2465">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#AddEvent#0;class#AddEvent#0" expanded="false" />
                 <element signature="e#4834#5415#0" expanded="true" />
                 <element signature="e#5396#5397#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdapterDate.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/leomze/AdapterDate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -343,7 +334,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../repo_leomze/task_1_schedule" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../java-school-2014/Demyanov-Ruslan/Task2" />
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -588,16 +579,16 @@
       <workItem from="1404291609297" duration="8919000" />
       <workItem from="1404312942929" duration="11436000" />
       <workItem from="1404401694137" duration="24069000" />
-      <workItem from="1404482563038" duration="37286000" />
+      <workItem from="1404482563038" duration="37599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82020000" />
+    <option name="totallyTimeSpent" value="82333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -618,7 +609,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16983895" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16983895" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29513344" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -917,13 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/leomze/AdapterDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/leomze/TaskHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="230" column="0" selection-start="7215" selection-end="7215" vertical-scroll-proportion="0.0" vertical-offset="3388" max-vertical-offset="3944">
@@ -981,7 +965,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/leomze/DialogViewers/AddEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="81" selection-start="1225" selection-end="1225" vertical-scroll-proportion="0.66323906" vertical-offset="320" max-vertical-offset="2465">
+        <state line="33" column="43" selection-start="823" selection-end="823" vertical-scroll-proportion="0.18251929" vertical-offset="320" max-vertical-offset="2465">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#AddEvent#0;class#AddEvent#0" expanded="false" />
