@@ -25,9 +25,11 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SchedulePerfomer {
+	
 	private static final  String errDataFromServer = "Data got from server is corrupted";
 	private static final  String errServerNotResponde =  "Server doen't responde"; 
 	private static final  String errNotASchedule =  "File is not a Schedule or corrupted";
+	private static final  String errCantOpen =  "Can't open a file";
 	private static final  String errIOE =  "IOException occured";
 	private static final  String errNoInPath =  "Input file is'nt specified";
 	private static final  String errNoOutPath =  "Output file is'nt specified";
@@ -109,7 +111,7 @@ public class SchedulePerfomer {
 			// ex.printStackTrace();
 		}
 		catch(IOException ex){
-			addToLog(errIOE);
+			addToLog(errCantOpen);
 		   	//ex.printStackTrace();
 		}
 		return null;
@@ -152,6 +154,7 @@ public class SchedulePerfomer {
 				return null;
 				//e.printStackTrace();
 			}
+			users = fromServer;
 			return fromServer;
 			
 			
@@ -213,6 +216,7 @@ public class SchedulePerfomer {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			addToLog(errPort);
+			
 		}
 	}
 	
@@ -225,6 +229,7 @@ public class SchedulePerfomer {
 
 	public void setSavePath(String savePath) {
 		this.savePath = savePath;
+		
 	}
 
 

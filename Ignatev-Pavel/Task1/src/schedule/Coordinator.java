@@ -45,24 +45,27 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	//Press Any key to stop Scheduling
 	
 	private ConcurrentHashMap<String,User> users = new ConcurrentHashMap();
-	private final CListener listener;
+	private final List<CListener> listener = new LinkedList();
 	private String incomeMessage;
 	private boolean isScheduling = false;
 	private boolean isDead = false;
 	private final SchedulePerfomer perfomer = new SchedulePerfomer(users) ;
 	
 	Coordinator(){
-		listener = null;
+		//listener = null;
 		
 	}
 	
 	Coordinator(CListener listener){
-		this.listener=listener;
+		this.listener.add(listener);
 	}
 	
+	public void AddCListener(CListener listener){
+		this.listener.add(listener);
+	}
 	
 	public void start() throws InterruptedException{
-		if(listener==null) startConsole();
+		if(listener.isEmpty()) startConsole();
 		else startGraphics();
 				
 	}
@@ -76,12 +79,12 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 			String str = incomeMessage;
 			incomeMessage = null;
 			if (!patternSwitch(str)) break;
-			notify();
+			notifyAll();
 		}
 	}
 	private void println(String str,boolean isScheduling){
 		System.out.println(str);
-		if (listener!=null) listener.addText(str + "\n",isScheduling);
+		if (!listener.isEmpty()) for (CListener l : listener) l.addText(str + "\n",isScheduling);
 	}
 	
 	private boolean patternSwitch(String str){
@@ -304,12 +307,13 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		final String name = matcher.group(gCloneEvent[0]);
 		if (!users.containsKey(name)) {println(name+":"+msgNameNotExists,false); return;}
 		println(users.get(name).toString(),false);
-		if (listener==null) return;
+		if (listener.isEmpty()) return;
 		new Thread(new Runnable(){
 
 			@Override
 			public void run() {
-				listener.showInfo(users.get(name));
+				for (CListener l : listener)
+				l.showInfo(users.get(name));
 			}
 			
 		}).start();
@@ -338,10 +342,13 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 	
 	
 	public static void main(String[] args) throws InterruptedException{
-		ScheduleFrame frame =  new ScheduleFrame();
-		frame.setVisible(true);
-		Coordinator coordinator = new Coordinator(frame);
-		frame.setGListener(coordinator);
+		Coordinator coordinator = new Coordinator();
+		for (int i=0;i<3;i++){
+				ScheduleFrame frame =  new ScheduleFrame();
+				frame.setVisible(true);
+				frame.setGListener(coordinator);
+				coordinator.AddCListener(frame);
+		}
 		coordinator.start();
 	}
 
@@ -415,13 +422,13 @@ public class Coordinator extends TimerTask implements MessagesAndRegularExpressi
 		}
 		
 		incomeMessage=msg;
-		notify();
+		notifyAll();
 	}
 
 	@Override
 	public synchronized void alertDeath() {
 		isDead = true;
-		notify();
+		notifyAll();
 	}
 	
 	private void save(Matcher matcher){
