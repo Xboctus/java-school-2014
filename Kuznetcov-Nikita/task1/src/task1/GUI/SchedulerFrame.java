@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,16 +23,16 @@ public class SchedulerFrame extends JFrame {
   private JPanel mainPanel;
   private JPanel buttonsPanel;
   private JTextArea logArea;
+  private final Coordinator taskCoordinator;
 
-  private static final Coordinator taskCoordinator = new Coordinator();
-
-  public SchedulerFrame(String frameName) {
+  public SchedulerFrame(String frameName, Coordinator coordinator) {
     super(frameName);
+    taskCoordinator = coordinator;
     Logger logger = Coordinator.logger;
     logger.setUseParentHandlers(false);
 
     mainPanel = new JPanel(new BorderLayout());
-    buttonsPanel = new JPanel(new GridLayout(9, 1, 5, 0));
+    buttonsPanel = new JPanel(new GridLayout(11, 1, 5, 0));
 
     logArea = new JTextArea("Log will be here\r\n", 30, 15);
     logArea.setLineWrap(true);
@@ -134,7 +133,7 @@ public class SchedulerFrame extends JFrame {
               sb.append(reader.readLine());
             }
             reader.close();
-            taskCoordinator.parseStateFile(sb.toString());
+            taskCoordinator.parseStateJSON(sb.toString());
           } catch (FileNotFoundException fnfex) {
             System.out.println("File not found!");
           } catch (IOException ioex) {
@@ -143,6 +142,22 @@ public class SchedulerFrame extends JFrame {
         } else {
           JOptionPane.showMessageDialog(null, "File not selected", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+      }
+    });
+    JButton syncButton = new JButton("Sync");
+    syncButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        String host = JOptionPane.showInputDialog(null, "Enter host for sync");
+        int port = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter port for sync"));
+        taskCoordinator.sync(host, port);
+      }
+    });
+    JButton socketInfo = new JButton("Socket");
+    socketInfo.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Local port is " + taskCoordinator.getSocketLocalPort(), "Info", JOptionPane.INFORMATION_MESSAGE);
       }
     });
 
@@ -156,6 +171,8 @@ public class SchedulerFrame extends JFrame {
     buttons.add(showUserInfoButton);
     buttons.add(saveStateButton);
     buttons.add(loadStateButton);
+    buttons.add(syncButton);
+    buttons.add(socketInfo);
 
     for (JButton controlButton : buttons) {
       controlButton.addActionListener(new ActionListener() {

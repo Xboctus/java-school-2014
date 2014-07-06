@@ -6,14 +6,32 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import task1.Util.ResponseStatus;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.*;
 import java.util.logging.Logger;
 
 public class Coordinator {
 
-  private SortedMap<String, User> usersMap = new TreeMap<String, User>(); // list of users
+  private ServerSocket srvSocket;
+  private SortedMap<String, User> usersMap; // list of users
   public static final Logger logger = Logger.getLogger(Coordinator.class.getName());
 
+  // constructor
+  public Coordinator() {
+
+    try {
+      srvSocket = new ServerSocket(0);
+    } catch (Exception ex) {
+      logger.severe("error when creating server socket");
+    }
+    usersMap = new TreeMap<String, User>();
+  }
+
+  // scheduler API
   public ResponseStatus addNewUser(String userName, String timeZoneID, boolean status) {
     if (usersMap.containsKey(userName)) {
       return ResponseStatus.USER_ALREADY_EXISTS;
@@ -115,12 +133,6 @@ public class Coordinator {
     return ResponseStatus.EVENT_CLONED;
   }
 
-  public String getUserInfo(String userName) {
-    if (userName == null) return null;
-    User user = usersMap.get(userName);
-    return user != null ? user.toString() : "";
-  }
-
   public void startScheduling() {
     TimerTask timerTask = new TimerTask() {
       @Override
@@ -144,10 +156,22 @@ public class Coordinator {
     scheduler.scheduleAtFixedRate(timerTask, 0, 1000);
   }
 
+  public String getUserInfo(String userName) {
+    if (userName == null) return null;
+    User user = usersMap.get(userName);
+    return user != null ? user.toString() : "";
+  }
+
+  // getters and setters
   public User getUserByName(String userName) {
     return usersMap.get(userName);
   }
 
+  public int getSocketLocalPort() {
+    return srvSocket.getLocalPort();
+  }
+
+  // methods for work with JSON data about scheduler's state
   public JSONObject getCurrentState() {
     JSONObject result = new JSONObject();
     JSONArray usersArray = new JSONArray();
@@ -158,13 +182,11 @@ public class Coordinator {
     return result;
   }
 
-  public void parseStateFile(String input) {
+  public void parseStateJSON(String input) {
     JSONParser parser = new JSONParser();
     SortedMap<String, User> usersMap = new TreeMap<String, User>();
 
     try {
-//      Date start = new Date();
-//      System.out.println("Start parsing at " + start);
       JSONObject parsedObject = (JSONObject) parser.parse(input);
       JSONArray usersArray = (JSONArray) parsedObject.get("usersList");
 
@@ -187,9 +209,6 @@ public class Coordinator {
         }
         usersMap.put(userName, user);
       }
-//      Date end = new Date();
-//      System.out.println("End parsing at " + end);
-//      System.out.println("Time difference between start and end is: " + (end.getTime() - start.getTime()));
     } catch (ParseException ex) {
       logger.warning("Bad input file format");
     }
@@ -197,4 +216,52 @@ public class Coordinator {
     this.usersMap = usersMap;
   }
 
+  // methods for web sync of instances of scheduler
+  public void startSyncThread() {
+    Thread syncThread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        System.out.println("SERVER SOCKET THREAD: server sync thread started!");
+        while (true) {
+          try {
+            Socket in = srvSocket.accept();
+            System.out.println("SERVER SOCKET THREAD: Socket accepted in startSync thread");
+            OutputStream outputStream = in.getOutputStream();
+            System.out.println("SERVER SOCKET THREAD: stream recieved");
+            outputStream.write(getCurrentState().toJSONString().getBytes());
+            outputStream.flush();
+            System.out.println("SERVER SOCKET THREAD: data sent");
+            in.close();
+            System.out.println("SERVER SOCKET THREAD: incoming socket closed");
+          } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("SERVER SOCKET THREAD: Ошибка при передаче своего состояния");
+            logger.warning("SERVER SOCKET THREAD: Ошибка при передаче своего состояния");
+          }
+        }
+      }
+    });
+    syncThread.start();
+  }
+
+  public void sync(String host, int port) {
+    StringBuilder sb = new StringBuilder();
+    try {
+      Socket s = new Socket();
+      s.connect(new InetSocketAddress(host, port), 5000);
+      System.out.println("CLIENT SOCKET THREAD: socket created");
+      Scanner in = new Scanner(s.getInputStream());
+      System.out.println("CLIENT SOCKET THREAD: Stream recieved");
+      while (in.hasNextLine()) {
+        sb.append(in.nextLine());
+      }
+      System.out.println("CLIENT SOCKET THREAD: Recieved data: " + sb.toString());
+    } catch (IOException ioex) {
+      System.out.println("CLIENT SOCKET THREAD: Ошибка при получении состояния");
+      logger.warning("CLIENT SOCKET THREAD: Ошибка при получении состояния");
+      ioex.printStackTrace();
+    }
+    this.parseStateJSON(sb.toString());
+    System.out.println("CLIENT SOCKET THREAD: state recovered!");
+  }
 }

@@ -14,12 +14,14 @@ public class MainClass {
 
   public static void main(String[] args) throws IOException {
 
+    Coordinator taskCoordinator = new Coordinator();
+    taskCoordinator.startSyncThread();
+
     if (args.length > 0 && args[0].equals("-g")) {
-      JFrame SchedulerFrame = new task1.GUI.SchedulerFrame("Scheduler");
+      JFrame SchedulerFrame = new task1.GUI.SchedulerFrame("Scheduler", taskCoordinator);
       return;
     }
 
-    Coordinator taskCoordinator = new Coordinator();
     String command;
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     System.out.println("Scheduler started at editor mode!");
