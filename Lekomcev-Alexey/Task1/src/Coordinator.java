@@ -79,6 +79,15 @@ public class Coordinator {
             System.out.println(e);
         }
     }
+
+    public static ArrayList<User> getUsers(){
+        return users;
+    }
+
+    public static void setUsers(ArrayList<User> p_users){
+        users.clear();
+        users = p_users;
+    }
 }
 
 

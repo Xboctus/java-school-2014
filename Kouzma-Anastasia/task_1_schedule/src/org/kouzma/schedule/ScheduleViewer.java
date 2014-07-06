@@ -2,19 +2,18 @@ package org.kouzma.schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.TreeMap;
+import java.util.TreeSet;
+
 
 public class ScheduleViewer {
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss");
-	private TreeMap<Date, List<String>> treeEvent = new TreeMap<Date, List<String>>();
+	private TreeMap<Date, TreeSet<String>> treeEvent = new TreeMap<Date, TreeSet<String>>();
 	
 	public void show(HashMap<String, User> lstUsers) {
 		Calendar cal = new GregorianCalendar();
@@ -25,11 +24,11 @@ public class ScheduleViewer {
 				continue;
 			for (Event event : user.getEvents()) {
 				Date eventDate = fromGTM(event.getDate(), offset);
-				List<String> lstMessages;
+				TreeSet<String> lstMessages;
 				if (treeEvent.containsKey(eventDate))
 					lstMessages = treeEvent.get(eventDate);
 				else {
-					lstMessages = new LinkedList<String>();
+					lstMessages = new TreeSet<String>();
 					treeEvent.put(eventDate, lstMessages);
 				}
 				lstMessages.add(user.getName() + " \"" + event.getText() + "\"");
@@ -42,8 +41,7 @@ public class ScheduleViewer {
 
 				@Override
 				public void run() {
-					List<String> lstMessages = treeEvent.get(eventDate);
-					Collections.sort(lstMessages); // TODO
+					TreeSet<String> lstMessages = treeEvent.get(eventDate);
 					for (String msg : lstMessages)
 						System.out.println(dateFormat.format(eventDate) + " : " + msg);
 				}

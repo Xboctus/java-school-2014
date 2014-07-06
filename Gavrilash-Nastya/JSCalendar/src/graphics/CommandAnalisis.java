@@ -12,7 +12,7 @@ import business.SchedulerListener;
 public class CommandAnalisis {
 
 	public enum Command {
-		CREATE, MODIFY, START_SCHEDULING
+		CREATE, MODIFY, START_SCHEDULING, WRITE_TO_FILE, READ_FROM_FILE
 	}
 
 	private static void textValidator(String text, String textForWhiteSpace)
@@ -146,6 +146,11 @@ public class CommandAnalisis {
 
 	public static void printQuery(String fileName) throws IOException {
 		CommandHandler.printInfoToFile(fileName);
+	}
+
+	public static void downloadQuery(String fileName) throws IOException {
+		CommandHandler.downloadFromFile(fileName);
+
 	}
 
 }

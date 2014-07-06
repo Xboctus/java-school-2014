@@ -4,6 +4,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class EventCreater extends JPanel{
     private JTextField username;
@@ -17,6 +19,9 @@ public class EventCreater extends JPanel{
     private Validator dateValidator;
     private boolean isName = false;
     private boolean isDate = false;
+    private static String DEFAULT_USER_NAME = "Ivan";
+    private static String DEFAULT_EVENT = "Event1";
+    private static String DEFAULT_DATE = new SimpleDateFormat("dd-MM-yy:hh:mm:ss").format(new Date());
 
     public EventCreater(){
         setLayout(new BorderLayout());
@@ -24,11 +29,11 @@ public class EventCreater extends JPanel{
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 3));
         panel.add(new JLabel("user name:"));
-        panel.add(username = new JTextField(""));
+        panel.add(username = new JTextField(DEFAULT_USER_NAME));
         panel.add(new JLabel("description:"));
-        panel.add(description = new JTextField(""));
+        panel.add(description = new JTextField(DEFAULT_EVENT));
         panel.add(new JLabel("date:"));
-        panel.add(date = new JTextField(""));
+        panel.add(date = new JTextField(DEFAULT_DATE));
         add(panel, BorderLayout.CENTER);
 
         username.getDocument().addDocumentListener(new DocumentListener() {
@@ -117,7 +122,7 @@ public class EventCreater extends JPanel{
 
     public boolean showDialog(Component parent, String title){
         nameValidator = new Validator("[A-Z]{1}.*");
-        dateValidator = new Validator("[0-31]{1,2}-[0-9]{1,2}-[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{2}");//dd-MM-yy:HH:mm:ss
+        dateValidator = new Validator("[0-9]{1,2}-[0-9]{1,2}-[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{2}");//dd-MM-yy:HH:mm:ss
         ok = false;
 
         Frame owner = null;
@@ -130,6 +135,7 @@ public class EventCreater extends JPanel{
             dialog.pack();
         }
 
+        dialog.setLocationRelativeTo(owner);
         dialog.setTitle(title);
         dialog.setVisible(true);
         return ok;
