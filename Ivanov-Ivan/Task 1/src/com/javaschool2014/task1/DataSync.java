@@ -17,7 +17,7 @@ public class DataSync {
 
         serverPort = findFreePort();
 
-        new Thread(new Runnable(){
+        Thread server = new Thread(new Runnable(){
 
             @Override
             public void run() {
@@ -40,7 +40,9 @@ public class DataSync {
 
             }
 
-        }).start();
+        });
+
+        server.start();
 
     }
 
@@ -88,7 +90,7 @@ public class DataSync {
 
             final Socket socket = serverSocket.accept();
 
-            new Thread(new Runnable(){
+            Thread connect = new Thread(new Runnable(){
 
                 @Override
                 public void run() {
@@ -128,7 +130,9 @@ public class DataSync {
 
                 }
 
-            }).start();
+            });
+
+            connect.start();
 
         } catch (IOException e) {
 
