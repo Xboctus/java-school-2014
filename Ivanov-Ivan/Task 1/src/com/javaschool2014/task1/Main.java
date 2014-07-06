@@ -1,8 +1,12 @@
 package com.javaschool2014.task1;
 
+import java.util.HashMap;
+
 public class Main implements Constants {
 
     public static void main(String[] args) {
+
+        // Start program with interface:graphics for GUI and defaultFileName:XXXXXX to load saved data
 
         System.out.println("Available command list:");
         System.out.println("Create(<name>,<timezone>,<status>), Create(<name>,<timezone>,<status>), (status = active/idle) ");
@@ -10,26 +14,64 @@ public class Main implements Constants {
         System.out.println("ShowInfo(<name>), SaveData(<path>), LoadData(<path>), Leave");
         System.out.println("-----------------------------------------------------------------------------------------------");
 
-        if (args.length > 0) {
+        HashMap<String, String> resArgs = new HashMap<>();
 
-            if (args[0].equals("-g")) {
+        for(String arg: args) {
+
+            String[] arguments = arg.split(":");
+
+            for (int i = 0; i < arguments.length; i++) {
+                arguments[i] = arguments[i].trim();
+            }
+
+            resArgs.put(arguments[0], arguments[1]);
+
+        }
+
+        if (resArgs.containsKey("interface")) {
+
+            if (resArgs.get("interface").equals("graphics")) {
+
                 GUICoordinator coordinator = new GUICoordinator();
-                coordinator.start();
                 coordinator.display();
+
+                if (resArgs.containsKey(DEFAULT_NAME)) {
+                    coordinator.connectDefaultDataFile(resArgs.get(DEFAULT_NAME));
+                }
+
+                coordinator.start();
+
+                GUICoordinator coordinator1 = new GUICoordinator();
+                coordinator1.display();
+
+                if (resArgs.containsKey(DEFAULT_NAME)) {
+                    coordinator1.connectDefaultDataFile(resArgs.get(DEFAULT_NAME));
+                }
+
+                coordinator1.start();
+
+            } else {
+
+                System.out.println("Wrong interface parameter");
+
+                ConsoleCoordinator coordinator = new ConsoleCoordinator();
+
+                if (resArgs.containsKey(DEFAULT_NAME)) {
+                    coordinator.connectDefaultDataFile(resArgs.get(DEFAULT_NAME));
+                }
+
+                coordinator.start();
+
             }
 
         } else {
 
-            GUICoordinator coordinator = new GUICoordinator();
+            ConsoleCoordinator coordinator = new ConsoleCoordinator();
 
-            coordinator.createUser("Name", "GMT+0", "active");
-            coordinator.addUserEvent("Name", "Task 3", "30.06.2014-11:10:10");
-            coordinator.addUserEvent("Name", "Task 2", "02.07.2014-0:50:20");
-            coordinator.addUserEvent("Name", "Task 1", "30.06.2014-11:10:10");
+            if (resArgs.containsKey(DEFAULT_NAME)) {
+                coordinator.connectDefaultDataFile(resArgs.get(DEFAULT_NAME));
+            }
 
-            //coordinator.showUserInfo("Name");
-
-            coordinator.display();
             coordinator.start();
 
         }

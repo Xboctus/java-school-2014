@@ -19,23 +19,10 @@ public class GUICoordinator extends AbstractCoordinator {
     }
 
     @Override
-    protected void connectDefaultDataFile() {
+    public void start() {
 
-
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("Load default data file?"));
-
-
-        int result = JOptionPane.showConfirmDialog(null, panel, "Load default file",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (result == JOptionPane.OK_OPTION) {
-
-            if (!loadUserData(DEFAULT_FILE_NAME)) {
-                printOutput(NO_DEFAULT_FILE_LOADED);
-            }
-
-        }
+        getTimer().scheduleAtFixedRate(this, 0, 1000);
+        createServer();
 
     }
 
@@ -139,6 +126,20 @@ public class GUICoordinator extends AbstractCoordinator {
             }
         };
 
+        final ActionListener syncDataListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                syncDataForm();
+            }
+        };
+
+        final ActionListener showPortListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getServerPort();
+            }
+        };
+
         JButton create             = new JButton("Create");
         JButton modify             = new JButton("Modify");
         JButton addEvent           = new JButton("AddEvent");
@@ -148,6 +149,8 @@ public class GUICoordinator extends AbstractCoordinator {
         JButton showInfo           = new JButton("ShowInfo");
         JButton saveData           = new JButton("SaveData");
         JButton loadData           = new JButton("LoadData");
+        JButton syncData           = new JButton("SyncData");
+        JButton showPort           = new JButton("ShowPort");
 
         create.addActionListener(createListener);
         modify.addActionListener(modifyListener);
@@ -158,6 +161,8 @@ public class GUICoordinator extends AbstractCoordinator {
         showInfo.addActionListener(showInfoListener);
         saveData.addActionListener(saveDataListener);
         loadData.addActionListener(loadDataListener);
+        syncData.addActionListener(syncDataListener);
+        showPort.addActionListener(showPortListener);
 
         rightPanel.add(create);
         rightPanel.add(modify);
@@ -168,6 +173,8 @@ public class GUICoordinator extends AbstractCoordinator {
         rightPanel.add(showInfo);
         rightPanel.add(saveData);
         rightPanel.add(loadData);
+        rightPanel.add(syncData);
+        rightPanel.add(showPort);
 
         leftPanel.add(new JScrollPane(textArea));
 
@@ -175,7 +182,7 @@ public class GUICoordinator extends AbstractCoordinator {
         mainPanel.add(rightPanel);
 
         newFrame.add(mainPanel);
-        newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.setSize(540, 460);
         newFrame.setResizable(false);
         newFrame.setVisible(true);
@@ -385,7 +392,7 @@ public class GUICoordinator extends AbstractCoordinator {
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {
-            if (!saveUserData(field1.getText())){
+            if (!saveUserData(field1.getText())) {
                 printOutput(ERROR);
             }
         } else {
@@ -406,7 +413,31 @@ public class GUICoordinator extends AbstractCoordinator {
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {
-            if (!loadUserData(field1.getText())){
+            if (!loadUserData(field1.getText())) {
+                printOutput(ERROR);
+            }
+        } else {
+            printOutput(CANCELLED);
+        }
+
+    }
+
+    public void syncDataForm() {
+
+        JTextField field1 = new JTextField("");
+        JTextField field2 = new JTextField("");
+
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(new JLabel("IP:"));
+        panel.add(field1);
+        panel.add(new JLabel("Port:"));
+        panel.add(field2);
+
+        int result = JOptionPane.showConfirmDialog(null, panel, "Synchronize user data",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            if (!synchronizeData(field1.getText(), field2.getText())) {
                 printOutput(ERROR);
             }
         } else {
