@@ -1,5 +1,6 @@
 package org.kouzma.schedule;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.TreeSet;
 
@@ -9,7 +10,7 @@ import java.util.TreeSet;
  * @author Anastasya Kouzma
  *
  */
-public class User {	
+public class User implements Serializable {	
 	private String name;
 	private int timeZone;
 	private boolean status;

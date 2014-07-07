@@ -1,5 +1,6 @@
 package org.kouzma.schedule;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,11 +8,12 @@ import java.util.Date;
  * @author Anastasya Kouzma
  *
  */
-public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event>, Serializable {
 	private String text;
 	private Date date;
 	private User user;
-	
+	private boolean isShown = false;
+
 	public Event(String eventText, Date eventDate, User eventUser) {
 		text = eventText;
 		date = eventDate;
@@ -27,6 +29,14 @@ public class Event implements Comparable<Event> {
 	}
 	public User getUser() {
 		return user;
+	}
+	
+	public boolean isShown() {
+		return isShown;
+	}
+
+	public void setShown(boolean isShown) {
+		this.isShown = isShown;
 	}
 	
 	public Event clone(User userTo) {
