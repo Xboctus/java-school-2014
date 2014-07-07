@@ -11,7 +11,7 @@ public class Main implements Constants {
         System.out.println("Available command list:");
         System.out.println("Create(<name>,<timezone>,<status>), Create(<name>,<timezone>,<status>), (status = active/idle) ");
         System.out.println("AddRandomTimeEvent(<name>,<text>,<dateFrom>,<dateTo>), CloneEvent(<name>,<text>,<nameTo>)");
-        System.out.println("ShowInfo(<name>), SaveData(<path>), LoadData(<path>), Leave");
+        System.out.println("ShowInfo(<name>), SaveData(<path>), LoadData(<path>), Synchronize(<IP>,<port>), ShowPort, Leave");
         System.out.println("-----------------------------------------------------------------------------------------------");
 
         HashMap<String, String> resArgs = new HashMap<>();

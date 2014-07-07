@@ -274,17 +274,22 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
         }
 
         int port = Integer.parseInt(portName);
+        TreeMap<String, User> syncData = dataSync.synchronize(ip, port);
 
-        if (dataSync.synchronize(ip, port) == null) {
+        if (syncData == null) {
 
             printOutput(NO_FILE_LOADED);
 
+            return false;
+
+        } else {
+
+            setUsers(syncData);
+            printOutput(DATA_SYNCED);
+
+            return true;
+
         }
-
-        setUsers(dataSync.synchronize(ip, port));
-        printOutput(DATA_SYNCED);
-
-        return true;
 
     }
 

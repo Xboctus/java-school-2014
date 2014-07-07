@@ -3,6 +3,7 @@ package com.javaschool2014.task1;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.rmi.UnknownHostException;
 import java.util.TreeMap;
 
 public class DataSync {
@@ -50,7 +51,18 @@ public class DataSync {
 
         try {
 
-            socket = new Socket(ip, port);
+
+            try {
+
+                socket = new Socket(ip, port);
+
+            } catch (UnknownHostException e) {
+
+                System.out.println(e.getMessage());
+
+                return null;
+
+            }
 
             OutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
             output = new ObjectOutputStream(outputStream);

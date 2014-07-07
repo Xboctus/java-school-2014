@@ -1,10 +1,12 @@
 package com.javaschool2014.task1;
 
 import javax.swing.*;
+import javax.swing.plaf.FileChooserUI;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.ParseException;
 
 public class GUICoordinator extends AbstractCoordinator {
@@ -382,43 +384,51 @@ public class GUICoordinator extends AbstractCoordinator {
 
     public void saveDataForm() {
 
-        JTextField field1 = new JTextField("");
+        JFileChooser fileChosen = new JFileChooser();
 
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("File path:"));
-        panel.add(field1);
+        int ret = fileChosen.showDialog(null, "Save file");
 
-        int result = JOptionPane.showConfirmDialog(null, panel, "Save user data",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (ret == JFileChooser.APPROVE_OPTION) {
 
-        if (result == JOptionPane.OK_OPTION) {
-            if (!saveUserData(field1.getText())) {
+            File file = fileChosen.getSelectedFile();
+
+            if (!saveUserData(file.getName())) {
                 printOutput(ERROR);
             }
+
         } else {
+
             printOutput(CANCELLED);
+
         }
+
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(fileChosen);
 
     }
 
     public void loadDataForm() {
 
-        JTextField field1 = new JTextField("");
+        JFileChooser fileChosen = new JFileChooser();
 
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("File path:"));
-        panel.add(field1);
+        int ret = fileChosen.showDialog(null, "Load file");
 
-        int result = JOptionPane.showConfirmDialog(null, panel, "Load user data",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (ret == JFileChooser.APPROVE_OPTION) {
 
-        if (result == JOptionPane.OK_OPTION) {
-            if (!loadUserData(field1.getText())) {
+            File file = fileChosen.getSelectedFile();
+
+            if (!loadUserData(file.getName())) {
                 printOutput(ERROR);
             }
+
         } else {
+
             printOutput(CANCELLED);
+
         }
+
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(fileChosen);
 
     }
 
