@@ -29,6 +29,7 @@ public class InitialWindow extends JFrame {
 	private JButton showInfo;
 	private JButton startScheduling;
 	private JButton printToFile;
+	private JButton downloadFromFile;
 	private boolean scheduling;
 
 	private JTextArea log;
@@ -68,13 +69,25 @@ public class InitialWindow extends JFrame {
 		showInfoFunctions();
 		startSchedulingFunction();
 		printToFileFunction();
+		downloadFromFileFunction();
+	}
+
+	private void downloadFromFileFunction() {
+		downloadFromFile.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame frame = new FileReadWriteFrame(Command.READ_FROM_FILE);
+				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				frame.setVisible(true);
+			}
+		});
 	}
 
 	private void printToFileFunction() {
 		printToFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFrame frame = new PrintFrame();
+				JFrame frame = new FileReadWriteFrame(Command.WRITE_TO_FILE);
 				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				frame.setVisible(true);
 			}
@@ -200,7 +213,8 @@ public class InitialWindow extends JFrame {
 		cloneEvent = new JButton("clone event");
 		showInfo = new JButton("show info");
 		startScheduling = new JButton("start scheduling");
-		printToFile = new JButton("print current state to file");
+		printToFile = new JButton("print to file");
+		downloadFromFile = new JButton("download file");
 
 		buttonBackground.add(newUser);
 		buttonBackground.add(modifyUser);
@@ -211,7 +225,8 @@ public class InitialWindow extends JFrame {
 		buttonBackground.add(showInfo);
 		buttonBackground.add(startScheduling);
 		buttonBackground.add(printToFile);
-
+		buttonBackground.add(downloadFromFile);
+		
 		backgroundPanel.add(scrollingArea);
 		backgroundPanel.add(buttonBackground);
 		add(backgroundPanel);

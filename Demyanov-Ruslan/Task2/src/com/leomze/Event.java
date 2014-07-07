@@ -1,9 +1,10 @@
 package com.leomze;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Event{
+public class Event implements Serializable{
        private Date date;
        private String text;
 

@@ -1,6 +1,8 @@
 package com.leomze.DialogViewers;
 
 
+import com.leomze.TaskerView;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +19,7 @@ public class ModifyUser {
     private void createAndShowGUI() {
         dialog = new JDialog();
         dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        dialog.setTitle("Modify user");
         createUser(dialog.getContentPane());
         dialog.setResizable(false);
         dialog.pack();
@@ -30,7 +33,7 @@ public class ModifyUser {
         paneDialog = new JPanel();
         panelContetnt = new JPanel();
         userNameLb = new JLabel();
-        nameTextField = new JComboBox();
+        nameTextField = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
         statusLb = new JLabel();
         StatusRadioBtn = new JRadioButton();
         timeZoneLb = new JLabel();
@@ -111,6 +114,14 @@ public class ModifyUser {
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String[] data = new String[3];
+                        data[0] = nameTextField.getSelectedItem().toString();
+                        if(StatusRadioBtn.isSelected() == true){data[1] = "active"; }else {data[1] = "inactive";}
+                        int gmt =(int)  GMTSpinner.getValue();
+                        String GMT;
+                        if(gmt >= 0){GMT = "GMT+"+GMTSpinner.getValue();}else{GMT = "GMT"+GMTSpinner.getValue();}
+                        data[2] = GMT;
+                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.modify(data[0], data[2], data[1]));
                         dialog.dispose();
                     }
                 });
@@ -139,7 +150,7 @@ public class ModifyUser {
     private JPanel paneDialog;
     private JPanel panelContetnt;
     private JLabel userNameLb;
-    private JComboBox nameTextField;
+    private JComboBox<String> nameTextField;
     private JLabel timeZoneLb;
     private JRadioButton StatusRadioBtn;
     private JLabel statusLb;

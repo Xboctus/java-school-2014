@@ -1,5 +1,8 @@
 package com.leomze.DialogViewers;
 
+
+import com.leomze.TaskerView;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -12,36 +15,40 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 
-/**
- * Created by lion__000 on 03.07.14.
- */
-public class AddEvent {
+
+public class AddEvent extends JDialog{
 
 
+    public AddEvent(JFrame tv, boolean modal) {
 
-    private void createAndShowGUI() throws ParseException {
-        dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        createUser(dialog.getContentPane());
-        dialog.setResizable(false);
-        dialog.pack();
-        dialog.setVisible(true);
+        super(tv, modal);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setTitle("Add Event");
+        Container pane = getContentPane();
+        addEvent(pane);
+        setResizable(false);
+        pack();
+
     }
 
-    private void createUser(Container pane) throws ParseException {
-
+    private void addEvent(Container pane) {
 
 
         paneDialog = new JPanel();
-        panelContetnt = new JPanel();
+        panelContent = new JPanel();
         userNameLb = new JLabel();
-        nameTextField = new JTextField();
+        nameTextField = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
         statusLb = new JLabel();
         eventTextField = new JTextField();
         timeZoneLb = new JLabel();
-        dateTextField = new JFormattedTextField(new MaskFormatter("##.##.## ##:##:##"));
+        try {
+            dateTextField = new JFormattedTextField(new MaskFormatter("##.##.#### ##:##:##"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         barButton = new JPanel();
         btnOk = new JButton();
+
 
         Container contentPane = pane;
         contentPane.setLayout(new BorderLayout());
@@ -60,40 +67,40 @@ public class AddEvent {
 
 
             {
-                panelContetnt.setLayout(new GridBagLayout());
-                ((GridBagLayout)panelContetnt.getLayout()).columnWidths = new int[] {89, 115, 113, 0};
-                ((GridBagLayout)panelContetnt.getLayout()).rowHeights = new int[] {0, 0, 0, 0};
-                ((GridBagLayout)panelContetnt.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
-                ((GridBagLayout)panelContetnt.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+                panelContent.setLayout(new GridBagLayout());
+                ((GridBagLayout) panelContent.getLayout()).columnWidths = new int[] {89, 115, 113, 0};
+                ((GridBagLayout) panelContent.getLayout()).rowHeights = new int[] {0, 0, 0, 0};
+                ((GridBagLayout) panelContent.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout) panelContent.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
 
 
                 userNameLb.setText("User name");
-                panelContetnt.add(userNameLb, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                panelContent.add(userNameLb, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(nameTextField, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
+                panelContent.add(nameTextField, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
 
                 statusLb.setText("Event message");
-                panelContetnt.add(statusLb, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                panelContent.add(statusLb, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(eventTextField, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                panelContent.add(eventTextField, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
 
                 timeZoneLb.setText("Date event");
-                panelContetnt.add(timeZoneLb, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                panelContent.add(timeZoneLb, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 10), 0, 0));
-                panelContetnt.add(dateTextField, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+                panelContent.add(dateTextField, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
             }
-            paneDialog.add(panelContetnt, BorderLayout.CENTER);
+            paneDialog.add(panelContent, BorderLayout.CENTER);
 
 
             {
@@ -110,7 +117,12 @@ public class AddEvent {
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        dialog.dispose();
+                           String[] data = new String[3];
+                           data[0] = nameTextField.getSelectedItem().toString();
+                           data[1] = eventTextField.getText();
+                           data[2] = dateTextField.getText();
+                           TaskerView.textArea.append("\n" + TaskerView.taskHandler.addEvent(data[0], data[1], data[2]));
+                           dispose();
                     }
                 });
 
@@ -123,30 +135,15 @@ public class AddEvent {
 
     }
 
-
-
-    public void start() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    createAndShowGUI();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-
-    private JDialog dialog;
     private JPanel paneDialog;
-    private JPanel panelContetnt;
+    private JPanel panelContent;
     private JLabel userNameLb;
     private JFormattedTextField dateTextField;
     private JLabel timeZoneLb;
     private JTextField eventTextField;
     private JLabel statusLb;
-    private JTextField nameTextField;
+    private JComboBox<String> nameTextField;
     private JPanel barButton;
     private JButton btnOk;
+
 }

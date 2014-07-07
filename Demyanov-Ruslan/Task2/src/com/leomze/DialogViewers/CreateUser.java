@@ -1,6 +1,11 @@
 package com.leomze.DialogViewers;
 
 
+
+
+
+import com.leomze.TaskerView;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -11,21 +16,20 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class CreateUser{
+public class CreateUser extends JDialog{
 
+    public CreateUser(JFrame tv, boolean modal) {
+        super(tv, modal);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setTitle("Create User");
+        Container pane = getContentPane();
+        createUser(pane, tv);
+        setResizable(false);
+        pack();
 
-
-
-    private void createAndShowGUI() {
-        dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        createUser(dialog.getContentPane());
-        dialog.setResizable(false);
-        dialog.pack();
-        dialog.setVisible(true);
     }
 
-    private void createUser(Container pane) {
+    private void createUser(Container pane, JFrame tv) {
 
 
 
@@ -34,13 +38,15 @@ public class CreateUser{
         userNameLb = new JLabel();
         nameTextField = new JTextField();
         statusLb = new JLabel();
-        StatusRadioBtn = new JRadioButton();
+        statusRadioBtn = new JRadioButton();
         timeZoneLb = new JLabel();
         int value = 0;
         SpinnerNumberModel model = new SpinnerNumberModel(value, value - 12, value + 14, 1);
         GMTSpinner = new JSpinner(model);
         barButton = new JPanel();
         btnOk = new JButton();
+        arg = new String[3];
+
 
         Container contentPane = pane;
         contentPane.setLayout(new BorderLayout());
@@ -75,14 +81,12 @@ public class CreateUser{
                         new Insets(0, 0, 10, 0), 0, 0));
 
 
+
                 statusLb.setText("User status");
                 panelContetnt.add(statusLb, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 10), 0, 0));
-
-
-                StatusRadioBtn.setText("");
-                panelContetnt.add(StatusRadioBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                panelContetnt.add(statusRadioBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 10), 0, 0));
 
@@ -113,7 +117,16 @@ public class CreateUser{
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                            dialog.dispose();
+
+                            arg[0] = nameTextField.getText();
+                            if(statusRadioBtn.isSelected() == true){arg[1] = "active"; }else {arg[1] = "inactive";}
+                            int gmt =(int)  GMTSpinner.getValue();
+                            String GMT;
+                            if(gmt >= 0){GMT = "GMT+"+GMTSpinner.getValue();}else{GMT = "GMT"+GMTSpinner.getValue();}
+                            arg[2] = GMT;
+                            TaskerView.textArea.append("\n" + TaskerView.taskHandler.create(arg[0], arg[2], arg[1]));
+                            dispose();
+
                     }
                 });
 
@@ -128,26 +141,20 @@ public class CreateUser{
 
 
 
-    public void start() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
-
-
-    private JDialog dialog;
     private JPanel paneDialog;
     private JPanel panelContetnt;
     private JLabel userNameLb;
-    private JTextField nameTextField;
+    public JTextField nameTextField;
     private JLabel timeZoneLb;
-    private JRadioButton StatusRadioBtn;
+    public JRadioButton statusRadioBtn;
     private JLabel statusLb;
-    private JSpinner GMTSpinner;
+    public JSpinner GMTSpinner;
     private JPanel barButton;
     private JButton btnOk;
+    private String[] arg;
+
+
+
 
 
 }

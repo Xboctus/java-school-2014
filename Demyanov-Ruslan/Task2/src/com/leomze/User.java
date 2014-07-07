@@ -1,11 +1,12 @@
 package com.leomze;
 
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class User {
+public class User implements Serializable{
     private String name;
     private int timeZone;
     private boolean active;

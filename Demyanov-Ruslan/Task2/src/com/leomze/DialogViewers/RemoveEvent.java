@@ -1,6 +1,8 @@
 package com.leomze.DialogViewers;
 
 
+import com.leomze.TaskerView;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -21,6 +23,7 @@ public class RemoveEvent {
     private void createAndShowGUI() throws ParseException {
         dialog = new JDialog();
         dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        dialog.setTitle("Remove Event");
         createUser(dialog.getContentPane());
         dialog.setResizable(false);
         dialog.pack();
@@ -34,9 +37,9 @@ public class RemoveEvent {
         paneDialog = new JPanel();
         panelContetnt = new JPanel();
         userNameLb = new JLabel();
-        eventTextBox = new JComboBox<>();
+        eventTextBox = new JTextField();
         statusLb = new JLabel();
-        nameTextBox = new JComboBox<>();
+        nameTextBox = new JComboBox<>(TaskerView.taskHandler.showUserNamesArray());
         barButton = new JPanel();
         btnOk = new JButton();
 
@@ -99,6 +102,10 @@ public class RemoveEvent {
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String[] data = new String[2];
+                        data[0] = nameTextBox.getSelectedItem().toString();
+                        data[1] = eventTextBox.getText();
+                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.removeEvent(data[0], data[1]));
                         dialog.dispose();
                     }
                 });
@@ -131,7 +138,7 @@ public class RemoveEvent {
     private JPanel paneDialog;
     private JPanel panelContetnt;
     private JLabel userNameLb;
-    private JComboBox eventTextBox;
+    private JTextField eventTextBox;
     private JLabel statusLb;
     private JComboBox nameTextBox;
     private JPanel barButton;

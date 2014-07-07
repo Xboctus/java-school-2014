@@ -1,206 +1,36 @@
 package com.javaschool2014.task1;
 
-import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 import java.util.Timer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public abstract class AbstractCoordinator extends TimerTask implements Constants {
 
-    private Timer timer                 = new Timer(true);
-    private DateFormat dateFormat       = new SimpleDateFormat(DATE_FORMAT);
+    private Timer timer                        = new Timer(true);
+    private DateFormat dateFormat              = new SimpleDateFormat(DATE_FORMAT);
 
-    private TreeMap<String, User> users = new TreeMap<String, User>();
+    private static TreeMap<String, User> users = new TreeMap<String, User>();
+
+    private DataLoader dataLoader              = new DataLoader();
+    private DataSync dataSync                  = new DataSync();
 
     protected void printOutput(String output) {}
 
-    protected void connectDefaultDataFile() {}
+    public void start() {}
 
-    public void start(){
+    public synchronized boolean createUser(String name, String timeZone, String status) {
 
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        timer.scheduleAtFixedRate(this, 0, 1000);
-        connectDefaultDataFile();
-
-        while (true) {
-
-            try {
-
-                String command = input.readLine();
-                String[] arguments = null;
-
-                Pattern pattern = Pattern.compile(createUserPattern);
-                Matcher matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (createUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User created!");
-                    } else {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(modifyUserPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (modifyUser(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("User modified!");
-                    } else {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(addUserEventPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (addUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event added!");
-                    } else {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(addRandomTimeUserEventPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (addRandomTimeUserEvent(arguments[0], arguments[1], arguments[2], arguments[3])) {
-                        System.out.println("Random time event added!");
-                    } else {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(removeUserEventPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (removeUserEvent(arguments[0], arguments[1])) {
-                        System.out.println("Event removed!");
-                    } else {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(cloneUserEventPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (cloneUserEvent(arguments[0], arguments[1], arguments[2])) {
-                        System.out.println("Event cloned!");
-                    } else {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(showUserInfoPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (!showUserInfo(arguments[0])) {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(saveUserDataPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (!saveUserData(arguments[0])) {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(loadUserDataPattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-
-                    arguments = parseString(command);
-
-                    if (!loadUserData(arguments[0])) {
-                        System.out.println(ERROR);
-                    }
-
-                    continue;
-                }
-
-                pattern = Pattern.compile(leavePattern);
-                matcher = pattern.matcher(command);
-
-                if (matcher.matches()) {
-                    timer.cancel();
-                    System.exit(0);
-                }
-
-                printOutput(WRONG_COMMAND);
-
-            } catch (IOException e) {
-
-                System.out.println(e.getMessage());
-
-            }
-
-        }
-
-    }
-
-    public boolean createUser(String name, String timeZone, String status) {
-
-        if (users.containsKey(name)) {
-            printOutput(USER_EXISTS);
+        if (!validateInput(name, NO_NAME)
+                || !validateInput(timeZone, NO_TIMEZONE)
+                || !validateInput(status, NO_STATUS)) {
             return false;
         }
 
-        if (timeZone == null) {
-            printOutput(NO_TIMEZONE);
+        if (users.containsKey(name)) {
+            printOutput(USER_EXISTS);
             return false;
         }
 
@@ -223,15 +53,16 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
-    public boolean modifyUser(String name, String timeZone, String status) {
+    public synchronized boolean modifyUser(String name, String timeZone, String status) {
 
-        if (!users.containsKey(name)) {
-            printOutput(name + WRONG_NAME);
+        if (!validateInput(name, NO_NAME)
+                || !validateInput(timeZone, NO_TIMEZONE)
+                || !validateInput(status, NO_STATUS)) {
             return false;
         }
 
-        if (timeZone == null) {
-            printOutput(NO_TIMEZONE);
+        if (!users.containsKey(name)) {
+            printOutput(name + WRONG_NAME);
             return false;
         }
 
@@ -254,7 +85,13 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
-    public boolean addUserEvent(String  name, String text, String dateTime) {
+    public synchronized boolean addUserEvent(String  name, String text, String dateTime) {
+
+        if (!validateInput(name, NO_NAME)
+                || !validateInput(text, NO_TEXT)
+                || !validateInput(dateTime, NO_DATE)) {
+            return false;
+        }
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -281,20 +118,14 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
-    public boolean removeUserEvent(String name, String text) {
+    public synchronized boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
 
-        if (!users.containsKey(name)) {
-            printOutput(name + WRONG_NAME);
+        if (!validateInput(name, NO_NAME)
+                || !validateInput(text, NO_TEXT)
+                || !validateInput(from, NO_FROM_DATE)
+                || !validateInput(to, NO_TO_DATE)) {
             return false;
         }
-
-        User user = users.get(name);
-
-        return (user.removeEvent(text));
-
-    }
-
-    public boolean addRandomTimeUserEvent(String name, String text, String from, String to) {
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -329,7 +160,31 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
-    public boolean cloneUserEvent(String name, String text, String nameTo) {
+    public synchronized boolean removeUserEvent(String name, String text) {
+
+        if (!validateInput(name, NO_NAME)
+                || !validateInput(text, NO_TEXT)) {
+            return false;
+        }
+
+        if (!users.containsKey(name)) {
+            printOutput(name + WRONG_NAME);
+            return false;
+        }
+
+        User user = users.get(name);
+
+        return (user.removeEvent(text));
+
+    }
+
+    public synchronized boolean cloneUserEvent(String name, String text, String nameTo) {
+
+        if (!validateInput(name, NO_NAME)
+                || !validateInput(text, NO_TEXT)
+                || !validateInput(nameTo, NO_NAME_TO)) {
+            return false;
+        }
 
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
@@ -354,6 +209,10 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     public boolean showUserInfo(String name) {
 
+        if (!validateInput(name, NO_NAME)) {
+            return false;
+        }
+
         if (!users.containsKey(name)) {
             printOutput(name + WRONG_NAME);
             return false;
@@ -365,77 +224,124 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     }
 
+    public synchronized boolean saveUserData(String filename) {
+
+        if (!validateInput(filename, NO_FILENAME)) {
+            return false;
+        }
+
+        if (!dataLoader.saveData(filename)) {
+            printOutput(NO_FILE_SAVED);
+            return false;
+        }
+
+        printOutput(DATA_SAVED);
+
+        return true;
+
+    }
+
+    public synchronized boolean loadUserData(String filename) {
+
+        if (!validateInput(filename, NO_FILENAME)) {
+            return false;
+        }
+
+        if (!dataLoader.loadData(filename)) {
+            printOutput(NO_FILE_LOADED);
+            return false;
+        }
+
+        printOutput(DATA_LOADED);
+
+        return true;
+
+    }
+
+    public boolean createServer() {
+
+        dataSync.server();
+
+        return true;
+
+    }
+
+    public synchronized boolean synchronizeData(String ip, String portName) {
+
+        if (!validateInput(ip, NO_IP)
+                || !validateInput(portName, NO_PORT)) {
+            return false;
+        }
+
+        int port = Integer.parseInt(portName);
+        TreeMap<String, User> syncData = dataSync.synchronize(ip, port);
+
+        if (syncData == null) {
+
+            printOutput(NO_FILE_LOADED);
+
+            return false;
+
+        } else {
+
+            setUsers(syncData);
+            printOutput(DATA_SYNCED);
+
+            return true;
+
+        }
+
+    }
+
+    public boolean getServerPort() {
+
+        printOutput(dataSync.getServerPort());
+
+        return true;
+
+    }
+
+    protected synchronized void connectDefaultDataFile(String filename) {
+
+        if (!loadUserData(filename)) {
+            printOutput(NO_DEFAULT_FILE_LOADED);
+        }
+
+    }
+
     public String[] parseString (String command) {
 
         String tempString = command.substring(command.indexOf("(") + 1, command.lastIndexOf(")"));
         String[] arguments = tempString.split(",");
 
-        for (int i = 0; i < arguments.length; i++){
+        for (int i = 0; i < arguments.length; i++) {
             arguments[i] = arguments[i].trim();
         }
 
         return arguments;
     }
 
-    public boolean saveUserData(String filename) {
+    protected boolean validateInput(String input, String message) {
 
-        try {
-
-            FileOutputStream fileOut = new FileOutputStream(filename);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this.users);
-            out.close();
-            fileOut.close();
-            printOutput(DATA_SAVED);
-
-            return true;
-
-        } catch(IOException e) {
-
-            printOutput(ERROR + e.getMessage());
+        if (input.trim().isEmpty()) {
+            printOutput(message);
             return false;
-
         }
 
-    }
-
-    public boolean loadUserData(String filename) {
-
-            try  {
-
-                FileInputStream fileIn = new FileInputStream(filename);
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                this.users = (TreeMap<String, User>) in.readObject();
-                in.close();
-                fileIn.close();
-                printOutput(DATA_LOADED);
-
-                return true;
-
-            } catch(IOException e)  {
-
-                printOutput(ERROR + e.getMessage());
-                return false;
-
-            } catch(ClassNotFoundException e) {
-
-                printOutput(ERROR + e.getMessage());
-                return false;
-
-            }
-
-    }
-
-    public boolean server() {
-
         return true;
 
     }
 
-    public boolean client() {
+    public synchronized static TreeMap<String, User> getUsers() {
+        return users;
+    }
 
-        return true;
+    public synchronized static void setUsers(TreeMap<String, User> users) {
+        AbstractCoordinator.users = users;
+    }
 
+    public Timer getTimer() {
+        return timer;
     }
 
     @Override
