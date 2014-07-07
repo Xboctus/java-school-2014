@@ -24,6 +24,6 @@ public class Output {
 
         Output other = (Output) otherObject;
 
-        return user.equals(other.user);
+        return (user.equals(other.user) && description.equals(other.description));
     }
 }

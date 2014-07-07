@@ -4,21 +4,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 
-public class GraphicScheduler extends JFrame{
+public class GraphicScheduler extends JFrame {
     private JPanel outputPan;
     private JPanel buttonPan;
-    private JTextArea textArea;
+    private JTextArea textArea = new JTextArea(TEXT_ROWS, TEXT_COLUMNS);
     public static final int TEXT_ROWS = 30;
     public static final int TEXT_COLUMNS = 30;
     private UserCreater dialogCreate = null;
     private EventCreater dialogEvent = null;
     private ShowInfoCreater showInfoDialog = null;
     private FindUserCreater findUserCreater = null;
+    private ServerAddressCreater serverAddressCreater = null;
     private JFileChooser chooser;
+    private DataServer dataServer;
+    private Client client;
+    private String serverIp;
+    private int serverPort;
+    private static boolean eventsOutput = false;
 
-    GraphicScheduler(){
+
+    GraphicScheduler() {
         super("Graphic scheduler");
         setLayout(new FlowLayout());
         setSize(500, 500);
@@ -35,23 +43,31 @@ public class GraphicScheduler extends JFrame{
         ActionListener startScheduling = new StartSchedulingAction();
         ActionListener save = new SaveAction();
         ActionListener add = new AddAction();
+        ActionListener socket = new SocketAction();
+        ActionListener startServerAction = new StartServerAction();
+        ActionListener sync = new SyncAction();
 
         chooser = new JFileChooser();
+        dataServer = new DataServer(textArea);
         outputPan = new JPanel();
         buttonPan = new JPanel();
-        buttonPan.setLayout(new GridLayout(10, 1));
+        buttonPan.setLayout(new GridLayout(15, 1));
 
         addTextArea();
-        addButton("Create", create);
-        addButton("Modify", modify);
+        addButton("Add", add);
         addButton("AddEvent", addEvent);
-        addButton("RemoveEvent", removeEvent);
         addButton("AddRandomTimeEvent", addRandomTimeEvent);
         addButton("CloneEvent", cloneEvent);
-        addButton("ShowInfo", showInfo);
-        addButton("StartScheduling", startScheduling);
+        addButton("Create", create);
+        addButton("Modify", modify);
+        addButton("RemoveEvent", removeEvent);
         addButton("Save", save);
-        addButton("Add", add);
+        addButton("ShowInfo", showInfo);
+        addButton("Socket", socket);
+        addButton("StartServer", startServerAction);
+        addButton("StartScheduling", startScheduling);
+        addButton("Sync", sync);
+
         add(outputPan);
         add(buttonPan);
 
@@ -59,22 +75,22 @@ public class GraphicScheduler extends JFrame{
         pack();
     }
 
-    private void addButton(String label, ActionListener listener){
+    private void addButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.addActionListener(listener);
         buttonPan.add(button);
     }
 
-    private void addTextArea(){
-        textArea = new JTextArea(TEXT_ROWS, TEXT_COLUMNS);
+    private void addTextArea() {
+        textArea.append((new Date().toString()) + '\n');
         JScrollPane scrollPane = new JScrollPane(textArea);
         outputPan.add(scrollPane);
     }
 
-    private class CreateAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class CreateAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
             if (dialogCreate == null) dialogCreate = new UserCreater();
-            if (dialogCreate.showDialog(GraphicScheduler.this, "Create user")){
+            if (dialogCreate.showDialog(GraphicScheduler.this, "Create user")) {
                 User u = dialogCreate.getUser();
                 Coordinator.users.add(u);
                 textArea.append("Done!\n");
@@ -82,15 +98,36 @@ public class GraphicScheduler extends JFrame{
         }
     }
 
-    private class ModifyAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class ModifyAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
 
 
         }
     }
 
+    private class AddAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            ArrayList<User> users = new ArrayList<User>();
+            chooser.setCurrentDirectory(new File("."));
+
+            int result = chooser.showOpenDialog(GraphicScheduler.this);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String fileName = chooser.getSelectedFile().getPath();
+                try {
+                    ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
+                    users = (ArrayList<User>) in.readObject();
+                    Coordinator.setUsers(users);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(GraphicScheduler.this, "IO is happened");
+                }
+            }
+        }
+    }
+
     private class AddEventAction implements ActionListener {
         public void actionPerformed(ActionEvent event) {
+            dialogEvent = null;
             if (dialogEvent == null) dialogEvent = new EventCreater();
             if (dialogEvent.showDialog(GraphicScheduler.this, "Create event")) {
                 User user = Coordinator.getUser(dialogEvent.getUserName());
@@ -107,41 +144,58 @@ public class GraphicScheduler extends JFrame{
         }
     }
 
-    private class RemoveEventAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class RemoveEventAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
 
         }
     }
 
-    private class AddRandomTimeEventAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class AddRandomTimeEventAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
 
         }
     }
 
-    private class CloneEventAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class CloneEventAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
 
         }
     }
 
-    private class ShowInfoAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class SaveAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            chooser.setCurrentDirectory(new File("."));
+
+            int result = chooser.showOpenDialog(GraphicScheduler.this);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String fileName = chooser.getSelectedFile().getPath();
+                try {
+                    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
+                    out.writeObject(Coordinator.getUsers());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(GraphicScheduler.this, "IO is happened");
+                }
+            }
+        }
+    }
+
+    private class ShowInfoAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
             findUserCreater = null;
             findUserCreater = new FindUserCreater();
             showInfoDialog = null;
-            if (findUserCreater.showDialog(GraphicScheduler.this, "find user")){
+            if (findUserCreater.showDialog(GraphicScheduler.this, "find user")) {
                 User user = findUserCreater.getUser();
                 showInfoDialog = new ShowInfoCreater(user);
-                if (showInfoDialog.showDialog(GraphicScheduler.this, user.name)){
+                if (showInfoDialog.showDialog(GraphicScheduler.this, user.name)) {
                     textArea.append("Done!\n");
                 }
                 Boolean newStatus = new Boolean(showInfoDialog.getStatus());
-                if (!newStatus.equals(user.status)){
-                    if (newStatus == true){
+                if (!newStatus.equals(user.status)) {
+                    if (newStatus == true) {
                         Sheduler.getSortingEvents().add(user);
-                    }
-                    else {
+                    } else {
                         Sheduler.getSortingEvents().delete(user);
                     }
                 }
@@ -149,52 +203,56 @@ public class GraphicScheduler extends JFrame{
         }
     }
 
-    private class StartSchedulingAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
+    private class StartSchedulingAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            eventsOutput = true;
             Runnable r = new OutputEventsRunnable(textArea);
             Thread t = new Thread(r);
             t.start();
         }
     }
 
-    private class SaveAction implements ActionListener{
+    private class StartServerAction implements ActionListener{
         public void actionPerformed(ActionEvent event){
-            chooser.setCurrentDirectory(new File("."));
+            dataServer.startServer();
+        }
+    }
 
-            int result = chooser.showOpenDialog(GraphicScheduler.this);
-
-            if (result == JFileChooser.APPROVE_OPTION){
-                String fileName = chooser.getSelectedFile().getPath();
-                try {
-                    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
-                    out.writeObject(Coordinator.getUsers());
-                }
-                catch (Exception e){
-                    JOptionPane.showMessageDialog(GraphicScheduler.this, "IO is happened");
-                }
+    private class SocketAction implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            if (dataServer != null){
+                int localPort = dataServer.getPort();
+                JOptionPane.showMessageDialog(GraphicScheduler.this, localPort);
             }
         }
     }
 
-    private class AddAction implements ActionListener{
-        public void actionPerformed(ActionEvent event){
-            ArrayList<User> users = new ArrayList<User>();
-            chooser.setCurrentDirectory(new File("."));
-
-            int result = chooser.showOpenDialog(GraphicScheduler.this);
-
-            if (result == JFileChooser.APPROVE_OPTION){
-                String fileName = chooser.getSelectedFile().getPath();
-                try {
-                    ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
+    private class SyncAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            try {
+                ArrayList<User> users = new ArrayList<User>();
+                serverAddressCreater = new ServerAddressCreater();
+                if (serverAddressCreater.showDialog(GraphicScheduler.this, "server address")) {
+                    serverIp = serverAddressCreater.getServerIP();
+                    serverPort = serverAddressCreater.getServerPort();
+                    textArea.append("server ip: " + serverIp + '\n');
+                    textArea.append("server port: " + serverPort + '\n');
+                    client = new Client(serverIp, serverPort);
+                    textArea.append("client is connected " + '\n');
+                    ObjectInputStream in = client.getSocketIn();
+                    textArea.append("data obtained" + '\n');
                     users = (ArrayList<User>) in.readObject();
                     Coordinator.setUsers(users);
-                    SortingEvents.setTreeSet(users);
+                    in.close();
+                    client.closeSocket();
                 }
-                catch (Exception e){
-                    JOptionPane.showMessageDialog(GraphicScheduler.this, "IO is happened");
-                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(GraphicScheduler.this, e.getMessage());
             }
         }
+    }
+
+    public static boolean getEventsOutput(){
+        return eventsOutput;
     }
 }

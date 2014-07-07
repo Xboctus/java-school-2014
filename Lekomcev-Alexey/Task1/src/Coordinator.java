@@ -87,6 +87,7 @@ public class Coordinator {
     public static void setUsers(ArrayList<User> p_users){
         users.clear();
         users = p_users;
+        SortingEvents.setTreeSet(users);
     }
 }
 

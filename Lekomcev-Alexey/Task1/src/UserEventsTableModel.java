@@ -66,15 +66,6 @@ public class UserEventsTableModel extends AbstractTableModel {
         else return true;
     }
 
-//    public boolean hasEmptyRow() {
-//        if (user.events.size() == 0) return false;
-//        Event eventRecord = user.events.get(user.events.size() - 1);
-//        if (eventRecord.getDate().toString().trim().equals("") && eventRecord.getDescription().trim().equals("")) {
-//            return true;
-//        }
-//        else return false;
-//    }
-
     public void addEmptyRow(){
         //user.events.add(new Event())
     }
