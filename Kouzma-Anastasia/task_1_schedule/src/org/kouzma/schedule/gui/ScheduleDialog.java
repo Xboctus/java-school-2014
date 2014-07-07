@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
@@ -34,18 +34,17 @@ public class ScheduleDialog extends JDialog {
 
 	protected List<JTextField> arrControls = new ArrayList<JTextField>();
 	private JButton okButton;
-	protected JPanel contentPanel;
 	/**
 	 * Create the dialog.
 	 * @param dialogCallBack 
 	 */
-	public ScheduleDialog(String title, String[] arrLabelNames, InputType[] arrControlTypes, final DialogCallBack dialogCallBack) {
+	public ScheduleDialog(String title, String[] arrLabelNames, final InputType[] arrControlTypes, final DialogCallBack dialogCallBack) {
 		setBounds(100, 100, 350, 200);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel = new JPanel();
+		JPanel contentPanel = new JPanel();
 		
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel, BorderLayout.NORTH);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
 		gbl_contentPanel.columnWeights = new double[]{0.0, 1.0};
 		gbl_contentPanel.columnWidths = new int[] {100, 200};
@@ -67,7 +66,6 @@ public class ScheduleDialog extends JDialog {
 			gbc_textField.insets = new Insets(0, 0, 5, 0);
 			gbc_textField.gridx = 1;
 			gbc_textField.gridy = i;
-			textField.setColumns(10);
 			contentPanel.add(textField, gbc_textField);
 			arrControls.add(textField);
 		}
@@ -81,10 +79,10 @@ public class ScheduleDialog extends JDialog {
 			@Override
 			public void mouseClicked(MouseEvent ev) {
 				List<String> arrParams = new ArrayList<String>();
-				for (JTextField control : arrControls) {
-					String paramText = control.getText();
+				for (int i = 0; i < arrControls.size(); i++) {
+					String paramText = arrControls.get(i).getText();
 					if (paramText.equals("")) {
-						JOptionPane.showMessageDialog(control, "Empty field", "Error",
+						JOptionPane.showMessageDialog(arrControls.get(i), "Empty field", "Error",
 					              JOptionPane.ERROR_MESSAGE);
 						return;
 					}
@@ -98,8 +96,8 @@ public class ScheduleDialog extends JDialog {
 		buttonPane.add(okButton);
 		getRootPane().setDefaultButton(okButton);
 	}
-	private JTextField createTextField(InputType controlType) {
-		switch (controlType) {
+	private JTextField createTextField(InputType inputType) {
+		switch (inputType) {
 		case TEXT:
 			return createTextInput();
 		case TIMEZONE:
@@ -111,12 +109,12 @@ public class ScheduleDialog extends JDialog {
 		}
 		return null;
 	}
-	
+
 	private JTextField createTextInput() {
 		DefaultFormatter textFormatter = new DefaultFormatter() {
 			@Override
 			public Object stringToValue(String string) throws ParseException {
- 				Pattern textPattern = Pattern.compile("[a-zA-Z].*");
+ 				Pattern textPattern = Pattern.compile("[a-zA-Zа-яА-Я].*");
 				Matcher matcher = textPattern.matcher(string);
 				if (!matcher.matches()) {
 					return "";
@@ -139,7 +137,7 @@ public class ScheduleDialog extends JDialog {
 		DefaultFormatter gmtFormatter = new DefaultFormatter() {
 			@Override
 			public Object stringToValue(String string) throws ParseException {
-				Pattern gmtPattern = Pattern.compile("(GMT[+|-]\\d\\d?)(.*)");
+				Pattern gmtPattern = Pattern.compile("(GMT[+-]\\d\\d?)(.*)");
 				Matcher matcher = gmtPattern.matcher(string);
 				if (!matcher.matches()) {
 					return "GMT+0";
