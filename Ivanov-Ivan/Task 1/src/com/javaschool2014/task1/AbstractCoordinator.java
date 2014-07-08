@@ -14,8 +14,9 @@ public abstract class AbstractCoordinator extends TimerTask implements Constants
 
     private static TreeMap<String, User> users = new TreeMap<String, User>();
 
-    private DataLoader dataLoader              = new DataLoader();
-    private DataSync dataSync                  = new DataSync();
+    protected DataLoader dataLoader            = new DataLoader();
+    protected DataLoaderSQL dataLoaderSQL      = new DataLoaderSQL();
+    protected DataSync dataSync                = new DataSync();
 
     protected void printOutput(String output) {}
 

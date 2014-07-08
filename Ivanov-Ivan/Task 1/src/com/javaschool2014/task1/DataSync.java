@@ -13,12 +13,14 @@ public class DataSync {
     private ObjectInput input;
     private ObjectOutput output;
     private int serverPort;
+    protected Thread server;
+    protected Thread connect;
 
     public void server() {
 
         serverPort = findFreePort();
 
-        Thread server = new Thread(new Runnable(){
+        server = new Thread(new Runnable(){
 
             @Override
             public void run() {
@@ -50,7 +52,6 @@ public class DataSync {
     public TreeMap<String,User> synchronize(String ip, int port) {
 
         try {
-
 
             try {
 
@@ -102,7 +103,7 @@ public class DataSync {
 
             final Socket socket = serverSocket.accept();
 
-            Thread connect = new Thread(new Runnable(){
+            connect = new Thread(new Runnable(){
 
                 @Override
                 public void run() {

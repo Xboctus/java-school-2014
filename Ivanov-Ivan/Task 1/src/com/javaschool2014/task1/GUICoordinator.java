@@ -1,7 +1,6 @@
 package com.javaschool2014.task1;
 
 import javax.swing.*;
-import javax.swing.plaf.FileChooserUI;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,9 +10,9 @@ import java.text.ParseException;
 
 public class GUICoordinator extends AbstractCoordinator {
 
-    private String appName             = "Planfx v0.1";
-    private JFrame newFrame            = new JFrame(appName);
-    private final JTextArea textArea   = new JTextArea();
+    private String appName           = "Planfx v0.1";
+    private JFrame newFrame          = new JFrame(appName);
+    private final JTextArea textArea = new JTextArea();
 
     @Override
     protected void printOutput(String string) {
@@ -25,6 +24,12 @@ public class GUICoordinator extends AbstractCoordinator {
 
         getTimer().scheduleAtFixedRate(this, 0, 1000);
         createServer();
+
+    }
+
+    public void exit() {
+
+        newFrame.dispose();
 
     }
 
@@ -59,7 +64,7 @@ public class GUICoordinator extends AbstractCoordinator {
         leftPanel.setPreferredSize(new Dimension(400, 460));
 
         JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new GridLayout(0, 1, 0, 15));
+        rightPanel.setLayout(new GridLayout(0, 1, 0, 5));
 
         textArea.setEditable(false);
         textArea.setLineWrap(true);
@@ -142,6 +147,27 @@ public class GUICoordinator extends AbstractCoordinator {
             }
         };
 
+        final ActionListener saveDBListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getServerPort();
+            }
+        };
+
+        final ActionListener loadDBListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getServerPort();
+            }
+        };
+
+        final ActionListener exitListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exit();
+            }
+        };
+
         JButton create             = new JButton("Create");
         JButton modify             = new JButton("Modify");
         JButton addEvent           = new JButton("AddEvent");
@@ -153,6 +179,9 @@ public class GUICoordinator extends AbstractCoordinator {
         JButton loadData           = new JButton("LoadData");
         JButton syncData           = new JButton("SyncData");
         JButton showPort           = new JButton("ShowPort");
+        JButton saveDB             = new JButton("SaveDB");
+        JButton loadDB             = new JButton("LoadDB");
+        JButton exit               = new JButton("Exit");
 
         create.addActionListener(createListener);
         modify.addActionListener(modifyListener);
@@ -165,6 +194,9 @@ public class GUICoordinator extends AbstractCoordinator {
         loadData.addActionListener(loadDataListener);
         syncData.addActionListener(syncDataListener);
         showPort.addActionListener(showPortListener);
+        saveDB.addActionListener(saveDBListener);
+        loadDB.addActionListener(loadDBListener);
+        exit.addActionListener(exitListener);
 
         rightPanel.add(create);
         rightPanel.add(modify);
@@ -177,6 +209,9 @@ public class GUICoordinator extends AbstractCoordinator {
         rightPanel.add(loadData);
         rightPanel.add(syncData);
         rightPanel.add(showPort);
+        rightPanel.add(saveDB);
+        rightPanel.add(loadDB);
+        rightPanel.add(exit);
 
         leftPanel.add(new JScrollPane(textArea));
 
@@ -188,6 +223,7 @@ public class GUICoordinator extends AbstractCoordinator {
         newFrame.setSize(540, 460);
         newFrame.setResizable(false);
         newFrame.setVisible(true);
+        dataLoaderSQL.dbConnection();
 
     }
 

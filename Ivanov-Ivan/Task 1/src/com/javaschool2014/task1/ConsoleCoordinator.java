@@ -195,8 +195,10 @@ public class ConsoleCoordinator extends AbstractCoordinator {
                 matcher = exitPattern.matcher(command);
 
                 if (matcher.matches()) {
+
                     getTimer().cancel();
                     System.exit(0);
+
                 }
 
                 System.out.println(WRONG_COMMAND);

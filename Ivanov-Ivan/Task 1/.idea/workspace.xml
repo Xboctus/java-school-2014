@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
+    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="Task 1 1.4 commit&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/DeadLock.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/src/com/javaschool2014/task1/SimpleDeadLock.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jtds_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DeadLock/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Task 1.iml" afterPath="$PROJECT_DIR$/Task 1.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -73,7 +87,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="64" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1462">
+            <state line="42" column="0" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1309">
               <folding />
             </state>
           </provider>
@@ -82,7 +96,7 @@
       <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="275" column="46" selection-start="6915" selection-end="6915" vertical-scroll-proportion="0.0" vertical-offset="5517" max-vertical-offset="6188">
+            <state line="17" column="69" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="6392">
               <folding />
             </state>
           </provider>
@@ -91,11 +105,8 @@
       <file leaf-file-name="DataSync.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="46" selection-start="1077" selection-end="1077" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3536">
-              <folding>
-                <element signature="e#2131#3238#0" expanded="true" />
-                <element signature="e#3222#3223#0" expanded="true" />
-              </folding>
+            <state line="109" column="0" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="3706">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,8 +114,28 @@
       <file leaf-file-name="DataLoader.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1003">
+            <state line="7" column="10" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1003">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUICoordinator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="224" column="34" selection-start="7163" selection-end="7163" vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="8500">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataLoaderSQL.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="44" selection-start="172" selection-end="172" vertical-scroll-proportion="0.22030237" vertical-offset="34" max-vertical-offset="1156">
+              <folding>
+                <marker date="1404843689634" expanded="true" signature="833:882" placeholder="select hd fr..pc..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,43 +143,7 @@
       <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="64" selection-start="3876" selection-end="3985" vertical-scroll-proportion="0.0" vertical-offset="519" max-vertical-offset="969">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUICoordinator.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="407" column="5" selection-start="13179" selection-end="13179" vertical-scroll-proportion="0.4911111" vertical-offset="5644" max-vertical-offset="6834">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConsoleCoordinator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="40" selection-start="6181" selection-end="6181" vertical-scroll-proportion="0.0" vertical-offset="3192" max-vertical-offset="3655">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="5" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1700">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="33" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+            <state line="29" column="66" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="498" max-vertical-offset="969">
               <folding />
             </state>
           </provider>
@@ -187,10 +182,11 @@
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java" />
       </list>
     </option>
   </component>
@@ -213,7 +209,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -278,8 +274,8 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jtds-1.3.1-dist" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
@@ -611,7 +607,9 @@
       <workItem from="1404676188808" duration="715000" />
       <workItem from="1404709508061" duration="1912000" />
       <workItem from="1404711681769" duration="49000" />
-      <workItem from="1404711741015" duration="2018000" />
+      <workItem from="1404711741015" duration="22875000" />
+      <workItem from="1404843385986" duration="233000" />
+      <workItem from="1404843727497" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -709,11 +707,15 @@
       <created>1404667320106</created>
       <updated>1404667320106</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Task 1 1.4 commit&#10;">
+      <created>1404715536682</created>
+      <updated>1404715536682</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168184000" />
+    <option name="totallyTimeSpent" value="189290000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -737,7 +739,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="978" height="616" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -752,19 +754,19 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327451" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32352942" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12993763" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14033264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3156863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13525027" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32352942" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -801,20 +803,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="54" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="544">
@@ -838,16 +826,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="1" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="1462">
-          <folding />
-        </state>
+        <state line="80" column="1" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="1462" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="24" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="6" column="24" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -866,16 +850,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="40" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1547">
-          <folding />
-        </state>
+        <state line="6" column="40" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="16" column="23" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -894,16 +874,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="89" selection-start="1869" selection-end="1873" vertical-scroll-proportion="0.0" vertical-offset="1208" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="85" column="89" selection-start="1869" selection-end="1873" vertical-scroll-proportion="0.0" vertical-offset="1208" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="16" column="23" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -922,16 +898,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="23" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="23" column="23" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -950,16 +922,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="22" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -978,16 +946,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="39" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1666">
-          <folding />
-        </state>
+        <state line="69" column="39" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="4" column="41" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -1006,16 +970,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1462">
-          <folding />
-        </state>
+        <state line="8" column="27" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1462" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="22" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="2" column="22" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -1034,16 +994,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="406" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="19" column="27" selection-start="406" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="459">
-          <folding />
-        </state>
+        <state line="11" column="28" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="459" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
@@ -1062,16 +1018,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="406" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="510">
-          <folding />
-        </state>
+        <state line="19" column="27" selection-start="406" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="510" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="459">
-          <folding />
-        </state>
+        <state line="11" column="28" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="459" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Task 1.iml">
@@ -1089,69 +1041,74 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.104848" vertical-offset="1867" max-vertical-offset="2754" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="64" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="64" selection-start="3876" selection-end="3985" vertical-scroll-proportion="0.0" vertical-offset="519" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="5" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
-          <folding />
-        </state>
+        <state line="55" column="5" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
+        <state line="12" column="33" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="46" selection-start="6915" selection-end="6915" vertical-scroll-proportion="0.0" vertical-offset="5517" max-vertical-offset="6188">
+        <state line="1386" column="0" selection-start="53421" selection-end="53421" vertical-scroll-proportion="0.33217993" vertical-offset="22769" max-vertical-offset="34238" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="10" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="46" selection-start="1077" selection-end="1077" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3536">
-          <folding>
-            <element signature="e#2131#3238#0" expanded="true" />
-            <element signature="e#3222#3223#0" expanded="true" />
-          </folding>
+        <state line="109" column="0" selection-start="2254" selection-end="2254" vertical-scroll-proportion="0.0" vertical-offset="1581" max-vertical-offset="3638">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="40" selection-start="6181" selection-end="6181" vertical-scroll-proportion="0.0" vertical-offset="2823" max-vertical-offset="3723">
+        <state line="198" column="40" selection-start="6182" selection-end="6182" vertical-scroll-proportion="0.37580994" vertical-offset="3124" max-vertical-offset="3689" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="66" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="498" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="69" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6205">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="407" column="5" selection-start="13179" selection-end="13179" vertical-scroll-proportion="0.4911111" vertical-offset="5644" max-vertical-offset="6834">
+        <state line="224" column="34" selection-start="7163" selection-end="7163" vertical-scroll-proportion="0.0" vertical-offset="2778" max-vertical-offset="7650">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="44" selection-start="172" selection-end="172" vertical-scroll-proportion="0.22030237" vertical-offset="34" max-vertical-offset="1156">
+          <folding>
+            <marker date="1404843689634" expanded="true" signature="833:882" placeholder="select hd fr..pc..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1220,6 +1177,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>jtds-1.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
