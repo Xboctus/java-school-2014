@@ -1,5 +1,8 @@
 package com.leomze.DialogViewers;
 
+import com.leomze.TaskerView;
+import com.leomze.WebSyncHandler;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -10,9 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.text.ParseException;
+import java.util.regex.Matcher;
 
 
 public class WebSync {
@@ -32,13 +34,11 @@ public class WebSync {
 
 
         paneDialog = new JPanel();
-        panelContetnt = new JPanel();
-        userNameLb = new JLabel();
-        nameTextField = new JTextField();
-        statusLb = new JLabel();
-        eventTextField = new JTextField();
-        timeZoneLb = new JLabel();
-        dateTextField = new JFormattedTextField(new MaskFormatter("##.##.## ##:##:##"));
+        panelContent = new JPanel();
+        ipLb = new JLabel();
+        ipTextField = new JTextField();
+        portLb = new JLabel();
+        portTextField = new JTextField();
         barButton = new JPanel();
         btnOk = new JButton();
 
@@ -59,24 +59,32 @@ public class WebSync {
 
 
             {
-                panelContetnt.setLayout(new GridBagLayout());
-                ((GridBagLayout)panelContetnt.getLayout()).columnWidths = new int[] {89, 115, 113, 0};
-                ((GridBagLayout)panelContetnt.getLayout()).rowHeights = new int[] {0, 0, 0, 0};
-                ((GridBagLayout)panelContetnt.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
-                ((GridBagLayout)panelContetnt.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+                panelContent.setLayout(new GridBagLayout());
+                ((GridBagLayout) panelContent.getLayout()).columnWidths = new int[] {89, 115, 113, 0};
+                ((GridBagLayout) panelContent.getLayout()).rowHeights = new int[] {0, 0, 0, 0};
+                ((GridBagLayout) panelContent.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout) panelContent.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
 
 
-                userNameLb.setText("Write IP");
-                panelContetnt.add(userNameLb, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                ipLb.setText("Write server IP");
+                panelContent.add(ipLb, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 10), 0, 0));
-                panelContetnt.add(nameTextField, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
+                panelContent.add(ipTextField, new GridBagConstraints(1, 0, 2, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 0), 0, 0));
+
+                portLb.setText("Write server port");
+                panelContent.add(portLb, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 10, 10), 0, 0));
+                panelContent.add(portTextField, new GridBagConstraints(1, 1, 2, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 10, 0), 0, 0));
 
 
             }
-            paneDialog.add(panelContetnt, BorderLayout.CENTER);
+            paneDialog.add(panelContent, BorderLayout.CENTER);
 
 
             {
@@ -93,9 +101,23 @@ public class WebSync {
                 btnOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        String ipRegexp = "\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b";
+                        String portRegexp = "[0-9]{1,5}";
 
+                        if(ipTextField.getText().matches(ipRegexp) & portTextField.getText().matches(portRegexp)){
+                             Thread sync  = new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        int port  = Integer.parseInt(portTextField.getText());
+                                        new WebSyncHandler().client(ipTextField.getText(), port);
+                                    }
+                                });
+                            sync.start();
+                        }else{
+                            TaskerView.textArea.append("\n Incorrect data input (ip/port) :(");
+                        }
 
-                        dialog.dispose();
+                      dialog.dispose();
                     }
                 });
 
@@ -122,13 +144,11 @@ public class WebSync {
 
     private JDialog dialog;
     private JPanel paneDialog;
-    private JPanel panelContetnt;
-    private JLabel userNameLb;
-    private JFormattedTextField dateTextField;
-    private JLabel timeZoneLb;
-    private JTextField eventTextField;
-    private JLabel statusLb;
-    private JTextField nameTextField;
+    private JPanel panelContent;
+    private JLabel ipLb;
+    private JTextField ipTextField;
+    private JLabel portLb;
+    private JTextField portTextField;
     private JPanel barButton;
     private JButton btnOk;
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TaskHandler implements Serializable{
 
@@ -31,7 +32,7 @@ public class TaskHandler implements Serializable{
     private static final String WRONG_DATE_RANGE = "Wrong date range :(";
     private static final String USERS_LIST = "Users list: \n";
 
-    HashMap<String, User> users = new HashMap<>();
+    ConcurrentHashMap<String, User> users = new ConcurrentHashMap<>();
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 

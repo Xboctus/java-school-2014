@@ -3,14 +3,9 @@ package com.leomze;
 
 
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CommandManager {
 
@@ -168,7 +163,7 @@ public class CommandManager {
 
                 }
                 case START_SCHEDULING:
-                     new ShowTasks().start(taskHandler.users);
+                     new StartSchedule().start(taskHandler.users);
                     break;
                 case SHOW_USERS:
                     return taskHandler.showUsers();
@@ -179,7 +174,7 @@ public class CommandManager {
 
 
 
-        return null;
+        return "";
 
     }
 

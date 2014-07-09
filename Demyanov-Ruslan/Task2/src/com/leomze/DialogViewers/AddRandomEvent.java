@@ -138,7 +138,7 @@ public class AddRandomEvent extends JDialog {
                            data[1] = eventTextField.getText();
                            data[2] = dateFromTextField.getText();
                            data[3] = dateToTextField.getText();
-                           TaskerView.textArea.append("\n" + TaskerView.taskHandler.addRandomEvent(data[0], data[1], data[2], data[3]));
+                           TaskerView.textArea.append("\n" + TaskerView.taskHandler.addRandomEvent(data[0], data[1], data[2], data[3]) + "\n");
                            dispose();
                     }
                 });

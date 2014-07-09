@@ -121,7 +121,7 @@ public class AddEvent extends JDialog{
                            data[0] = nameTextField.getSelectedItem().toString();
                            data[1] = eventTextField.getText();
                            data[2] = dateTextField.getText();
-                           TaskerView.textArea.append("\n" + TaskerView.taskHandler.addEvent(data[0], data[1], data[2]));
+                           TaskerView.textArea.append("\n" + TaskerView.taskHandler.addEvent(data[0], data[1], data[2]) + "\n");
                            dispose();
                     }
                 });

@@ -23,6 +23,8 @@ public class Main {
 //        CommandManager commandManager = new CommandManager();
 //        commandManager.sart();
 
+//        new DBManager().start();
+
 
     }
 }

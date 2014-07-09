@@ -23,13 +23,13 @@ public class CreateUser extends JDialog{
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setTitle("Create User");
         Container pane = getContentPane();
-        createUser(pane, tv);
+        createUser(pane);
         setResizable(false);
         pack();
 
     }
 
-    private void createUser(Container pane, JFrame tv) {
+    private void createUser(Container pane) {
 
 
 
@@ -124,7 +124,7 @@ public class CreateUser extends JDialog{
                             String GMT;
                             if(gmt >= 0){GMT = "GMT+"+GMTSpinner.getValue();}else{GMT = "GMT"+GMTSpinner.getValue();}
                             arg[2] = GMT;
-                            TaskerView.textArea.append("\n" + TaskerView.taskHandler.create(arg[0], arg[2], arg[1]));
+                            TaskerView.textArea.append("\n" + TaskerView.taskHandler.create(arg[0], arg[2], arg[1]) + "\n");
                             dispose();
 
                     }

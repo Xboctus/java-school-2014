@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,27 +13,23 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 
-/**
- * Created by lion__000 on 03.07.14.
- */
-public class CloneEvent {
+
+public class CloneEvent extends JDialog{
 
 
 
 
-    private void createAndShowGUI() throws ParseException {
-        dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        dialog.setTitle("Clone Event");
-        createUser(dialog.getContentPane());
-        dialog.setResizable(false);
-        dialog.pack();
-        dialog.setVisible(true);
+    public CloneEvent(JFrame tv, boolean modal){
+        super(tv,modal);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setTitle("Clone Event");
+        Container pane = getContentPane();
+        cloneEvent(pane);
+        setResizable(false);
+        pack();
     }
 
-    private void createUser(Container pane) throws ParseException {
-
-
+    private void cloneEvent(Container pane){
 
         paneDialog = new JPanel();
         panelContent = new JPanel();
@@ -115,11 +110,16 @@ public class CloneEvent {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String[] data = new String[3];
+                        if(TaskerView.taskHandler.showUserNamesArray().length > 1){
                         data[0] = userNameFromBox.getSelectedItem().toString();
-                        data[1] = eventTextField.getText();
                         data[2] = userNameToBox.getSelectedItem().toString();
-                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.cloneEvent(data[0], data[1], data[2]));
-                        dialog.dispose();
+
+                        data[1] = eventTextField.getText();
+                        TaskerView.textArea.append("\n" + TaskerView.taskHandler.cloneEvent(data[0], data[1], data[2]) + "\n");
+                        }else {
+                            TaskerView.textArea.append("\n Error! Choose correct name or create more,\n then one user for cloning :)");
+                        }
+                        dispose();
                     }
                 });
 
@@ -134,20 +134,6 @@ public class CloneEvent {
 
 
 
-    public void start() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    createAndShowGUI();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-
-    private JDialog dialog;
     private JPanel paneDialog;
     private JPanel panelContent;
     private JLabel userNameFromLb;
