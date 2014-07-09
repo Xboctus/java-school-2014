@@ -45,7 +45,7 @@ public class AddUserFrame extends TemplateFrame {
         boolean userStatus = isUserActiveCheckBox.isSelected();
 
         if (userName.isEmpty() || timeZoneID.isEmpty()) {
-          Coordinator.logger.warning("Fields cannot be empty!");
+          taskCoordinator.logger.warning("Fields cannot be empty!");
           showDialogByResponseStatus(ResponseStatus.EMPTY_FIELDS);
           return;
         }

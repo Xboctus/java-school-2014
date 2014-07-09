@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import task1.DAO.MySQLDAO;
 import task1.Util.ResponseStatus;
 
 import java.io.IOException;
@@ -11,24 +12,38 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.logging.Logger;
 
 public class Coordinator {
 
   private ServerSocket srvSocket;
-  private SortedMap<String, User> usersMap; // list of users
-  public static final Logger logger = Logger.getLogger(Coordinator.class.getName());
+  private Map<String, User> usersMap;
+  private MySQLDAO dao;
+  private static int logNumber;
+  public Logger logger; // TODO trash
 
-  // constructor
+  private static final String DBURL = "jdbc:mysql://localhost:3306/scheduler"; // jdbc:mysql://localhost:3306/db_name
+  private static final String DBUsername = "root";
+  private static final String DBPassword = "admin";
+
   public Coordinator() {
-
     try {
       srvSocket = new ServerSocket(0);
-    } catch (Exception ex) {
+      dao = new MySQLDAO(DBURL, DBUsername, DBPassword);
+    } catch (IOException ioex) {
       logger.severe("error when creating server socket");
+    } catch (ClassNotFoundException cnfe) {
+      System.out.println("Driver library not found");
+    } catch (SQLException sqlex) {
+      System.out.println("Cannot establish connection to db");
+      sqlex.printStackTrace();
     }
-    usersMap = new TreeMap<String, User>();
+    usersMap = new ConcurrentSkipListMap<>();
+
+    logger = Logger.getLogger(String.valueOf(logNumber++));
   }
 
   // scheduler API
@@ -133,6 +148,11 @@ public class Coordinator {
     return ResponseStatus.EVENT_CLONED;
   }
 
+  public String getUserInfo(String userName) {
+    User user = usersMap.get(userName);
+    return (user != null) ? user.toString() : "";
+  }
+
   public void startScheduling() {
     TimerTask timerTask = new TimerTask() {
       @Override
@@ -143,8 +163,7 @@ public class Coordinator {
           if (user.isActive()) {
             for (Event event : user.getUserTaskArray()) {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
-                System.out.println("---EVENT---\r\nUser: " + user.getUserName() + "\r\nEvent info: " + event);
-                logger.info("---EVENT---\r\nUser: " + user.getUserName() + "\r\nEvent info: " + event);
+                logger.fine("---EVENT---\r\nUser: " + user.getUserName() + "\r\nEvent info: " + event + "\r\n");
               }
             }
           }
@@ -156,13 +175,6 @@ public class Coordinator {
     scheduler.scheduleAtFixedRate(timerTask, 0, 1000);
   }
 
-  public String getUserInfo(String userName) {
-    if (userName == null) return null;
-    User user = usersMap.get(userName);
-    return user != null ? user.toString() : "";
-  }
-
-  // getters and setters
   public User getUserByName(String userName) {
     return usersMap.get(userName);
   }
@@ -171,7 +183,6 @@ public class Coordinator {
     return srvSocket.getLocalPort();
   }
 
-  // methods for work with JSON data about scheduler's state
   public JSONObject getCurrentState() {
     JSONObject result = new JSONObject();
     JSONArray usersArray = new JSONArray();
@@ -182,7 +193,7 @@ public class Coordinator {
     return result;
   }
 
-  public void parseStateJSON(String input) {
+  public boolean parseStateJSON(String input) {
     JSONParser parser = new JSONParser();
     SortedMap<String, User> usersMap = new TreeMap<String, User>();
 
@@ -209,33 +220,26 @@ public class Coordinator {
         }
         usersMap.put(userName, user);
       }
+      this.usersMap = usersMap;
+      return true;
     } catch (ParseException ex) {
-      logger.warning("Bad input file format");
+      return false;
     }
-    logger.info("State recovered successfully!");
-    this.usersMap = usersMap;
   }
 
-  // methods for web sync of instances of scheduler
   public void startSyncThread() {
     Thread syncThread = new Thread(new Runnable() {
       @Override
       public void run() {
-        System.out.println("SERVER SOCKET THREAD: server sync thread started!");
         while (true) {
           try {
             Socket in = srvSocket.accept();
-            System.out.println("SERVER SOCKET THREAD: Socket accepted in startSync thread");
             OutputStream outputStream = in.getOutputStream();
-            System.out.println("SERVER SOCKET THREAD: stream recieved");
             outputStream.write(getCurrentState().toJSONString().getBytes());
             outputStream.flush();
-            System.out.println("SERVER SOCKET THREAD: data sent");
             in.close();
-            System.out.println("SERVER SOCKET THREAD: incoming socket closed");
           } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("SERVER SOCKET THREAD: Ошибка при передаче своего состояния");
             logger.warning("SERVER SOCKET THREAD: Ошибка при передаче своего состояния");
           }
         }
@@ -246,22 +250,41 @@ public class Coordinator {
 
   public void sync(String host, int port) {
     StringBuilder sb = new StringBuilder();
-    try {
-      Socket s = new Socket();
+    try (Socket s = new Socket()) {
       s.connect(new InetSocketAddress(host, port), 5000);
-      System.out.println("CLIENT SOCKET THREAD: socket created");
       Scanner in = new Scanner(s.getInputStream());
-      System.out.println("CLIENT SOCKET THREAD: Stream recieved");
       while (in.hasNextLine()) {
         sb.append(in.nextLine());
       }
-      System.out.println("CLIENT SOCKET THREAD: Recieved data: " + sb.toString());
+      logger.info("State recovered successfully");
     } catch (IOException ioex) {
-      System.out.println("CLIENT SOCKET THREAD: Ошибка при получении состояния");
       logger.warning("CLIENT SOCKET THREAD: Ошибка при получении состояния");
       ioex.printStackTrace();
     }
     this.parseStateJSON(sb.toString());
-    System.out.println("CLIENT SOCKET THREAD: state recovered!");
+  }
+
+  public boolean saveStateToDB() {
+    try {
+      dao.saveSchedulerState(usersMap);
+      System.out.println("Scheduler state saved successfully");
+      return true;
+    } catch (SQLException sqlex) {
+      System.out.println("Error when saving state to db");
+      sqlex.printStackTrace();
+      return false;
+    }
+  }
+
+  public boolean loadStateFromDB() {
+    try {
+      this.usersMap = dao.loadSchedulerState();
+      System.out.println("Scheduler state loaded successfully");
+      return true;
+    } catch (SQLException sqlex) {
+      System.out.println("Error when loading state from db");
+      sqlex.printStackTrace();
+      return false;
+    }
   }
 }

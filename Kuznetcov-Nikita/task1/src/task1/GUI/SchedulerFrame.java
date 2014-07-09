@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.Util.FileManager;
 import task1.Util.SchedulerLogRecordFormatter;
 import task1.Util.TextAreaStreamHandler;
 
@@ -24,17 +25,19 @@ public class SchedulerFrame extends JFrame {
   private JPanel buttonsPanel;
   private JTextArea logArea;
   private final Coordinator taskCoordinator;
+  private static int instanceNum = 1;
 
-  public SchedulerFrame(String frameName, Coordinator coordinator) {
+  public SchedulerFrame(String frameName, final Coordinator coordinator) {
     super(frameName);
     taskCoordinator = coordinator;
-    Logger logger = Coordinator.logger;
+    final Logger logger = coordinator.logger;
     logger.setUseParentHandlers(false);
+    instanceNum++;
 
     mainPanel = new JPanel(new BorderLayout());
-    buttonsPanel = new JPanel(new GridLayout(11, 1, 5, 0));
+    buttonsPanel = new JPanel(new GridLayout(7, 2, 5, 0));
 
-    logArea = new JTextArea("Log will be here\r\n", 30, 15);
+    logArea = new JTextArea("Log will be here\r\n", 30, 20);
     logArea.setLineWrap(true);
     logArea.setWrapStyleWord(true);
     logger.addHandler(new TextAreaStreamHandler(logArea, new SchedulerLogRecordFormatter()));
@@ -86,14 +89,11 @@ public class SchedulerFrame extends JFrame {
     showUserInfoButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        String userInfo = taskCoordinator.getUserInfo(JOptionPane.showInputDialog("Enter user name"));
-        if (userInfo != null) {
-          if (!userInfo.isEmpty()) {
-            logArea.append(userInfo);
-          } else {
-            JOptionPane.showMessageDialog(mainPanel, "User with such username not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
-          }
-        }
+        String userInfo = coordinator.getUserInfo(JOptionPane.showInputDialog("Enter user name"));
+        if (!userInfo.isEmpty())
+          logArea.append(userInfo);
+        else
+          JOptionPane.showMessageDialog(null, "User with such username not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
       }
     });
     JButton saveStateButton = new JButton("Save current state");
@@ -101,20 +101,13 @@ public class SchedulerFrame extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         String path = JOptionPane.showInputDialog("Enter path to file");
-        if (path.isEmpty()) {
-          JOptionPane.showMessageDialog(mainPanel, "Path cannot be null!", "Warning", JOptionPane.WARNING_MESSAGE);
-          return;
-        }
         try {
-          File output = new File(path);
-          if (output.createNewFile()) {
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(output));
-            bos.write(taskCoordinator.getCurrentState().toJSONString().getBytes());
-            bos.flush();
-          }
+          if (FileManager.writeStringToFile(taskCoordinator.getCurrentState().toJSONString(), path))
+            JOptionPane.showMessageDialog(null, "File successfully created!", "Information", JOptionPane.INFORMATION_MESSAGE);
+          else
+            JOptionPane.showMessageDialog(null, "File with such path already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
         } catch (IOException ioex) {
-          JOptionPane.showMessageDialog(mainPanel, "TERRIBLE ERROR", "ERROR", JOptionPane.ERROR_MESSAGE);
-          ioex.printStackTrace();
+          JOptionPane.showMessageDialog(null, "Error when saving current scheduler state!", "Error", JOptionPane.ERROR_MESSAGE);
         }
       }
     });
@@ -127,20 +120,15 @@ public class SchedulerFrame extends JFrame {
         if (status == JFileChooser.APPROVE_OPTION) {
           File inputFile = chooser.getSelectedFile();
           try {
-            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-            StringBuilder sb = new StringBuilder();
-            while (reader.ready()) {
-              sb.append(reader.readLine());
-            }
-            reader.close();
-            taskCoordinator.parseStateJSON(sb.toString());
+            if (taskCoordinator.parseStateJSON(FileManager.readTextDataFromRile(inputFile)))
+              logger.info("State recovered successfully");
+            else
+              logger.warning("Bad input file format!");
           } catch (FileNotFoundException fnfex) {
-            System.out.println("File not found!");
+            logger.warning("File not found!");
           } catch (IOException ioex) {
-            System.out.println("Input exception!");
+            logger.severe("Error when reading a file");
           }
-        } else {
-          JOptionPane.showMessageDialog(null, "File not selected", "Warning", JOptionPane.WARNING_MESSAGE);
         }
       }
     });
@@ -160,6 +148,38 @@ public class SchedulerFrame extends JFrame {
         JOptionPane.showMessageDialog(null, "Local port is " + taskCoordinator.getSocketLocalPort(), "Info", JOptionPane.INFORMATION_MESSAGE);
       }
     });
+    JButton newInstanceButton = new JButton("New instance");
+    newInstanceButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            new SchedulerFrame("An " + SchedulerFrame.instanceNum + " instance", new Coordinator());
+          }
+        }).start();
+      }
+    });
+    JButton saveStateToDBButton = new JButton("save to DB");
+    saveStateToDBButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        if (taskCoordinator.saveStateToDB())
+          JOptionPane.showMessageDialog(null, "State saved to DB", "Information", JOptionPane.INFORMATION_MESSAGE);
+        else
+          JOptionPane.showMessageDialog(null, "Error when saving state to DB", "Error", JOptionPane.ERROR_MESSAGE);
+      }
+    });
+    JButton loadFromDBButton = new JButton("load from DB");
+    loadFromDBButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        if (taskCoordinator.loadStateFromDB())
+          JOptionPane.showMessageDialog(null, "State loaded from DB", "Information", JOptionPane.INFORMATION_MESSAGE);
+        else
+          JOptionPane.showMessageDialog(null, "Error when loading state to DB", "Error", JOptionPane.ERROR_MESSAGE);
+      }
+    });
 
     ArrayList<JButton> buttons = new ArrayList<JButton>();
     buttons.add(addUserButton);
@@ -173,26 +193,20 @@ public class SchedulerFrame extends JFrame {
     buttons.add(loadStateButton);
     buttons.add(syncButton);
     buttons.add(socketInfo);
+    buttons.add(newInstanceButton);
+    buttons.add(saveStateToDBButton);
+    buttons.add(loadFromDBButton);
 
-    for (JButton controlButton : buttons) {
-      controlButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          logArea.append(((JButton) e.getSource()).getText() + "\r\n");
-        }
-      });
-      buttonsPanel.add(controlButton);
-    }
+    for (JButton controlButton : buttons) buttonsPanel.add(controlButton);
     mainPanel.add(buttonsPanel, BorderLayout.EAST);
 
     this.add(mainPanel, BorderLayout.CENTER);
 
     pack();
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setBounds(300, 300, 500, 600);
+    setBounds(200, 200, 700, 600);
     setResizable(false);
     setVisible(true);
     taskCoordinator.startScheduling();
   }
-
 }
