@@ -14,14 +14,16 @@ import centralStructure.User;
 public class SocketLoader {
 
 	public void writeToSource() {
-		ServerSocket serverSocket = null;
+
 		try {
-			serverSocket = new ServerSocket(8190);
-			while (true) {
+			ServerSocket serverSocket = new ServerSocket(8190);
+			try {
 				Socket incoming = serverSocket.accept();
 				ObjectOutputStream oos = new ObjectOutputStream(
 						incoming.getOutputStream());
 				oos.writeObject(Scheduler.getUsers());
+			} finally {
+				serverSocket.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -133,6 +133,9 @@ public class CommandAnalisis {
 	}
 
 	public static void startSchedulingQuery() {
+		/**
+		 * TODO add query through CommandHandler
+		 */
 		Scheduler sh = Scheduler.getMainScheduler();
 		sh.addListener(new SchedulerListener() {
 
@@ -160,4 +163,7 @@ public class CommandAnalisis {
 		CommandHandler.downloadFromSocket();
 	}
 
+	public static void saveToBaseQuery() {
+		CommandHandler.saveToBase();
+	}
 }

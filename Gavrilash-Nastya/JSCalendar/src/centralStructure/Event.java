@@ -33,6 +33,7 @@ public class Event implements Cloneable, Serializable, Comparable<Event> {
 				+ date.getTimeInMillis());
 		viewed = false;
 		active = true;
+		setId();
 	}
 
 	/**

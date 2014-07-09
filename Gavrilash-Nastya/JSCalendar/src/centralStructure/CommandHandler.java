@@ -1,5 +1,7 @@
 package centralStructure;
 
+import impl.ChangeManager;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class CommandHandler {
 	public static void createNewUser(String name, int timeZoneOffset,
 			boolean activityStatus) throws IOException {
 		User.createNewUser(name, timeZoneOffset, activityStatus);
+		new ChangeManager().addToNewUsers(Scheduler.getUsers().get(name));
 	}
 
 	/**
@@ -48,6 +51,7 @@ public class CommandHandler {
 	public static void modifyUser(String name, int timeZoneOffset,
 			boolean activityStatus) throws IOException {
 		User.modifyUser(name, timeZoneOffset, activityStatus);
+		new ChangeManager().addToModifiedUsers(Scheduler.getUsers().get(name));
 	}
 
 	/**
@@ -68,6 +72,8 @@ public class CommandHandler {
 				.get(name)
 				.addEventToUser(
 						new Event(Scheduler.getUsers().get(name), gc, text));
+		new ChangeManager().addToNewEvents(Scheduler.getUsers().get(name)
+				.getEvents().get(text));
 
 	}
 
@@ -82,6 +88,14 @@ public class CommandHandler {
 		if (!Scheduler.getUsers().containsKey(name)) {
 			throw new IOException("This user doesn't exist");
 		}
+		if (!Scheduler.getUsers().get(name).getEvents().containsKey(text)
+				|| (Scheduler.getUsers().get(name).getEvents()
+						.containsKey(text) && !Scheduler.getUsers().get(name)
+						.getEvents().get(text).isActive())) {
+			throw new IOException("This event doesn't exist");
+		}
+		new ChangeManager().addToRemoveEvents(Scheduler.getUsers().get(name)
+				.getEvents().get(text));
 		Scheduler.getUsers().get(name).removeEventFromUser(text);
 	}
 
@@ -110,6 +124,8 @@ public class CommandHandler {
 				.get(name)
 				.addEventToUser(
 						new Event(Scheduler.getUsers().get(name), gc, text));
+		new ChangeManager().addToNewEvents(Scheduler.getUsers().get(name)
+				.getEvents().get(text));
 
 	}
 
@@ -131,6 +147,8 @@ public class CommandHandler {
 		}
 		Scheduler.getUsers().get(name)
 				.cloneEventFromUser(text, Scheduler.getUsers().get(nameTo));
+		new ChangeManager().addToNewEvents(Scheduler.getUsers().get(nameTo)
+				.getEvents().get(text));
 	}
 
 	/**
@@ -168,6 +186,10 @@ public class CommandHandler {
 			output.add(user.getEvents().get(k));
 		}
 		return output;
+	}
+
+	public static void saveToBase() {
+		new ChangeManager().saveChangesToBase();
 	}
 
 	/**
@@ -224,15 +246,6 @@ public class CommandHandler {
 	}
 
 	/**
-	 * This method downloads some state of users map and set it as current for
-	 * some source (it can be file or socket)
-	 * 
-	 * @param l
-	 * @param fileName
-	 * @throws IOException
-	 */
-
-	/**
 	 * This method removes everything from scheduler inner memory
 	 */
 	private static void resetSchedulerMaps() {
@@ -241,7 +254,7 @@ public class CommandHandler {
 		}
 		Scheduler.getEvents().clear();
 		Scheduler.getUsers().clear();
-		
+
 	}
 
 	/**
