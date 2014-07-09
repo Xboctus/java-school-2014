@@ -30,6 +30,7 @@ public class InitialWindow extends JFrame {
 	private JButton startScheduling;
 	private JButton printToFile;
 	private JButton downloadFromFile;
+	private JButton downloadFromSocket;
 	private boolean scheduling;
 
 	private JTextArea log;
@@ -70,6 +71,17 @@ public class InitialWindow extends JFrame {
 		startSchedulingFunction();
 		printToFileFunction();
 		downloadFromFileFunction();
+		downloadFromSocketFunctions();
+	}
+
+	private void downloadFromSocketFunctions() {
+		downloadFromSocket.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CommandAnalisis.downloadFromSocketQuery();
+				addStringToLog("Current state downloaded from socket");
+			}
+		});
 	}
 
 	private void downloadFromFileFunction() {
@@ -214,7 +226,8 @@ public class InitialWindow extends JFrame {
 		showInfo = new JButton("show info");
 		startScheduling = new JButton("start scheduling");
 		printToFile = new JButton("print to file");
-		downloadFromFile = new JButton("download file");
+		downloadFromFile = new JButton("download from file");
+		downloadFromSocket = new JButton("download from socket");
 
 		buttonBackground.add(newUser);
 		buttonBackground.add(modifyUser);
@@ -226,7 +239,8 @@ public class InitialWindow extends JFrame {
 		buttonBackground.add(startScheduling);
 		buttonBackground.add(printToFile);
 		buttonBackground.add(downloadFromFile);
-		
+		buttonBackground.add(downloadFromSocket);
+
 		backgroundPanel.add(scrollingArea);
 		backgroundPanel.add(buttonBackground);
 		add(backgroundPanel);

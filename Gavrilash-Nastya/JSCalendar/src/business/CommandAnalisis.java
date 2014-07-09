@@ -3,6 +3,8 @@ package business;
 import java.io.IOException;
 import java.util.GregorianCalendar;
 
+import centralStructure.CommandHandler;
+
 /**
  * TODO write comments if this class will be some day used. This class is for
  * analyzing console querries

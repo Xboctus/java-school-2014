@@ -5,8 +5,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import business.CommandHandler;
-import business.Scheduler;
+import centralStructure.CommandHandler;
+import centralStructure.Scheduler;
+
 import business.SchedulerListener;
 
 public class CommandAnalisis {
@@ -148,9 +149,15 @@ public class CommandAnalisis {
 		CommandHandler.printInfoToFile(fileName);
 	}
 
-	public static void downloadQuery(String fileName) throws IOException {
+	public static void downloadFromFileQuery(String fileName)
+			throws IOException {
 		CommandHandler.downloadFromFile(fileName);
 
+	}
+
+	public static void downloadFromSocketQuery() {
+		CommandHandler.printInfoToSocket();
+		CommandHandler.downloadFromSocket();
 	}
 
 }

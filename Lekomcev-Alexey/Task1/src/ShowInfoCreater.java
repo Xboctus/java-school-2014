@@ -1,21 +1,14 @@
-import javax.jws.soap.SOAPBinding;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JComponent;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableCellRenderer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableColumn;
 
-import java.awt.event.*;
-import javax.swing.*;
-import java.beans.*;
 
 public class ShowInfoCreater extends JPanel{
     private JButton okButton;
@@ -47,7 +40,6 @@ public class ShowInfoCreater extends JPanel{
         table = new JTable(tableModel);
         JTableHeader header = table.getTableHeader();
         table.getColumnModel().getColumn(0).setPreferredWidth(CELL_WIDTH);
-        //table.getModel().addTableModelListener(new TableListener());
         TableCellListener tcl = new TableCellListener(table, action);
 
         tablePanel.setLayout(new GridLayout(2,1));
@@ -138,11 +130,30 @@ public class ShowInfoCreater extends JPanel{
 
     Action action = new AbstractAction()
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy:hh:mm:ss");
         public void actionPerformed(ActionEvent e)
         {
             TableCellListener tcl = (TableCellListener)e.getSource();
-            JOptionPane.showMessageDialog(null, "Row   : " + tcl.getRow() + "\nColumn: " + tcl.getColumn()
-                    + "\nOld   : " + tcl.getOldValue() + "\nNew   : " + tcl.getNewValue());
+            Date date = new Date();
+            String oldDescription = "";
+            String newDescription;
+            if (!tcl.getOldValue().equals(tcl.getNewValue())){
+                switch (tcl.getColumn()){
+                    case (UserEventsTableModel.DATE_INDEX):
+                        oldDescription = (String)table.getModel().getValueAt(tcl.getRow(), UserEventsTableModel.DESCRIPTION_INDEX);
+                        user.changeEventDate((String) tcl.getNewValue(), oldDescription);
+                        break;
+                    case (UserEventsTableModel.DESCRIPTION_INDEX):
+                        oldDescription = (String)tcl.getOldValue();
+                        break;
+                }
+                newDescription = (String)table.getModel().getValueAt(tcl.getRow(), UserEventsTableModel.DESCRIPTION_INDEX);
+                if (GraphicScheduler.getEventsOutput() == false){
+                    Sheduler.getSortingEvents().changeTreeSet(user, oldDescription, newDescription);
+                    return;
+                }
+                OutputEventsRunnable.changeTimers(user, oldDescription, newDescription);
+            }
         }
     };
 }

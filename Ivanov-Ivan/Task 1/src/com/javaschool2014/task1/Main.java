@@ -41,15 +41,6 @@ public class Main implements Constants {
 
                 coordinator.start();
 
-                GUICoordinator coordinator1 = new GUICoordinator();
-                coordinator1.display();
-
-                if (resArgs.containsKey(DEFAULT_NAME)) {
-                    coordinator1.connectDefaultDataFile(resArgs.get(DEFAULT_NAME));
-                }
-
-                coordinator1.start();
-
             } else {
 
                 System.out.println("Wrong interface parameter");

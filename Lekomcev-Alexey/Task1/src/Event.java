@@ -37,6 +37,19 @@ public class Event implements Cloneable, Serializable{
         return description;
     }
 
+    public boolean equals(Object otherObject){
+        if (this == otherObject) return true;
+
+        if (otherObject == null) return false;
+
+        if (getClass() != otherObject.getClass())
+            return false;
+
+        Event other = (Event) otherObject;
+
+        return this.description.equals(other.description);
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }

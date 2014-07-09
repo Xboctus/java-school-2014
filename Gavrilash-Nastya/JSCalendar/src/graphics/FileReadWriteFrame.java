@@ -92,7 +92,8 @@ public class FileReadWriteFrame extends JFrame {
 										+ fileName.getText());
 
 					} else {
-						CommandAnalisis.downloadQuery(fileName.getText());
+						CommandAnalisis.downloadFromFileQuery(fileName
+								.getText());
 						MainClass.frame
 								.addStringToLog("Current state downloaded from file "
 										+ fileName.getText());
