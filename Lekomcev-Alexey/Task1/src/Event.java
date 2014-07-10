@@ -1,12 +1,22 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class Event implements Cloneable{
+public class Event implements Cloneable, Serializable{
+    int id;
+    int user_id;
     Date date;
     String description;
 
     Event(Date p_date, String p_description){
+        date = p_date;
+        description = p_description;
+    }
+
+    Event(int id, int user_id, Date p_date, String p_description){
+        this.id = id;
+        this.user_id = user_id;
         date = p_date;
         description = p_description;
     }
@@ -26,5 +36,34 @@ public class Event implements Cloneable{
 
         cloned.date = (Date) date.clone();
         return cloned;
+    }
+
+    public Date getDate(){
+        return date;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public boolean equals(Object otherObject){
+        if (this == otherObject) return true;
+
+        if (otherObject == null) return false;
+
+        if (getClass() != otherObject.getClass())
+            return false;
+
+        Event other = (Event) otherObject;
+
+        return this.description.equals(other.description);
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
     }
 }

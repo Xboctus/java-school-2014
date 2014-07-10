@@ -1,6 +1,3 @@
-//import javax.management.Descriptor;
-import java.awt.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Sheduler {
@@ -14,7 +11,7 @@ public class Sheduler {
         do{
             System.out.println("Enter the command");
             command = in.nextLine();
-            if (command.equals("GraphicScheduler")){
+            if (command.equals("gui")){
                 GraphicScheduler gs = new GraphicScheduler();
                 return;
             }

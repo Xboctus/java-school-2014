@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.TimeZone;
 
 public class Coordinator {
-    static ArrayList<User> users = new ArrayList<User>();
+    private static ArrayList<User> users = new ArrayList<User>();
 
     public void Create(String params){
         try{
@@ -14,6 +14,21 @@ public class Coordinator {
         catch (InputFormatException e){
             System.out.println(e);
         }
+    }
+
+    public static User getUser(int user_id){
+        Comparator<User> comp = new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return (o1.id - o2.id);
+            }
+        };
+        Collections.sort(users, comp);
+        int pos = Collections.binarySearch(users, new User(user_id, "", "", ""), comp);
+        if (pos < 0){
+            return null;
+        }
+        return users.get(pos);
     }
 
     public void Modify(String params){
@@ -78,6 +93,16 @@ public class Coordinator {
         catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    public static ArrayList<User> getUsers(){
+        return users;
+    }
+
+    public static void setUsers(ArrayList<User> p_users){
+        users.clear();
+        users = p_users;
+        SortingEvents.setTreeSet(users);
     }
 }
 

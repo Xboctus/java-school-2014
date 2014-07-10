@@ -16,6 +16,9 @@ public class UserCreater extends JPanel{
     private Validator nameValidator;
     private boolean isName = false;
     private boolean isTZ = false;
+    private static String DEFAULT_USER_NAME = "Ivan";
+    private static String DEFAULT_TIMEZONE = "GMT+0";
+    private static String DEFAULT_STATUS = "true";
 
     public UserCreater(){
         setLayout(new BorderLayout());
@@ -23,11 +26,11 @@ public class UserCreater extends JPanel{
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 3));
         panel.add(new JLabel("user name:"));
-        panel.add(username = new JTextField(""));
+        panel.add(username = new JTextField(DEFAULT_USER_NAME));
         panel.add(new JLabel("time zone:"));
-        panel.add(tzname = new JTextField(""));
+        panel.add(tzname = new JTextField(DEFAULT_TIMEZONE));
         panel.add(new JLabel("status:"));
-        panel.add(status = new JTextField(""));
+        panel.add(status = new JTextField(DEFAULT_STATUS));
         add(panel, BorderLayout.CENTER);
 
         username.getDocument().addDocumentListener(new DocumentListener() {
@@ -120,7 +123,7 @@ public class UserCreater extends JPanel{
             dialog.getRootPane().setDefaultButton(okButton);
             dialog.pack();
         }
-
+        dialog.setLocationRelativeTo(owner);
         dialog.setTitle(title);
         dialog.setVisible(true);
         return ok;

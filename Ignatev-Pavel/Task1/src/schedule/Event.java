@@ -1,6 +1,12 @@
 package schedule;
 
-class Event implements Cloneable {
+import java.io.Serializable;
+
+class Event implements Cloneable,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final EventElement element;
 	
 	public EventElement getElement() {

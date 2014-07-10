@@ -1,8 +1,10 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class User {
+public class User implements Serializable{
+    int id;
     String name;
     Boolean status;
     TimeZone tz;
@@ -15,6 +17,14 @@ public class User {
         name = p_name;
         tz = TimeZone.getTimeZone(p_tz);
         status = new Boolean(p_status);
+    }
+
+    User(int id, String p_name, String p_tz, String p_status){
+        this.id = id;
+        name = p_name;
+        tz = TimeZone.getTimeZone(p_tz);
+        status = new Boolean(p_status);
+        events = new ArrayList<Event>();
     }
 
     User(String params) throws InputFormatException{
@@ -68,7 +78,6 @@ public class User {
                 throw new InputFormatException();
             }
             String input = params.substring(params.lastIndexOf(',') + 1, params.indexOf(')'));
-            //SimpleDateFormat ft = new SimpleDateFormat("DD.MM.YYYY-HH24:MM:SS");
             SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yy:HH:mm:ss");
             Date date = ft.parse(input);
             events.add(new Event(date, textValue));
@@ -92,27 +101,6 @@ public class User {
         }
         catch (ParseException pe){
             return false;
-        }
-    }
-    public void removeEvent(String params, Coordinator p_coordinator){
-        try{
-            String nameValue = params.substring(params.indexOf('(') + 1, params.indexOf(','));
-            User user = p_coordinator.getUser(nameValue);
-            if (user == null){
-                System.out.println("User not found");
-                throw new InputFormatException();
-            }
-            String textValue = params.substring(params.indexOf(',') + 1, params.indexOf(')'));
-            Event event = getUserEvent(textValue, user);
-            if (event == null){
-                System.out.println("Event not found");
-                throw new InputFormatException();
-            }
-            events.remove(event);
-            System.out.println("Done");
-        }
-        catch (Exception e){
-            System.out.println(e);
         }
     }
 
@@ -157,8 +145,55 @@ public class User {
         }
     }
 
+    public void changeEventDate(String date, String description){
+        if (events.contains(new Event(description))){
+            Event event = events.get(events.indexOf(new Event(description)));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy:HH:mm:ss");
+            try{
+                event.date = sdf.parse(date);
+            }
+            catch (ParseException pe){}
+        }
+    }
+
+    public boolean equals(Object otherObject){
+        if (this == otherObject) return true;
+
+        if (otherObject == null) return false;
+
+        if (getClass() != otherObject.getClass())
+            return false;
+
+        User other = (User) otherObject;
+
+//        return name.equals(other.name);
+        return (id == other.id);
+    }
+
     public static int randBetween(int start, int end){
         return start + (int)Math.round(Math.random() * (end - start));
+    }
+
+    public void removeEvent(String params, Coordinator p_coordinator){
+        try{
+            String nameValue = params.substring(params.indexOf('(') + 1, params.indexOf(','));
+            User user = p_coordinator.getUser(nameValue);
+            if (user == null){
+                System.out.println("User not found");
+                throw new InputFormatException();
+            }
+            String textValue = params.substring(params.indexOf(',') + 1, params.indexOf(')'));
+            Event event = getUserEvent(textValue, user);
+            if (event == null){
+                System.out.println("Event not found");
+                throw new InputFormatException();
+            }
+            events.remove(event);
+            System.out.println("Done");
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     public void showInfo(String params, Coordinator p_coordinator){
@@ -186,6 +221,7 @@ public class User {
             System.out.println(e);
         }
     }
+
 }
 
 class InputFormatException extends Exception{

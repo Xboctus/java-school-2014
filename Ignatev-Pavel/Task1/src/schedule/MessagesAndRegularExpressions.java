@@ -12,7 +12,41 @@ public interface MessagesAndRegularExpressions {
 	public static final String pShowInfo ="(ShowInfo)(\\()"
 			+ "(.+)"
 			+ "(\\))";
+		
 	public static final int[] gShowInfo = {3};
+	
+
+	public static final String pSave ="(Save)(\\()"
+			+ "(.+)"
+			+ "(\\))";
+	
+	public static final int[] gSave = {3};
+	
+	public static final String pLoad ="(Load)(\\()"
+			+ "(.+)"
+			+ "(\\))";
+	
+	public static final int[] gLoad = {3};
+	
+	public static final String pRunLikeServer ="(RunLikeServer)(\\()"
+			+ "(.+)"
+			+ "(\\))";
+	
+	public static final int[] gRunLikeServer = {3};
+	
+	public static final String pSynchWithServer ="(SynchWithServer)(\\()"
+			+ "(.+)"
+			+ "(\\))";
+	
+	public static final int[] gSynchWithServer = {3};
+	
+	public static final String pSynchWithServer_adress ="(SynchWithServer)(\\()"
+			+ "(.+)"
+			+ "(,)"
+			+ "(.+)"
+			+ "(\\))";
+	
+	public static final int[] gSynchWithServer_adress = {3,5};
 	
 	public static final String pCloneEvent ="(CloneEvent)(\\()"
 			+ "(.+)"
