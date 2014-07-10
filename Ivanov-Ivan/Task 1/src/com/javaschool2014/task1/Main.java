@@ -33,13 +33,12 @@ public class Main implements Constants {
             if (resArgs.get("interface").equals("graphics")) {
 
                 GUICoordinator coordinator = new GUICoordinator();
-                coordinator.display();
 
                 if (resArgs.containsKey(DEFAULT_NAME)) {
                     coordinator.connectDefaultDataFile(resArgs.get(DEFAULT_NAME));
                 }
 
-                coordinator.start();
+                coordinator.display();
 
             } else {
 

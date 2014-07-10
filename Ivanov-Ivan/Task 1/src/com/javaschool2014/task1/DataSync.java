@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.rmi.UnknownHostException;
 import java.util.TreeMap;
 
-public class DataSync {
+public class DataSync implements Constants {
 
     private Socket socket;
     private ServerSocket serverSocket;

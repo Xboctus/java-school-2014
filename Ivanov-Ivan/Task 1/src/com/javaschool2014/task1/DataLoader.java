@@ -3,7 +3,7 @@ package com.javaschool2014.task1;
 import java.io.*;
 import java.util.TreeMap;
 
-public class DataLoader {
+public class DataLoader implements Constants {
 
     public boolean saveData(String filename) {
 

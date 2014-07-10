@@ -1,59 +1,297 @@
 package com.javaschool2014.task1;
 
-
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Date;
 
-public class DataLoaderSQL {
+public class DataLoaderSQL implements Constants {
 
-    private static Connection con = null;
-    private static String username = "root";
-    private static String password = "password";
-    private static String URL = "jdbc:jtds:mysql://127.0.0.1:3306";
+    private static Connection connection         = null;
+    private static String username               = "root";
+    private static String password               = "password";
+    private static String url                    = "jdbc:mysql://127.0.0.1:3306/user_data";
+    private DateFormat dateFormat                = new SimpleDateFormat(DATE_FORMAT);
 
-    public void dbConnection() {
+    private static List<Event> eventList         = new ArrayList<Event>();
+    private static TreeMap<String, User> userMap = new TreeMap<String, User>();
+
+    public synchronized boolean saveData() {
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
+
+        try {
+            // Open a connection
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
 
         try {
 
-            DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());
-            //Загружаем драйвер
+            // Clear old data
+            Statement statement;
+            statement = connection.createStatement();
+            statement.execute("DELETE FROM events");
+            statement.execute("DELETE FROM users");
 
-            con = DriverManager.getConnection(URL, username, password);
-            //соединяемся
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return false;
+        }
 
-            if(con!=null) System.out.println("Connection Successful !\n");
-            if (con==null) System.exit(0);
+        userMap = AbstractCoordinator.getUsers();
 
-            Statement st = con.createStatement();
-            //Statement позволяет отправлять запросы базе данных
+        // Save data
+        for (Map.Entry<String, User> user : userMap.entrySet()) {
 
-            ResultSet rs = st.executeQuery("select hd from pc group by hd having count(hd)>=2");
-            //ResultSet получает результирующую таблицу
+            saveUser(user.getKey(), user.getValue().getUserTimeZone().getID(), user.getValue().getStatus());
 
-            int x = rs.getMetaData().getColumnCount();
-            //Resultset.getMetaData() получаем информацию
-            //результирующей таблице
+            eventList = user.getValue().getEvents();
 
-            while(rs.next()){
+            for (Event event : eventList) {
+                saveEvent(event.getText(), dateFormat.format(event.getDate().getTime()), user.getKey());
+            }
 
-                for(int i=1; i<=x;i++){
+        }
 
-                    System.out.print(rs.getString(i) + "\t");
+        // CLose db connection
+        if (connection != null) {
+
+            try {
+                connection.close();
+            } catch (SQLException ignore) {
+                return false;
+            }
+
+        }
+
+        return true;
+
+    }
+
+    public synchronized TreeMap<String, User> loadData() {
+
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+
+        try {
+            // Open a connection
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        }
+
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            // Excute query
+            statement = connection.createStatement();
+
+            if (statement.execute("SELECT * FROM users")) {
+
+                resultSet = statement.getResultSet();
+
+                while (resultSet.next()) {
+
+                    // Load users
+                    User user = new User(resultSet.getString(1));
+                    TimeZone userTimeZone = TimeZone.getTimeZone(resultSet.getString(2));
+                    user.setTimeZone(userTimeZone);
+                    user.setStatus(resultSet.getBoolean(3));
+
+                    userMap.put(resultSet.getString(1), user);
 
                 }
 
-                System.out.println();
+            }
+
+            if (statement.execute("SELECT * FROM events")) {
+
+                resultSet = statement.getResultSet();
+
+                while (resultSet.next()) {
+
+                    // Load events
+                    User user = userMap.get(resultSet.getString(3));
+
+                    Calendar calendar = new GregorianCalendar(user.getUserTimeZone());
+                    Date date;
+
+                    try {
+
+                        date = dateFormat.parse(resultSet.getString(2));
+                        calendar.setTime(date);
+
+                    } catch (ParseException e) {
+
+                        System.out.println(WRONG_DATE);
+                        return null;
+
+                    }
+
+                    user.addEvent(resultSet.getString(1), calendar);
+
+                }
 
             }
 
-            System.out.println();
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            return null;
+        } finally {
 
-            if(rs!=null)rs.close();
-            if(st!=null)st.close();
-            if(con!=null)con.close();
+            if (resultSet != null) {
+
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {}
+
+                resultSet = null;
+
+            }
+
+            if (statement != null) {
+
+                try {
+                    statement.close();
+                } catch (SQLException e) {}
+
+                statement = null;
+
+            }
+
+        }
+
+        // CLose db connection
+        if (connection != null) {
+
+            try {
+                connection.close();
+            } catch (SQLException ignore) {
+                return null;
+            }
+
+        }
+
+        return userMap;
+
+    }
+
+    public synchronized void saveUser(String userName, String gmt, boolean status) {
+
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            // Excute query
+            statement = connection.createStatement();
+
+            if (statement.execute("SELECT * FROM users WHERE user_name = \"" + userName +"\"")) {
+                resultSet = statement.getResultSet();
+            }
+
+            if (resultSet.next()) {
+
+                // Update
+                statement.execute("UPDATE users SET time_zone=\"" + gmt + "\", status=" + status + " where user_name=\"" + userName + "\"");
+
+            } else {
+                // Insert
+                statement.execute("INSERT INTO users (user_name, time_zone, status) VALUES (\"" + userName + "\", \"" + gmt + "\", " + status + ")");
+            }
 
         } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+        } finally {
 
-            System.out.println(e.getMessage());
+            if (resultSet != null) {
+
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {}
+
+                resultSet = null;
+
+            }
+
+            if (statement != null) {
+
+                try {
+                    statement.close();
+                } catch (SQLException e) {}
+
+                statement = null;
+
+            }
+
+        }
+
+    }
+
+    public synchronized void saveEvent(String eventName, String dateTime, String userName) {
+
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            // Excute query
+            statement = connection.createStatement();
+
+            if (statement.execute("SELECT * FROM events WHERE event_name = \"" + eventName +"\" AND users_user_name =\"" + userName + "\"")) {
+                resultSet = statement.getResultSet();
+            }
+
+            if (resultSet.next()) {
+                // Update
+                statement.execute("UPDATE events SET event_name=\"" + eventName + "\", event_date=\"" + dateTime + "\" where users_user_name=\"" + userName + "\"");
+            } else {
+                // Insert
+                statement.execute("INSERT INTO events (event_name, event_date, users_user_name) VALUES (\"" + eventName + "\", \"" + dateTime + "\", \"" + userName + "\")");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+        } finally {
+
+            if (resultSet != null) {
+
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {}
+
+                resultSet = null;
+
+            }
+
+            if (statement != null) {
+
+                try {
+                    statement.close();
+                } catch (SQLException e) {}
+
+                statement = null;
+
+            }
 
         }
 
