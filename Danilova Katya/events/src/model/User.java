@@ -7,7 +7,6 @@ import static model.User.UserInfo.Status;
 public class User {
 
     private final Map<String, Event> text2event = new HashMap<>();
-
     private final UserInfo userInfo;
 
     public User(String name, TimeZone timeZone, Status status) {
@@ -34,12 +33,12 @@ public class User {
         return text2event.get(text);
     }
 
-    public void addRandomTimeEvent(String text, Date from, Date to) {
+    public void addRandomTimeEvent(String text, Date from, Date to, String name) {
         long t1 = from.getTime();
         long t2 = to.getTime();
         long t = (new Random().nextLong()) % (t2 - t1) + t1;
 
-        text2event.put(text, new Event(new Date(t), text));
+        text2event.put(text, new Event(new Date(t), text, name));
     }
 
     public void modify(TimeZone timeZone, Status status) {

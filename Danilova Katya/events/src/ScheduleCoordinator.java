@@ -12,7 +12,8 @@ public class ScheduleCoordinator {
 
     private static final Map<String, User> name2user = new HashMap<>();
     private static final DateFormat format = new SimpleDateFormat("dd.MM.yy-HH:mm:ss");
-    private static Mode mode = Mode.EDIT;
+    private static Mode mode = Mode.EDIT; //режим
+
 
     private static enum Mode {
         EDIT, OUTPUT
@@ -37,7 +38,7 @@ public class ScheduleCoordinator {
     }
 
     private static void addEvent(String name, String text, Date date) {
-        name2user.get(name).addEvent(new Event(date, text));
+        name2user.get(name).addEvent(new Event(date, text, name));
     }
 
     private static void removeEvent(String name, String text) {
@@ -49,7 +50,7 @@ public class ScheduleCoordinator {
     }*/
 
     private static void addRandomTimeEvent(String name, String text, Date from, Date to) {
-        name2user.get(name).addRandomTimeEvent(text, from, to);
+        name2user.get(name).addRandomTimeEvent(text, from, to, name);
     }
 
     private static void cloneEvent(String nameFrom, String text, String nameTo) {
@@ -77,7 +78,7 @@ public class ScheduleCoordinator {
     private static void startScheduling() {
         mode = Mode.OUTPUT;
 
-        TimerTask task = new TimerTask() {
+       /* TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 System.out.println(System.currentTimeMillis());
