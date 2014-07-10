@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.TreeMap;
 
 public class GUICoordinator extends AbstractCoordinator {
 
@@ -160,10 +161,13 @@ public class GUICoordinator extends AbstractCoordinator {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (dataLoaderSQL.loadData() == null) {
+                TreeMap<String, User> result;
+                result = dataLoaderSQL.loadData();
+
+                if (result == null) {
                     printOutput("DB error!");
                 } else {
-                    AbstractCoordinator.setUsers(dataLoaderSQL.loadData());
+                    AbstractCoordinator.setUsers(result);
                     printOutput("Data successfully loaded!");
                 }
 

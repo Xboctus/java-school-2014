@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="Task 1 1.4 commit&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_31_bin.xml" />
-      <change type="DELETED" beforePath="C:\Users\TARGETrus\Dropbox\GIT REPO\java-school-2014\Ivanov-Ivan\Task 1\.idea\libraries\jtds_1_3.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" />
+    <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Task 1.iml" afterPath="$PROJECT_DIR$/Task 1.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DeadLock/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../DeadLock/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -79,7 +71,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+            <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1292">
               <folding />
             </state>
           </provider>
@@ -115,20 +107,20 @@
       <file leaf-file-name="GUICoordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="253" column="0" selection-start="8041" selection-end="8041" vertical-scroll-proportion="-0.24666667" vertical-offset="3579" max-vertical-offset="8619">
+            <state line="163" column="45" selection-start="4679" selection-end="4679" vertical-scroll-proportion="-13.884444" vertical-offset="8169" max-vertical-offset="8670">
               <folding>
-                <element signature="e#3293#3450#0" expanded="true" />
-                <element signature="e#3439#3440#0" expanded="true" />
-                <element signature="e#3501#3658#0" expanded="true" />
-                <element signature="e#3647#3648#0" expanded="true" />
-                <element signature="e#3709#3866#0" expanded="true" />
-                <element signature="e#3855#3856#0" expanded="true" />
-                <element signature="e#4124#4456#0" expanded="true" />
-                <element signature="e#4445#4446#0" expanded="true" />
-                <element signature="e#4505#4915#0" expanded="true" />
-                <element signature="e#4904#4905#0" expanded="true" />
-                <element signature="e#4962#5493#0" expanded="true" />
-                <element signature="e#5481#5482#0" expanded="true" />
+                <element signature="e#3319#3476#0" expanded="true" />
+                <element signature="e#3465#3466#0" expanded="true" />
+                <element signature="e#3527#3684#0" expanded="true" />
+                <element signature="e#3673#3674#0" expanded="true" />
+                <element signature="e#3735#3892#0" expanded="true" />
+                <element signature="e#3881#3882#0" expanded="true" />
+                <element signature="e#4150#4482#0" expanded="true" />
+                <element signature="e#4471#4472#0" expanded="true" />
+                <element signature="e#4531#5003#0" expanded="true" />
+                <element signature="e#4992#4993#0" expanded="true" />
+                <element signature="e#5050#5581#0" expanded="true" />
+                <element signature="e#5569#5570#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,7 +129,7 @@
       <file leaf-file-name="DataLoaderSQL.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="58" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5185">
+            <state line="10" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5185">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#668#675#0" expanded="true" />
@@ -220,8 +212,8 @@
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
       </list>
     </option>
   </component>
@@ -650,7 +642,7 @@
       <workItem from="1404928178853" duration="94000" />
       <workItem from="1404970601593" duration="549000" />
       <workItem from="1404972448821" duration="986000" />
-      <workItem from="1404974430932" duration="6726000" />
+      <workItem from="1404974430932" duration="7335000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -760,11 +752,15 @@
       <created>1404844109218</created>
       <updated>1404844109218</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Task 1 1.5 commit, deadlock&#10;">
+      <created>1404982195870</created>
+      <updated>1404982195870</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225322000" />
+    <option name="totallyTimeSpent" value="225931000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -788,7 +784,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="978" height="616" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -842,7 +838,8 @@
     <MESSAGE value="Task 1 1.2 commit&#10;" />
     <MESSAGE value="Task 1 1.3 commit&#10;" />
     <MESSAGE value="Task 1 1.4 commit&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task 1 1.4 commit&#10;" />
+    <MESSAGE value="Task 1 1.5 commit, deadlock&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task 1 1.5 commit, deadlock&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1125,13 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="1292">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="335" column="52" selection-start="8178" selection-end="8199" vertical-scroll-proportion="0.0" vertical-offset="5389" max-vertical-offset="6205">
@@ -1153,9 +1143,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="1292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="58" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="5185">
+        <state line="10" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5185">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#668#675#0" expanded="true" />
@@ -1176,20 +1173,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="0" selection-start="8041" selection-end="8041" vertical-scroll-proportion="-0.24666667" vertical-offset="3579" max-vertical-offset="8619">
+        <state line="163" column="45" selection-start="4679" selection-end="4679" vertical-scroll-proportion="-13.884444" vertical-offset="8169" max-vertical-offset="8670">
           <folding>
-            <element signature="e#3293#3450#0" expanded="true" />
-            <element signature="e#3439#3440#0" expanded="true" />
-            <element signature="e#3501#3658#0" expanded="true" />
-            <element signature="e#3647#3648#0" expanded="true" />
-            <element signature="e#3709#3866#0" expanded="true" />
-            <element signature="e#3855#3856#0" expanded="true" />
-            <element signature="e#4124#4456#0" expanded="true" />
-            <element signature="e#4445#4446#0" expanded="true" />
-            <element signature="e#4505#4915#0" expanded="true" />
-            <element signature="e#4904#4905#0" expanded="true" />
-            <element signature="e#4962#5493#0" expanded="true" />
-            <element signature="e#5481#5482#0" expanded="true" />
+            <element signature="e#3319#3476#0" expanded="true" />
+            <element signature="e#3465#3466#0" expanded="true" />
+            <element signature="e#3527#3684#0" expanded="true" />
+            <element signature="e#3673#3674#0" expanded="true" />
+            <element signature="e#3735#3892#0" expanded="true" />
+            <element signature="e#3881#3882#0" expanded="true" />
+            <element signature="e#4150#4482#0" expanded="true" />
+            <element signature="e#4471#4472#0" expanded="true" />
+            <element signature="e#4531#5003#0" expanded="true" />
+            <element signature="e#4992#4993#0" expanded="true" />
+            <element signature="e#5050#5581#0" expanded="true" />
+            <element signature="e#5569#5570#0" expanded="true" />
           </folding>
         </state>
       </provider>
