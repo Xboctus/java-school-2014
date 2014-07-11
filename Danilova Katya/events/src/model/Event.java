@@ -14,14 +14,18 @@ public class Event implements Cloneable, Comparable<Event> {
         this.date = date;
         this.text = text;
         this.name = name;
-        timer = new Timer();
+       // timer = new Timer();
         task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(System.currentTimeMillis() + "\n" + name + "\n" + text);
+                System.out.println(new Date() + "\n" + name + "\n" + text);
             }
         };
-        timer.schedule(task, date.getTime());
+        //timer.schedule(task, date);
+    }
+
+    public void startSchedule() {
+        timer.schedule(task, date);
     }
 
     @Override

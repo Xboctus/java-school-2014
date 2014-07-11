@@ -25,8 +25,12 @@ public class User {
         text2event.remove(text);
     }
 
-    public Collection<Event> getAllEvent() {
-        return text2event.values();
+    public List<Event> getAllEvent() {
+        List<Event> res = new ArrayList<>();
+        for(Event event : text2event.values()) {
+            res.add(event);
+        }
+        return res;
     }
 
     public Event getEvent(String text) {

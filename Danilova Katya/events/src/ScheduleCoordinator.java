@@ -45,10 +45,6 @@ public class ScheduleCoordinator {
         name2user.get(name).removeEvent(text);
     }
 
-    /*private static String showInfo(String name) {
-        return name2user.get(name).toString();
-    }*/
-
     private static void addRandomTimeEvent(String name, String text, Date from, Date to) {
         name2user.get(name).addRandomTimeEvent(text, from, to, name);
     }
@@ -77,37 +73,12 @@ public class ScheduleCoordinator {
 
     private static void startScheduling() {
         mode = Mode.OUTPUT;
-
-       /* TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println(System.currentTimeMillis());
-                //вывести имя пользователя и текст события
-            }
-        };
-
-        while(true) {
-            for(User user : name2user.values()) {
-                if(user.getUserInfo().getStatus().equals("ACTIVE")) {
-                    for(Event event : user.getAllEvent()) {
-                        if(event.getDate().getTime() == System.currentTimeMillis()) {
-                            event.getTimer().schedule(task, System.currentTimeMillis());
-                        }
-                    }
-                }
-            }
-        }
-
-        /*int i = 0;
-        //while(!name2user.values().isEmpty()) {
         for(User user : name2user.values()) {
-            if (user.getUserInfo().getStatus().equals("ACTIVE") && ) {
-
+            for (Event event : user.getAllEvent()) {
+                event.startSchedule();
             }
         }
-        for (Event event : ) {
 
-        }*/
     }
 
     public static void main(String arguments[]) throws ParseException {
@@ -140,10 +111,10 @@ public class ScheduleCoordinator {
             if (command.equals(SHOW_INFO)) {
                 System.out.print(showInfo(args[0]));
             }
-           /* if (command.equals(START_SHEDULING)) {
+            if (command.equals(START_SHEDULING)) {
                 startScheduling();
             }
-            */
+
 
 
         }
