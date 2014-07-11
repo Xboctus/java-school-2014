@@ -96,6 +96,7 @@ public class ScheduleDialog extends JDialog {
 		buttonPane.add(okButton);
 		getRootPane().setDefaultButton(okButton);
 	}
+	
 	private JTextField createTextField(InputType inputType) {
 		switch (inputType) {
 		case TEXT:

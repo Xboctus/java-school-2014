@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class User implements Serializable{
+    int id;
     String name;
     Boolean status;
     TimeZone tz;
@@ -16,6 +17,14 @@ public class User implements Serializable{
         name = p_name;
         tz = TimeZone.getTimeZone(p_tz);
         status = new Boolean(p_status);
+    }
+
+    User(int id, String p_name, String p_tz, String p_status){
+        this.id = id;
+        name = p_name;
+        tz = TimeZone.getTimeZone(p_tz);
+        status = new Boolean(p_status);
+        events = new ArrayList<Event>();
     }
 
     User(String params) throws InputFormatException{
@@ -157,7 +166,8 @@ public class User implements Serializable{
 
         User other = (User) otherObject;
 
-        return name.equals(other.name);
+//        return name.equals(other.name);
+        return (id == other.id);
     }
 
     public static int randBetween(int start, int end){

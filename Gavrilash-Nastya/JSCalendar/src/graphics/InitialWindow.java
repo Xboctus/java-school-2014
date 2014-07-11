@@ -31,6 +31,7 @@ public class InitialWindow extends JFrame {
 	private JButton printToFile;
 	private JButton downloadFromFile;
 	private JButton downloadFromSocket;
+	private JButton saveToBase;
 	private boolean scheduling;
 
 	private JTextArea log;
@@ -72,6 +73,18 @@ public class InitialWindow extends JFrame {
 		printToFileFunction();
 		downloadFromFileFunction();
 		downloadFromSocketFunctions();
+		saveToBaseFunction();
+	}
+
+	private void saveToBaseFunction() {
+		saveToBase.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CommandAnalisis.saveToBaseQuery();
+				addStringToLog("All changes saved to data base");
+			}
+		});
 	}
 
 	private void downloadFromSocketFunctions() {
@@ -228,6 +241,7 @@ public class InitialWindow extends JFrame {
 		printToFile = new JButton("print to file");
 		downloadFromFile = new JButton("download from file");
 		downloadFromSocket = new JButton("download from socket");
+		saveToBase = new JButton("save to data base");
 
 		buttonBackground.add(newUser);
 		buttonBackground.add(modifyUser);
@@ -240,6 +254,7 @@ public class InitialWindow extends JFrame {
 		buttonBackground.add(printToFile);
 		buttonBackground.add(downloadFromFile);
 		buttonBackground.add(downloadFromSocket);
+		buttonBackground.add(saveToBase);
 
 		backgroundPanel.add(scrollingArea);
 		backgroundPanel.add(buttonBackground);

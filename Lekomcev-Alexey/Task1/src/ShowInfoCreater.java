@@ -138,6 +138,7 @@ public class ShowInfoCreater extends JPanel{
             String oldDescription = "";
             String newDescription;
             if (!tcl.getOldValue().equals(tcl.getNewValue())){
+                GraphicScheduler.modification = true;
                 switch (tcl.getColumn()){
                     case (UserEventsTableModel.DATE_INDEX):
                         oldDescription = (String)table.getModel().getValueAt(tcl.getRow(), UserEventsTableModel.DESCRIPTION_INDEX);

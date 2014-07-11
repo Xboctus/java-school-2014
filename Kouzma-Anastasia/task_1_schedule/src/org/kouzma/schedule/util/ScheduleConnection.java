@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.kouzma.schedule.Event;
@@ -12,6 +13,8 @@ import org.kouzma.schedule.User;
 
 public class ScheduleConnection {
 
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+	
 	public static ScheduleConnection instance;
 	public static ScheduleConnection getInstance() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		if (instance == null)
@@ -54,28 +57,36 @@ public class ScheduleConnection {
 	}
 
 	public int insertEvent(Event event) throws SQLException {
-		stat.executeUpdate("INSERT INTO event(text, date, ID_user) " +
-			"VALUES('" + event.getText() + "', " + event.getDate() + ", " + event.getUser().getId() + ")");
+		String strQuery = "INSERT INTO event(text, date, ID_user) " +
+			"VALUES('" + event.getText() + "', '" + 
+				dateFormat.format(event.getDate()) + "', " + 
+				event.getUser().getId() + ")";
+		stat.executeUpdate(strQuery);
 	
-	ResultSet res = stat.executeQuery("SELECT event.ID_event" +
-			" FROM event " +
-			"WHERE text LIKE '" + event.getText() +
-			"' LIMIT 1");
-	if (res.next())
-		return res.getInt("ID_event");
-	
-	return -1;
+		ResultSet res = stat.executeQuery("SELECT event.ID_event" +
+				" FROM event " +
+				"WHERE text LIKE '" + event.getText() +
+				"' LIMIT 1");
+		if (res.next())
+			return res.getInt("ID_event");
+		
+		return -1;
 	}
 
 	/*public void updateEvent(Event event) throws SQLException {
 		stat.executeUpdate("UPDATE event" +
-				"SET date = " + event.getDate() + ", " +
+				"SET date = " + dateFormat.format(event.getDate()) + ", " +
 				"WHERE ID_event = " + event.getId());		
 	}*/
 	
-	public void deleteEvents(List<Event> lstEvents) throws SQLException {
-		String str = "";
+	public void deleteEvents(List<Integer> lstEventIds) throws SQLException {
+		StringBuffer strIn = new StringBuffer();
+		for (Integer eventId : lstEventIds) {
+			strIn.append(eventId + ",");
+		}
+		strIn.subSequence(0, strIn.length() - 2); // Обрезаем последнюю запятую
+		
 		stat.executeUpdate("DELETE FROM event" +
-				"WHERE ID_event IN (" + str + ")");		
+				"WHERE ID_event IN (" + strIn + ")");		
 	}
 }

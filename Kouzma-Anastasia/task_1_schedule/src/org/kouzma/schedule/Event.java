@@ -13,7 +13,7 @@ import org.kouzma.schedule.util.StateType;
  *
  */
 public class Event implements Comparable<Event>, Serializable {
-	private static List<Event> lstRemove = new LinkedList<Event>();
+	private static List<Integer> lstRemoveIds = new LinkedList<Integer>();
 	
 	private String text;
 	private Date date;
@@ -80,7 +80,7 @@ public class Event implements Comparable<Event>, Serializable {
 		idUser = id;
 	}
 
-	public static List<Event> getLstRemove() {
-		return lstRemove;
+	public static List<Integer> getLstRemove() {
+		return lstRemoveIds;
 	}
 }

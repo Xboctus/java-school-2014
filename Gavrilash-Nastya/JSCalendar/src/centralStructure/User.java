@@ -31,6 +31,7 @@ public class User implements Serializable {
 		this.activeStatus = actStatus;
 		this.timeZoneOffset = timeZone;
 		events = new HashMap<String, Event>();
+		Scheduler.getUsers().put(this.name, this);
 	}
 
 	/**
@@ -46,8 +47,8 @@ public class User implements Serializable {
 		if (Scheduler.getUsers().containsKey(name)) {
 			throw new IOException("This user is already exist");
 		}
-		Scheduler.getUsers().put(name,
-				new User(name, activityStatus, timeZoneOffset));
+
+		new User(name, activityStatus, timeZoneOffset);
 	}
 
 	public static synchronized void modifyUser(String name, int timeZoneOffset,
@@ -145,7 +146,6 @@ public class User implements Serializable {
 	 * @param e
 	 */
 	public void addEventToSchedulerInner(Event e) {
-		e.setId();
 		e.setViewed(false);
 		Scheduler.getEvents().put(e.getId(), e);
 		Scheduler.getMainScheduler().parseEventList();
@@ -161,12 +161,7 @@ public class User implements Serializable {
 	 * @param text
 	 * @throws IOException
 	 */
-	public synchronized void removeEventFromUser(String text)
-			throws IOException {
-		if (!events.containsKey(text)
-				|| (events.containsKey(text) && !events.get(text).isActive())) {
-			throw new IOException("This event doesn't exist");
-		}
+	public synchronized void removeEventFromUser(String text) {
 		events.get(text).setActive(false);
 		Scheduler.getEvents().remove(events.get(text).getId());
 		events.remove(text);

@@ -2,7 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,6 +27,8 @@ public class GraphicScheduler extends JFrame {
     private String serverIp;
     private int serverPort;
     private static boolean eventsOutput = false;
+    private static DB db = null;
+    public static boolean modification = false;
 
 
     GraphicScheduler() {
@@ -32,17 +37,22 @@ public class GraphicScheduler extends JFrame {
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+        DB.read();
 
-        ActionListener create = new CreateAction();
-        ActionListener modify = new ModifyAction();
+        ActionListener add = new AddAction();
         ActionListener addEvent = new AddEventAction();
-        ActionListener removeEvent = new RemoveEventAction();
         ActionListener addRandomTimeEvent = new AddRandomTimeEventAction();
         ActionListener cloneEvent = new CloneEventAction();
+        ActionListener create = new CreateAction();
+        ActionListener createTables = new CreateTablesAction();
+        ActionListener dropTables = new DropTablesAction();
+        ActionListener exit = new ExitAction();
+        ActionListener modify = new ModifyAction();
+        ActionListener putInDB = new PutInDBAction();
+        ActionListener removeEvent = new RemoveEventAction();
         ActionListener showInfo = new ShowInfoAction();
         ActionListener startScheduling = new StartSchedulingAction();
         ActionListener save = new SaveAction();
-        ActionListener add = new AddAction();
         ActionListener socket = new SocketAction();
         ActionListener startServerAction = new StartServerAction();
         ActionListener sync = new SyncAction();
@@ -51,7 +61,7 @@ public class GraphicScheduler extends JFrame {
         dataServer = new DataServer(textArea);
         outputPan = new JPanel();
         buttonPan = new JPanel();
-        buttonPan.setLayout(new GridLayout(15, 1));
+        buttonPan.setLayout(new GridLayout(20, 1));
 
         addTextArea();
         addButton("Add", add);
@@ -59,7 +69,10 @@ public class GraphicScheduler extends JFrame {
         addButton("AddRandomTimeEvent", addRandomTimeEvent);
         addButton("CloneEvent", cloneEvent);
         addButton("Create", create);
+        addButton("CreateTables", createTables);
+        addButton("DropTables", dropTables);
         addButton("Modify", modify);
+        addButton("PutInDB", putInDB);
         addButton("RemoveEvent", removeEvent);
         addButton("Save", save);
         addButton("ShowInfo", showInfo);
@@ -67,10 +80,21 @@ public class GraphicScheduler extends JFrame {
         addButton("StartServer", startServerAction);
         addButton("StartScheduling", startScheduling);
         addButton("Sync", sync);
+        addButton("Exit", exit);
 
         add(outputPan);
         add(buttonPan);
-
+//        addWindowListener(
+//                new java.awt.event.WindowAdapter()
+//                {
+//                    public void windowClosing( java.awt.event.WindowEvent e )
+//                    {
+//                        System.out.println( "good bye" );
+//                        dispose() ;
+//                        System.exit( 0 );
+//                    }
+//                }
+//        );
         setLocationRelativeTo(null);
         pack();
     }
@@ -87,14 +111,19 @@ public class GraphicScheduler extends JFrame {
         outputPan.add(scrollPane);
     }
 
+    public static boolean getEventsOutput(){
+        return eventsOutput;
+    }
+
     private class CreateAction implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             if (dialogCreate == null) dialogCreate = new UserCreater();
             if (dialogCreate.showDialog(GraphicScheduler.this, "Create user")) {
                 User u = dialogCreate.getUser();
-                Coordinator.users.add(u);
+                Coordinator.getUsers().add(u);
                 textArea.append("Done!\n");
             }
+            modification = true;
         }
     }
 
@@ -141,12 +170,7 @@ public class GraphicScheduler extends JFrame {
                     textArea.append("Event already exist or parse error is happened!\n");
                 }
             }
-        }
-    }
-
-    private class RemoveEventAction implements ActionListener {
-        public void actionPerformed(ActionEvent event) {
-
+            modification = true;
         }
     }
 
@@ -157,6 +181,59 @@ public class GraphicScheduler extends JFrame {
     }
 
     private class CloneEventAction implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+
+        }
+    }
+
+    private class CreateTablesAction implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            DB.createTables();
+        }
+    }
+
+    private class DropTablesAction implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            DB.dropTables();
+        }
+    }
+
+    private class ExitAction implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            if (modification == false){System.exit(0);}
+            ExitDialog exitDialog = null;
+            exitDialog = new ExitDialog();
+            int res = exitDialog.showDialog(GraphicScheduler.this, "exit dialog");
+
+            if (res == ExitDialog.NO_BUTTON){System.exit(0);};
+            if (res == ExitDialog.YES_BUTTON){
+                ArrayList<User> users = Coordinator.getUsers();
+                DB.clearTables();
+                for (User u : users){
+                    DB.insertIntoTable("user", u);
+                    for (Event e : u.events){
+                        DB.insertIntoTable("event", e);
+                    }
+                }
+                System.exit(0);
+            }
+        }
+    }
+
+    private class PutInDBAction implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            ArrayList<User> users = Coordinator.getUsers();
+            DB.clearTables();
+            for (User u : users){
+                DB.insertIntoTable("user", u);
+                for (Event event : u.events){
+                    DB.insertIntoTable("event", event);
+                    }
+            }
+        }
+    }
+
+    private class RemoveEventAction implements ActionListener {
         public void actionPerformed(ActionEvent event) {
 
         }
@@ -250,9 +327,5 @@ public class GraphicScheduler extends JFrame {
                 JOptionPane.showMessageDialog(GraphicScheduler.this, e.getMessage());
             }
         }
-    }
-
-    public static boolean getEventsOutput(){
-        return eventsOutput;
     }
 }

@@ -4,10 +4,19 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class Event implements Cloneable, Serializable{
+    int id;
+    int user_id;
     Date date;
     String description;
 
     Event(Date p_date, String p_description){
+        date = p_date;
+        description = p_description;
+    }
+
+    Event(int id, int user_id, Date p_date, String p_description){
+        this.id = id;
+        this.user_id = user_id;
         date = p_date;
         description = p_description;
     }

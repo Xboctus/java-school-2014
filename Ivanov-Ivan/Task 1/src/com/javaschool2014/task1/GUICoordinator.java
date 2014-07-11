@@ -6,7 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.TreeMap;
 
 public class GUICoordinator extends AbstractCoordinator {
 
@@ -17,20 +21,6 @@ public class GUICoordinator extends AbstractCoordinator {
     @Override
     protected void printOutput(String string) {
         textArea.append(string + "\n");
-    }
-
-    @Override
-    public void start() {
-
-        getTimer().scheduleAtFixedRate(this, 0, 1000);
-        createServer();
-
-    }
-
-    public void exit() {
-
-        newFrame.dispose();
-
     }
 
     private MaskFormatter getMask(String mask, String input){
@@ -51,6 +41,13 @@ public class GUICoordinator extends AbstractCoordinator {
         }
 
         return maskFormatter;
+
+    }
+
+    public void exit() {
+
+        newFrame.dispose();
+        getTimer().cancel();
 
     }
 
@@ -150,22 +147,54 @@ public class GUICoordinator extends AbstractCoordinator {
         final ActionListener saveDBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getServerPort();
+
+                if (!dataLoaderSQL.saveData()) {
+                    printOutput("DB error!");
+                } else {
+                    printOutput("Data successfully saved to DB!");
+                }
+
             }
         };
 
         final ActionListener loadDBListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getServerPort();
+
+                TreeMap<String, User> result;
+                result = dataLoaderSQL.loadData();
+
+                if (result == null) {
+                    printOutput("DB error!");
+                } else {
+                    AbstractCoordinator.setUsers(result);
+                    printOutput("Data successfully loaded!");
+                }
+
             }
         };
 
         final ActionListener exitListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                exit();
+
+                try {
+
+                    if (!AbstractCoordinator.getUsers().toString().equals(dataLoaderSQL.loadData().toString())) {
+                        exitForm();
+                    } else {
+                        exit();
+                    }
+
+                } catch (Exception ex) {
+
+                    System.out.println(ex.getMessage());
+                    exit();
+
+                }
+
             }
+
         };
 
         JButton create             = new JButton("Create");
@@ -223,7 +252,9 @@ public class GUICoordinator extends AbstractCoordinator {
         newFrame.setSize(540, 460);
         newFrame.setResizable(false);
         newFrame.setVisible(true);
-        dataLoaderSQL.dbConnection();
+
+        getTimer().scheduleAtFixedRate(this, 0, 1000);
+        createServer();
 
     }
 
@@ -486,6 +517,35 @@ public class GUICoordinator extends AbstractCoordinator {
             if (!synchronizeData(field1.getText(), field2.getText())) {
                 printOutput(ERROR);
             }
+        } else {
+            printOutput(CANCELLED);
+        }
+
+    }
+
+    public void exitForm() {
+
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+
+        Object[] options = {"Save and exit",
+                "exit",
+                "return"};
+
+        int result = JOptionPane.showOptionDialog(panel, "Save unsaved data to DB?", "Exit",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if (result == JOptionPane.YES_OPTION) {
+
+            if (!dataLoaderSQL.saveData()) {
+                JOptionPane.showMessageDialog(panel, "DB save error, nothing saved.", "DB error",
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(panel, "Data successfully saved to DB!");
+                exit();
+            }
+
+        } else if (result == JOptionPane.NO_OPTION) {
+            exit();
         } else {
             printOutput(CANCELLED);
         }
