@@ -180,7 +180,7 @@ public class TaskerView extends JFrame {
         startSchedulingBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                        new StartSchedule().start(taskHandler.users);
+                        dbManager.startSheduling();
 
             }
         });

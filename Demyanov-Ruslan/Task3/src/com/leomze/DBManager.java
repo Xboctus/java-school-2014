@@ -3,6 +3,8 @@ package com.leomze;
 
 
 
+import com.leomze.DialogViewers.RemoveEvent;
+
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -376,6 +378,48 @@ public class DBManager {
         return null;
     }
 
+    public void startSheduling(){
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
+            Statement st = connection.createStatement();
+            st.executeQuery("USE taskstracker;");
+            ResultSet rs = st.executeQuery("SELECT users.username, event.textEvent, event.eventDate, users.status FROM taskstracker.users, taskstracker.event WHERE users.userid = event.userid AND users.status = 1;");
+            Timer timerEvent = new Timer();
+            String username = new String();
+            String text = new String();
+            String date = new String();
 
+            while (rs.next()){
+                username = rs.getString("username");
+                text = rs.getString("textEvent");
+                date = rs.getString("eventDate");
+                final String[] str = new String[3];
+                str[0] = username;
+                str[1] = text;
+                str[2] = date;
+
+                  TimerTask taskEvent = new TimerTask() {
+                    @Override
+                    public void run() {
+                        TaskerView.textArea.append("\n=====================\n"
+                                + str[2] + "\n" + str[0] + "\n" + str[1] +
+                                "\n=====================\n");
+                        System.out.println(str[2] + "\n" + str[0] + "\n" + str[1]);
+                       TaskerView.dbManager.removeEvent(str[0], str[1]);
+                    }
+                };
+                timerEvent.schedule(taskEvent, simpleDateFormat.parse(date));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
+
+
+
+
