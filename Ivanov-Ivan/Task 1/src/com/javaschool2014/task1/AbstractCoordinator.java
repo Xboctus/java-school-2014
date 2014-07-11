@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.List;
 import java.util.Timer;
 
+// Core class. Data processing functions
 public abstract class AbstractCoordinator extends TimerTask implements Constants {
 
     private Timer timer                        = new Timer(true);

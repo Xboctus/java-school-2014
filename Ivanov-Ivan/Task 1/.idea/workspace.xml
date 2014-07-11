@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" afterPath="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DeadLock/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../DeadLock/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RefProj/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../RefProj/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -71,7 +70,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1292">
+            <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
               <folding />
             </state>
           </provider>
@@ -80,8 +79,16 @@
       <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="52" selection-start="8178" selection-end="8199" vertical-scroll-proportion="0.0" vertical-offset="5755" max-vertical-offset="6205">
-              <folding />
+            <state line="9" column="40" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="4829" max-vertical-offset="6409">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8252#8253#0" expanded="true" />
+                <element signature="e#8280#8281#0" expanded="true" />
+                <element signature="e#8357#8358#0" expanded="true" />
+                <element signature="e#8406#8407#0" expanded="true" />
+                <element signature="e#8437#8438#0" expanded="true" />
+                <element signature="e#8465#8466#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,38 +96,9 @@
       <file leaf-file-name="DataSync.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="27" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0" vertical-offset="3018" max-vertical-offset="3468">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="28" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="457" max-vertical-offset="986">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUICoordinator.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="45" selection-start="4679" selection-end="4679" vertical-scroll-proportion="-13.884444" vertical-offset="8169" max-vertical-offset="8670">
+            <state line="44" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="3672">
               <folding>
-                <element signature="e#3319#3476#0" expanded="true" />
-                <element signature="e#3465#3466#0" expanded="true" />
-                <element signature="e#3527#3684#0" expanded="true" />
-                <element signature="e#3673#3674#0" expanded="true" />
-                <element signature="e#3735#3892#0" expanded="true" />
-                <element signature="e#3881#3882#0" expanded="true" />
-                <element signature="e#4150#4482#0" expanded="true" />
-                <element signature="e#4471#4472#0" expanded="true" />
-                <element signature="e#4531#5003#0" expanded="true" />
-                <element signature="e#4992#4993#0" expanded="true" />
-                <element signature="e#5050#5581#0" expanded="true" />
-                <element signature="e#5569#5570#0" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -129,40 +107,47 @@
       <file leaf-file-name="DataLoaderSQL.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5185">
+            <state line="204" column="27" selection-start="5537" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="3332" max-vertical-offset="5151">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#668#675#0" expanded="true" />
                 <element signature="e#741#755#0" expanded="true" />
-                <marker date="1404981355504" expanded="true" signature="1485:1503" placeholder="DELETE FROM ..." />
-                <marker date="1404981355504" expanded="true" signature="1538:1555" placeholder="DELETE FROM ..." />
-                <marker date="1404981355504" expanded="true" signature="3206:3225" placeholder="SELECT * FRO..users..." />
-                <marker date="1404981355504" expanded="true" signature="3768:3788" placeholder="SELECT * FRO..events..." />
-                <marker date="1404981355504" expanded="true" signature="5628:5685" placeholder="SELECT * FRO..users..." />
-                <marker date="1404981355504" expanded="true" signature="5858:5960" placeholder="UPDATE users..." />
-                <marker date="1404981355504" expanded="true" signature="6047:6158" placeholder="INSERT INTO ..." />
-                <marker date="1404981355504" expanded="true" signature="7006:7108" placeholder="SELECT * FRO..events..." />
-                <marker date="1404981355504" expanded="true" signature="7280:7406" placeholder="UPDATE event..." />
-                <marker date="1404981355504" expanded="true" signature="7492:7627" placeholder="INSERT INTO ..." />
+                <marker date="1405086526361" expanded="true" signature="1485:1503" placeholder="DELETE FROM ..." />
+                <marker date="1405086526361" expanded="true" signature="1538:1555" placeholder="DELETE FROM ..." />
+                <marker date="1405086526361" expanded="true" signature="3206:3225" placeholder="SELECT * FRO..users..." />
+                <marker date="1405086526361" expanded="true" signature="3768:3788" placeholder="SELECT * FRO..events..." />
+                <marker date="1405086526361" expanded="true" signature="5628:5685" placeholder="SELECT * FRO..users..." />
+                <marker date="1405086526361" expanded="true" signature="5857:5959" placeholder="UPDATE users..." />
+                <marker date="1405086526361" expanded="true" signature="6045:6156" placeholder="INSERT INTO ..." />
+                <marker date="1405086526361" expanded="true" signature="7004:7106" placeholder="SELECT * FRO..events..." />
+                <marker date="1405086526361" expanded="true" signature="7278:7404" placeholder="UPDATE event..." />
+                <marker date="1405086526361" expanded="true" signature="7490:7625" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
+      <file leaf-file-name="GUICoordinator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="13" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.0" vertical-offset="1103" max-vertical-offset="1496">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="33" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="510">
-              <folding />
+            <state line="228" column="73" selection-start="6958" selection-end="6958" vertical-scroll-proportion="0.40127388" vertical-offset="3007" max-vertical-offset="9027">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3209#3366#0" expanded="true" />
+                <element signature="e#3355#3356#0" expanded="true" />
+                <element signature="e#3417#3574#0" expanded="true" />
+                <element signature="e#3563#3564#0" expanded="true" />
+                <element signature="e#3625#3782#0" expanded="true" />
+                <element signature="e#3771#3772#0" expanded="true" />
+                <element signature="e#4040#4372#0" expanded="true" />
+                <element signature="e#4361#4362#0" expanded="true" />
+                <element signature="e#4421#4893#0" expanded="true" />
+                <element signature="e#4882#4883#0" expanded="true" />
+                <element signature="e#4940#5471#0" expanded="true" />
+                <element signature="e#5459#5460#0" expanded="true" />
+                <element signature="e#5517#5856#0" expanded="true" />
+                <element signature="e#5844#5845#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -170,7 +155,7 @@
       <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="83" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="969">
+            <state line="36" column="83" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
               <folding />
             </state>
           </provider>
@@ -209,9 +194,9 @@
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" />
-        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java" />
+        <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java" />
         <option value="$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java" />
       </list>
@@ -330,6 +315,223 @@
     <property name="options.searchVisible" value="true" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="SearchEverywhereHistory" value="" />
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ScheduleCoordinator.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/model/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/model/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Event.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleCreator.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/util/ScheduleConnection.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/ScheduleCreator.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/gui/ScheduleDialog.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/ScheduleConnection.java</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/.name</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/compiler.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/copyright/profiles_settings.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/description.html</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/encodings.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/libraries/mysql_connector_java_5_1_31_bin.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/misc.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/modules.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/project-template.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/scopes/scope_settings.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/uiDesigner.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/vcs.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/.idea/workspace.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/Task2.iml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/dump.ser</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/CommandManager.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DBManager.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/AddEvent$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/AddEvent$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/AddEvent.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/AddRandomEvent$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/AddRandomEvent$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/AddRandomEvent.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/CloneEvent$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/CloneEvent$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/CloneEvent.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/CreateUser$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/CreateUser$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/CreateUser.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/ModifyUser$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/ModifyUser$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/ModifyUser.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/RemoveEvent$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/RemoveEvent$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/RemoveEvent.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/SerData$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/SerData$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/SerData$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/SerData$4.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/SerData.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/WebSync$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/WebSync$2$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/WebSync$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/WebSync$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/DialogViewers/WebSync.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/Event.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/Main.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/Serializer.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/StartSchedule$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/StartSchedule.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$10.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$11.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$12.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$4.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$5.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$6.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$7.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$8.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView$9.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/TaskerView.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/User$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/out/production/Task2/com/leomze/WebSyncHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/CommandManager.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DBManager.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/AddEvent.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/AddRandomEvent.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/CloneEvent.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/CreateUser.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/ModifyUser.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/RemoveEvent.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/SerData.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/DialogViewers/WebSync.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/Main.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/Serializer.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/StartSchedule.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/TaskHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/TaskerView.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/Task3/src/com/leomze/WebSyncHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSSecret/.classpath</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSSecret/.project</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSSecret/.settings/org.eclipse.jdt.core.prefs</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSSecret/bin/one/MainClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSSecret/src/one/MainClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/externalClasses/secret/Secret.class</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -642,7 +844,7 @@
       <workItem from="1404928178853" duration="94000" />
       <workItem from="1404970601593" duration="549000" />
       <workItem from="1404972448821" duration="986000" />
-      <workItem from="1404974430932" duration="7335000" />
+      <workItem from="1404974430932" duration="17273000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -756,11 +958,19 @@
       <created>1404982195870</created>
       <updated>1404982195870</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Task 1 1.5 commit, deadlock&#10;">
+      <created>1404982776806</created>
+      <updated>1404982776806</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Task 1 1.5 commit, deadlock&#10;">
+      <created>1405088418949</created>
+      <updated>1405088418949</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225931000" />
+    <option name="totallyTimeSpent" value="235869000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -805,8 +1015,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14241165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64117646" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12993763" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34313726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13525027" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -873,7 +1083,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="28" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2363">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -897,7 +1115,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="4" selection-start="381" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="6120">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -921,7 +1147,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="4" selection-start="381" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="6120">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -945,7 +1179,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="334" column="21" selection-start="8685" selection-end="8685" vertical-scroll-proportion="0.0" vertical-offset="5678" max-vertical-offset="6069">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -969,7 +1211,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="262" column="78" selection-start="7423" selection-end="7423" vertical-scroll-proportion="0.0" vertical-offset="4454" max-vertical-offset="5627">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -993,7 +1243,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="325" column="1" selection-start="8674" selection-end="8674" vertical-scroll-proportion="0.0" vertical-offset="5491" max-vertical-offset="5627">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1017,7 +1275,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="30" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="2363">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1041,7 +1307,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="765">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1065,7 +1339,15 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="765">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1094,6 +1376,22 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.104848" vertical-offset="1867" max-vertical-offset="2754" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="198" column="40" selection-start="6182" selection-end="6182" vertical-scroll-proportion="0.57425743" vertical-offset="3124" max-vertical-offset="3689">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="28" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="986">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="83" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="969">
@@ -1108,85 +1406,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="40" selection-start="6182" selection-end="6182" vertical-scroll-proportion="0.57425743" vertical-offset="3124" max-vertical-offset="3689">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="80" column="13" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.0" vertical-offset="1046" max-vertical-offset="1496">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="52" selection-start="8178" selection-end="8199" vertical-scroll-proportion="0.0" vertical-offset="5389" max-vertical-offset="6205">
-          <folding />
+        <state line="9" column="40" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="4778" max-vertical-offset="6409">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8252#8253#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8406#8407#0" expanded="true" />
+            <element signature="e#8437#8438#0" expanded="true" />
+            <element signature="e#8465#8466#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="27" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="3553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="28" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="986">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="1292">
-          <folding />
+        <state line="44" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="3672">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5185">
+        <state line="204" column="27" selection-start="5537" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="3332" max-vertical-offset="5151">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#668#675#0" expanded="true" />
             <element signature="e#741#755#0" expanded="true" />
-            <marker date="1404981355504" expanded="true" signature="1485:1503" placeholder="DELETE FROM ..." />
-            <marker date="1404981355504" expanded="true" signature="1538:1555" placeholder="DELETE FROM ..." />
-            <marker date="1404981355504" expanded="true" signature="3206:3225" placeholder="SELECT * FRO..users..." />
-            <marker date="1404981355504" expanded="true" signature="3768:3788" placeholder="SELECT * FRO..events..." />
-            <marker date="1404981355504" expanded="true" signature="5628:5685" placeholder="SELECT * FRO..users..." />
-            <marker date="1404981355504" expanded="true" signature="5858:5960" placeholder="UPDATE users..." />
-            <marker date="1404981355504" expanded="true" signature="6047:6158" placeholder="INSERT INTO ..." />
-            <marker date="1404981355504" expanded="true" signature="7006:7108" placeholder="SELECT * FRO..events..." />
-            <marker date="1404981355504" expanded="true" signature="7280:7406" placeholder="UPDATE event..." />
-            <marker date="1404981355504" expanded="true" signature="7492:7627" placeholder="INSERT INTO ..." />
+            <marker date="1405086526361" expanded="true" signature="1485:1503" placeholder="DELETE FROM ..." />
+            <marker date="1405086526361" expanded="true" signature="1538:1555" placeholder="DELETE FROM ..." />
+            <marker date="1405086526361" expanded="true" signature="3206:3225" placeholder="SELECT * FRO..users..." />
+            <marker date="1405086526361" expanded="true" signature="3768:3788" placeholder="SELECT * FRO..events..." />
+            <marker date="1405086526361" expanded="true" signature="5628:5685" placeholder="SELECT * FRO..users..." />
+            <marker date="1405086526361" expanded="true" signature="5857:5959" placeholder="UPDATE users..." />
+            <marker date="1405086526361" expanded="true" signature="6045:6156" placeholder="INSERT INTO ..." />
+            <marker date="1405086526361" expanded="true" signature="7004:7106" placeholder="SELECT * FRO..events..." />
+            <marker date="1405086526361" expanded="true" signature="7278:7404" placeholder="UPDATE event..." />
+            <marker date="1405086526361" expanded="true" signature="7490:7625" placeholder="INSERT INTO ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="45" selection-start="4679" selection-end="4679" vertical-scroll-proportion="-13.884444" vertical-offset="8169" max-vertical-offset="8670">
+        <state line="228" column="73" selection-start="6958" selection-end="6958" vertical-scroll-proportion="0.40127388" vertical-offset="3007" max-vertical-offset="9027">
           <folding>
-            <element signature="e#3319#3476#0" expanded="true" />
-            <element signature="e#3465#3466#0" expanded="true" />
-            <element signature="e#3527#3684#0" expanded="true" />
-            <element signature="e#3673#3674#0" expanded="true" />
-            <element signature="e#3735#3892#0" expanded="true" />
-            <element signature="e#3881#3882#0" expanded="true" />
-            <element signature="e#4150#4482#0" expanded="true" />
-            <element signature="e#4471#4472#0" expanded="true" />
-            <element signature="e#4531#5003#0" expanded="true" />
-            <element signature="e#4992#4993#0" expanded="true" />
-            <element signature="e#5050#5581#0" expanded="true" />
-            <element signature="e#5569#5570#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3209#3366#0" expanded="true" />
+            <element signature="e#3355#3356#0" expanded="true" />
+            <element signature="e#3417#3574#0" expanded="true" />
+            <element signature="e#3563#3564#0" expanded="true" />
+            <element signature="e#3625#3782#0" expanded="true" />
+            <element signature="e#3771#3772#0" expanded="true" />
+            <element signature="e#4040#4372#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4421#4893#0" expanded="true" />
+            <element signature="e#4882#4883#0" expanded="true" />
+            <element signature="e#4940#5471#0" expanded="true" />
+            <element signature="e#5459#5460#0" expanded="true" />
+            <element signature="e#5517#5856#0" expanded="true" />
+            <element signature="e#5844#5845#0" expanded="true" />
           </folding>
         </state>
       </provider>
