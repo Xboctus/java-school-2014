@@ -63,8 +63,8 @@ public class User implements Serializable {
 	public void RemoveEvent(Event event) {
 		lstEvents.remove(event);
 		
-		if (event.getState().equals(StateType.NEW))
-			Event.getLstRemove().add(event);
+		if (!event.getState().equals(StateType.NEW))
+			Event.getLstRemove().add(event.getId());
 	}
 	
 	public Event findEvent(String text) {

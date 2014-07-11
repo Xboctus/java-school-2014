@@ -1,23 +1,38 @@
 package model;
 
-import java.util.Date;
-import java.util.Timer;
+import java.util.*;
 
 public class Event implements Cloneable {
 
     private final Date date;
     private final String text;
-    Timer timer;// = new Timer();
+    Timer timer;
+    TimerTask task;
+    String name;
+    /*private static final Map<String, User> name2user = new HashMap<>();
 
-    public Event(Date date, String text) {
+    private static void addUser(String name, TimeZone timeZone, User.UserInfo.Status status) {
+        name2user.put(name, new User(name, timeZone, status));
+    }*/
+
+    public Event(Date date, final String text, final String name) {
         this.date = date;
         this.text = text;
+        this.name = name;
         timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println(System.currentTimeMillis() + name + text);
+                //вывести имя пользователя и текст события
+            }
+        };
+        timer.schedule(task, date.getTime());
     }
 
-    public Timer getTimer() {
+ /*   public Timer getTimer() {
         return timer;
-    }
+    }*/
 
     public Date getDate() {
         return date;

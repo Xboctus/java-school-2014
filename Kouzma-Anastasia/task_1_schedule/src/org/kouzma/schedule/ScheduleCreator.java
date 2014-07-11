@@ -445,7 +445,7 @@ public class ScheduleCreator {
 		return lstUsers;
 	}
 
-	public synchronized String sync(String adress) {
+	public synchronized String sync(String adress) { //TODO
 		String[] arrAdress = adress.split(":");
 		if (arrAdress.length != 2)
 			return ERROR_SYNC;
@@ -498,7 +498,11 @@ public class ScheduleCreator {
 					saveEvent(event);
 				}
 			}
-			conn.deleteEvents(Event.getLstRemove());
+			List<Integer> lstRemoveIds = Event.getLstRemove();
+			if (lstRemoveIds.size() > 0) {
+				conn.deleteEvents(lstRemoveIds);
+				lstRemoveIds.clear();
+			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
