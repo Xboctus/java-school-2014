@@ -67,8 +67,10 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/reflect/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="38" selection-start="128" selection-end="128" vertical-scroll-proportion="-0.072186835" vertical-offset="102" max-vertical-offset="714">
-              <folding />
+            <state line="23" column="49" selection-start="770" selection-end="770" vertical-scroll-proportion="0.6135881" vertical-offset="102" max-vertical-offset="714">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -467,12 +469,12 @@
       <created>1404996169201</created>
       <updated>1404996169201</updated>
       <workItem from="1404996177464" duration="4193000" />
-      <workItem from="1405058430971" duration="13368000" />
+      <workItem from="1405058430971" duration="13371000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17561000" />
+    <option name="totallyTimeSpent" value="17564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="978" height="616" extended-state="6" />
@@ -530,7 +532,9 @@
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/reflect/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="55" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="799">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -552,8 +556,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/reflect/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="38" selection-start="128" selection-end="128" vertical-scroll-proportion="-0.072186835" vertical-offset="102" max-vertical-offset="714">
-          <folding />
+        <state line="23" column="49" selection-start="770" selection-end="770" vertical-scroll-proportion="0.6135881" vertical-offset="102" max-vertical-offset="714">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
