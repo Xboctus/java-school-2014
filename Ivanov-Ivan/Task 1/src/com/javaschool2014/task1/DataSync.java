@@ -45,6 +45,7 @@ public class DataSync implements Constants {
 
         });
 
+        server.setDaemon(true);
         server.start();
 
     }
@@ -145,6 +146,7 @@ public class DataSync implements Constants {
 
             });
 
+            connect.setDaemon(true);
             connect.start();
 
         } catch (IOException e) {
