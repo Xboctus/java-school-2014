@@ -2,18 +2,13 @@ package model;
 
 import java.util.*;
 
-public class Event implements Cloneable {
+public class Event implements Cloneable, Comparable<Event> {
 
     private final Date date;
     private final String text;
     Timer timer;
     TimerTask task;
     String name;
-    /*private static final Map<String, User> name2user = new HashMap<>();
-
-    private static void addUser(String name, TimeZone timeZone, User.UserInfo.Status status) {
-        name2user.put(name, new User(name, timeZone, status));
-    }*/
 
     public Event(Date date, final String text, final String name) {
         this.date = date;
@@ -23,16 +18,24 @@ public class Event implements Cloneable {
         task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(System.currentTimeMillis() + name + text);
-                //вывести имя пользователя и текст события
+                System.out.println(System.currentTimeMillis() + "\n" + name + "\n" + text);
             }
         };
         timer.schedule(task, date.getTime());
     }
 
- /*   public Timer getTimer() {
-        return timer;
-    }*/
+    @Override
+    public int compareTo(Event event) {
+        int res = event.name.compareTo(name);
+        if(res != 0) {
+            return  res;
+        }
+        return event.text.compareTo(text);
+    }
+
+    public String getNames() {
+        return name;
+    }
 
     public Date getDate() {
         return date;
