@@ -114,9 +114,6 @@ public class ScheduleCoordinator {
             if (command.equals(START_SHEDULING)) {
                 startScheduling();
             }
-
-
-
         }
 
     }
