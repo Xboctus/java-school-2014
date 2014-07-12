@@ -1,21 +1,23 @@
-import model.Event;
-import model.User;
+package ru.danilova.schedule;
+
+import ru.danilova.schedule.model.Event;
+import ru.danilova.schedule.model.User;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static model.User.UserInfo.Status;
+import static ru.danilova.schedule.model.User.UserInfo.Status;
 
 public class ScheduleCoordinator {
 
     private static final Map<String, User> name2user = new HashMap<>();
     private static final DateFormat format = new SimpleDateFormat("dd.MM.yy-HH:mm:ss");
-    private static Mode mode = Mode.EDIT; //режим
+    public static Mode mode = Mode.EDIT; //режим
 
 
-    private static enum Mode {
+    public static enum Mode {
         EDIT, OUTPUT
     }
 
@@ -73,12 +75,6 @@ public class ScheduleCoordinator {
 
     private static void startScheduling() {
         mode = Mode.OUTPUT;
-        for(User user : name2user.values()) {
-            for (Event event : user.getAllEvent()) {
-                event.startSchedule();
-            }
-        }
-
     }
 
     public static void main(String arguments[]) throws ParseException {
@@ -115,7 +111,6 @@ public class ScheduleCoordinator {
                 startScheduling();
             }
         }
-
     }
 
 }

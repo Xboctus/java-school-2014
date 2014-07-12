@@ -1,8 +1,8 @@
-package model;
+package ru.danilova.schedule.model;
 
 import java.util.*;
 
-import static model.User.UserInfo.Status;
+import static ru.danilova.schedule.model.User.UserInfo.Status;
 
 public class User {
 

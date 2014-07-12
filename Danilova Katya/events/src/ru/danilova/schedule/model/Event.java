@@ -1,6 +1,10 @@
-package model;
+package ru.danilova.schedule.model;
 
-import java.util.*;
+import ru.danilova.schedule.ScheduleCoordinator;
+
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Event implements Cloneable, Comparable<Event> {
 
@@ -21,11 +25,9 @@ public class Event implements Cloneable, Comparable<Event> {
                 System.out.println(new Date() + "\n" + name + "\n" + text);
             }
         };
-        //timer.schedule(task, date);
-    }
-
-    public void startSchedule() {
-        timer.schedule(task, date);
+        if(ScheduleCoordinator.mode == ScheduleCoordinator.Mode.EDIT) {
+            timer.schedule(task, date);
+        }
     }
 
     @Override
