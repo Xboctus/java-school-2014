@@ -52,9 +52,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "text2event=" + text2event +
-                ", userInfo=" + userInfo +
+        return " User {" +
+                "text2event = " + text2event +
+                ", userInfo = " + userInfo.getName() + ", " + userInfo.getTimeZone().getID() + ", " + userInfo.getStatus() +
                 '}';
     }
 

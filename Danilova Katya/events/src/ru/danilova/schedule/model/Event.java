@@ -18,25 +18,25 @@ public class Event implements Cloneable, Comparable<Event> {
         this.date = date;
         this.text = text;
         this.name = name;
-       // timer = new Timer();
+        timer = new Timer();
         task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(new Date() + "\n" + name + "\n" + text);
+                if (ScheduleCoordinator.mode == ScheduleCoordinator.Mode.OUTPUT) {
+                    System.out.println(new Date() + "   " + name + ", make " + text);
+                }
             }
         };
-        if(ScheduleCoordinator.mode == ScheduleCoordinator.Mode.EDIT) {
-            timer.schedule(task, date);
-        }
+        timer.schedule(task, date);
     }
 
     @Override
     public int compareTo(Event event) {
-        int res = event.name.compareTo(name);
+        int res = name.compareTo(event.name);
         if(res != 0) {
             return  res;
         }
-        return event.text.compareTo(text);
+        return text.compareTo(event.text);
     }
 
     public String getNames() {
