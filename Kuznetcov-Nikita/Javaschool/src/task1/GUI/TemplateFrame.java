@@ -18,7 +18,7 @@ public class TemplateFrame extends JFrame {
 
   protected void showFrame() {
 //    this.pack();
-    this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     this.setVisible(true);
   }
 

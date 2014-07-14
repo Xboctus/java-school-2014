@@ -21,6 +21,10 @@ public class MySQLDAO implements ISchedulerDAO {
 
   @Override
   public synchronized void saveSchedulerState(Map<String, User> usersMap) throws SQLException {
+    Statement stmt = connection.createStatement();
+    stmt.execute("DELETE * FROM `events` WHERE `id` > 0; DELETE * FROM `users` WHERE `id` > 0;");
+    stmt.close();
+
     PreparedStatement userStatement = connection.prepareStatement("INSERT INTO `users` (userName, timeZoneID, isActive) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
     PreparedStatement eventStatement = connection.prepareStatement("INSERT INTO `events` (user_id, eventDate, eventText) VALUES (?, ?, ?)");
     for (User user : usersMap.values()) {
@@ -35,7 +39,7 @@ public class MySQLDAO implements ISchedulerDAO {
         ResultSet generatedKeys = userStatement.getGeneratedKeys();
         if (generatedKeys.next())
           user_id = generatedKeys.getInt(1);
-        for (Event event : user.getUserTaskArray()) {
+        for (Event event : user.getEventsArray()) {
           eventStatement.clearParameters();
           eventStatement.setInt(1, user_id);
           eventStatement.setLong(2, event.getEventDate().getTime());

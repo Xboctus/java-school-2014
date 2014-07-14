@@ -1,6 +1,7 @@
 package task1.GUI;
 
 import task1.Coordinator;
+import task1.User;
 import task1.Util.FileManager;
 import task1.Util.SchedulerLogRecordFormatter;
 import task1.Util.TextAreaStreamHandler;
@@ -89,10 +90,11 @@ public class SchedulerFrame extends JFrame {
     showUserInfoButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        String userInfo = coordinator.getUserInfo(JOptionPane.showInputDialog("Enter user name"));
-        if (!userInfo.isEmpty())
-          logArea.append(userInfo);
-        else
+        User user = taskCoordinator.getUserByName(JOptionPane.showInputDialog("Enter user name"));
+        if (user != null) {
+          new UserInfoFrame(taskCoordinator, user);
+          logArea.append(user.toString());
+        } else
           JOptionPane.showMessageDialog(null, "User with such username not found!", "Information", JOptionPane.INFORMATION_MESSAGE);
       }
     });
@@ -101,13 +103,15 @@ public class SchedulerFrame extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         String path = JOptionPane.showInputDialog("Enter path to file");
-        try {
-          if (FileManager.writeStringToFile(taskCoordinator.getCurrentState().toJSONString(), path))
-            JOptionPane.showMessageDialog(null, "File successfully created!", "Information", JOptionPane.INFORMATION_MESSAGE);
-          else
-            JOptionPane.showMessageDialog(null, "File with such path already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } catch (IOException ioex) {
-          JOptionPane.showMessageDialog(null, "Error when saving current scheduler state!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (!path.isEmpty()) {
+          try {
+            if (FileManager.writeStringToFile(taskCoordinator.getCurrentState().toJSONString(), path))
+              JOptionPane.showMessageDialog(null, "File successfully created!", "Information", JOptionPane.INFORMATION_MESSAGE);
+            else
+              JOptionPane.showMessageDialog(null, "File with such path already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+          } catch (IOException ioex) {
+            JOptionPane.showMessageDialog(null, "Error when saving current scheduler state!", "Error", JOptionPane.ERROR_MESSAGE);
+          }
         }
       }
     });

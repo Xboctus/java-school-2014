@@ -94,7 +94,7 @@ public class User implements Comparable {
     this.isActive = isActive;
   }
 
-  public Event[] getUserTaskArray() {
+  public Event[] getEventsArray() {
     Event[] result = new Event[this.userTaskSet.size()];
     return userTaskSet.toArray(result);
   }

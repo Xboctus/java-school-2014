@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import task1.DAO.MySQLDAO;
+import task1.Util.DateFormatter;
 import task1.Util.ResponseStatus;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class Coordinator {
   private static int logNumber;
   public Logger logger; // TODO trash
 
-  private static final String DBURL = "jdbc:mysql://localhost:3306/scheduler"; // jdbc:mysql://localhost:3306/db_name
+  private static final String DBURL = "jdbc:mysql://localhost:3306/scheduler";
   private static final String DBUsername = "root";
   private static final String DBPassword = "admin";
 
@@ -39,7 +40,7 @@ public class Coordinator {
       System.out.println("Driver library not found");
     } catch (SQLException sqlex) {
       System.out.println("Cannot establish connection to db");
-      sqlex.printStackTrace();
+//      sqlex.printStackTrace();
     }
     usersMap = new ConcurrentSkipListMap<>();
 
@@ -161,7 +162,7 @@ public class Coordinator {
 
         for (User user : usersMap.values()) {
           if (user.isActive()) {
-            for (Event event : user.getUserTaskArray()) {
+            for (Event event : user.getEventsArray()) {
               if (event.getEventDate().getTime() / 1000 == currentTime) {
                 logger.fine("---EVENT---\r\nUser: " + user.getUserName() + "\r\nEvent info: " + event + "\r\n");
               }
