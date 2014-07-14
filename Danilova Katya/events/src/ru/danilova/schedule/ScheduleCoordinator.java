@@ -66,12 +66,8 @@ public class ScheduleCoordinator {
     private static String showInfo(String name) {
         String res = name2user.get(name).getUserInfo().toString();
         List<Event> events = new ArrayList<>(name2user.get(name).getAllEvent());
-        int i = 0;
-        while(!events.isEmpty()) {
-            res += events.get(i) + "\n";
-            i++;
-        }
-       // res += name2user.get(name).getAllEvent().toString();
+        Collections.sort(events);
+        res += "\n" + name2user.get(name).getAllEvent().toString();
         return res;
     }
 
@@ -109,7 +105,7 @@ public class ScheduleCoordinator {
                     cloneEvent(args[0], args[1], args[2]);
                 }
                 if (command.equals(SHOW_INFO)) {
-                    System.out.print(showInfo(args[0]));
+                    System.out.println(showInfo(args[0]));
                 }
             }
             if (command.equals(START_SHEDULING)) {

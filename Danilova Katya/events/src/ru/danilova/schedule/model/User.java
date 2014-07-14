@@ -13,8 +13,8 @@ public class User {
         userInfo = new UserInfo(name, timeZone, status);
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public String getUserInfo() {
+        return userInfo.getName() + " " + userInfo.getTimeZone().getID() + " " + userInfo.getStatus();
     }
 
     public void addEvent(Event event) {
