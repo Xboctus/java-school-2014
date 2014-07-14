@@ -1,5 +1,6 @@
 package impl;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,5 +65,10 @@ public class ChangeManager {
 			eventDao.removeEventFromBase(removedEvents.get(i));
 		}
 		clearChanges();
+	}
+
+	public void setUserMap() throws IOException {
+		clearChanges();
+		userDao.setUserMapFromBase();
 	}
 }
