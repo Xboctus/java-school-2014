@@ -1,19 +1,18 @@
-package model;
+package ru.danilova.schedule.model;
 
-import java.util.*;
+import ru.danilova.schedule.ScheduleCoordinator;
 
-public class Event implements Cloneable {
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Event implements Cloneable, Comparable<Event> {
 
     private final Date date;
     private final String text;
     Timer timer;
     TimerTask task;
     String name;
-    /*private static final Map<String, User> name2user = new HashMap<>();
-
-    private static void addUser(String name, TimeZone timeZone, User.UserInfo.Status status) {
-        name2user.put(name, new User(name, timeZone, status));
-    }*/
 
     public Event(Date date, final String text, final String name) {
         this.date = date;
@@ -23,16 +22,26 @@ public class Event implements Cloneable {
         task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(System.currentTimeMillis() + name + text);
-                //вывести имя пользователя и текст события
+                if (ScheduleCoordinator.mode == ScheduleCoordinator.Mode.OUTPUT) {
+                    System.out.println(new Date() + "   " + name + ", make " + text);
+                }
             }
         };
-        timer.schedule(task, date.getTime());
+        timer.schedule(task, date);
     }
 
- /*   public Timer getTimer() {
-        return timer;
-    }*/
+    @Override
+    public int compareTo(Event event) {
+        int res = name.compareTo(event.name);
+        if(res != 0) {
+            return  res;
+        }
+        return text.compareTo(event.text);
+    }
+
+    public String getNames() {
+        return name;
+    }
 
     public Date getDate() {
         return date;

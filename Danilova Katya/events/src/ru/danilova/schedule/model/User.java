@@ -1,8 +1,8 @@
-package model;
+package ru.danilova.schedule.model;
 
 import java.util.*;
 
-import static model.User.UserInfo.Status;
+import static ru.danilova.schedule.model.User.UserInfo.Status;
 
 public class User {
 
@@ -25,8 +25,12 @@ public class User {
         text2event.remove(text);
     }
 
-    public Collection<Event> getAllEvent() {
-        return text2event.values();
+    public List<Event> getAllEvent() {
+        List<Event> res = new ArrayList<>();
+        for(Event event : text2event.values()) {
+            res.add(event);
+        }
+        return res;
     }
 
     public Event getEvent(String text) {
@@ -48,9 +52,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "text2event=" + text2event +
-                ", userInfo=" + userInfo +
+        return " User {" +
+                "text2event = " + text2event +
+                ", userInfo = " + userInfo.getName() + ", " + userInfo.getTimeZone().getID() + ", " + userInfo.getStatus() +
                 '}';
     }
 
