@@ -210,10 +210,8 @@ public class DataLoaderSQL implements Constants {
             }
 
             if (resultSet.next()) {
-
                 // Update
                 statement.execute("UPDATE users SET time_zone=\"" + gmt + "\", status=" + status + " where user_name=\"" + userName + "\"");
-
             } else {
                 // Insert
                 statement.execute("INSERT INTO users (user_name, time_zone, status) VALUES (\"" + userName + "\", \"" + gmt + "\", " + status + ")");

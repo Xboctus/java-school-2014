@@ -3,12 +3,8 @@ package com.javaschool2014.task1;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.File;
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.TreeMap;
 
@@ -44,14 +40,14 @@ public class GUICoordinator extends AbstractCoordinator {
 
     }
 
-    public void exit() {
+    public synchronized void exit() {
 
         newFrame.dispose();
         getTimer().cancel();
 
     }
 
-    public void display() {
+    public synchronized void display() {
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
@@ -197,6 +193,21 @@ public class GUICoordinator extends AbstractCoordinator {
 
         };
 
+        WindowListener exitFrameListener = new WindowAdapter() {
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                if (!AbstractCoordinator.getUsers().toString().equals(dataLoaderSQL.loadData().toString())) {
+                    exitForm();
+                } else {
+                    exit();
+                }
+
+            }
+
+        };
+
         JButton create             = new JButton("Create");
         JButton modify             = new JButton("Modify");
         JButton addEvent           = new JButton("AddEvent");
@@ -247,8 +258,8 @@ public class GUICoordinator extends AbstractCoordinator {
         mainPanel.add(BorderLayout.WEST, leftPanel);
         mainPanel.add(rightPanel);
 
+        newFrame.addWindowListener(exitFrameListener);
         newFrame.add(mainPanel);
-        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.setSize(540, 460);
         newFrame.setResizable(false);
         newFrame.setVisible(true);
