@@ -16,6 +16,9 @@ public class User {
     public String getUserInfo() {
         return userInfo.getName() + " " + userInfo.getTimeZone().getID() + " " + userInfo.getStatus();
     }
+    public String getTimeZo() {
+        return userInfo.getTimeZone().getID();
+    }
 
     public void addEvent(Event event) {
         text2event.put(event.getText(), event);
