@@ -148,6 +148,10 @@ public class CommandAnalisis {
 		});
 	}
 
+	public static void downloadFromBaseQuery() {
+		CommandHandler.downloadFromBase();
+	}
+
 	public static void printQuery(String fileName) throws IOException {
 		CommandHandler.printInfoToFile(fileName);
 	}

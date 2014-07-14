@@ -116,7 +116,7 @@ public class UserDaoImpl implements UserDao {
 				PreparedStatement statUser = con
 						.prepareStatement("SELECT * FROM user");
 				PreparedStatement statEvent = con
-						.prepareStatement("SELECT* FROM user WHERE User_name=?");
+						.prepareStatement("SELECT* FROM event WHERE User_name=?");
 				ResultSet set = statUser.executeQuery();
 				while (set.next()) {
 					User u = new User(set.getString("name"),
