@@ -61,8 +61,8 @@ public class Event implements Cloneable, Comparable<Event> {
     @Override
     public String toString() {
         return "Event{" +
-                "date=" + date +
-                ", text='" + text + '\'' +
+                " date = " + date +
+                ", text = '" + text + '\'' +
                 '}';
     }
 }

@@ -192,6 +192,16 @@ public class CommandHandler {
 		new ChangeManager().saveChangesToBase();
 	}
 
+	public static void downloadFromBase() {
+		resetSchedulerMaps();
+		try {
+			new ChangeManager().setUserMap();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * This method invokes method of FileLoader, witch saves current state to
 	 * file
