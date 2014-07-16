@@ -8,13 +8,12 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.SQLException;
 
-import org.kouzma.schedule.gui.SheduleWindow;
-import org.kouzma.schedule.util.ScheduleConnection;
-
-public class Schedule {
-
+import org.kouzma.schedule.gui.ScheduleWindow;
+/**
+ * @author Anastasya Kouzma
+ */
+public class Main {
 	private static ServerSocket serverSocket;
 
 	public static void main(String[] args) {
@@ -40,7 +39,7 @@ public class Schedule {
 		final int port = (serverSocket != null) ? serverSocket.getLocalPort() : null;
 		
 		//Start server
-		Thread serverThread = new Thread() {
+		Thread serverThread = new Thread() { // TODO
 			public void run() {
 				try {
 					while (true) {
@@ -67,7 +66,7 @@ public class Schedule {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						SheduleWindow window = new SheduleWindow(creator, answer, port);
+						ScheduleWindow window = new ScheduleWindow(creator, answer, port);
 						window.getFrame().setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();

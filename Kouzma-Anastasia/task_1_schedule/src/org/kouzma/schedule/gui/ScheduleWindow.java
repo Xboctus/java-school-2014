@@ -1,17 +1,21 @@
 package org.kouzma.schedule.gui;
 
+import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.Window;
 
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
 
 import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.border.EmptyBorder;
 
 import org.kouzma.schedule.ScheduleCreator;
 
@@ -23,9 +27,13 @@ import java.util.Map;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
-
-public class SheduleWindow implements ScheduleListener {
+/**
+ * @author Anastasya Kouzma
+ */
+public class ScheduleWindow implements ScheduleListener {
 	String defaultFileName;
 	public abstract class DialogCallBack {
 		public void sendParams(List<String> arrParams) {
@@ -79,10 +87,9 @@ public class SheduleWindow implements ScheduleListener {
 	 * Create the application.
 	 * @param scheduleCreator 
 	 * @param answer 
-	 * @param port 
-	 * @param defaultFileName 
+	 * @param port  
 	 */
-	public SheduleWindow(ScheduleCreator scheduleCreator, String answer, int port) {
+	public ScheduleWindow(ScheduleCreator scheduleCreator, String answer, int port) {
 		creator = scheduleCreator;
 		creator.addListener(this);
 		socketPort = port;
@@ -99,8 +106,15 @@ public class SheduleWindow implements ScheduleListener {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+	    frame.addWindowListener(new WindowAdapter() {
+	    	 
+	        @Override
+	        public void windowClosing(WindowEvent e) {
+	        	checkChanges();
+	        }
+	    });
+	    
 		// Лог
 		{
 			JPanel logPanel = new JPanel();
@@ -120,8 +134,8 @@ public class SheduleWindow implements ScheduleListener {
 		// Кнопки
 		{
 			GridBagLayout gbl_buttonPanel = new GridBagLayout();
-			gbl_buttonPanel.rowHeights = new int[] {30, 30, 30, 30, 30, 30, 60, 60, 30, 30, 30, 30, 30, 0};
-			gbl_buttonPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			gbl_buttonPanel.rowHeights = new int[] {30, 30, 30, 30, 30, 30, 50, 50, 30, 50, 30, 50, 30, 50, 30, 0};
+			gbl_buttonPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			
 			JPanel buttonPanel = new JPanel(gbl_buttonPanel);
 			frame.getContentPane().add(buttonPanel, BorderLayout.EAST);
@@ -134,16 +148,22 @@ public class SheduleWindow implements ScheduleListener {
 			JButton btnCloneEvent = createActionButton(ActionType.CLONE);
 			JButton btnShowInfo = createActionButton(ActionType.SHOW);
 			
-			JButton btnStartScheduling = createStartSchedulingButton();	
-			JButton btnSave = createSaveButton();
-			JButton btnLoad = createLoadButton();
-			final JButton btnSocket = createSocketButton();
-			JButton btnSync = createSyncButton();
-			JButton btnSaveToDB = createDbButton();
+			JButton btnStartScheduling = createStartSchedulingButton();
+			JButton btnSocket = createSocketButton();
+			JButton btnSync = createSyncButton();	
+			JButton btnSaveToFile = createSaveToFileButton();
+			JButton btnLoadFromFile = createLoadFromFileButton();
+			JButton btnSaveToDB = createSaveToDbButton();
+			JButton btnLoadFromDB = createLoadFromDbButton();
+			JButton btnExit = createExitButton();
 			
-			JButton[] arrButtons =new JButton[] {btnCreateUser, btnModifyUser, btnAddEvent, btnRemoveEvent, 
-												btnAddRandomTimeEvent, btnCloneEvent, btnShowInfo, btnStartScheduling,
-												btnSave, btnLoad, btnSocket, btnSync, btnSaveToDB};
+			JButton[] arrButtons =new JButton[] {btnCreateUser, btnModifyUser,
+												btnAddEvent, btnRemoveEvent, btnAddRandomTimeEvent, btnCloneEvent, 
+												btnShowInfo, btnStartScheduling,
+												btnLoadFromFile, btnSaveToFile,  
+												btnSocket, btnSync, 
+												btnLoadFromDB, btnSaveToDB,
+												btnExit};
 			
 			for (int i = 0; i < arrButtons.length; i++) {
 				GridBagConstraints constraints = new GridBagConstraints();
@@ -168,7 +188,7 @@ public class SheduleWindow implements ScheduleListener {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent ev) {
-				ScheduleDialog dialog = new ScheduleDialog(actionParams.title, actionParams.arrParamNames, actionParams.arrInputTypes,
+				ActionDialog dialog = new ActionDialog(actionParams.title, actionParams.arrParamNames, actionParams.arrInputTypes,
 						new DialogCallBack() {
 
 							@Override
@@ -206,7 +226,6 @@ public class SheduleWindow implements ScheduleListener {
 								
 								// Записываем в лог команду и ответ
 								StringBuffer sb = new StringBuffer();
-								sb.append("> ");
 								sb.append(actionParams.command);
 								sb.append("(");
 								
@@ -216,10 +235,9 @@ public class SheduleWindow implements ScheduleListener {
 										sb.append(", ");
 								}
 								
-								sb.append(")\n");
+								sb.append(")");
 								
-								logArea.append(sb.toString());
-								logArea.append(answer + "\n");
+								appendLog(sb.toString(), answer);
 							}
 					
 				});
@@ -235,16 +253,13 @@ public class SheduleWindow implements ScheduleListener {
 		btnStartScheduling.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent ev) {
-				logArea.append("> StartScheduling()\n");
-				String answer = creator.StartScheduling();
-				if (answer != null)
-					logArea.append(answer);
+				appendLog("StartScheduling()", creator.StartScheduling());
 			}
 		});	
 		return btnStartScheduling;
 	}
 	
-	private JButton createSaveButton() {
+	private JButton createSaveToFileButton() {
 		JButton btnSave = new JButton("Save to file");
 		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
@@ -253,17 +268,13 @@ public class SheduleWindow implements ScheduleListener {
 				int ret = fileopen.showDialog(null, "Open file");
 				if (ret == JFileChooser.APPROVE_OPTION) {
 				    File file = fileopen.getSelectedFile();
-
-					logArea.append("> SaveToFile(" + file.getName() + ")\n");
-					String answer = creator.SaveToFile(file);
-					if (answer != null)
-						logArea.append(answer + "\n");
+					appendLog("SaveToFile(" + file.getName() + ")", creator.SaveToFile(file));
 				}
 			}
 		});		
 		return btnSave;
 	}	
-	private JButton createLoadButton() {
+	private JButton createLoadFromFileButton() {
 		JButton btnLoad = new JButton("Load from file");
 		btnLoad.addMouseListener(new MouseAdapter() {
 			@Override
@@ -272,16 +283,13 @@ public class SheduleWindow implements ScheduleListener {
 				int ret = fileopen.showDialog(null, "Open file");
 				if (ret == JFileChooser.APPROVE_OPTION) {
 				    File file = fileopen.getSelectedFile();
-
-					logArea.append("> LoadFromFile(" + file.getName() + ")\n");
-					String answer = creator.LoadFromFile(file);
-					if (answer != null)
-						logArea.append(answer + "\n");
+					appendLog("LoadFromFile(" + file.getName() + ")", creator.LoadFromFile(file));
 				}
 			}
 		});	
 		return btnLoad;
 	}	
+	
 	private JButton createSocketButton() {
 		final JButton btnSocket = new JButton("Socket");
 		btnSocket.addMouseListener(new MouseAdapter() {
@@ -289,8 +297,7 @@ public class SheduleWindow implements ScheduleListener {
 			public void mouseClicked(MouseEvent ev) {
 				JOptionPane.showMessageDialog(btnSocket, "Port: " + socketPort, "Socket port",
 			              JOptionPane.INFORMATION_MESSAGE);
-				logArea.append("> GetPort()\n");
-				logArea.append("Port: " + socketPort + "\n");
+				appendLog("GetPort()", "Port: " + socketPort);
 			}
 		});	
 		return btnSocket;
@@ -304,32 +311,103 @@ public class SheduleWindow implements ScheduleListener {
 				String adress = JOptionPane.showInputDialog("adress");
 				
 				if (adress != null) {
-					logArea.append("> Sync(" + adress + ")\n");
-					String answer = creator.sync(adress);
-					if (answer != null)
-						logArea.append(answer + "\n");
+					appendLog("Sync(" + adress + ")", creator.sync(adress));
 				}
 			}
 		});
 		return btnSync;
 	}
 
-	private JButton createDbButton() {
+	private JButton createSaveToDbButton() {
 		JButton btnSaveToDb = new JButton("Save to database");
 		btnSaveToDb.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent ev) {
-				logArea.append("> SaveToDb()\n");
-				String answer = creator.saveToDb();
-				if (answer != null)
-					logArea.append(answer + "\n");
+				appendLog("SaveToDb()", creator.saveToDb());
 			}
 		});
 		return btnSaveToDb;		 
 	}
+
+	private JButton createLoadFromDbButton() {
+		JButton btnLoadFromDb = new JButton("Load from database");
+		btnLoadFromDb.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent ev) {
+				appendLog("LoadFromDb()", creator.loadFromDb());
+			}
+		});
+		return btnLoadFromDb;	
+	}
+
+	private JButton createExitButton() {
+		JButton btnExit = new JButton("Exit");
+		btnExit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent ev) {
+				checkChanges();
+			}
+		});
+		return btnExit;
+	}
+
+	private void appendLog(String command, String answer) {
+		logArea.append("> " + command + "\n");
+		if (answer != null)
+			logArea.append(answer + "\n");
+	}
 	
+	private void checkChanges() {
+		if (creator.hasChanges())
+			 new BeforeExitDialog().setVisible(true);
+		else
+			System.exit(0);
+	}
+
 	public Window getFrame() {
 		return frame;
 	}
 
+	private class BeforeExitDialog extends JDialog {
+		public BeforeExitDialog() {
+			setBounds(100, 100, 350, 70);
+			getContentPane().setLayout(new BorderLayout());
+			JPanel contentPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			
+			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+			getContentPane().add(contentPanel, BorderLayout.CENTER);
+	
+			JButton btnSave = new JButton("Save");
+			JButton btnExitWithoutSaving = new JButton("ExitWithoutSaving");
+			JButton btnCancel = new JButton("Cancel");
+			
+			btnSave.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent ev) {
+					BeforeExitDialog.this.setVisible(false);
+					appendLog("SaveToDb()", creator.saveToDb());					
+					if (!creator.hasChanges())
+						System.exit(0);
+				}
+			});		
+			
+			btnExitWithoutSaving.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent ev) {
+					System.exit(0);
+				}
+			});	
+			
+			btnCancel.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent ev) {
+					BeforeExitDialog.this.setVisible(false);
+				}
+			});	
+			
+			contentPanel.add(btnSave);
+			contentPanel.add(btnExitWithoutSaving);
+			contentPanel.add(btnCancel);
+		}
+	}
 }

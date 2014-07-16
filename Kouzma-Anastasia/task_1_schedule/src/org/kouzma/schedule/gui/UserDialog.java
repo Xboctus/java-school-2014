@@ -14,7 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * @author Anastasya Kouzma
+ */
 public class UserDialog extends JDialog {
 	
 	public UserDialog(String[] userInfo) {

@@ -2,33 +2,30 @@ package org.kouzma.schedule;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.kouzma.schedule.util.StateType;
 
 /**
- * 
  * @author Anastasya Kouzma
- *
  */
-public class Event implements Comparable<Event>, Serializable {
-	private static List<Integer> lstRemoveIds = new LinkedList<Integer>();
-	
+public class Event implements Comparable<Event>, Serializable {	
 	private String text;
 	private Date date;
 	private User user;
-	private boolean isShown = false;
-	private StateType state;
-	private int idUser = -1;
+	transient private boolean isShown = false;
+	private int idEvent = -1;
 	
 	public Event(String eventText, Date eventDate, User eventUser) {
 		text = eventText;
 		date = eventDate;
 		user = eventUser;
-		state = StateType.NEW;
 	}
 	
+	public Event(int id, String eventText, Date eventDate, User currentUser) {
+		idEvent = id;
+		text = eventText;
+		date = eventDate;
+		user = currentUser;
+	}
+
 	public String getText() {
 		return text;
 	}
@@ -63,24 +60,12 @@ public class Event implements Comparable<Event>, Serializable {
 		}
 		return res;
 	}	
-	
-	public StateType getState() {
-		return state;
-	}
-
-	public void setState(StateType state) {
-		this.state = state;
-	}
 
 	public int getId() {
-		return idUser;
+		return idEvent;
 	}
 	
 	public void setId(int id) {
-		idUser = id;
-	}
-
-	public static List<Integer> getLstRemove() {
-		return lstRemoveIds;
+		idEvent = id;
 	}
 }

@@ -19,7 +19,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 
-import org.kouzma.schedule.gui.SheduleWindow.DialogCallBack;
+import org.kouzma.schedule.gui.ScheduleWindow.DialogCallBack;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -29,8 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-public class ScheduleDialog extends JDialog {
+/**
+ * @author Anastasya Kouzma
+ */
+public class ActionDialog extends JDialog {
 
 	protected List<JTextField> arrControls = new ArrayList<JTextField>();
 	private JButton okButton;
@@ -38,7 +40,7 @@ public class ScheduleDialog extends JDialog {
 	 * Create the dialog.
 	 * @param dialogCallBack 
 	 */
-	public ScheduleDialog(String title, String[] arrLabelNames, final InputType[] arrControlTypes, final DialogCallBack dialogCallBack) {
+	public ActionDialog(String title, String[] arrLabelNames, final InputType[] arrControlTypes, final DialogCallBack dialogCallBack) {
 		setBounds(100, 100, 350, 200);
 		getContentPane().setLayout(new BorderLayout());
 		JPanel contentPanel = new JPanel();
@@ -89,7 +91,7 @@ public class ScheduleDialog extends JDialog {
 					arrParams.add(paramText);
 				}
 				dialogCallBack.sendParams(arrParams);
-				ScheduleDialog.this.setVisible(false);
+				ActionDialog.this.setVisible(false);
 				
 			}
 		});
