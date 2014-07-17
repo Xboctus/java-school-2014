@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../XMLParser/src/com/javaschool2014/parser/MainParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RefProj/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../RefProj/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -80,7 +78,7 @@
       <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="14" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="6409">
+            <state line="39" column="63" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33895704" vertical-offset="357" max-vertical-offset="6222">
               <folding />
             </state>
           </provider>
@@ -976,7 +974,7 @@
       <workItem from="1405364159010" duration="1275000" />
       <workItem from="1405408698695" duration="1154000" />
       <workItem from="1405488465320" duration="3425000" />
-      <workItem from="1405601350336" duration="468000" />
+      <workItem from="1405601350336" duration="670000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -1110,11 +1108,15 @@
       <created>1405324980454</created>
       <updated>1405324980454</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Schedule 1.5, deadlock, secret, XML 0.1&#10;">
+      <created>1405601868246</created>
+      <updated>1405601868247</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245916000" />
+    <option name="totallyTimeSpent" value="246118000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1137,7 +1139,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1320" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1320" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1153,6 +1155,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31960785" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1165,7 +1168,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31960785" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1522,7 +1524,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="14" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="5556" max-vertical-offset="6307">
+        <state line="39" column="63" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33895704" vertical-offset="357" max-vertical-offset="6222">
           <folding />
         </state>
       </provider>
