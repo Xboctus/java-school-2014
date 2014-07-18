@@ -42,10 +42,8 @@ public class FileLoader {
 		ObjectOutputStream out;
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(file));
-			out.writeObject(lstUsers);
-			out.close();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 			return false;
 		}
 		

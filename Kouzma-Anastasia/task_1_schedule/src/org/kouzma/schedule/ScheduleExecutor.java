@@ -80,7 +80,8 @@ public class ScheduleExecutor {
 	public void checkTimerTask(Event newEvent) {
 		if (nextEvent == null || newEvent.compareTo(nextEvent) < 0) {
 			nextEvent = newEvent;
-			scheduleTimer.cancel();
+			if (scheduleTimer != null)
+				scheduleTimer.cancel();
 			scheduleTimer = new Timer();
 			scheduleTimer.schedule(new ScheduleTimerTask(), DateUtil.fromGTM(nextEvent.getDate()));
 		}
@@ -110,7 +111,8 @@ public class ScheduleExecutor {
 	public void clear() {
 		treeEvents.clear();
 		nextEvent = null;
-		scheduleTimer.cancel();
+		if (scheduleTimer != null)
+			scheduleTimer.cancel();
 	}
 
 	public void addListener(ScheduleListener scheduleListener) {

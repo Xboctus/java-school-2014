@@ -44,10 +44,10 @@ public class ScheduleCreator {
 	private static final String ERROR_DB = "Can't save to database";
 	private static final String ERROR_UNSAVED = " objects are not saved because of name/text duplication";
 	
-	private static final String USER_ADDED = "User \"?\" added";
-	private static final String USER_MODIFIED = "User \"?\" modified";
-	private static final String EVENT_ADDED = "Event \"?\" added";
-	private static final String EVENT_REMOVED = "Event \"?\" removed";
+	private static final String USER_ADDED = "User \"%1$2s\" added";
+	private static final String USER_MODIFIED = "User \"%1$2s\" modified";
+	private static final String EVENT_ADDED = "Event \"%1$2s\" added";
+	private static final String EVENT_REMOVED = "Event \"%1$2s\" removed";
 	private static final String SAVED = "Current state is saved";
 	private static final String LOADED = " objects are loaded";
 	private static final String SAVED_TO_DB = "Data saved to database";
@@ -83,7 +83,7 @@ public class ScheduleCreator {
 		lstUsers.put(name, newUser);
 		lstNewUsers.add(newUser);
 		
-		return USER_ADDED.replace("?", name);
+		return String.format(USER_ADDED, name);
 	}
 
 
@@ -108,8 +108,8 @@ public class ScheduleCreator {
 
 		if (user.getId() != -1)
 			lstModifiedUsers.add(user);
-		
-		return USER_MODIFIED.replace("?", name);
+
+		return String.format(USER_MODIFIED, name);
 	}
 
 	public synchronized String AddEvent(String name, String eventText, String eventDate) {
@@ -135,8 +135,8 @@ public class ScheduleCreator {
 		executor.addEvent(newEvent);
 		
 		lstNewEvents.add(newEvent);
-		
-		return EVENT_ADDED.replace("?", eventText);
+
+		return String.format(EVENT_ADDED, eventText);
 	}
 
 	public synchronized String RemoveEvent(String name, String eventText) {
@@ -153,8 +153,10 @@ public class ScheduleCreator {
 		
 		if (event.getId() != -1)
 			lstRemovedEvents.add(event);
-		
-		return EVENT_REMOVED.replace("?", eventText);
+		else
+			lstNewEvents.remove(event);
+
+		return String.format(EVENT_REMOVED, eventText);
 	}
 
 	public synchronized String AddRandomTimeEvent(String name, String eventText, String eventDateFrom, String eventDateTo) {
@@ -197,8 +199,8 @@ public class ScheduleCreator {
 		executor.addEvent(cloneEvent);
 		
 		lstNewEvents.add(cloneEvent);
-		
-		return EVENT_ADDED.replace("?", eventText);
+
+		return String.format(EVENT_ADDED, eventText);
 	}
 
 	public String ShowInfo(String name) {
@@ -334,9 +336,12 @@ public class ScheduleCreator {
 	}
 
 	public synchronized String sync(String adress) {
-		boolean res = SocketLoader.sync(adress, new HashMap<String, User>());
+		HashMap<String, User> lstTemp = new HashMap<String, User>();
+		boolean res = SocketLoader.sync(adress, lstTemp);
 		if (!res)
 			return ERROR_SYNC;
+
+		lstUsers = lstTemp;
 		
 		return afterLoad();
 	}

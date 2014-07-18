@@ -38,7 +38,6 @@ public class ActionDialog extends JDialog {
 	private JButton okButton;
 	/**
 	 * Create the dialog.
-	 * @param dialogCallBack 
 	 */
 	public ActionDialog(String title, String[] arrLabelNames, final InputType[] arrControlTypes, final DialogCallBack dialogCallBack) {
 		setBounds(100, 100, 350, 200);

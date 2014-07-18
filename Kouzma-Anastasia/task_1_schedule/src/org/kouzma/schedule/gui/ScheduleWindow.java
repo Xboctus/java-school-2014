@@ -378,7 +378,7 @@ public class ScheduleWindow implements ScheduleListener {
 			getContentPane().add(contentPanel, BorderLayout.CENTER);
 	
 			JButton btnSave = new JButton("Save");
-			JButton btnExitWithoutSaving = new JButton("ExitWithoutSaving");
+			JButton btnExitWithoutSaving = new JButton("Exit without saving");
 			JButton btnCancel = new JButton("Cancel");
 			
 			btnSave.addMouseListener(new MouseAdapter() {
