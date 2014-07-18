@@ -84,17 +84,7 @@ public class GraphicScheduler extends JFrame {
 
         add(outputPan);
         add(buttonPan);
-//        addWindowListener(
-//                new java.awt.event.WindowAdapter()
-//                {
-//                    public void windowClosing( java.awt.event.WindowEvent e )
-//                    {
-//                        System.out.println( "good bye" );
-//                        dispose() ;
-//                        System.exit( 0 );
-//                    }
-//                }
-//        );
+
         setLocationRelativeTo(null);
         pack();
     }

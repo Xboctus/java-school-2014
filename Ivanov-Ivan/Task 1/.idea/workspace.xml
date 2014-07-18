@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ac5fe4-fd3d-4123-b1dd-93420a48c37d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../RefProj/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../RefProj/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Ivanov-Ivan.iws" />
@@ -70,16 +69,16 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1292">
+            <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1292">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AbstractCoordinator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="40" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="6409">
+            <state line="39" column="63" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33895704" vertical-offset="357" max-vertical-offset="6222">
               <folding />
             </state>
           </provider>
@@ -88,20 +87,17 @@
       <file leaf-file-name="DataSync.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3740">
+            <state line="139" column="0" selection-start="3218" selection-end="3218" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="3502">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataLoaderSQL.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DataLoaderSQL.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="9" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.3970276" vertical-offset="289" max-vertical-offset="5151">
+            <state line="10" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="5151">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#668#675#0" expanded="true" />
-                <element signature="e#741#755#0" expanded="true" />
                 <marker date="1405086526361" expanded="true" signature="1485:1503" placeholder="DELETE FROM ..." />
                 <marker date="1405086526361" expanded="true" signature="1538:1555" placeholder="DELETE FROM ..." />
                 <marker date="1405086526361" expanded="true" signature="3206:3225" placeholder="SELECT * FRO..users..." />
@@ -120,7 +116,7 @@
       <file leaf-file-name="GUICoordinator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="228" column="73" selection-start="6958" selection-end="6958" vertical-scroll-proportion="0.0" vertical-offset="3876" max-vertical-offset="9707">
+            <state line="278" column="39" selection-start="8754" selection-end="8754" vertical-scroll-proportion="0.0" vertical-offset="4726" max-vertical-offset="9707">
               <folding />
             </state>
           </provider>
@@ -129,7 +125,25 @@
       <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="83" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="969">
+            <state line="0" column="33" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="33" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="510">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="76" selection-start="376" selection-end="387" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1700">
               <folding />
             </state>
           </provider>
@@ -179,8 +193,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="978" />
-    <option name="height" value="616" />
+    <option name="width" value="1320" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -210,6 +224,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -249,7 +264,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,7 +319,55 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ru/danilova/schedule/ScheduleCoordinator.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ru/danilova/schedule/model/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ru/danilova/schedule/model/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Demyanov-Ruslan/readme.txt</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/api/UserDao.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/centralStructure/CommandHandler$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/centralStructure/CommandHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/impl/ChangeManager.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/impl/EventDaoImpl.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/impl/UserDaoImpl.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/database/datamodel.mwb</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/database/datamodel.mwb.bak</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/api/UserDao.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/centralStructure/CommandHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/impl/ChangeManager.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/impl/EventDaoImpl.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/impl/UserDaoImpl.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Event.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleCreator.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/UserDialog$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/UserDialog.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/ScheduleCreator.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/gui/UserDialog.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/workspace.xml</PATH>
             <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/.idea/workspace.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/Coordinator.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$AddAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$AddEventAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$AddRandomTimeEventAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$CloneEventAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$CreateAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$CreateTablesAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$DropTablesAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$ExitAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$ModifyAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$PutInDBAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$RemoveEventAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$SaveAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$ShowInfoAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$SocketAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$StartSchedulingAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$StartServerAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler$SyncAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/GraphicScheduler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/out/production/Task1/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Task1/src/GraphicScheduler.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -313,24 +375,98 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ru/danilova/schedule/ScheduleCoordinator.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ru/danilova/schedule/model/Event.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ru/danilova/schedule/model/User.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/.name</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/compiler.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/copyright/profiles_settings.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/encodings.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/misc.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/modules.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/scopes/scope_settings.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/uiDesigner.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/vcs.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/.idea/workspace.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/Secret.iml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/out/production/Secret/Secret/ReflectionClass.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/out/production/Secret/Secret/Secret.class</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/src/Secret/ReflectionClass.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/Secret/src/Secret/Secret.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/readme.txt</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/consoleWork/CommandAnalisis.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/consoleWork/MainClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/AddEventFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/AddEventFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/AddRandTimeFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/AddRandTimeFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CloneEventFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CloneEventFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CommandAnalisis$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CommandAnalisis$Command.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CommandAnalisis.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CreateModifyUserWindow$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/CreateModifyUserWindow.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/FileReadWriteFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/FileReadWriteFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$10.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$11.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$12.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$13.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$4.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$5.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$6.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$7.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$8.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow$9.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/InitialWindow.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/MainClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/PrintFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/PrintFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/RemoveEventFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/RemoveEventFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/ShowInfoFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphicsWorks/ShowInfoFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/secret.txt</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/consoleWork/CommandAnalisis.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/consoleWork/MainClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/AddEventFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/AddRandTimeFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/CloneEventFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/CommandAnalisis.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/CreateModifyUserWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/FileReadWriteFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/InitialWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/MainClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/PrintFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/RemoveEventFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphicsWorks/ShowInfoFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/Main.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/ScheduleExecutor.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/gui/ActionDialog.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/gui/ScheduleWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/DBLoader.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/DateUtil.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/FileLoader.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/SocketLoader.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/.name</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/compiler.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/copyright/profiles_settings.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/encodings.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/misc.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/modules.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/scopes/scope_settings.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/uiDesigner.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/vcs.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/.idea/workspace.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/XML.iml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/mysql-connector-java-5.1.31-bin.jar</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/Book.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/DB.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/SaxHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/SimpleErrorHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/TimerTaskScan.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/Xml.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/XmlClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/XmlFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/XmlFrame$startTimerAction.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/out/production/XML/XML/XmlFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/Book.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/DB.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/SaxHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/SimpleErrorHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/TimerTaskScan.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/Xml.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/XmlClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/src/XML/XmlFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/xmlfiles/data1.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/xmlfiles/data2.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Lekomcev-Alexey/XML/xmlfiles/schema.xsd</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -338,9 +474,108 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="true" />
             <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/ScheduleCoordinator.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/model/Event.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Danilova Katya/events/src/model/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/.classpath</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/.project</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/.settings/org.eclipse.jdt.core.prefs</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/CommandAnalisis.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/CommandHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/Event.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/Loader.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/MainClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/Scheduler$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/Scheduler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/business/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/AddEventFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/AddEventFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/AddRandTimeFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/AddRandTimeFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CloneEventFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CloneEventFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CommandAnalisis$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CommandAnalisis$Command.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CommandAnalisis.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CreateModifyUserWindow$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/CreateModifyUserWindow.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/FileReadWriteFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/FileReadWriteFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$10.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$11.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$12.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$4.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$5.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$6.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$7.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$8.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow$9.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/InitialWindow.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/MainClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/PrintFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/PrintFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/RemoveEventFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/RemoveEventFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/ShowInfoFrame$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/bin/graphics/ShowInfoFrame.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/CommandAnalisis.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/CommandHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/Loader.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/MainClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/Scheduler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/business/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/AddEventFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/AddRandTimeFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/CloneEventFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/CommandAnalisis.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/CreateModifyUserWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/FileReadWriteFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/InitialWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/MainClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/PrintFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/RemoveEventFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/JSCalendar/src/graphics/ShowInfoFrame.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/README.md</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/bin/task1/CommandAnalisis.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/bin/task1/CommandHandler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/bin/task1/Event.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/bin/task1/MainClass.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/bin/task1/Scheduler.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/bin/task1/User.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/src/task1/CommandAnalisis.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/src/task1/CommandHandler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/src/task1/Event.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/src/task1/MainClass.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/src/task1/Scheduler.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Gavrilash-Nastya/src/task1/User.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Schedule$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Schedule$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/Schedule.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleCreator$ScheduleTimerTask.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleViewer$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/ScheduleViewer.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/ScheduleDialog.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$1$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$1.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$2.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$3.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$4.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$5.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$6.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow$DialogCallBack.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/gui/SheduleWindow.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/util/ScheduleConnection.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/bin/org/kouzma/schedule/util/StateType.class</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/Schedule.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/ScheduleViewer.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/gui/ScheduleDialog.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/gui/SheduleWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/ScheduleConnection.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/../../Kouzma-Anastasia/task_1_schedule/src/org/kouzma/schedule/util/StateType.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Restored" />
@@ -735,7 +970,11 @@
       <workItem from="1404970601593" duration="549000" />
       <workItem from="1404972448821" duration="986000" />
       <workItem from="1404974430932" duration="19996000" />
-      <workItem from="1405324036768" duration="853000" />
+      <workItem from="1405324036768" duration="1002000" />
+      <workItem from="1405364159010" duration="1275000" />
+      <workItem from="1405408698695" duration="1154000" />
+      <workItem from="1405488465320" duration="3425000" />
+      <workItem from="1405601350336" duration="670000" />
     </task>
     <task id="LOCAL-00001" summary="task test coomit  #1">
       <created>1403953323252</created>
@@ -865,11 +1104,19 @@
       <created>1405324215739</created>
       <updated>1405324215740</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Task 1 1.5 commit, deadlock, secret&#10;">
+      <created>1405324980454</created>
+      <updated>1405324980454</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Schedule 1.5, deadlock, secret, XML 0.1&#10;">
+      <created>1405601868246</created>
+      <updated>1405601868247</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239445000" />
+    <option name="totallyTimeSpent" value="246118000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -892,7 +1139,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="978" height="616" extended-state="6" />
+    <frame x="-8" y="-8" width="1320" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -907,14 +1154,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327451" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31960785" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12993763" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15030675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34313726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13525027" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -949,7 +1196,8 @@
     <MESSAGE value="Task 1 1.4 commit&#10;" />
     <MESSAGE value="Task 1 1.5 commit, deadlock&#10;" />
     <MESSAGE value="Task 1 1.5 commit, deadlock, secret&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task 1 1.5 commit, deadlock, secret&#10;" />
+    <MESSAGE value="Schedule 1.5, deadlock, secret, XML 0.1&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Schedule 1.5, deadlock, secret, XML 0.1&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1206,25 +1454,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/ConsoleCoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="40" selection-start="6182" selection-end="6182" vertical-scroll-proportion="0.57425743" vertical-offset="3124" max-vertical-offset="3689">
-          <folding />
-        </state>
+        <state line="198" column="40" selection-start="6182" selection-end="6182" vertical-scroll-proportion="0.57425743" vertical-offset="3124" max-vertical-offset="3689" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="28" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="986">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="83" selection-start="2882" selection-end="2882" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="969">
-          <folding />
-        </state>
+        <state line="15" column="28" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Event.java">
@@ -1236,48 +1471,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="13" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.0" vertical-offset="1046" max-vertical-offset="1496">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="40" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="4778" max-vertical-offset="6409">
+        <state line="12" column="76" selection-start="376" selection-end="387" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="3672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+        <state line="0" column="33" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/GUICoordinator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="73" selection-start="6958" selection-end="6958" vertical-scroll-proportion="0.0" vertical-offset="1681" max-vertical-offset="9027">
+        <state line="278" column="39" selection-start="8754" selection-end="8754" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="8415">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataLoaderSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="9" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.3970276" vertical-offset="289" max-vertical-offset="5151">
+        <state line="10" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="5151">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#668#675#0" expanded="true" />
-            <element signature="e#741#755#0" expanded="true" />
             <marker date="1405086526361" expanded="true" signature="1485:1503" placeholder="DELETE FROM ..." />
             <marker date="1405086526361" expanded="true" signature="1538:1555" placeholder="DELETE FROM ..." />
             <marker date="1405086526361" expanded="true" signature="3206:3225" placeholder="SELECT * FRO..users..." />
@@ -1289,6 +1505,27 @@
             <marker date="1405086526361" expanded="true" signature="7278:7404" placeholder="UPDATE event..." />
             <marker date="1405086526361" expanded="true" signature="7490:7625" placeholder="INSERT INTO ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/DataSync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="0" selection-start="3218" selection-end="3218" vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="3502">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="66" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/javaschool2014/task1/AbstractCoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="63" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33895704" vertical-offset="357" max-vertical-offset="6222">
+          <folding />
         </state>
       </provider>
     </entry>
